@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/xml/ns/javaee">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<th:block th:include="/menu"></th:block>
+
+<h1>Create New Project</h1>
+
+<form action="#" th:action="@{/project/add}" th:object="${project}" method="post">
+
+    <p>Project name: <input type="text" th:field="*{name_project}" /></p>
+    <p>Essence inovations: <input type="text" th:field="*{essence_inovations}" /></p>
+    <p>Level_solution: <input type="text" th:field="*{level_solution}" /></p>
+    <p>Competitive advantages: <input type="text" th:field="*{competitive_advantages}" /></p>
+<!--    <p>Start_date: <input type="date" th:field="*{start_date}" /></p>-->
+    <p>Current stage: <input type="text" th:field="*{current_stage}" /></p>
+    <p>Expertise project: <input type="text" th:field="*{expertise_project}" /></p>
+    <p>Solution problem: <input type="text" th:field="*{solution_problems}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>

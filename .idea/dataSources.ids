@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - javastudy@localhost" uuid="ab6f4db3-d5b4-4440-82ae-9ff155ae5b42">
+    <database-info product="MySQL" version="5.6.25-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="javastudy"/>
+    <table name="contact" schema="" catalog="javastudy" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="birth_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="version" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_CONTACT_HOBBY_DETAIL_1" table="contact_hobby_detail" schema="" catalog="javastudy" columns="contact_id"/>
+      <exported-key name="FK_CONTACT_TEL_DETAIL_1" table="contact_tel_detail" schema="" catalog="javastudy" columns="contact_id"/>
+      <index name="UQ_CONTACT_1" unique="true" columns="first_name,last_name"/>
+    </table>
+    <table name="contact_hobby_detail" schema="" catalog="javastudy" type="TABLE">
+      <column name="contact_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="hobby_id" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="contact_id,hobby_id"/>
+      <foreign-key name="FK_CONTACT_HOBBY_DETAIL_1" columns="contact_id" ref-table="contact" ref-schema="" ref-catalog="javastudy" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_CONTACT_HOBBY_DETAIL_2" columns="hobby_id" ref-table="hobby" ref-schema="" ref-catalog="javastudy" ref-columns="hobby_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_CONTACT_HOBBY_DETAIL_2" unique="false" columns="hobby_id"/>
+    </table>
+    <table name="contact_tel_detail" schema="" catalog="javastudy" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="contact_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="tel_type" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tel_number" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="version" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_CONTACT_TEL_DETAIL_1" columns="contact_id" ref-table="contact" ref-schema="" ref-catalog="javastudy" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="uq_contact_tel_detail_1" unique="true" columns="contact_id,tel_type"/>
+    </table>
+    <table name="hobby" schema="" catalog="javastudy" type="TABLE">
+      <column name="hobby_id" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="hobby_id"/>
+      <exported-key name="FK_CONTACT_HOBBY_DETAIL_2" table="contact_hobby_detail" schema="" catalog="javastudy" columns="hobby_id"/>
+    </table>
+  </data-source>
+</component>
