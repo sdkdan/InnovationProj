@@ -16,6 +16,11 @@
     <mapping class="ru.javastudy.hibernate.models.Person"/>
     <mapping class="ru.javastudy.hibernate.models.Project"/>
     <mapping class="ru.javastudy.hibernate.models.Event"/>
+    <mapping class="ru.javastudy.hibernate.models.ConMarketPerson"/>
+    <mapping class="ru.javastudy.hibernate.models.ConMarketProject"/>
+    <mapping class="ru.javastudy.hibernate.models.ConTechnologyOrganization"/>
+    <mapping class="ru.javastudy.hibernate.models.ConTechnologyPerson"/>
+    <mapping class="ru.javastudy.hibernate.models.ConTechnologyProject"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
