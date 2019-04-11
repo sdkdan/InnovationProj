@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-// Сервис отвечающий за таблицу Person
+// Сервис отвечающий за таблицу Person попытка 2
 @Service
 public class PersonService {
 
