@@ -34,24 +34,4 @@ public class HibernateConf {
     }
 
 
-
-
-
-//    @Bean
-//    public PlatformTransactionManager hibernateTransactionManager() {
-//        HibernateTransactionManager transactionManager
-//                = new HibernateTransactionManager();
-//        transactionManager.setSessionFactory(sessionFactory().getObject());
-//        return transactionManager;
-//    }
-//
-//    private final Properties hibernateProperties() {
-//        Properties hibernateProperties = new Properties();
-//        hibernateProperties.setProperty(
-//                "hibernate.hbm2ddl.auto", "create-drop");
-//        hibernateProperties.setProperty(
-//                "hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-//
-//        return hibernateProperties;
-//    }
 }
