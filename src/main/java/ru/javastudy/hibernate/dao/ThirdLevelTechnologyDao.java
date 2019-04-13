@@ -4,14 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.javastudy.hibernate.models.ConTechnologyProject;
+import ru.javastudy.hibernate.models.ThirdLevelTechnology;
 
 import java.util.List;
 
 @Repository
-public class ConTechnologyProjectDao {
-
-
+public class ThirdLevelTechnologyDao {
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -19,17 +17,24 @@ public class ConTechnologyProjectDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public ConTechnologyProject findById(int id) {
+    public ThirdLevelTechnology findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        ConTechnologyProject conTechnologyProject  = (ConTechnologyProject) session.load(ConTechnologyProject.class, id);
-        return conTechnologyProject;
+        ThirdLevelTechnology thirdLevelTechnology  = (ThirdLevelTechnology) session.load(ThirdLevelTechnology.class, id);
+        return thirdLevelTechnology;
     }
 
     @SuppressWarnings("unchecked")
-    public List<ConTechnologyProject> conTechnologyProjectList() {
+    public List<ThirdLevelTechnology> thirdLevelTechnologyList() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<ConTechnologyProject> conTechnologyProjectList = (List<ConTechnologyProject>) session.createQuery("From ConTechnologyProject").list();
-        return conTechnologyProjectList;
+        List<ThirdLevelTechnology> thirdLevelTechnologyList = (List<ThirdLevelTechnology>) session.createQuery("From ThirdLevelTechnology").list();
+        return thirdLevelTechnologyList;
     }
 
 }
+
+
+
+
+
+
+

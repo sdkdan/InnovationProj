@@ -4,14 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.javastudy.hibernate.models.ConTechnologyProject;
+import ru.javastudy.hibernate.models.ThirdLevelMarket;
 
 import java.util.List;
 
 @Repository
-public class ConTechnologyProjectDao {
-
-
+public class ThirdLevelMarketDao {
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -19,17 +17,22 @@ public class ConTechnologyProjectDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public ConTechnologyProject findById(int id) {
+    public ThirdLevelMarket findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        ConTechnologyProject conTechnologyProject  = (ConTechnologyProject) session.load(ConTechnologyProject.class, id);
-        return conTechnologyProject;
+        ThirdLevelMarket thirdLevelMarket  = (ThirdLevelMarket) session.load(ThirdLevelMarket.class, id);
+        return thirdLevelMarket;
     }
 
     @SuppressWarnings("unchecked")
-    public List<ConTechnologyProject> conTechnologyProjectList() {
+    public List<ThirdLevelMarket> thirdLevelMarketList() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<ConTechnologyProject> conTechnologyProjectList = (List<ConTechnologyProject>) session.createQuery("From ConTechnologyProject").list();
-        return conTechnologyProjectList;
+        List<ThirdLevelMarket> thirdLevelMarketList = (List<ThirdLevelMarket>) session.createQuery("From ThirdLevelMarket").list();
+        return thirdLevelMarketList;
     }
 
 }
+
+
+
+
+
