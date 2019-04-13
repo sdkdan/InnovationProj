@@ -3,7 +3,7 @@ package ru.javastudy.hibernate.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Organization")
+@Table(name = "organization")
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,7 +4,7 @@ package ru.javastudy.hibernate.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "person_event")
+@Table(name = "organization_person")
 public class OrganizationPerson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

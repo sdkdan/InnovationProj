@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<!--Include _menu.html -->
+
 <th:block th:include="/menu"></th:block>
 <h1>Cписок людей</h1>
 
@@ -21,7 +21,7 @@
         <th>prizes</th>
         <th>id type event</th>
     </tr>
-    <!--<td th:utext="${personName}">..</td>-->
+
 
     <tr th:each="event : ${eventList}">
         <td th:utext="${event.id_event}">..</td>
@@ -30,7 +30,7 @@
         <td th:utext="${event.comment}">..</td>
         <td th:utext="${event.location_event}">..</td>
         <td th:utext="${event.prizes}">..</td>
-        <!--<td th:utext="${event.id_type_event}">..</td>-->
+
 
     </tr>
 </table>

@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateJdbcException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.javastudy.hibernate.models.Organization;
 import ru.javastudy.hibernate.models.Person;
 import ru.javastudy.hibernate.models.Project;
 import ru.javastudy.hibernate.models.Event;
+import ru.javastudy.hibernate.service.OrganizationSevice;
 import ru.javastudy.hibernate.service.PersonService;
 import ru.javastudy.hibernate.service.ProjectService;
 import ru.javastudy.hibernate.service.EventService;
@@ -25,6 +27,9 @@ public class ControllerInnovat {
     private ProjectService projectService;
     @Autowired
     private EventService eventService;
+    @Autowired
+    private OrganizationSevice organizationService;
+
 
 
     @RequestMapping(value = "/menu")
@@ -106,20 +111,30 @@ public class ControllerInnovat {
     }
 
 
-//    @GetMapping(path="/add") // Map ONLY GET Requests
-//    public @ResponseBody
-//    String addNewPerson (@RequestParam String name
-//            , @RequestParam String email) {
-//        // @ResponseBody means the returned String is the response, not a view name
-//        // @RequestParam means it is a parameter from the GET or POST request
-//
-//        Person n = new Person();
-//        n.setName(name);
-//        n.setSurname(name);
-//        n.setThirdName(name);
-//        n.seteMail(email);
-//        PersonService.save(n);
-//        return  "redirect:/person";
-//    }
+    @RequestMapping(value = "/organization")
+    public String listorganization(Model model) {
+        List<Organization> list = organizationService.organizationList();
+        model.addAttribute("organizationList", list);
+        return "organization";
+    }
+
+    @RequestMapping(value = "/organization/add", method = RequestMethod.GET)
+    public String getAddorganization(Model model) {
+        model.addAttribute("organization", new Organization());
+        return "addOrg";
+    }
+
+    @RequestMapping(value = "/organization/add", method = RequestMethod.POST)
+    public String addOrganization(@ModelAttribute Organization organization, Model model) {
+        model.addAttribute("organization", organization);
+        organizationService.addOrganization(organization);
+        return "addedOrg";
+    }
+
+    @GetMapping("organization/delete/{id}")
+    public String deleteOrganization(@PathVariable("id") int id, Model model) {
+        organizationService.deleteOrganiztion(id);
+        return "redirect:/organization";
+    }
 
 }
