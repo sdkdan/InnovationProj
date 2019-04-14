@@ -1,7 +1,7 @@
 package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
-
+//категории рынков
 @Entity
 @Table(name = "first_level_market")
 public class FirstLevelMarket {
