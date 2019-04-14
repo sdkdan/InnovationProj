@@ -26,7 +26,7 @@ public class FirstLevelTechnologyService {
     public List<FirstLevelTechnology> firstLevelTechnologyList() {
         return firstLevelTechnologyDao.firstLevelTechnologyList();
     }
-
+//asdf
 
 }
 
