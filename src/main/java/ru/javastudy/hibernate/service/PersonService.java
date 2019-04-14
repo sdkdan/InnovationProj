@@ -1,7 +1,6 @@
 package ru.javastudy.hibernate.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import ru.javastudy.hibernate.dao.PersonDao;
 import ru.javastudy.hibernate.models.Person;
 import org.springframework.stereotype.Service;
@@ -47,7 +46,7 @@ public class PersonService {
 
     @Transactional
     public List<Person> personList() {
-        return this.personDao.personList();
+        return personDao.personList();
     }
 
 
