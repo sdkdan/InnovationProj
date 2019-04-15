@@ -63,6 +63,15 @@ public class ControllerInnovat {
         return "redirect:/person";
     }
 
+
+    @GetMapping("person/{id}")
+    public String onePerson(@PathVariable("id") int id, Model model){
+        Person person = personService.findPerson(id);
+        model.addAttribute("person", person);
+        return "onePerson";
+    }
+
+
     @RequestMapping(value = "/project")
     public String listProject(Model model) {
         Iterable<Project> list = projectService.projectList();
