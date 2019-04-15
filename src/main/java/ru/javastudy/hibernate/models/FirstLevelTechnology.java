@@ -1,7 +1,7 @@
 package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
-//новые зависимости
+
 @Entity
 @Table(name = "first_level_technology")
 public class FirstLevelTechnology {

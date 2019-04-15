@@ -1,7 +1,7 @@
 package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
-//новое
+
 @Entity
 @Table(name = "first_level_skill")
 public class FirstLevelSkill {
