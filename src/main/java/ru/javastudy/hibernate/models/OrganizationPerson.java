@@ -13,6 +13,42 @@ public class OrganizationPerson {
     private int id_organiztion;
     @Column(name = "id_person")
     private int id_Person;
+    private String nameOrganization;
+    private String namePerson;
+    private String surnamePerson;
+    private String thridnamePerson;
+
+    public String getSurnamePerson() {
+        return surnamePerson;
+    }
+
+    public void setSurnamePerson(String surnamePerson) {
+        this.surnamePerson = surnamePerson;
+    }
+
+    public String getThridnamePerson() {
+        return thridnamePerson;
+    }
+
+    public void setThridnamePerson(String thridnamePerson) {
+        this.thridnamePerson = thridnamePerson;
+    }
+
+    public String getNameOrganization() {
+        return nameOrganization;
+    }
+
+    public void setNameOrganization(String nameOrganization) {
+        this.nameOrganization = nameOrganization;
+    }
+
+    public String getNamePerson() {
+        return namePerson;
+    }
+
+    public void setNamePerson(String namePerson) {
+        this.namePerson = namePerson;
+    }
 
     public int getId_organization_person() {
         return id_organization_person;

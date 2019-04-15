@@ -1,6 +1,7 @@
 package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -30,6 +31,13 @@ public class Person {
     private String twitter;
     @Column(name = "Comment")
     private String comment;
+    @ManyToMany
+    @JoinTable(name="project_person",
+            joinColumns=@JoinColumn(name="id_person"),
+            inverseJoinColumns=@JoinColumn(name="id_project"))
+    private List<Project> projectList;
+
+
 
 
     public int getId_person() {
