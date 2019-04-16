@@ -1,6 +1,8 @@
 package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "organization")
@@ -16,6 +18,26 @@ public class Organization {
     private String city_organization;
     @Column(name = "Notes_organization")
     private String notes_organization;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "organization_person",
+            joinColumns = @JoinColumn(name = "id_organization"),
+            inverseJoinColumns = @JoinColumn(name = "id_person")
+    )private Set<Person> persons = new HashSet<Person>();
+
+    public Set<Person> getPersons() {
+        return this.persons;
+    }
+
+
+    public void setOrganizations(Set<Person> persons) {
+        this.persons = persons;
+    }
+
+    public void addEvents(Person person){
+        persons.add(person);
+    }
+
 
     public int getId_organization() {
         return id_organization;

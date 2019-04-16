@@ -32,15 +32,6 @@
         <td th:utext="${person.date_of_birth}">..</td>
         <td th:utext="${person.comment}">..</td>
     </tr>
-    <tr th:each="event : ${person.getEvent()}">
-    <td th:utext="${event.getname_event()}">..</td>
-</tr>
-    <tr th:each="org : ${person.getOrganizations()}">
-        <td th:utext="${org.getName_organization()}">..</td>
-    </tr>
-    <tr th:each="project : ${person.getProjects()}">
-        <td th:utext="${project.getName_project()}">..</td>
-    </tr>
 </table>
 
 
