@@ -33,5 +33,7 @@ public class HibernateConf {
         return sessionFactory;
     }
 
+    
+
 
 }
