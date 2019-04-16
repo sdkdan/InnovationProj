@@ -50,6 +50,14 @@ public class Person {
         this.events = events;
     }
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "organization_event",
+            //foreign key for EmployeeEntity in employee_car table
+            joinColumns = @JoinColumn(name = "id_person"),
+            //foreign key for other side - EmployeeEntity in employee_car table
+            inverseJoinColumns = @JoinColumn(name = "id_organization"))
+    public Set<Organization> organizations = new HashSet<>();
+
     public int getId_person() {
         return id_person;
     }

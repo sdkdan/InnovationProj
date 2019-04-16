@@ -56,6 +56,38 @@ public class Event {
         this.id_event = id_event;
     }
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "organization_event",
+            //foreign key for EmployeeEntity in employee_car table
+            joinColumns = @JoinColumn(name = "id_event"),
+            //foreign key for other side - EmployeeEntity in employee_car table
+            inverseJoinColumns = @JoinColumn(name = "id_organization"))
+    public Set<Organization> organizations = new HashSet<>();
+
+    public Set<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(Set<Organization> organizations) {
+        this.organizations = organizations;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "event_project",
+            //foreign key for EmployeeEntity in employee_car table
+            joinColumns = @JoinColumn(name = "id_event"),
+            //foreign key for other side - EmployeeEntity in employee_car table
+            inverseJoinColumns = @JoinColumn(name = "id_project"))
+    public Set<Project> projects = new HashSet<>();
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
+    }
+
     public String getsite_event() {
         return site_event;
     }
