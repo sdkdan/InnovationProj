@@ -3,6 +3,8 @@ package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "project")
@@ -32,6 +34,29 @@ public class Project {
     private String site_project;
     @Column(name = "Number_Phone_project")
     private String number_Phone_project;
+
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "project_person",
+            joinColumns = @JoinColumn(name = "id_project"),
+            inverseJoinColumns = @JoinColumn(name = "id_person")
+    )private Set<Person> persons = new HashSet<Person>();
+
+    public Set<Person> getPersons() {
+        return this.persons;
+    }
+
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
+    }
+
+    public void addEvents(Person person){
+        persons.add(person);
+    }
+
+
 
     public int getId_project() {
         return id_project;

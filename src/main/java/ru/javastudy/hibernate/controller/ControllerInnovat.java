@@ -5,14 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateJdbcException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.javastudy.hibernate.models.Organization;
-import ru.javastudy.hibernate.models.Person;
-import ru.javastudy.hibernate.models.Project;
-import ru.javastudy.hibernate.models.Event;
-import ru.javastudy.hibernate.service.OrganizationSevice;
-import ru.javastudy.hibernate.service.PersonService;
-import ru.javastudy.hibernate.service.ProjectService;
-import ru.javastudy.hibernate.service.EventService;
+import ru.javastudy.hibernate.models.*;
+import ru.javastudy.hibernate.service.*;
 
 
 import java.sql.SQLDataException;
@@ -29,8 +23,6 @@ public class ControllerInnovat {
     private EventService eventService;
     @Autowired
     private OrganizationSevice organizationService;
-
-
 
     @RequestMapping(value = "/menu")
     public String menu() {
@@ -62,6 +54,15 @@ public class ControllerInnovat {
         personService.deletePerson(id);
         return "redirect:/person";
     }
+
+
+    @GetMapping("person/{id}")
+    public String onePerson(@PathVariable("id") int id, Model model){
+        Person person = personService.findPerson(id);
+        model.addAttribute("person", person);
+        return "onePerson";
+    }
+
 
     @RequestMapping(value = "/project")
     public String listProject(Model model) {

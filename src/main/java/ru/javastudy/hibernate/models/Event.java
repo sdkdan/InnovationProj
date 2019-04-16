@@ -2,6 +2,8 @@ package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "event", schema = "", catalog = "x92176f5_inovat")
@@ -20,8 +22,6 @@ public class Event {
     private String Scope_event;
     @Column(name = "Description")
     private String description;
-//    @Column(name = "id_type_event")
-//    private int id_type_event;
     @Column(name = "Phone_number")
     private String phone_number;
     @Column(name = "Date_event")
@@ -36,6 +36,26 @@ public class Event {
     private String prizes;
     @Column(name = "Location_event")
     private String location_event;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "person_event",
+            joinColumns = @JoinColumn(name = "id_event"),
+            inverseJoinColumns = @JoinColumn(name = "id_person")
+    )
+    private Set<Person> persons = new HashSet<Person>();
+
+
+    public Set<Person> getPersons() {
+        return this.persons;
+    }
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
+    }
+
+    public void addPersons(Person person){
+        persons.add(person);
+    }
 
     public int getId_event() {
         return id_event;
@@ -84,14 +104,6 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    public int getid_type_event() {
-//        return id_type_event;
-//    }
-//
-//    public void setid_type_event(int id_type_event) {
-//        this.id_type_event = id_type_event;
-//    }
 
     public String getphone_number() {
         return phone_number;

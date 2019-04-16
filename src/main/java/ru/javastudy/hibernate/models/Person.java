@@ -1,6 +1,9 @@
 package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "person")
@@ -31,6 +34,66 @@ public class Person {
     @Column(name = "Comment")
     private String comment;
 
+
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "person_event",
+            joinColumns = @JoinColumn(name = "id_person"),
+            inverseJoinColumns = @JoinColumn(name = "id_event")
+    )private Set<Event> events = new HashSet<Event>();
+
+    public Set<Event> getEvent() {
+        return this.events;
+    }
+
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
+    public void addEvents(Event event){
+        events.add(event);
+    }
+
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "organization_person",
+            joinColumns = @JoinColumn(name = "id_person"),
+            inverseJoinColumns = @JoinColumn(name = "id_organization")
+    )private Set<Organization> organizations = new HashSet<Organization>();
+
+    public Set<Organization> getOrganizations() {
+        return this.organizations;
+    }
+
+
+    public void setOrganizations(Set<Organization> organizations) {
+        this.organizations = organizations;
+    }
+
+    public void addEvents(Organization organization){
+        organizations.add(organization);
+    }
+
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "project_person",
+            joinColumns = @JoinColumn(name = "id_person"),
+            inverseJoinColumns = @JoinColumn(name = "id_project")
+    )private Set<Project> projects = new HashSet<Project>();
+
+    public Set<Project> getProjects() {
+        return this.projects;
+    }
+
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
+    }
+
+    public void addEvents(Project project){
+        projects.add(project);
+    }
 
     public int getId_person() {
         return id_person;

@@ -7,36 +7,34 @@
 </head>
 
 <body>
- <!--Include _menu.html -->
- <th:block th:include="/menu"></th:block>
-<h1>Cписок людей</h1>
+<!--Include _menu.html -->
+<th:block th:include="/menu"></th:block>
+<h1>Person added</h1>
 
 <table border="1">
     <tr>
-        <!--<th>ID</th>-->
+        <th>ID</th>
         <th>First Name</th>
         <th>Last name</th>
         <th>Third name</th>
         <th>phoneNumber</th>
         <th>date of Birth</th>
         <th>comment</th>
-        <th>VK</th>
     </tr>
     <!--<td th:utext="${personName}">..</td>-->
 
-    <tr th:each="person : ${personList}">
-        <!--<td th:utext="${person.id_person}">..</td>-->
+    <tr >
+        <td th:utext="${person.id_person}">..</td>
         <td th:utext="${person.name}">..</td>
         <td th:utext="${person.surname}">..</td>
         <td th:utext="${person.thirdName}">..</td>
         <td th:utext="${person.phone_number_person}">..</td>
         <td th:utext="${person.date_of_birth}">..</td>
         <td th:utext="${person.comment}">..</td>
-        <td th:utext="${person.vk}">..</td>
-        <td><a th:href="@{person/delete/{id}(id=${person.id_person})}">Delete</a></td>
-        <td><a th:href="@{person/{id}(id=${person.id_person})}">Подробнее</a></td>
     </tr>
 </table>
+
+
 
 </body>
 </html>

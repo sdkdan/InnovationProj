@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<!--Include _menu.html -->
+<th:block th:include="/menu"></th:block>
+<h1>Organization added</h1>
+
+<table border="1">
+    <tr>
+
+        <th>Name organization</th>
+        <th>City</th>
+        <th>Site</th>
+        <th>Notes</th>
+    </tr>
+        <td th:utext="${organization.getName_organization()}">..</td>
+        <td th:utext="${organization.getCity_organization()}">..</td>
+        <td th:utext="${organization.getSite_organization()}">..</td>
+        <td th:utext="${organization.getNotes_organization()}">..</td>
+        <td><a th:href="@{organization/delete/{id}(id=${organization.id_organization})}">Delete</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
