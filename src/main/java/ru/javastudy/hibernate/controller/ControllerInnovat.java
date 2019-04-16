@@ -1,8 +1,6 @@
 package ru.javastudy.hibernate.controller;
 
-import javassist.bytecode.stackmap.BasicBlock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.HibernateJdbcException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.javastudy.hibernate.models.Organization;
@@ -15,7 +13,6 @@ import ru.javastudy.hibernate.service.ProjectService;
 import ru.javastudy.hibernate.service.EventService;
 
 
-import java.sql.SQLDataException;
 import java.util.List;
 
 
@@ -31,6 +28,10 @@ public class ControllerInnovat {
     private OrganizationSevice organizationService;
 
 
+    @RequestMapping(value = "/index")
+    public String index() {
+        return "/bootstrap/index";
+    }
 
     @RequestMapping(value = "/menu")
     public String menu() {

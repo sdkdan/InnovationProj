@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<th:block th:include="/menu"></th:block>
+<h1>Проекты</h1>
+<table border="1">
+    <tr>
+        <th>nameProject</th>
+        <th>EssenceProject</th>
+        <th>levelSolution</th>
+        <th>competetiveAdvantages</th>
+        <th>startDate</th>
+        <th>currentStage</th>
+        <th>expertiseProject</th>
+        <th>projectDescription</th>
+        <th>siteProject</th>
+        <th>numberPhoneProject</th>
+    </tr>
+
+    <tr th:each="project : ${projectList}">
+        <td th:utext="${project.name_project}">..</td>
+        <td th:utext="${project.essence_inovations}">..</td>
+        <td th:utext="${project.level_solution}">..</td>
+        <td th:utext="${project.competitive_advantages}">..</td>
+        <td th:utext="${project.start_date}">..</td>
+        <td th:utext="${project.current_stage}">..</td>
+        <td th:utext="${project.expertise_project}">..</td>
+        <td th:utext="${project.project_description}">..</td>
+        <td th:utext="${project.site_project}">..</td>
+        <td th:utext="${project.number_Phone_project}">..</td>
+        <td><a th:href="@{/project/delete/{id}(id=${project.id_project})}">Delete</a></td>
+    </tr>
+
+
+
+
+
+</table>
+
+</body>
+</html>

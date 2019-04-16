@@ -12,11 +12,9 @@ import java.util.List;
 @Service
 public class OrganizationSevice {
 
-
-
     public OrganizationSevice(){
-
     }
+
     @Autowired
     private OrganizationDao organizationDao = new OrganizationDao();
 

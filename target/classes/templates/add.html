@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/xml/ns/javaee">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<th:block th:include="/menu"></th:block>
+
+<h1>Create New Person</h1>
+
+<form action="#" th:action="@{/person/add}" th:object="${person}" method="post">
+
+    <p>Surname: <input type="text" th:field="*{surname}" /></p>
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <p>Third name: <input type="text" th:field="*{thirdName}" /></p>
+    <p>Phone number: <input type="text" th:field="*{phone_number_person}" /></p>
+    <p>Date of birth: <input type="date" th:field="*{date_of_birth}" /></p>
+    <p>comment: <input type="text" th:field="*{comment}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+
+
+
+</body>
+</html>
