@@ -13,9 +13,9 @@
     <property name="connection.username">x92176f5_inovat</property>
     <property name="connection.password">123456</property>
     <!-- NOTE that after automapping with IDEA property username and password will delete -->
-    <mapping class="ru.javastudy.hibernate.models.Person"/>
-    <mapping class="ru.javastudy.hibernate.models.Project"/>
-    <mapping class="ru.javastudy.hibernate.models.Event"/>
+    <mapping class="ru.innovat.models.Person"/>
+    <mapping class="ru.innovat.models.Project"/>
+    <mapping class="ru.innovat.models.Event"/>
     <mapping class="ru.javastudy.hibernate.models.ConMarketPerson"/>
     <mapping class="ru.javastudy.hibernate.models.ConMarketProject"/>
     <mapping class="ru.javastudy.hibernate.models.ConTechnologyOrganization"/>
