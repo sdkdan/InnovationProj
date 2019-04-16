@@ -32,8 +32,8 @@
         <td th:utext="${person.date_of_birth}">..</td>
         <td th:utext="${person.comment}">..</td>
     </tr>
-<<<<<<< HEAD
-    <tr th:each="event : ${person.getEvent()}">
+
+    <tr th:each="event : ${person.getEvents()}">
     <td th:utext="${event.getname_event()}">..</td>
 </tr>
     <tr th:each="org : ${person.getOrganizations()}">
@@ -41,11 +41,7 @@
     </tr>
     <tr th:each="project : ${person.getProjects()}">
         <td th:utext="${project.getName_project()}">..</td>
-=======
-    <tr th:each="event : ${person.getEvents()}">
-        <td th:utext="${event.prizes}">..</td>
 
->>>>>>> sdk1
     </tr>
 </table>
 

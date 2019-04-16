@@ -25,7 +25,7 @@ public class HibernateConf {
     public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
-        sessionFactory.setPackagesToScan ("ru.javastudy.hibernate.models");
+        sessionFactory.setPackagesToScan ("ru.innovat.models");
         Properties props = new Properties();
         props.setProperty("dialect",
                 "org.hibernate.dialect.MySQLDialect");
