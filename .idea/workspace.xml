@@ -239,8 +239,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/javastudy/hibernate/models/FirstLevelSkill.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="405">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
@@ -440,7 +440,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555409764368" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555410424262" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="D:/Git/bin/git.exe" />
     <property name="project.structure.last.edited" value="SDKs" />
@@ -627,7 +627,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29037000" />
+    <option name="totallyTimeSpent" value="29209000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -640,11 +640,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Web" order="0" side_tool="true" />
       <window_info id="Persistence" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49756098" visible="true" weight="0.22818312" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49756098" visible="true" weight="0.22818312" />
       <window_info id="Structure" order="3" sideWeight="0.502439" side_tool="true" weight="0.24962178" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
@@ -656,7 +655,7 @@
       <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.49848714" weight="0.32891566" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" sideWeight="0.4977307" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.49924356" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.49924356" weight="0.32891566" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -665,7 +664,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49621785" weight="0.3289689" />
       <window_info anchor="bottom" id="Spring" order="11" sideWeight="0.49924356" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="12" sideWeight="0.49924356" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49924356" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.49924356" visible="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50226927" side_tool="true" weight="0.3289689" />
       <window_info anchor="right" id="Bean Validation" order="0" weight="0.32980332" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -1256,8 +1255,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javastudy/hibernate/models/FirstLevelSkill.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="405">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
