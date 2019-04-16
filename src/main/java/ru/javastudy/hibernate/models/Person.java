@@ -2,7 +2,10 @@ package ru.javastudy.hibernate.models;
 
 import javax.persistence.*;
 import java.util.HashSet;
+<<<<<<< HEAD
 
+=======
+>>>>>>> sdk1
 import java.util.Set;
 
 @Entity
@@ -35,6 +38,7 @@ public class Person {
     private String comment;
 
 
+<<<<<<< HEAD
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "person_event",
@@ -47,10 +51,25 @@ public class Person {
     }
 
 
+=======
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "person_event",
+            //foreign key for EmployeeEntity in employee_car table
+            joinColumns = @JoinColumn(name = "id_person"),
+            //foreign key for other side - EmployeeEntity in employee_car table
+            inverseJoinColumns = @JoinColumn(name = "id_event"))
+    public Set<Event> events = new HashSet<>();
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+>>>>>>> sdk1
     public void setEvents(Set<Event> events) {
         this.events = events;
     }
 
+<<<<<<< HEAD
     public void addEvents(Event event){
         events.add(event);
     }
@@ -94,6 +113,15 @@ public class Person {
     public void addEvents(Project project){
         projects.add(project);
     }
+=======
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "organization_event",
+            //foreign key for EmployeeEntity in employee_car table
+            joinColumns = @JoinColumn(name = "id_person"),
+            //foreign key for other side - EmployeeEntity in employee_car table
+            inverseJoinColumns = @JoinColumn(name = "id_organization"))
+    public Set<Organization> organizations = new HashSet<>();
+>>>>>>> sdk1
 
     public int getId_person() {
         return id_person;

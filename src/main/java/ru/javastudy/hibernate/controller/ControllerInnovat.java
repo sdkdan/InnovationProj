@@ -1,15 +1,12 @@
 package ru.javastudy.hibernate.controller;
 
-import javassist.bytecode.stackmap.BasicBlock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.HibernateJdbcException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.javastudy.hibernate.models.*;
 import ru.javastudy.hibernate.service.*;
 
 
-import java.sql.SQLDataException;
 import java.util.List;
 
 
@@ -24,6 +21,15 @@ public class ControllerInnovat {
     @Autowired
     private OrganizationSevice organizationService;
 
+<<<<<<< HEAD
+=======
+
+    @RequestMapping(value = "/index")
+    public String index() {
+        return "/bootstrap/index";
+    }
+
+>>>>>>> sdk1
     @RequestMapping(value = "/menu")
     public String menu() {
         return "menu";
@@ -53,6 +59,12 @@ public class ControllerInnovat {
     public String deleteUser(@PathVariable("id") int id, Model model) {
         personService.deletePerson(id);
         return "redirect:/person";
+    }
+    @GetMapping("person/{id}")
+    public String onePerson(@PathVariable("id") int id, Model model) {
+        Person person = personService.findPerson(id);
+        model.addAttribute("person", person);
+        return "onePerson";
     }
 
 
