@@ -26,11 +26,6 @@ public class ControllerInnovat {
     private OrganizationSevice organizationService;
 
 
-    @RequestMapping(value = "/index")
-    public String index() {
-        return "/bootstrap/index";
-    }
-
     @RequestMapping(value = "/menu")
     public String menu() {
         return "menu";
@@ -56,7 +51,7 @@ public class ControllerInnovat {
         return "added";
     }
 
-    @GetMapping("person/delete/{id}")
+    @GetMapping("person/{id}/delete")
     public String deleteUser(@PathVariable("id") int id, Model model) {
         personService.deletePerson(id);
         return "redirect:/person";
@@ -145,4 +140,10 @@ public class ControllerInnovat {
         return "redirect:/organization";
     }
 
+    @GetMapping("organization/{id}")
+    public String oneOrganization(@PathVariable("id") int id, Model model){
+        Organization organization = organizationService.findOrganization(id);
+        model.addAttribute("organization", organization);
+        return "oneOrg";
+    }
 }

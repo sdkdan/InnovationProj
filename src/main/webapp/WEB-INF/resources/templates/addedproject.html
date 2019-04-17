@@ -8,9 +8,10 @@
 
 <body>
 <th:block th:include="/menu"></th:block>
-<h1>Проекты</h1>
+<h1>Added project</h1>
 <table border="1">
     <tr>
+        <th>idProject</th>
         <th>nameProject</th>
         <th>EssenceProject</th>
         <th>levelSolution</th>
@@ -23,7 +24,8 @@
         <th>numberPhoneProject</th>
     </tr>
 
-    <tr th:each="project : ${projectList}">
+    <tr>
+        <td th:utext="${project.id_project}">..</td>
         <td th:utext="${project.name_project}">..</td>
         <td th:utext="${project.essence_inovations}">..</td>
         <td th:utext="${project.level_solution}">..</td>
@@ -34,11 +36,8 @@
         <td th:utext="${project.project_description}">..</td>
         <td th:utext="${project.site_project}">..</td>
         <td th:utext="${project.number_Phone_project}">..</td>
-        <td><a th:href="@{/project/delete/{id}(id=${project.id_project})}">Delete</a></td>
     </tr>
-
 </table>
 
 </body>
 </html>
-

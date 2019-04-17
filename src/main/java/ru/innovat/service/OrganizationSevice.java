@@ -21,7 +21,7 @@ public class OrganizationSevice {
     private OrganizationDao organizationDao = new OrganizationDao();
 
     @Transactional
-    public void setOrganizationDao(PersonDao personDao){
+    public void setOrganizationDao(OrganizationDao organizationDao){
         this.organizationDao = organizationDao;
     }
 
