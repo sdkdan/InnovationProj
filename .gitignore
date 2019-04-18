@@ -1,2 +1,5 @@
 .idea/*
 *.iml
+*.xml
+*.xml
+.idea/dataSources.local.xml

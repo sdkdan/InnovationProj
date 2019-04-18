@@ -45,7 +45,66 @@
     </tr>
 </table>
 
+<!--<form name='f' th:object="${list}" method='POST'>-->
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<td>Select Event:</td>-->
+            <!--<td>-->
+                <!--<select th:field="*{id_event}">-->
+                    <!--<option value=""> &#45;&#45; </option>-->
+                    <!--<option th:each="event : ${list}"-->
+                            <!--th:value="${event.id_event}"-->
+                            <!--th:utext="${event.name_event}"/>-->
+                <!--</select>-->
 
+            <!--</td>-->
+        <!--</tr>-->
+
+        <!--<tr>-->
+            <!--<td><input name="submit" type="submit" value="submit" /></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</form>-->
+
+
+
+<!--<form name='f' th:object="${list}" method='POST'>-->
+    <!--<select >-->
+        <!--<option value="">Select event</option>-->
+        <!--<option th:each="test : ${list}"-->
+                <!--th:value="${test.getname_event()}"-->
+                <!--th:text="${test.getname_event()}">"${test.getname_event()}"</option>-->
+    <!--</select>-->
+    <!--<p><input type="submit" value="Добавить cобытие"></p>-->
+<!--</form>-->
+
+<!--<form action="#" th:action="@{/person/{id}}" th:object="${person.events}" method="post">-->
+<!--<select  >-->
+    <!--<option >Select Test Order</option>-->
+    <!--<option th:each="test : ${list}"-->
+            <!--th:value="${test.getId_event()}"-->
+            <!--th:text="${test.getname_event()}"></option>-->
+<!--</select>-->
+    <!--<p><input type="submit" value="Добавить cобытие"></p>-->
+<!--</form>-->
+
+<!--<select name="awardPartner"-->
+        <!--th:field="*{person}" class="form-control selectpicker">-->
+    <!--<option value="">Select Award Partner</option>-->
+    <!--<option th:each="event : ${list}"-->
+            <!--th:value="${event.id_event}"-->
+            <!--th:text="${event.getname_event()}"></option>-->
+    <!--<p><input type="submit" value="Submit" />-->
+<!--</select>-->
+<form name='f' th:object="${person}" method='POST'>
+    <select th:field="*{events}">
+        <option value="">Select event</option>
+        <option th:each="test : ${list}"
+                th:value="${test.getId_event()}"
+                th:utext="${test.getname_event()}">"${test.getname_event()}"</option>
+    </select>
+    <p><input type="submit" value="Добавить cобытие"></p>
+</form>
 
 </body>
 </html>

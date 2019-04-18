@@ -35,6 +35,7 @@
         <td th:utext="${project.site_project}">..</td>
         <td th:utext="${project.number_Phone_project}">..</td>
         <td><a th:href="@{/project/delete/{id}(id=${project.id_project})}">Delete</a></td>
+        <td><a th:href="@{/project/edit/{id}(id=${project.id_project})}">Update</a></td>
     </tr>
 
 </table>

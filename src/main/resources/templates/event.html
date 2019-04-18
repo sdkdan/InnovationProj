@@ -30,7 +30,7 @@
         <td th:utext="${event.comment}">..</td>
         <td th:utext="${event.location_event}">..</td>
         <td th:utext="${event.prizes}">..</td>
-
+        <td><a th:href="@{/event/edit/{id}(id=${event.id_event})}">Update</a></td>
 
     </tr>
 </table>

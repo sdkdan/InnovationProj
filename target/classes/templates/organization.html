@@ -25,6 +25,7 @@
         <td th:utext="${organization.getSite_organization()}">..</td>
         <td th:utext="${organization.getNotes_organization()}">..</td>
         <td><a th:href="@{organization/delete/{id}(id=${organization.id_organization})}">Delete</a></td>
+        <td><a th:href="@{organization/edit/{id}(id=${organization.id_organization})}">Update</a></td>
     </tr>
 </table>
 

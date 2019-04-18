@@ -9,6 +9,8 @@ import java.util.Set;
 @Table(name = "event", schema = "", catalog = "x92176f5_inovat")
 public class Event {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_event;
@@ -96,6 +98,14 @@ public class Event {
 
     public void addProject(Project project){
         projects.add(project);
+    }
+
+    public int getId_event() {
+        return id_event;
+    }
+
+    public void setId_event(int id_event) {
+        this.id_event = id_event;
     }
 
     public String getsite_event() {
