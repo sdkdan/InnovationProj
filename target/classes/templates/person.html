@@ -34,7 +34,7 @@
         <td th:utext="${person.comment}">..</td>
         <td th:utext="${person.vk}">..</td>
         <td><a th:href="@{person/delete/{id}(id=${person.id_person})}">Delete</a></td>
-        <td><a th:href="@{person/edit/{id}(id=${person.id_person})}">Update</a></td>
+        <td><a th:href="@{person/{id}/edit(id=${person.id_person})}">Update</a></td>
         <td><a th:href="@{person/{id}(id=${person.id_person})}">Подробнее</a></td>
     </tr>
 </table>

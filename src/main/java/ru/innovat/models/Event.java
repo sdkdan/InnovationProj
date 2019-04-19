@@ -9,8 +9,6 @@ import java.util.Set;
 @Table(name = "event", schema = "", catalog = "x92176f5_inovat")
 public class Event {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_event;
@@ -87,6 +85,20 @@ public class Event {
             //foreign key for other side - EmployeeEntity in employee_car table
             inverseJoinColumns = @JoinColumn(name = "id_project"))
     public Set<Project> projects = new HashSet<>();
+
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id_type_event")
+//    private TypeEvent typeEvent;
+//
+//    public TypeEvent getTypeEvent() {
+//        return typeEvent;
+//    }
+//
+//    public void setTypeEvent(TypeEvent typeEvent) {
+//        this.typeEvent = typeEvent;
+//    }
+
 
     public Set<Project> getProjects() {
         return projects;

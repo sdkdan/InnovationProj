@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+</head>
+
+<body>
+<th:block th:include="/menu"></th:block>
+<h1>Cписок людей</h1>
+<table class="table">
+<thead>
+<tr>
+<th>Название </th>
+<th>Суть инновации</th>
+<th>Решение проблемы</th>
+<th>Уровень решения</th>
+<th>Конкурентные преимущества</th>
+<th>Дата</th>
+<th>Текущая стадия</th>
+<th>Экспертиза проекта</th>
+<th>Описанме проекта</th>
+<th>Сайт</th>
+<th>Номер телефона</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="project : ${projectList}">
+<td th:utext="${project.name_project}">..</td>
+<td th:utext="${project.essence_inovations}">..</td>
+<td th:utext="${project.solution_problems}">..</td>
+<td th:utext="${project.level_solution}">..</td>
+<td th:utext="${project.competitive_advantages}">..</td>
+<td th:utext="${project.start_date}">..</td>
+<td th:utext="${project.current_stage}">..</td>
+<td th:utext="${project.expertise_project}">..</td>
+<td th:utext="${project.project_description}">..</td>
+<td th:utext="${project.site_project}">..</td>
+<td th:utext="${project.number_Phone_project}">..</td>
+<td>
+<div class="text-center">
+<a th:href="@{/person/{id}/delete(id=${person.id_person})}"> <img src="../static/image/delete-16.svg" th:src="@{image/delete-16.svg}" alt="Удалить" ></a>
+<a href="#"> <img src="../static/image/update-16.svg" th:src="@{image/update-16.svg}" alt="Изменить" ></a>
+<a th:href="@{/person/{id}(id=${person.id_person})}"><img src="../static/image/show-16.png" th:src="@{image/show-16.png}" alt="Посмотреть"></a>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

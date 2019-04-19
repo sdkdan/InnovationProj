@@ -66,10 +66,7 @@ public class ControllerInnovat {
     @PostMapping("person/update/{id}")
     public String updateUser(@PathVariable("id") int id, @Valid Person person,
                              BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            person.setId_person(id);
-//            return "updatePerson";
-//        }
+
         person.setId_person(id);
         int id1 = person.getId_person();
         personService.updatePerson(person);
@@ -247,10 +244,6 @@ public class ControllerInnovat {
     @PostMapping("organization/update/{id}")
     public String updateOrganization(@PathVariable("id") int id, @Valid Organization organization,
                              BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            person.setId_person(id);
-//            return "updatePerson";
-//        }
         organization.setId_organization(id);
         int id1 = organization.getId_organization();
         organizationService.updateOrganization(organization);
