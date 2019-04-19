@@ -1,9 +1,9 @@
 <! DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
 
 </head>
 <body>
@@ -34,14 +34,14 @@
             <label>Дата рождения</label>
             <input type="date" class="form-control"  th:field="*{date_of_birth}" >
         </div>
-<!--        <div class="form-group">-->
-<!--            <label for="exampleInputStatus">Статус человек</label>-->
+        <!--        <div class="form-group">-->
+        <!--            <label for="exampleInputStatus">Статус человек</label>-->
 
-<!--            <select class="form-control">-->
-<!--                <option>Какой-то пример</option>-->
-<!--                <option>Еще какой-то</option>-->
-<!--            </select>-->
-<!--        </div>-->
+        <!--            <select class="form-control">-->
+        <!--                <option>Какой-то пример</option>-->
+        <!--                <option>Еще какой-то</option>-->
+        <!--            </select>-->
+        <!--        </div>-->
 
         <div class="form-group">
             <label>Почта</label>
@@ -72,9 +72,9 @@
 
 </div>
 </body>
-<script src="../static/css/js/jquery-3.2.1.js"></script>
-<script src="../static/css/js/popper.min.js"></script>
-<script src="../static/css/js/bootstrap.min.js"></script>
-<script src="../static/css/js/bootstrap-formhelpers-phone.js"></script>
+<script src="../static/js/jquery-3.2.1.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script th:src="@{../static/js/bootstrap-formhelpers-phone.js}"></script>
 <!--<script src="../static/css/js/bootstrap-formhelpers-datepicker.js"></script>-->
 </html>

@@ -21,7 +21,7 @@ public class ProjectDao {
 
     public Project findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Project project = (Project) session.load(Project.class, id);
+        Project project = (Project) session.get(Project.class, id);
 
         return project;
     }

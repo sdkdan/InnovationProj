@@ -12,20 +12,22 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_event;
+    @Basic
     @Column(name = "Site_event")
     private String site_event;
+    @Basic
     @Column(name = "Name_event")
     private String name_event;
     @Column(name = "Importance_event")
     private String importance_event;
     @Column(name = "Scope_event")
-    private String Scope_event;
+    private String scope_event;
     @Column(name = "Description")
     private String description;
     @Column(name = "Phone_number")
     private String phone_number;
     @Column(name = "Date_event")
-    private Date date_event;
+    private String date_event;
     @Column(name = "Date_for_month")
     private Date date_for_month;
     @Column(name = "Date_for_the_week")
@@ -36,7 +38,16 @@ public class Event {
     private String prizes;
     @Column(name = "Location_event")
     private String location_event;
+    @Column(name = "id_type_event")
+    private int idTypeEvent;
 
+    public int getIdTypeEvent() {
+        return idTypeEvent;
+    }
+
+    public void setIdTypeEvent(int idTypeEvent) {
+        this.idTypeEvent = idTypeEvent;
+    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "person_event",
@@ -54,7 +65,7 @@ public class Event {
         this.persons = persons;
     }
 
-    public void addPersons(Person person){
+    public void addPersons(Person person) {
         persons.add(person);
     }
 
@@ -74,7 +85,7 @@ public class Event {
         this.organizations = organizations;
     }
 
-    public void addOrganization(Organization organization){
+    public void addOrganization(Organization organization) {
         organizations.add(organization);
     }
 
@@ -94,40 +105,49 @@ public class Event {
         this.projects = projects;
     }
 
-    public void addProject(Project project){
+    public void addProject(Project project) {
         projects.add(project);
     }
 
-    public String getsite_event() {
+
+    public int getId_event() {
+        return id_event;
+    }
+
+    public void setId_event(int id_event) {
+        this.id_event = id_event;
+    }
+
+    public String getSite_event() {
         return site_event;
     }
 
-    public void setsite_event(String site_event) {
+    public void setSite_event(String site_event) {
         this.site_event = site_event;
     }
 
-    public String getname_event() {
+    public String getName_event() {
         return name_event;
     }
 
-    public void setname_event(String name_event) {
+    public void setName_event(String name_event) {
         this.name_event = name_event;
     }
 
-    public String getimportance_event() {
+    public String getImportance_event() {
         return importance_event;
     }
 
-    public void setimportance_event(String importance_event) {
+    public void setImportance_event(String importance_event) {
         this.importance_event = importance_event;
     }
 
     public String getScope_event() {
-        return Scope_event;
+        return scope_event;
     }
 
-    public void setScope_event(String Scope_event) {
-        this.Scope_event = Scope_event;
+    public void setScope_event(String scope_event) {
+        this.scope_event = scope_event;
     }
 
     public String getDescription() {
@@ -138,35 +158,35 @@ public class Event {
         this.description = description;
     }
 
-    public String getphone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setphone_number(String phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
-    public Date getdate_event() {
+    public String getDate_event() {
         return date_event;
     }
 
-    public void setdate_event(Date date_event) {
+    public void setDate_event(String date_event) {
         this.date_event = date_event;
     }
 
-    public Date getdate_for_month() {
+    public Date getDate_for_month() {
         return date_for_month;
     }
 
-    public void setdate_for_month(Date date_for_month) {
+    public void setDate_for_month(Date date_for_month) {
         this.date_for_month = date_for_month;
     }
 
-    public Date getdate_for_the_week() {
+    public Date getDate_for_the_week() {
         return date_for_the_week;
     }
 
-    public void setdate_for_the_week(Date date_for_the_week) {
+    public void setDate_for_the_week(Date date_for_the_week) {
         this.date_for_the_week = date_for_the_week;
     }
 

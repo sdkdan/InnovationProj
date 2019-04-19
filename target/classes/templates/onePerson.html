@@ -12,7 +12,7 @@
 
     <h2><td th:utext="${person.getSurname()} + ${person.getName()} + ${person.getThirdName()}">..</td><h2>
         <div class="pb-3">
-            <a href="index.html" class="btn btn-primary " role="button" aria-pressed="true">Изменить</a>
+            <a th:href="@{/person/{id}/edit(id=${person.id_person})}" class="btn btn-primary " role="button" aria-pressed="true">Изменить</a>
             <a th:href="@{/person/{id}/delete(id=${person.id_person})}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
             <a type="button" class="btn btn-secondary" href="#">Переход на таблицу м-м</a>
             <a type="button" class="btn btn-success" href="#">Переход на таблицу м-м</a>
@@ -72,9 +72,10 @@
             <div class="col border"><p>Комментарий</p></div>
             <div class="col border"><td th:utext="${person.getComment()}">..</td></div>
         </div>
+
 </div>
 </body>
-<script src="../static/css/js/jquery-3.2.1.js"></script>
-<script src="../static/css/js/popper.min.js"></script>
-<script src="../static/css/js/bootstrap.min.js"></script>
+<script src="../static/js/jquery-3.2.1.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
 <html>

@@ -1,9 +1,9 @@
 <! DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
 
 </head>
 <body>
@@ -11,9 +11,9 @@
 <div class="container">
 
     <h1> Люди</h1>
-    <h3>Форма для вставки новых людей</h3>
+    <h3>Форма для редактирования человека</h3>
     <!-- форма -->
-    <form action="#" th:action="@{/person/add}" th:object="${person}" method="post">
+    <form action="#" th:action="@{/person/{id}/update (id=${person.id_person})}" th:object="${person}" method="post">
         <div class="form-group">
             <label>Фамилия</label>
             <input type="text" class="form-control" th:field="*{surname}" placeholder="Обязательное поле">

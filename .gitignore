@@ -1,2 +1,9 @@
 .idea/*
 *.iml
+.idea/dataSources.local.xml
+*.xml
+*.xml
+*.xml
+.idea/workspace.xml
+.idea/dataSources/2d945fb4-df3a-43e0-9f6b-5a4519a39852.xml
+.idea/dataSources.local.xml

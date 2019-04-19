@@ -19,11 +19,9 @@ public class Organization {
     @Column(name = "Notes_organization")
     private String notes_organization;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER )
     @JoinTable(name = "organization_event",
-            //foreign key for CarsEntity in employee_car table
             joinColumns = @JoinColumn(name = "id_organization"),
-            //foreign key for other side - EmployeeEntity in employee_car table
             inverseJoinColumns = @JoinColumn(name = "id_event"))
     public Set<Event> events = new HashSet<>();
 
@@ -41,9 +39,7 @@ public class Organization {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "organization_person",
-            //foreign key for CarsEntity in employee_car table
             joinColumns = @JoinColumn(name = "id_organization"),
-            //foreign key for other side - EmployeeEntity in employee_car table
             inverseJoinColumns = @JoinColumn(name = "id_person"))
     public Set<Person> persons = new HashSet<>();
 
@@ -59,24 +55,24 @@ public class Organization {
         persons.add(person);
     }
 
-//    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//    @JoinTable(name = "organization_project",
-//            joinColumns = @JoinColumn(name = "id_organization"),
-//            inverseJoinColumns = @JoinColumn(name = "id_project")
-//    )private Set<Project> projects = new HashSet<Project>();
-//
-//    public Set<Project> getProjects() {
-//        return this.projects;
-//    }
-//
-//
-//    public void setProjects(Set<Project> projects) {
-//        this.projects = projects;
-//    }
-//
-//    public void addProject(Project project){
-//        projects.add(project);
-//    }
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "organization_project",
+            joinColumns = @JoinColumn(name = "id_organization"),
+            inverseJoinColumns = @JoinColumn(name = "id_project")
+    )private Set<Project> projects = new HashSet<Project>();
+
+    public Set<Project> getProjects() {
+        return this.projects;
+    }
+
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
+    }
+
+    public void addProject(Project project){
+        projects.add(project);
+    }
 
 
 

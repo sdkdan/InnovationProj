@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,30 +20,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td scope="row">Политех</th>
-      <td>Политех.ру</td>
-      <td>Санкт Петербург</td>
-      <td>
+
+    <tr th:each="organization : ${organizationList}">
+        <td th:utext="${organization.getName_organization()}">..</td>
+        <td th:utext="${organization.getCity_organization()}">..</td>
+        <td th:utext="${organization.getSite_organization()}">..</td>
+        <td th:utext="${organization.getNotes_organization()}">..</td>
 	  <div class="text-center">
-	 <a  href="#"> <img src="../../../static/css/image/delete-16.svg" alt="Удалить"  ></a>
-	 <a href="view.html"> <img src="../../../static/css/image/update-16.svg" alt="Изменить" ></a>
-	 <a href="one.html">   <img src="../../../static/css/image/show-16.png" alt="Посмотреть"></a>
+	 <a  th:href="@{organization/delete/{id}(id=${organization.id_organization})}"> <img src="../../../static/image/delete-16.svg" alt="Удалить"  ></a>
+	 <a href="view.html"> <img src="../../../static/image/update-16.svg" alt="Изменить" ></a>
+	 <a th:href="@{organization/{id}(id=${organization.id_organization})}>   <img src="../../../static/image/show-16.png" alt="Посмотреть"></a>
 	   </div>
 	  </td>
     </tr>
-    <tr>
-       <td scope="row">Просто </th>
-      <td>выполним</td>
-      <td>это циклом</td>
-	       <td>
-	   <div class="text-center">
-	  <img src="../../../static/css/image/delete-16.svg" alt="Удалить" href="#" >
-	  <img src="../../../static/css/image/update-16.svg" alt="Изменить" href="view.html">
-	   <img src="../../../static/css/image/show-16.png" alt="Посмотреть" href="one.html">
-	   </div>
-	  </td>
-    </tr>
+
 
   </tbody>
 </table>
@@ -52,7 +42,7 @@
 
 <!-- вывод закончился -->
 </body>
-<script src="../../../static/css/js/jquery-3.2.1.js"></script>
-<script src="../../../static/css/js/popper.min.js"></script>
-<script src="../../../static/css/js/bootstrap.min.js"></script>
+<script src="../../../static/js/jquery-3.2.1.js"></script>
+<script src="../../../static/js/popper.min.js"></script>
+<script src="../../../static/js/bootstrap.min.js"></script>
 </html>

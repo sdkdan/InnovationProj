@@ -41,7 +41,7 @@ public class OrganizationSevice {
     }
 
     @Transactional
-    public void updatePerson(Organization organizaion) {
+    public void updateOrganization(Organization organizaion) {
         this.organizationDao.update(organizaion);
     }
 

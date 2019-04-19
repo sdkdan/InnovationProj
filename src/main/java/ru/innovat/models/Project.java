@@ -23,7 +23,7 @@ public class Project {
     @Column(name = "Competitive_advantages")
     private String competitive_advantages;
     @Column(name = "Start_date")
-    private Date start_date;
+    private String start_date;
     @Column(name = "Current_stage")
     private String current_stage;
     @Column(name = "Expertise_project")
@@ -57,6 +57,25 @@ public class Project {
         persons.add(person);
     }
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "organization_project",
+            //foreign key for EmployeeEntity in employee_car table
+            joinColumns = @JoinColumn(name = "id_project"),
+            //foreign key for other side - EmployeeEntity in employee_car table
+            inverseJoinColumns = @JoinColumn(name = "id_organization"))
+    public Set<Organization> organizations = new HashSet<>();
+
+    public Set<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(Set<Organization> organizations) {
+        this.organizations = organizations;
+    }
+
+    public void addOrganization(Organization organization) {
+        organizations.add(organization);
+    }
 
 
 
@@ -128,11 +147,11 @@ public class Project {
         this.competitive_advantages = competitive_advantages;
     }
 
-    public Date getStart_date() {
+    public String getStart_date() {
         return start_date;
     }
 
-    public void setStart_date(Date start_date) {
+    public void setStart_date(String start_date) {
         this.start_date = start_date;
     }
 
