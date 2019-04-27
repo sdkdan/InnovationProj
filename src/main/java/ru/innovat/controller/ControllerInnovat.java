@@ -10,6 +10,7 @@ import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.models.*;
 import ru.innovat.service.*;
+import ru.innovat.service.search.SearchPerson;
 
 
 import javax.validation.Valid;
@@ -27,7 +28,8 @@ public class ControllerInnovat {
     private EventService eventService;
     @Autowired
     private OrganizationSevice organizationService;
-
+    @Autowired
+    private SearchPerson searchPerson;
 
     @RequestMapping(value = "/menu")
     public String menu() {
@@ -35,9 +37,17 @@ public class ControllerInnovat {
     }
 
     @RequestMapping(value = "/person")
-    public String listPerson(Model model) {
-        List<Person> list = personService.personList();
-        model.addAttribute("personList", list);
+        public String listPerson(String q, Model model) {
+            List searchResults = null;
+            try {
+                searchResults = searchPerson.fuzzySearch(q);
+            }
+            catch (Exception ex) {
+                // here you should handle unexpected errors
+                // ...
+                // throw ex;
+            }
+            model.addAttribute("searchResults", searchResults);
         return "person";
     }
 
@@ -195,7 +205,7 @@ public class ControllerInnovat {
     @PostMapping("project/{id}/update")
     public String updateProject(@PathVariable("id") int id, @Valid Project project,
                                 BindingResult result, Model model) {
-        project.setId_project(id);
+        project = projectService.saveSets(project,id);
         projectService.updateProject(project);
         return "redirect:/project/" + project.getId_project();
     }
