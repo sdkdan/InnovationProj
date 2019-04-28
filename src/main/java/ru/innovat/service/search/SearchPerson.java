@@ -27,7 +27,6 @@ public class SearchPerson {
     private EntityManager centityManager;
 
 
-
     public void initializeHibernateSearch() {
 
         try {
