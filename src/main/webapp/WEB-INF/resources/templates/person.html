@@ -25,7 +25,7 @@
      </tr>
      </thead>
      <tbody>
-     <tr th:each="person : ${personList}">
+     <li th:each="person : ${searchResults}">
          <td th:utext="${person.name}">..</td>
          <td th:utext="${person.surname}">..</td>
          <td th:utext="${person.thirdName}">..</td>
@@ -38,7 +38,7 @@
                  <a th:href="@{person/{id}(id=${person.id_person})}"><img src="../static/image/show-16.png" th:src="@{image/show-16.png}" alt="Посмотреть"></a>
              </div>
          </td>
-     </tr>
+     </li>
      </tbody>
  </table>
 

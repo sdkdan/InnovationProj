@@ -12,6 +12,7 @@ import ru.innovat.models.*;
 import ru.innovat.service.*;
 
 
+
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
@@ -213,7 +214,7 @@ public class ControllerInnovat {
     @PostMapping("project/{id}/update")
     public String updateProject(@PathVariable("id") int id, @Valid Project project,
                                 BindingResult result, Model model) {
-        project.setId_project(id);
+        project = projectService.saveSets(project,id);
         projectService.updateProject(project);
         return "redirect:/project/" + project.getId_project();
     }

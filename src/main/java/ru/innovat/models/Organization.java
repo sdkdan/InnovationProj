@@ -1,10 +1,13 @@
 package ru.innovat.models;
 
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Indexed
 @Table(name = "organization")
 public class Organization {
     @Id
