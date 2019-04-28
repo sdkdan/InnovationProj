@@ -2,72 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5b1688a-34de-4102-b4bd-1ab1a5b915d5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d945fb4-df3a-43e0-9f6b-5a4519a39852.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d945fb4-df3a-43e0-9f6b-5a4519a39852.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HibernateQuickStart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HibernateQuickStart.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/configuration/HibernateConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/configuration/HibernateConf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ControllerInnovat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ControllerInnovat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/FirstLevelMarketDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/FirstLevelMarketDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/FirstLevelSkillDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/FirstLevelSkillDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/FirstLevelTechnologyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/FirstLevelTechnologyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/SecondLevelMarketDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/SecondLevelMarketDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/SecondLevelSkillDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/SecondLevelSkillDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/SecondLevelTechnologyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/SecondLevelTechnologyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/ThirdLevelMarketDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/ThirdLevelMarketDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/ThirdLevelTechnologyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/levels/ThirdLevelTechnologyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/utils/DevelopmentRolePersonDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/utils/DevelopmentRolePersonDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/FirstLevelMarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/FirstLevelMarket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/FirstLevelSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/FirstLevelSkill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/FirstLevelTechnology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/FirstLevelTechnology.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/SecondLevelMarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/SecondLevelMarket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/SecondLevelSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/SecondLevelSkill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/SecondLevelTechnology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/SecondLevelTechnology.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/ThirdLevelMarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/ThirdLevelMarket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/ThirdLevelTechnology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/ThirdLevelTechnology.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/DevelopmentRolePerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/DevelopmentRolePerson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/FirstLevelMarketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/FirstLevelMarketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/FirstLevelSkillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/FirstLevelSkillService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/FirstLevelTechnologyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/FirstLevelTechnologyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/SecondLevelMarketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/SecondLevelMarketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/SecondLevelSkillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/SecondLevelSkillService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/SecondLevelTechnologyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/SecondLevelTechnologyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/ThirdLevelMarketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/ThirdLevelMarketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/ThirdLevelTechnologyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/levels/ThirdLevelTechnologyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/utils/DevelopmentRolePersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/utils/DevelopmentRolePersonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap-grid.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/event.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/event.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneEvent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneEvent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/onePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/onePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/pages/autorization/vhod.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/pages/autorization/vhod.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updatePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updatePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/ControllerInnovat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/controller/ControllerInnovat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap-grid.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/event.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/event.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/onePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/onePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/project.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/project.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/businessman.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/calendar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/comment.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/document.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/dog-tag.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/education.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/inbox.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/mail.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/multiple-users-silhouette.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/pin.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/repo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/report.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/search.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/teamwork.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/tools.svg" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -300,6 +249,72 @@
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
               <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -381,7 +396,7 @@
       <workItem from="1555571738102" duration="35553000" />
       <workItem from="1555983651651" duration="21271000" />
       <workItem from="1556456629197" duration="1995000" />
-      <workItem from="1556458928797" duration="2678000" />
+      <workItem from="1556458928797" duration="2951000" />
     </task>
     <task id="LOCAL-00001" summary="Добавленн js">
       <created>1555505969178</created>
@@ -404,11 +419,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556381335360</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Back">
+      <created>1556461901398</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556461901399</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117897000" />
+    <option name="totallyTimeSpent" value="118170000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -421,6 +443,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Web" order="0" side_tool="true" />
       <window_info id="Persistence" order="1" sideWeight="0.502693" side_tool="true" weight="0.23104435" />
@@ -558,7 +581,8 @@
     <MESSAGE value="Добавленн js" />
     <MESSAGE value="Верстка" />
     <MESSAGE value="Search" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search" />
+    <MESSAGE value="Back" />
+    <option name="LAST_COMMIT_MESSAGE" value="Back" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.28/tomcat-embed-core-8.5.28-sources.jar!/org/apache/catalina/core/StandardEngineValve.java">
