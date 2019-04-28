@@ -55,10 +55,10 @@
             <label>VK</label>
             <input type="text" class="form-control" th:field="*{vk}" placeholder="URL">
         </div>
-        <div class="form-group">
-            <label>Рейтинг</label>
-            <input type="number" class="form-control" value ="1" th:field="*{rating}" min ="1" max = "10" placeholder="[1-10]">
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label>Рейтинг</label>-->
+            <!--<input type="number" class="form-control" value ="1" th:field="*{rating}" min ="1" max = "10" placeholder="[1-10]">-->
+        <!--</div>-->
         <div class="form-group">
             <label>Твиттер</label>
             <input type="text" class="form-control" th:field="*{twitter}" placeholder="URL">
@@ -67,6 +67,17 @@
             <label>Комментарий</label>
             <textarea class="form-control" type="text" th:field="*{comment}" rows="4">"</textarea>
         </div>
+
+        <div class="form-group">
+            <label>Список событий</label>
+            <select th:field="${event}">
+                <option th:each="type : ${list}"
+                        th:value="${type.id_event}"
+                        th:text="${type.getName_event()}">Events</option>
+            </select>
+            <a th:href="@{/person/{id}/addevent(id=${person.id_person})}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
+        </div>
+
         <button type="submit" class="btn btn-primary">Полетели</button>
     </form>
 

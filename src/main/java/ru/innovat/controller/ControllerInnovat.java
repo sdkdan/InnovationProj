@@ -43,9 +43,12 @@ public class ControllerInnovat {
 
     @RequestMapping(value = "/person/add", method = RequestMethod.GET)
     public String getAddPerson(Model model) {
+        List eventList = eventService.eventList();
+        model.addAttribute("list", eventList);
         model.addAttribute("person", new Person());
         return "add";
     }
+
 
     @RequestMapping(value = "/person/add", method = RequestMethod.POST)
     public String addPerson(@ModelAttribute Person person, Model model) {
@@ -64,8 +67,22 @@ public class ControllerInnovat {
     @GetMapping("person/{id}")
     public String onePerson(@PathVariable("id") int id, Model model){
         Person person = personService.findPerson(id);
+        Event event = new Event();
+        List<Event> eventList = eventService.eventList();
+        model.addAttribute("list", eventList);
         model.addAttribute("person", person);
+        model.addAttribute("event", event);
         return "onePerson";
+    }
+
+
+    @RequestMapping(value = "/person/{id}", method = RequestMethod.POST)
+    public String onePersonEvent(@PathVariable("id") int id, @ModelAttribute Event event, Model model) {
+        model.addAttribute("event", event );
+       Person person = personService.findPerson(id);
+       person.addEvent(event);
+       personService.updatePerson(person);
+        return "redirect:/person/" + id;
     }
 
 
@@ -173,13 +190,14 @@ public class ControllerInnovat {
     @GetMapping("/person/{id}/edit")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Person person = personService.findPerson(id);
+        List eventList = eventService.eventList();
         model.addAttribute("person", person);
+        model.addAttribute("list", eventList);
         return "updatePerson";
     }
     @PostMapping("person/{id}/update")
     public String updateUser(@PathVariable("id") int id, @Valid Person person,
                              BindingResult result, Model model) {
-
         person.setId_person(id);
         personService.updatePerson(person);
         return "redirect:/person/" + person.getId_person();

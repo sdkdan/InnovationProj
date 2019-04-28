@@ -30,7 +30,7 @@
                     </div>
                     <div class="modal-footer">
                         <a type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</a>
-                        <a type="button" class="btn btn-primary" href="index.html">Удалить</a>
+                        <a type="button" class="btn btn-primary" href="person.html">Удалить</a>
                     </div>
                 </div>
             </div>
@@ -63,14 +63,23 @@
             <div class="col border"><p>Vk</p></div>
             <div class="col border"><td th:utext="${person.getVk()}">..</td></div>
             <div class="w-100"></div>
-            <div class="col border"><p>Rating</p></div>
-            <div class="col border"><td th:utext="${person.getRating()}">..</td></div>
+            <!--<div class="col border"><p>Rating</p></div>-->
+            <!--<div class="col border"><td th:utext="${person.getRating()}">..</td></div>-->
             <div class="w-100"></div>
             <div class="col border"><p>twitter</p></div>
             <div class="col border"><td th:utext="${person.getTwitter()}">..</td></div>
             <div class="w-100"></div>
             <div class="col border"><p>Комментарий</p></div>
             <div class="col border"><td th:utext="${person.getComment()}">..</td></div>
+            <div class="col border" th:method="POST">
+                <label>Список событий</label>
+                <select th:field="${event}">
+                    <option th:each="type : ${list}"
+                            th:value="${type.id_event}"
+                            th:text="${type.getName_event()}">Events</option>
+                </select>
+                <p><input type="submit" value="Добавить cобытие"></p>
+            </div>
         </div>
 
 </div>

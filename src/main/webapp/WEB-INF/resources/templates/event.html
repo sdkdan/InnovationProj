@@ -30,7 +30,7 @@
             <td th:utext="${event.scope_event}">..</td>
             <td>
                 <div class="text-center">
-                    <a th:href="@{event/{id}/delete(id=${event.id_evnt})}"> <img src="../static/image/delete-16.svg" th:src="@{image/delete-16.svg}" alt="Удалить" ></a>
+                    <a th:href="@{event/{id}/delete(id=${event.id_event})}"> <img src="../static/image/delete-16.svg" th:src="@{image/delete-16.svg}" alt="Удалить" ></a>
                     <a th:href="@{event/{id}/edit(id=${event.id_event})}"> <img src="../static/image/update-16.svg" th:src="@{image/update-16.svg}" alt="Изменить" ></a>
                     <a th:href="@{event/{id}(id=${event.id_event})}"><img src="../static/image/show-16.png" th:src="@{image/show-16.png}" alt="Посмотреть"></a>
                 </div>

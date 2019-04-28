@@ -28,7 +28,7 @@ public class Person {
     @Column(name = "VK")
     private String vk;
     @Column(name = "Rating")
-    private int rating;
+    private String rating;
     @Column(name = "Twitter")
     private String twitter;
     @Column(name = "Comment")
@@ -147,13 +147,12 @@ public class Person {
         this.date_of_birth = date_of_birth;
     }
 
-    public int getRating(){
+    public String  getRating(){
         return rating;
     }
 
-
-    public void setRating(int raiting){
-        this.rating = raiting;
+    public void setRating(String rating){
+        this.rating = rating;
     }
 
     public String getE_mail(){
