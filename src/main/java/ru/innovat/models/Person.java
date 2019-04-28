@@ -28,7 +28,7 @@ public class Person {
     @Column(name = "VK")
     private String vk;
     @Column(name = "Rating")
-    private int rating;
+    private String rating;
     @Column(name = "Twitter")
     private String twitter;
     @Column(name = "Comment")
@@ -37,9 +37,7 @@ public class Person {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "person_event",
-            //foreign key for EmployeeEntity in employee_car table
             joinColumns = @JoinColumn(name = "id_person"),
-            //foreign key for other side - EmployeeEntity in employee_car table
             inverseJoinColumns = @JoinColumn(name = "id_event"))
     public Set<Event> events = new HashSet<>();
 
@@ -149,13 +147,12 @@ public class Person {
         this.date_of_birth = date_of_birth;
     }
 
-    public int getRating(){
+    public String  getRating(){
         return rating;
     }
 
-
-    public void setRating(int raiting){
-        this.rating = raiting;
+    public void setRating(String rating){
+        this.rating = rating;
     }
 
     public String getE_mail(){

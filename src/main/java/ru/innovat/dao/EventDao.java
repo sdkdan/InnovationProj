@@ -21,7 +21,7 @@ public class EventDao {
 
     public Event findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Event event = (Event) session.load(Event.class, id);
+        Event event = (Event) session.get(Event.class, id);
         return event;
     }
 
