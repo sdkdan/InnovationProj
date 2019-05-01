@@ -19,7 +19,7 @@ public class Organization {
     @Column(name = "Notes_organization")
     private String notes_organization;
 
-    @ManyToMany(fetch = FetchType.EAGER )
+    @ManyToMany(fetch = FetchType.LAZY )
     @JoinTable(name = "organization_event",
             joinColumns = @JoinColumn(name = "id_organization"),
             inverseJoinColumns = @JoinColumn(name = "id_event"))

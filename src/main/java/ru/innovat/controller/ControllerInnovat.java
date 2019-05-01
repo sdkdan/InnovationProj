@@ -8,11 +8,13 @@ import ru.innovat.models.Event;
 import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
-import ru.innovat.models.*;
+import ru.innovat.models.PersonConnect;
 import ru.innovat.service.*;
 
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -67,24 +69,59 @@ public class ControllerInnovat {
     @GetMapping("person/{id}")
     public String onePerson(@PathVariable("id") int id, Model model){
         Person person = personService.findPerson(id);
-        Event event = new Event();
+        PersonConnect personConnect = new PersonConnect();
         List<Event> eventList = eventService.eventList();
+        List<Project> projectList = projectService.projectList();
+        List<Organization> organizationList = organizationService.organizationList();
         model.addAttribute("list", eventList);
+        model.addAttribute("projectlist", projectList);
+        model.addAttribute("orglist", organizationList);
+        model.addAttribute("personcon", personConnect);
         model.addAttribute("person", person);
-        model.addAttribute("event", event);
+
         return "onePerson";
     }
 
 
     @RequestMapping(value = "/person/{id}", method = RequestMethod.POST)
-    public String onePersonEvent(@PathVariable("id") int id, @ModelAttribute Event event, Model model) {
-        model.addAttribute("event", event );
-       Person person = personService.findPerson(id);
-       person.addEvent(event);
-       personService.updatePerson(person);
+    public String onePersonEvent(@PathVariable("id") int id, @ModelAttribute Person person,PersonConnect personcon, Model model) {
+        model.addAttribute("person", person );
+        model.addAttribute("personcon", personcon );
+        Person person1 = personService.findPerson(id);
+        person1.addEvent(eventService.findEvent(personcon.getEvent_Id()));
+        person1.addOrganization(organizationService.findOrganization(personcon.getOrganization_Id()));
+        person1.addProject(projectService.findProject(personcon.getProject_Id()));
+        personService.updatePerson(person1);
+
         return "redirect:/person/" + id;
     }
 
+    @GetMapping("/person/{id}/edit")
+    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+        Person person = personService.findPerson(id);
+        List eventList = eventService.eventList(); //лист эвентов для выпадащего списка
+        //String event = new String();
+//        ArrayList<Event> eventList = new ArrayList<>();
+//        Event event1 = null;
+//        event1.setId_event(1);
+//        event1.setName_event("df");
+//        //Event event2 = null;
+//        eventList.add(event1);
+//        //eventList.add(event2);
+        model.addAttribute("person", person);
+        model.addAttribute("list", eventList);
+      //  model.addAttribute("event", event);
+        return "updatePerson";
+    }
+    @PostMapping("person/{id}/update")
+    public String updateUser(@PathVariable("id") int id, @Valid Person person,
+                             BindingResult result,@ModelAttribute String event, Model model) {
+        person.setId_person(id);
+        personService.updatePerson(person);
+       // person.addEvent(event);
+      //  String s = event;
+        return "redirect:/person/" + person.getId_person();
+    }
 
     @RequestMapping(value = "/project")
     public String listProject(Model model) {
@@ -186,23 +223,6 @@ public class ControllerInnovat {
         model.addAttribute("organization", organization);
         return "oneOrg";
     }
-
-    @GetMapping("/person/{id}/edit")
-    public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        Person person = personService.findPerson(id);
-        List eventList = eventService.eventList(); //лист эвентов для выпадащего списка
-        model.addAttribute("person", person);
-        model.addAttribute("list", eventList);
-        return "updatePerson";
-    }
-    @PostMapping("person/{id}/update")
-    public String updateUser(@PathVariable("id") int id, @Valid Person person,
-                             BindingResult result, Model model) {
-        person.setId_person(id);
-        personService.updatePerson(person);
-        return "redirect:/person/" + person.getId_person();
-    }
-
 
     @GetMapping("/project/{id}/edit")
     public String showProjectForm(@PathVariable("id") int id, Model model) {

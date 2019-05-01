@@ -3,6 +3,7 @@ package ru.innovat.models;
 import javax.persistence.*;
 import java.util.HashSet;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,13 +36,33 @@ public class Person {
     private String comment;
 
 
+//    private   int eventId;
+//    public int getEventId() {
+//        return eventId;
+//    }
+//
+//    public void setEventId(int eventId) {
+//        this.eventId = eventId;
+//    }
+
+
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "person_event",
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_event"))
     public Set<Event> events = new HashSet<>();
 
-    public Set<Event> getEvents() {
+
+    public String getPersonEvents() {  //метод для отображения Мероприятий на личной странице
+        String i = "";
+        for (Event event : events
+             ) {
+          i +=  event.getName_event() + "; ";
+        }
+        return i;
+    }
+    public Set<Event> getEvents(){
         return events;
     }
 
@@ -66,6 +87,14 @@ public class Person {
         return this.organizations;
     }
 
+    public String getPersonOrg() {  //метод для отображения организаций на личной странице
+        String i = "";
+        for (Organization organization : organizations
+        ) {
+            i +=  organization.getName_organization() + "; ";
+        }
+        return i;
+    }
 
     public void setOrganizations(Set<Organization> organizations) {
         this.organizations = organizations;
@@ -86,6 +115,14 @@ public class Person {
         return this.projects;
     }
 
+    public String getPersonProj() {  //метод для отображения проектов на личной странице
+        String i = "";
+        for (Project project : projects
+        ) {
+            i +=  project.getName_project() + "; ";
+        }
+        return i;
+    }
 
     public void setProjects(Set<Project> projects) {
         this.projects = projects;
@@ -118,6 +155,13 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public String getThird_Name() {
+        return third_Name;
+    }
+
+    public void setThird_Name(String third_Name) {
+        this.third_Name = third_Name;
     }
    
     public String getThirdName() {
