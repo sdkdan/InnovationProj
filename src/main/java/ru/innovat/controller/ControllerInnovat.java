@@ -100,17 +100,9 @@ public class ControllerInnovat {
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Person person = personService.findPerson(id);
         List eventList = eventService.eventList(); //лист эвентов для выпадащего списка
-        //String event = new String();
-//        ArrayList<Event> eventList = new ArrayList<>();
-//        Event event1 = null;
-//        event1.setId_event(1);
-//        event1.setName_event("df");
-//        //Event event2 = null;
-//        eventList.add(event1);
-//        //eventList.add(event2);
         model.addAttribute("person", person);
         model.addAttribute("list", eventList);
-      //  model.addAttribute("event", event);
+
         return "updatePerson";
     }
     @PostMapping("person/{id}/update")

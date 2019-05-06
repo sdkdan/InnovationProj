@@ -110,6 +110,18 @@ public class Event {
     }
 
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="id_type_event", insertable=false, updatable=false)
+    private TypeEvent typeEvent;
+
+    public TypeEvent getTypeEvent() {
+        return typeEvent;
+    }
+
+    public void setTypeEvent(TypeEvent typeEvent) {
+        this.typeEvent = typeEvent;
+    }
+
     public int getId_event() {
         return id_event;
     }
