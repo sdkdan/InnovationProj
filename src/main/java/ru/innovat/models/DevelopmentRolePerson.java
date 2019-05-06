@@ -18,7 +18,7 @@ public class DevelopmentRolePerson {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Person> personList = new ArrayList<>();
-
+//апловалпвадлпод
     public List<Person> getPersonList() {
         return personList;
     }//пробный
