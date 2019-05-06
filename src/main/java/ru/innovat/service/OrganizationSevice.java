@@ -76,7 +76,7 @@ public class OrganizationSevice {
         //Возврощаем измененную организацию с перезаписанными связями
         return organization;
     }
-
+    //
     //Удаляет все связи (для того что бцы при удалении объекта не вылетала ошибка)
     @Transactional
     public void deleteSets(Organization organization){
