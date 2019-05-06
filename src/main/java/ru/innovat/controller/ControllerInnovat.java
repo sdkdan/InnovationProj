@@ -13,6 +13,7 @@ import ru.innovat.service.*;
 
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -117,7 +118,8 @@ public class ControllerInnovat {
 
     @GetMapping("project/{id}")
     public String oneProject(@PathVariable("id") int id, Model model) {
-        model.addAttribute("project", projectService.findProject(id));
+        model.addAttribute("project", projectService.projectAllConnections(id));
+
         return "oneProject";
     }
 
@@ -191,31 +193,19 @@ public class ControllerInnovat {
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Person person = personService.findPerson(id);
         List eventList = eventService.eventList(); //лист эвентов для выпадащего списка
+        List<Event> event = new ArrayList<Event>() {};
         model.addAttribute("person", person);
         model.addAttribute("list", eventList);
+        model.addAttribute("event", event);
         return "updatePerson";
     }
     @PostMapping("person/{id}/update")
     public String updateUser(@PathVariable("id") int id, @Valid Person person,
-                             BindingResult result, Model model) {
+                             BindingResult result, @ModelAttribute Event event, Model model) {
         person.setId_person(id);
+        person.addEvent(event);
         personService.updatePerson(person);
         return "redirect:/person/" + person.getId_person();
-    }
-
-
-    @GetMapping("/project/{id}/edit")
-    public String showProjectForm(@PathVariable("id") int id, Model model) {
-        Project project = projectService.findProject(id);
-        model.addAttribute("project", project);
-        return "updateProject";
-    }
-    @PostMapping("project/{id}/update")
-    public String updateProject(@PathVariable("id") int id, @Valid Project project,
-                                BindingResult result, Model model) {
-        project.setId_project(id);
-        projectService.updateProject(project);
-        return "redirect:/project/" + project.getId_project();
     }
 
 

@@ -38,7 +38,7 @@ public class Project {
 
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "project_person",
             joinColumns = @JoinColumn(name = "id_project"),
             inverseJoinColumns = @JoinColumn(name = "id_person")
@@ -57,7 +57,7 @@ public class Project {
         persons.add(person);
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_project",
             //foreign key for EmployeeEntity in employee_car table
             joinColumns = @JoinColumn(name = "id_project"),
@@ -79,7 +79,7 @@ public class Project {
 
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "event_project",
             //foreign key for EmployeeEntity in employee_car table
             joinColumns = @JoinColumn(name = "id_project"),

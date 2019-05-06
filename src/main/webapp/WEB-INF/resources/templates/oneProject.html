@@ -65,14 +65,14 @@
                 <h3><img width = "32px" src="../../image/multiple-users-silhouette.svg"  alt="команда"  > О команде </h3>
 
 
-                <tr th:each="person : ${project.persons}">
+                <tr th:each="person : ${project.getPersons()}">
                 <a class="small" th:href="@{/person/{id}(id=${person.id_person})}"><img width = "16px" src="../../image/businessman.svg"  alt="человек"  >  <td th:utext="${person.surname}  ">..</td> </a>
                 </tr>
                 <br>
                 <h3><img width = "32px" src="../../image/teamwork.svg"  alt="команда"  > О организациях </h3>
-                <tr th:each="organization : ${project.organizations}">
-                <a class="small" href="#"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  ><td th:utext="${organization.name_organization}">..</td></a><br>
-                </tr>>
+<!--                <tr th:each="organization : ${organizations}">-->
+<!--                <a class="small" href="#"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  ><td th:utext="${organization.name_organization}">..</td></a><br>-->
+<!--                </tr>>-->
         </div>
     </div>
 </div>

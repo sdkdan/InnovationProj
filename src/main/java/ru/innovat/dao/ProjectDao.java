@@ -1,12 +1,18 @@
 package ru.innovat.dao;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
+import ru.innovat.models.Event;
+import ru.innovat.models.Organization;
+import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class ProjectDao {
@@ -15,7 +21,7 @@ public class ProjectDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void setSessionFactory(SessionFactory sessionFactory){
+    public void  setSessionFactory(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
     }
 
@@ -45,6 +51,18 @@ public class ProjectDao {
             session.delete(project);
         }
     }
+
+
+
+
+    public Project projectAllConnections(int id){
+        Project project = findById(id);
+        Hibernate.initialize(project.getPersons());
+        Hibernate.initialize(project.getOrganizations());
+        Hibernate.initialize(project.getEvents());
+        return project;
+    }
+
 
 
     @SuppressWarnings("unchecked")

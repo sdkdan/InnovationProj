@@ -1,6 +1,7 @@
 package ru.innovat.dao;
 
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import ru.innovat.models.Organization;
 import org.hibernate.SessionFactory;
@@ -51,5 +52,13 @@ public class OrganizationDao {
         List<Organization> organizationList = (List<Organization>) session.createQuery("From Organization").list();
         return organizationList;
 
+    }
+
+    public Organization organizationAllConnection(int id){
+        Organization organization = findById(id);
+        Hibernate.initialize(organization.getPersons());
+        Hibernate.initialize(organization.getPersons());
+        Hibernate.initialize(organization.getEvents());
+        return organization;
     }
 }

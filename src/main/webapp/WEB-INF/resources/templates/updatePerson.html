@@ -67,15 +67,14 @@
             <label>Комментарий</label>
             <textarea class="form-control" type="text" th:field="*{comment}" rows="4">"</textarea>
         </div>
-<!--выпадающий список-->
-        <div class="form-group">
-            <label>Список событий</label>
-            <select th:field="${event}">
-                <option th:each="type : ${list}"
-                        th:value="${type.id_event}"
-                        th:text="${type.getName_event()}">Events</option>
+
+        <div class="col-lg-3" th:object="${event}">
+            <select class="form-control" id="testOrder" name="testOrder">
+                <option value="">Select Test Order</option>
+                <option th:each="event : ${list}"
+                        th:value="${event.id_event}"
+                        th:text="${event.id_event}+' : '+${event.name_event}"></option>
             </select>
-            <a th:href="@{/person/{id}/addevent(id=${person.id_person})}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
         </div>
 
         <button type="submit" class="btn btn-primary">Полетели</button>

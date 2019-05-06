@@ -45,11 +45,11 @@ public class Event {
         return idTypeEvent;
     }
 
-    public void setIdTypeEvent(int idTypeEvent) {
+    public void etIdTypeEvent(int idTypeEvent) {
         this.idTypeEvent = idTypeEvent;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "person_event",
             joinColumns = @JoinColumn(name = "id_event"),
             inverseJoinColumns = @JoinColumn(name = "id_person")
@@ -69,7 +69,7 @@ public class Event {
         persons.add(person);
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_event",
             //foreign key for EmployeeEntity in employee_car table
             joinColumns = @JoinColumn(name = "id_event"),
@@ -89,7 +89,7 @@ public class Event {
         organizations.add(organization);
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "event_project",
             //foreign key for EmployeeEntity in employee_car table
             joinColumns = @JoinColumn(name = "id_event"),
