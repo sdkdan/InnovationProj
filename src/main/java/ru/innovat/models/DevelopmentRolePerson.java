@@ -21,7 +21,7 @@ public class DevelopmentRolePerson {
 
     public List<Person> getPersonList() {
         return personList;
-    }
+    }//пробный
 
     public void setPersonList(List<Person> personList) {
         this.personList = personList;
