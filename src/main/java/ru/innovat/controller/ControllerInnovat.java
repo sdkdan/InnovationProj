@@ -8,14 +8,13 @@ import ru.innovat.models.Event;
 import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
-import ru.innovat.models.PersonConnect;
+import ru.innovat.models.utils.PersonConnect;
 import ru.innovat.service.*;
 
 
 import javax.validation.Valid;
 
 import java.util.List;
-import java.util.Set;
 
 
 @org.springframework.stereotype.Controller    // This means that this class is a Controller

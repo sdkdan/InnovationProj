@@ -1,16 +1,34 @@
 package ru.innovat.models.utils;
 
+import ru.innovat.models.Person;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "development_role_person", schema = "", catalog = "x92176f5_inovat")
-
+@Table(name = "development_role_person", schema = "", catalog = "x92176f5_inovat") //новый класс роль персоны в разработке
 public class DevelopmentRolePerson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_development_role;
+
+
+    @Basic
     @Column(name = "Name_development_role")
     private String name_development_role;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Person> personList = new ArrayList<>();
+    //апловалпвадлпод
+    public List<Person> getPersonList() {
+        return personList;
+    }//пробный
+
+    public void setPersonList(List<Person> personList) {
+        this.personList = personList;
+    }
+
     public int getId_development_role() {
         return id_development_role;
     }

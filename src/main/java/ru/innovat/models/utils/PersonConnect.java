@@ -1,4 +1,4 @@
-package ru.innovat.models;
+package ru.innovat.models.utils;
 
 public class PersonConnect { //вспомогательный класс для выпадающих списков
     private int event_Id;
