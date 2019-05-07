@@ -13,6 +13,7 @@ import ru.innovat.service.*;
 
 
 import javax.validation.Valid;
+import javax.validation.constraints.Past;
 
 import java.util.List;
 
@@ -64,9 +65,15 @@ public class ControllerInnovat {
         return "redirect:/person";
     }
 
-
     @GetMapping("person/{id}")
-    public String onePerson(@PathVariable("id") int id, Model model){
+    public String onePerson(@PathVariable("id") int id,Model model){
+        model.addAttribute("person",personService.personAllConnections(id));
+        return "onePerson";
+    }
+
+
+    @GetMapping("person/{id}/con")
+    public String  onePersonCon(@PathVariable("id") int id, Model model){
         Person person = personService.personAllConnections(id);
         PersonConnect personConnect = new PersonConnect();
         List<Event> eventList = eventService.eventList();
@@ -77,18 +84,26 @@ public class ControllerInnovat {
         model.addAttribute("orglist", organizationList);
         model.addAttribute("personcon",personConnect);
         model.addAttribute("person", person);
-
-        return "onePerson";
+        return "addPersonCon";
     }
 
 
-    @RequestMapping(value = "/person/{id}", method = RequestMethod.POST)
-    public String onePersonEvent(@PathVariable("id") int id, @ModelAttribute Person person,PersonConnect personcon, Model model) {
+    @RequestMapping(value = "/person/{id}/con", method = RequestMethod.POST)
+    public String personAddCon(@PathVariable("id") int id, @ModelAttribute Person person,PersonConnect personcon, Model model) {
         model.addAttribute("person", person );
         model.addAttribute("personcon", personcon );
-        Person person1 = personService.findPerson(id);
-        if(personcon.getEvent_Id() >= 1) {
-            personService.updatePerson(personService.addEvent(eventService.findEvent(personcon.getEvent_Id()),id));
+        try {
+            if (personcon.getEvent_Id() >= 1) {
+                personService.updatePerson(personService.addEvent(eventService.findEvent(personcon.getEvent_Id()), id));
+            }
+            if (personcon.getOrganization_Id() >= 1) {
+                personService.updatePerson(personService.addOrganizatin(organizationService.findOrganization(personcon.getOrganization_Id()), id));
+            }
+            if (personcon.getProject_Id() >= 1) {
+                personService.updatePerson(personService.addProject(projectService.findProject(personcon.getOrganization_Id()), id));
+            }
+        }catch (Exception ex){
+
         }
         return "redirect:/person/" + id;
     }
@@ -107,8 +122,6 @@ public class ControllerInnovat {
                              BindingResult result,@ModelAttribute String event, Model model) {
         person.setId_person(id);
         personService.updatePerson(person);
-       // person.addEvent(event);
-      //  String s = event;
         return "redirect:/person/" + person.getId_person();
     }
 
@@ -148,6 +161,43 @@ public class ControllerInnovat {
         return "oneProject";
     }
 
+    @GetMapping("project/{id}/con")
+    public String oneProjectAddCon(@PathVariable("id") int id, Model model){
+        PersonConnect personConnect = new PersonConnect();
+        Project project = projectService.projectAllConnections(id);
+        List<Organization> organizationList = organizationService.organizationList();
+        List<Event> eventList = eventService.eventList();
+        List<Person> personList = personService.personList();
+        model.addAttribute("organizations", organizationList);
+        model.addAttribute("events",eventList);
+        model.addAttribute("project",project);
+        model.addAttribute("persons",personList);
+        model.addAttribute("con",personConnect);
+        return "addProjectCon";
+    }
+
+    @RequestMapping(value = "/project/{id}/con", method = RequestMethod.POST)
+    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project,PersonConnect personCon, Model model) {
+        model.addAttribute("project", project);
+        model.addAttribute("con" , personCon);
+        try{
+            if(personCon.getPerson_id() >= 1){
+                projectService.updateProject(projectService.addPerson(personService.findPerson(personCon.getPerson_id()),id));
+            }
+            if(personCon.getOrganization_Id() >= 1){
+                projectService.updateProject(projectService.addOrganization(organizationService.findOrganization(personCon.getOrganization_Id()),id));
+            }
+            if(personCon.getEvent_Id() >= 1){
+                projectService.updateProject(projectService.addEvent(eventService.findEvent(personCon.getEvent_Id()),id));
+            }
+
+        }catch (Exception ex){
+
+        }
+        return "redirect:/project/" + project.getId_project();
+    }
+
+
     @RequestMapping(value = "/event")
     public String listEvent(Model model) {
         List<Event> list = eventService.eventList();
@@ -174,6 +224,42 @@ public class ControllerInnovat {
         model.addAttribute("event", event);
         return "oneEvent";
     }
+
+    @GetMapping("event/{id}/con")
+    public String oneEventAddCon(@PathVariable("id") int id, Model model){
+        PersonConnect personConnect = new PersonConnect();
+        Event event = eventService.eventAllConnections(id);
+        List<Organization> organizationList = organizationService.organizationList();
+        List<Project> projectList = projectService.projectList();
+        List<Person> personList = personService.personList();
+        model.addAttribute("organizations", organizationList);
+        model.addAttribute("event",event);
+        model.addAttribute("projects",projectList);
+        model.addAttribute("persons",personList);
+        model.addAttribute("con",personConnect);
+        return "addEventCon";
+    }
+
+    @RequestMapping(value = "/event/{id}/con", method = RequestMethod.POST)
+    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event,PersonConnect personCon, Model model) {
+        model.addAttribute("event",event);
+        model.addAttribute("con" , personCon);
+        try{
+           if(personCon.getProject_Id() >= 1){
+               eventService.updateEvent(eventService.addProject(projectService.findProject(personCon.getProject_Id()),id));
+           }
+           if(personCon.getPerson_id() >= 1){
+               eventService.updateEvent(eventService.addPerson(personService.findPerson(personCon.getPerson_id()),id));
+           }
+           if(personCon.getOrganization_Id() >= 1){
+               eventService.updateEvent(eventService.addOrganization(organizationService.findOrganization(personCon.getOrganization_Id()),id));
+           }
+        }catch (Exception ex){
+
+        }
+        return "redirect:/event/" + event.getId_event();
+    }
+
 
     @GetMapping("event/{id}/delete")
     public String deleteEvent(@PathVariable("id") int id, Model model) {
@@ -214,6 +300,41 @@ public class ControllerInnovat {
         return "oneOrg";
     }
 
+    @GetMapping("organization/{id}/con")
+    public String oneOrganizationAddCon(@PathVariable("id") int id, Model model){
+        Organization organization = organizationService.organizationAllConnection(id);
+        PersonConnect personConnect = new PersonConnect();
+        List<Event> eventList = eventService.eventList();
+        List<Project> projectList = projectService.projectList();
+        List<Person> personList = personService.personList();
+        model.addAttribute("organization", organization);
+        model.addAttribute("events",eventList);
+        model.addAttribute("projects",projectList);
+        model.addAttribute("persons",personList);
+        model.addAttribute("con",personConnect);
+        return "addOrganizationCon";
+    }
+
+    @RequestMapping(value = "/organization/{id}/con", method = RequestMethod.POST)
+    public String organizationAddCon(@PathVariable("id") int id, @ModelAttribute Organization organization,PersonConnect personCon, Model model) {
+        model.addAttribute("organization" , organization);
+        model.addAttribute("con" , personCon);
+        try{
+            if(personCon.getPerson_id() >= 1){
+                organizationService.updateOrganization(organizationService.addPerson(personService.findPerson(personCon.getPerson_id()), id));
+            }
+            if(personCon.getProject_Id() >= 1){
+                organizationService.updateOrganization(organizationService.addPoject(projectService.findProject(personCon.getProject_Id()),id));
+            }
+            if(personCon.getEvent_Id() >= 1){
+                organizationService.updateOrganization(organizationService.addEvent(eventService.findEvent(personCon.getEvent_Id()),id));
+            }
+        }catch (Exception ex){
+
+        }
+        return "redirect:/organization/" + organization.getId_organization();
+    }
+
 
     @GetMapping("/project/{id}/edit")
     public String showProjectForm(@PathVariable("id") int id, Model model) {
@@ -221,6 +342,8 @@ public class ControllerInnovat {
         model.addAttribute("project", project);
         return "updateProject";
     }
+
+
     @PostMapping("project/{id}/update")
     public String updateProject(@PathVariable("id") int id, @Valid Project project,
                                 BindingResult result, Model model) {
