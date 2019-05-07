@@ -1,5 +1,6 @@
 package ru.innovat.dao;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,14 @@ public class EventDao {
         List<Event> eventList = (List<Event>) session.createQuery("From Event").list();
         return eventList;
 
+    }
+
+    public Event eventAllConnection(int id){
+        Event event = findById(id);
+        Hibernate.initialize(event.getPersons());
+        Hibernate.initialize(event.getOrganizations());
+        Hibernate.initialize(event.getProjects());
+        return event;
     }
 
 }

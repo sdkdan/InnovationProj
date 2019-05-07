@@ -13,8 +13,7 @@ import ru.innovat.service.*;
 
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.LinkedList;
+
 import java.util.List;
 import java.util.Set;
 
@@ -61,6 +60,7 @@ public class ControllerInnovat {
 
     @GetMapping("person/{id}/delete")
     public String deleteUser(@PathVariable("id") int id, Model model) {
+        personService.deleteSets(personService.findPerson(id));
         personService.deletePerson(id);
         return "redirect:/person";
     }
@@ -68,7 +68,7 @@ public class ControllerInnovat {
 
     @GetMapping("person/{id}")
     public String onePerson(@PathVariable("id") int id, Model model){
-        Person person = personService.findPerson(id);
+        Person person = personService.personAllConnections(id);
         PersonConnect personConnect = new PersonConnect();
         List<Event> eventList = eventService.eventList();
         List<Project> projectList = projectService.projectList();
@@ -76,7 +76,7 @@ public class ControllerInnovat {
         model.addAttribute("list", eventList);
         model.addAttribute("projectlist", projectList);
         model.addAttribute("orglist", organizationList);
-        model.addAttribute("personcon", personConnect);
+        model.addAttribute("personcon",personConnect);
         model.addAttribute("person", person);
 
         return "onePerson";
@@ -100,14 +100,6 @@ public class ControllerInnovat {
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Person person = personService.findPerson(id);
         List eventList = eventService.eventList(); //лист эвентов для выпадащего списка
-        //String event = new String();
-//        ArrayList<Event> eventList = new ArrayList<>();
-//        Event event1 = null;
-//        event1.setId_event(1);
-//        event1.setName_event("df");
-//        //Event event2 = null;
-//        eventList.add(event1);
-//        //eventList.add(event2);
         model.addAttribute("person", person);
         model.addAttribute("list", eventList);
       //  model.addAttribute("event", event);
@@ -154,7 +146,8 @@ public class ControllerInnovat {
 
     @GetMapping("project/{id}")
     public String oneProject(@PathVariable("id") int id, Model model) {
-        model.addAttribute("project", projectService.findProject(id));
+        model.addAttribute("project", projectService.projectAllConnections(id));
+
         return "oneProject";
     }
 
@@ -180,7 +173,7 @@ public class ControllerInnovat {
 
     @GetMapping("event/{id}")
     public String oneEvent(@PathVariable("id") int id, Model model){
-    Event event = eventService.findEvent(id);
+    Event event = eventService.eventAllConnections(id);
         model.addAttribute("event", event);
         return "oneEvent";
     }
@@ -219,10 +212,11 @@ public class ControllerInnovat {
 
     @GetMapping("organization/{id}")
     public String oneOrganization(@PathVariable("id") int id, Model model){
-        Organization organization = organizationService.findOrganization(id);
+        Organization organization = organizationService.organizationAllConnection(id);
         model.addAttribute("organization", organization);
         return "oneOrg";
     }
+
 
     @GetMapping("/project/{id}/edit")
     public String showProjectForm(@PathVariable("id") int id, Model model) {
@@ -233,11 +227,11 @@ public class ControllerInnovat {
     @PostMapping("project/{id}/update")
     public String updateProject(@PathVariable("id") int id, @Valid Project project,
                                 BindingResult result, Model model) {
+
         project.setId_project(id);
         projectService.updateProject(project);
         return "redirect:/project/" + project.getId_project();
     }
-
 
 
     @GetMapping("/event/{id}/edit")

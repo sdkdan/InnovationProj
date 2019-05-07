@@ -45,11 +45,11 @@ public class Event {
         return idTypeEvent;
     }
 
-    public void setIdTypeEvent(int idTypeEvent) {
+    public void etIdTypeEvent(int idTypeEvent) {
         this.idTypeEvent = idTypeEvent;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "person_event",
             joinColumns = @JoinColumn(name = "id_event"),
             inverseJoinColumns = @JoinColumn(name = "id_person")

@@ -57,4 +57,12 @@ public class PersonDao {
 
     }
 
+    public Person personAllConnections(int id){
+        Person person = findById(id);
+        Hibernate.initialize(person.getEvents());
+        Hibernate.initialize(person.getOrganizations());
+        Hibernate.initialize(person.getProjects());
+        return person;
+    }
+
 }

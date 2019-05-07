@@ -36,32 +36,22 @@ public class Person {
     private String comment;
 
 
-//    private   int eventId;
-//    public int getEventId() {
-//        return eventId;
-//    }
-//
-//    public void setEventId(int eventId) {
-//        this.eventId = eventId;
-//    }
 
-
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "person_event",
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_event"))
     public Set<Event> events = new HashSet<>();
 
 
-    public String getPersonEvents() {  //метод для отображения Мероприятий на личной странице
-        String i = "";
-        for (Event event : events
-             ) {
-          i +=  event.getName_event() + "; ";
-        }
-        return i;
-    }
+//    public String getPersonEvents() {  //метод для отображения Мероприятий на личной странице
+//        String i = "";
+//        for (Event event : events
+//             ) {
+//          i +=  event.getName_event() + "; ";
+//        }
+//        return i;
+//    }
     public Set<Event> getEvents(){
         return events;
     }
@@ -77,7 +67,7 @@ public class Person {
     }
 
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "organization_person",
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_organization")
@@ -87,14 +77,14 @@ public class Person {
         return this.organizations;
     }
 
-    public String getPersonOrg() {  //метод для отображения организаций на личной странице
-        String i = "";
-        for (Organization organization : organizations
-        ) {
-            i +=  organization.getName_organization() + "; ";
-        }
-        return i;
-    }
+//    public String getPersonOrg() {  //метод для отображения организаций на личной странице
+//        String i = "";
+//        for (Organization organization : organizations
+//        ) {
+//            i +=  organization.getName_organization() + "; ";
+//        }
+//        return i;
+//    }
 
     public void setOrganizations(Set<Organization> organizations) {
         this.organizations = organizations;
@@ -105,7 +95,7 @@ public class Person {
     }
 
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "project_person",
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_project")
@@ -115,14 +105,14 @@ public class Person {
         return this.projects;
     }
 
-    public String getPersonProj() {  //метод для отображения проектов на личной странице
-        String i = "";
-        for (Project project : projects
-        ) {
-            i +=  project.getName_project() + "; ";
-        }
-        return i;
-    }
+//    public String getPersonProj() {  //метод для отображения проектов на личной странице
+//        String i = "";
+//        for (Project project : projects
+//        ) {
+//            i +=  project.getName_project() + "; ";
+//        }
+//        return i;
+//    }
 
     public void setProjects(Set<Project> projects) {
         this.projects = projects;
