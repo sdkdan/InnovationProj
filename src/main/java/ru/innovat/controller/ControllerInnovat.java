@@ -158,12 +158,15 @@ public class ControllerInnovat {
     @RequestMapping(value = "/event/add", method = RequestMethod.GET)
     public String getAddEvent(Model model) {
         model.addAttribute("event", new Event());
+        List typeEventList = eventService.findAllTypeEvents();
+        model.addAttribute("list", typeEventList);
         return "addevent";
     }
 
     @RequestMapping(value = "/event/add", method = RequestMethod.POST)
     public String addEvent(@ModelAttribute Event event, Model model) {
         model.addAttribute("event", event);
+
         eventService.addEvent(event);
         return "redirect:/event/" + event.getId_event();
     }

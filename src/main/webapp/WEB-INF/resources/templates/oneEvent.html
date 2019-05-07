@@ -10,8 +10,9 @@
 <th:block th:include="/menu"></th:block>
 <div class="container">
 
-    <h2><td th:utext="паыв">..</td><h2>
-        <div class="pb-3">
+    <h2><td th:utext="${event.getName_event()}">..</td></h2>
+
+    <div class="pb-3">
             <a th:href="@{/event/{id}/edit(id=${event.id_event})}" class="btn btn-primary " role="button" aria-pressed="true">Изменить</a>
             <a th:href="@{/event/{id}/delete(id=${event.id_event})}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
             <a type="button" class="btn btn-secondary" href="#">Переход на таблицу м-м</a>
@@ -66,9 +67,44 @@
     <div class="w-100"></div>
     <div class="col border "><p>Место проведения</p></div>
     <div class="col border"><td th:utext="${event.location_event}">..</td></div>
+    <div class="w-100"></div>
+    <div class="col border "><p>Тип мероприятия</p></div>
+    <div class="col border"><td th:utext="${event.location_event}">..</td></div>
+
 
 </div>
+<div class="col-4   ">
+    <!--<th3><img width = "32px" src="../../image/dog-tag.svg"  alt="Название"  > <td th:utext="${person.name}">..</td> </th3>-->
 
+
+    <!--<br class="small">   <td th:utext="${pe.project_description}">..</td></p>-->
+
+
+    <!--                <p><a class=" small"><img width = "16px" src="../../image/mail.svg"  alt="почта"  >адрес почты</a></p>-->
+    <!--<p> <a class="small"><img width = "16px" src="../../image/report.svg"  alt="решение"  >уровень решения: </a><td th:utext="${project.level_solution}">..</td></p>-->
+    <!--<p> <a class="small" ><img width = "16px" src="../../image/calendar.svg"  alt="решение"  >дата старта: </a><td th:utext="${project.start_date}">..</td></p>-->
+    <!--<p>  <a class="small"> <img width = "16px" src="../../image/pin.svg"  alt="решение"  >сайт: </a><td th:utext="${project.site_project}">..</td></p>-->
+
+    <br>
+    <h3><img width = "32px" src="../../image/multiple-users-silhouette.svg"  alt="команда"  > Люди </h3>
+    <tr th:each="pr : ${event.getPersons()}">
+        <a class="small" th:href="@{/person/{id}(id=${pr.id_person})}"><img width = "16px" src="../../image/businessman.svg"  alt="человек"  >  <td th:utext="${pr.name}  ">..</td> </a>
+    </tr>
+    <br>
+    <h3><img width = "32px" src="../../image/teamwork.svg"  alt="команда"  > Организации </h3>
+    <tr th:each="org : ${event.getOrganizations()}">
+        <a class="small" th:href="@{/organization/{id}(id=${org.id_organization})}"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  >  <td th:utext="${org.name_organization}  ">..</td> </a>
+    </tr>
+    <h3><img width = "32px" src="../../image/education.svg"  alt="команда"  > Проекты </h3>
+    <tr th:each="prj : ${event.getProjects()}">
+        <a class="small" th:href="@{/project/{id}(id=${prj.id_project})}"><img width = "16px" src="../../image/education.svg"  alt="человек"  >  <td th:utext="${prj.name_project}  ">..</td> </a>
+    </tr>
+
+    <!--                <tr th:each="organization : ${organizations}">-->
+    <!--                <a class="small" href="#"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  ><td th:utext="${organization.name_organization}">..</td></a><br>-->
+    <!--                </tr>>-->
+
+</div>
 </div>
 </body>
 <script src="../static/js/jquery-3.2.1.js"></script>

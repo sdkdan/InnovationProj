@@ -3,8 +3,11 @@ package ru.innovat.models;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.hibernate.SessionFactory;
+import ru.innovat.models.utils.TypeEvent;
 @Entity
 @Table(name = "event", schema = "", catalog = "x92176f5_inovat")
 public class Event {
@@ -45,7 +48,7 @@ public class Event {
         return idTypeEvent;
     }
 
-    public void etIdTypeEvent(int idTypeEvent) {
+    public void setIdTypeEvent(int idTypeEvent) {
         this.idTypeEvent = idTypeEvent;
     }
 
@@ -108,6 +111,19 @@ public class Event {
     public void addProject(Project project) {
         projects.add(project);
     }
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="id_type_event", insertable=false, updatable=false)
+    private TypeEvent typeEvent;
+
+    public TypeEvent getTypeEvent() {
+        return typeEvent;
+    }
+
+    public void setTypeEvent(TypeEvent typeEvent) {
+        this.typeEvent = typeEvent;
+    }
+
 
 
     public int getId_event() {

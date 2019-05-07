@@ -9,7 +9,9 @@ import ru.innovat.models.Event;
 import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
+import ru.innovat.models.utils.TypeEvent;
 
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -113,5 +115,16 @@ public class EventService {
         event.addPersons(person);
         return event;
     }
+
+    @Transactional
+    public TypeEvent findTypeEventById(int id) {
+        return eventDao.findTypeEventById(id);
+    }
+
+    @Transactional
+    public List<TypeEvent> findAllTypeEvents() {
+        return eventDao.findAllTypeEvents();
+    }
+
 
 }

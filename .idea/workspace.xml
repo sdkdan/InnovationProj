@@ -2,85 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5b1688a-34de-4102-b4bd-1ab1a5b915d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/businessman.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/calendar.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/comment.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/document.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/dog-tag.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/education.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/inbox.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/mail.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/multiple-users-silhouette.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/pin.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/repo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/report.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/search.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/teamwork.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/static/image/tools.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ControllerInnovat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ControllerInnovat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/EventDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/EventDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/PersonDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/PersonDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/ProjectDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/ProjectDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Organization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Organization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/PersonConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/PersonConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/TypeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/TypeEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/OrganizationSevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/OrganizationSevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/PersonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/ProjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addevent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneEvent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneEvent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneOrg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneOrg.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/onePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/onePerson.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updatePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updatePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/ControllerInnovat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/controller/ControllerInnovat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/EventDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/dao/EventDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/OrganizationDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/dao/OrganizationDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/PersonDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/dao/PersonDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/ProjectDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/dao/ProjectDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Event.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Organization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Organization.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Project.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/EventService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/EventService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/OrganizationSevice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/OrganizationSevice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/PersonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/PersonService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/ProjectService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/ProjectService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/style.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/image/delete-16.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/image/delete.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/image/show-16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/image/update-16.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addOrg.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/addOrg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/addevent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addproject.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/addproject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/bootstrap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/bootstrap/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/event.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/event.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/onePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/onePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/organization.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/organization.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/person.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/person.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/project.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/ControllerInnovat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/PersonConnect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/oneProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/oneProject.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/updatePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/updatePerson.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -90,16 +29,76 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="x92176f5_inovat@x92176f5.beget.tech" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="x92176f5_inovat@x92176f5.beget.tech" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="x92176f5_inovat@x92176f5.beget.tech" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="x92176f5_inovat: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="x92176f5_inovat@x92176f5.beget.tech" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="x92176f5_inovat: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="Project_person: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="x92176f5_inovat@x92176f5.beget.tech" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="x92176f5_inovat: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="type_event: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1328121566">
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="507" />
+          <entry key="JAVA" value="254" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="15" />
+          <entry key="JAVA" value="20" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="HibernateQuickStart" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/controller/ControllerInnovat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="89" column="54" lean-forward="true" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="54" />
+            <state relative-caret-position="1155">
+              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,49 +107,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1761" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/Application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="735">
+              <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/PersonConnect.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/dao/PersonDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="405">
+              <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/FirstLevelMarket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+            <state relative-caret-position="90">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/PersonConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="46" selection-start-line="46" selection-start-column="2" selection-end-line="53" selection-end-column="7" />
+            <state relative-caret-position="90">
+              <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+              <folding>
+                <element signature="e#261#262#0" expanded="true" />
+                <element signature="e#296#297#0" expanded="true" />
+                <element signature="e#349#350#0" expanded="true" />
+                <element signature="e#397#398#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,26 +151,56 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/onePerson.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="69" selection-start-line="69" selection-start-column="4" selection-end-line="77" selection-end-column="18" />
+            <state relative-caret-position="1601">
+              <caret line="109" column="18" lean-forward="true" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneProject.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Organization.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="68" column="187" selection-start-line="68" selection-start-column="170" selection-end-line="68" selection-end-column="187" />
+            <state relative-caret-position="195">
+              <caret line="13" column="36" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1373#1374#0" expanded="true" />
+                <element signature="e#1403#1404#0" expanded="true" />
+                <element signature="e#1454#1455#0" expanded="true" />
+                <element signature="e#1492#1493#0" expanded="true" />
+                <element signature="e#1535#1536#0" expanded="true" />
+                <element signature="e#1570#1571#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updatePerson.html">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneOrg.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="68" column="14" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
+            <state relative-caret-position="342">
+              <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneEvent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="93" column="59" selection-start-line="93" selection-start-column="59" selection-end-line="93" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -191,12 +214,28 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updatePerson.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/PersonConnect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/TypeEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/innovat/dao/EventDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/innovat/service/EventService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ControllerInnovat.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addevent.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneProject.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/onePerson.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneEvent.html" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneOrg.html" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/innovat/models/Event.java" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-4" />
@@ -211,34 +250,35 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -246,7 +286,7 @@
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -255,14 +295,68 @@
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="innovat" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="innovat" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="innovat" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="innovat" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="levels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="innovat" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
@@ -270,7 +364,7 @@
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
@@ -279,7 +373,7 @@
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
@@ -289,7 +383,7 @@
             </path>
             <path>
               <item name="HibernateQuickStart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InnovationProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
@@ -301,7 +395,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -313,6 +406,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557232020934" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.14965986" />
@@ -322,6 +416,120 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Стас\Documents\GitHub\InnovationProj\.idea" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/ru/innovat/controller/ControllerInnovat.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/DevelopmentRolePerson.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/PersonConnect.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/TypeEvent.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/ru/innovat/models/PersonConnect.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -360,14 +568,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1948000" />
+    <option name="totallyTimeSpent" value="11654000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Web" order="0" side_tool="true" />
       <window_info id="Persistence" order="1" sideWeight="0.502693" side_tool="true" weight="0.23104435" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.27427185" visible="true" weight="0.25567323" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.27427185" visible="true" weight="0.23676682" />
       <window_info id="Structure" order="3" sideWeight="0.72572815" side_tool="true" weight="0.2549168" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
@@ -375,10 +584,10 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" sideWeight="0.502439" side_tool="true" weight="0.24962178" />
       <window_info anchor="bottom" id="Java Enterprise" order="0" />
-      <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.49848714" weight="0.32569557" />
+      <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.49848714" weight="0.3253012" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" sideWeight="0.4977307" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.49924356" visible="true" weight="0.32569557" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.49924356" visible="true" weight="0.3253012" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -444,22 +653,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'Req'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/ru/innovat/controller/ControllerInnovat.java&#10;#&#9;src/main/java/ru/innovat/models/Person.java&#10;#&#9;src/main/webapp/WEB-INF/resources/templates/onePerson.html&#10;#&#9;src/main/webapp/WEB-INF/resources/templates/updatePerson.html&#10;#&#9;target/classes/ru/innovat/controller/ControllerInnovat.class&#10;#&#9;target/classes/ru/innovat/models/Event.class&#10;#&#9;target/classes/ru/innovat/models/Organization.class&#10;#&#9;target/classes/ru/innovat/models/Person.class&#10;#&#9;target/classes/ru/innovat/models/Project.class&#10;#&#9;target/classes/templates/add.html&#10;#&#9;target/classes/templates/addOrg.html&#10;#&#9;target/classes/templates/addevent.html&#10;#&#9;target/classes/templates/addproject.html&#10;#&#9;target/classes/templates/bootstrap/index.html&#10;#&#9;target/classes/templates/event.html&#10;#&#9;target/classes/templates/menu.html&#10;#&#9;target/classes/templates/onePerson.html&#10;#&#9;target/classes/templates/organization.html&#10;#&#9;target/classes/templates/person.html&#10;#&#9;target/classes/templates/project.html" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Req'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/ru/innovat/controller/ControllerInnovat.java&#10;#&#9;src/main/java/ru/innovat/models/Person.java&#10;#&#9;src/main/webapp/WEB-INF/resources/templates/onePerson.html&#10;#&#9;src/main/webapp/WEB-INF/resources/templates/updatePerson.html&#10;#&#9;target/classes/ru/innovat/controller/ControllerInnovat.class&#10;#&#9;target/classes/ru/innovat/models/Event.class&#10;#&#9;target/classes/ru/innovat/models/Organization.class&#10;#&#9;target/classes/ru/innovat/models/Person.class&#10;#&#9;target/classes/ru/innovat/models/Project.class&#10;#&#9;target/classes/templates/add.html&#10;#&#9;target/classes/templates/addOrg.html&#10;#&#9;target/classes/templates/addevent.html&#10;#&#9;target/classes/templates/addproject.html&#10;#&#9;target/classes/templates/bootstrap/index.html&#10;#&#9;target/classes/templates/event.html&#10;#&#9;target/classes/templates/menu.html&#10;#&#9;target/classes/templates/onePerson.html&#10;#&#9;target/classes/templates/organization.html&#10;#&#9;target/classes/templates/person.html&#10;#&#9;target/classes/templates/project.html" />
@@ -469,65 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/service/ProjectService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/service/PersonService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-304">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/dao/PersonDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/service/EventService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/dao/EventDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Organization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -543,27 +677,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="46" selection-start-line="46" selection-start-column="2" selection-end-line="53" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneProject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="68" column="187" selection-start-line="68" selection-start-column="170" selection-end-line="68" selection-end-column="187" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updatePerson.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -579,29 +699,243 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/PersonConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1761" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/PersonConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/DevelopmentRolePerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#844#845#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/service/PersonService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#1120#1121#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/service/ProjectService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="115" column="5" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1515#1516#0" expanded="true" />
+            <element signature="e#1544#1545#0" expanded="true" />
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1629#1630#0" expanded="true" />
+            <element signature="e#1670#1671#0" expanded="true" />
+            <element signature="e#1703#1704#0" expanded="true" />
+            <element signature="e#2006#2020#0" expanded="true" />
+            <element signature="e#2073#2074#0" expanded="true" />
+            <element signature="e#2114#2115#0" expanded="true" />
+            <element signature="e#2477#2478#0" expanded="true" />
+            <element signature="e#2527#2528#0" expanded="true" />
+            <element signature="e#2588#2589#0" expanded="true" />
+            <element signature="e#2635#2636#0" expanded="true" />
+            <element signature="e#2918#2927#0" expanded="true" />
+            <element signature="e#2970#2971#0" expanded="true" />
+            <element signature="e#3006#3007#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-246" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/project.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-165" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updateEvent.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/dao/EventDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="62" column="5" lean-forward="true" selection-start-line="54" selection-start-column="3" selection-end-line="62" selection-end-column="5" />
+          <folding>
+            <element signature="e#1272#1302#0" expanded="true" />
+            <element signature="e#1667#1697#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/service/EventService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+          <folding>
+            <element signature="e#3214#3215#0" expanded="true" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3336#3337#0" expanded="true" />
+            <element signature="e#3366#3367#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/TypeEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addevent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="77" column="14" lean-forward="true" selection-start-line="70" selection-start-column="8" selection-end-line="77" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addOrg.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneProject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addproject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneEvent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="93" column="59" selection-start-line="93" selection-start-column="59" selection-end-line="93" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/onePerson.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="69" selection-start-line="69" selection-start-column="4" selection-end-line="77" selection-end-column="18" />
+        <state relative-caret-position="1601">
+          <caret line="109" column="18" lean-forward="true" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Organization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#1403#1404#0" expanded="true" />
+            <element signature="e#1454#1455#0" expanded="true" />
+            <element signature="e#1492#1493#0" expanded="true" />
+            <element signature="e#1535#1536#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneOrg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/controller/ControllerInnovat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="89" column="54" lean-forward="true" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="54" />
+        <state relative-caret-position="1155">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/dao/PersonDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/levels/FirstLevelMarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/utils/PersonConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+          <folding>
+            <element signature="e#261#262#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/innovat/models/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

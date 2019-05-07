@@ -50,10 +50,10 @@
         <!-- -->
         <!--Основная информация -->
         <div class="col-4   ">
-            <h3><img width = "32px" src="../../image/dog-tag.svg"  alt="Название"  > <td th:utext="${project.name_project}">..</td> </h3>
+            <th3><img width = "32px" src="../../image/dog-tag.svg"  alt="Название"  > <td th:utext="${project.name_project}">..</td> </th3>
 
 
-            <a class="small">   <td th:utext="${project.project_description}">..</td></p>
+            <br class="small">   <td th:utext="${project.project_description}">..</td></p>
 
 
 <!--                <p><a class=" small"><img width = "16px" src="../../image/mail.svg"  alt="почта"  >адрес почты</a></p>-->
@@ -63,16 +63,23 @@
 
                 <br>
                 <h3><img width = "32px" src="../../image/multiple-users-silhouette.svg"  alt="команда"  > О команде </h3>
-
-
                 <tr th:each="person : ${project.getPersons()}">
                 <a class="small" th:href="@{/person/{id}(id=${person.id_person})}"><img width = "16px" src="../../image/businessman.svg"  alt="человек"  >  <td th:utext="${person.surname}  ">..</td> </a>
                 </tr>
                 <br>
-                <h3><img width = "32px" src="../../image/teamwork.svg"  alt="команда"  > О организациях </h3>
+                <h3><img width = "32px" src="../../image/teamwork.svg"  alt="команда"  > Организации </h3>
+                <tr th:each="org : ${project.getOrganizations()}">
+                    <a class="small" th:href="@{/organization/{id}(id=${org.id_organization})}"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  >  <td th:utext="${org.name_organization}  ">..</td> </a>
+                </tr>
+            <h3><img width = "32px" src="../../image/education.svg"  alt="команда"  > Мероприятия </h3>
+            <tr th:each="ev : ${project.getEvents()}">
+                <a class="small" th:href="@{/event/{id}(id=${ev.id_event})}"><img width = "16px" src="../../image/education.svg"  alt="человек"  >  <td th:utext="${ev.name_event}  ">..</td> </a>
+            </tr>
+
 <!--                <tr th:each="organization : ${organizations}">-->
 <!--                <a class="small" href="#"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  ><td th:utext="${organization.name_organization}">..</td></a><br>-->
 <!--                </tr>>-->
+
         </div>
     </div>
 </div>

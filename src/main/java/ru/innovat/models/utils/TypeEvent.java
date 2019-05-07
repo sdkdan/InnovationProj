@@ -1,4 +1,4 @@
-package ru.innovat.models;
+package ru.innovat.models.utils;
 import javax.persistence.*;
 
 @Entity
@@ -27,6 +27,8 @@ public class TypeEvent {
     public void setName_type_event(String name_type_event) {
         this.name_type_event = name_type_event;
     }
+
+
 
 //    public Set<Event> getAttachments() {
 //        return attachments;

@@ -57,7 +57,7 @@ public class OrganizationDao {
     public Organization organizationAllConnection(int id){
         Organization organization = findById(id);
         Hibernate.initialize(organization.getPersons());
-        Hibernate.initialize(organization.getPersons());
+        Hibernate.initialize(organization.getProjects());
         Hibernate.initialize(organization.getEvents());
         return organization;
     }
