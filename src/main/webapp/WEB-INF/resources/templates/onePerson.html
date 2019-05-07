@@ -14,8 +14,7 @@
         <div class="pb-3">
             <a th:href="@{/person/{id}/edit(id=${person.id_person})}" class="btn btn-primary " role="button" aria-pressed="true">Изменить</a>
             <a th:href="@{/person/{id}/delete(id=${person.id_person})}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
-            <a type="button" class="btn btn-secondary" href="#">Переход на таблицу м-м</a>
-            <a type="button" class="btn btn-success" href="#">Переход на таблицу м-м</a>
+            <a th:href="@{/person/{id}/con(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Переход на таблицу связей</a>
         </div>
 
         <!-- Modal -->
@@ -89,7 +88,7 @@
                 <!--<p>  <a class="small"> <img width = "16px" src="../../image/pin.svg"  alt="решение"  >сайт: </a><td th:utext="${project.site_project}">..</td></p>-->
 
                 <br>
-                <h3><img width = "32px" src="../../image/multiple-users-silhouette.svg"  alt="команда"  > Мероприятия </h3>
+                <h3><img width = "32px" src="../../image/multiple-users-silhouette.svg"  alt="команда"  > Проекты </h3>
                 <tr th:each="pr : ${person.getProjects()}">
                     <a class="small" th:href="@{/project/{id}(id=${pr.id_project})}"><img width = "16px" src="../../image/businessman.svg"  alt="человек"  >  <td th:utext="${pr.name_project}  ">..</td> </a>
                 </tr>
@@ -143,15 +142,38 @@
                                     th:value="${org.id_organization}"
                                     th:text="${org.id_organization}+' : '+${org.name_organization}"></option>
                         </select>
+<!--        <form name='f' th:object="${personcon}" method='POST'>-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>Select event:</td>-->
+<!--                    <td>-->
+<!--                        <select th:field="*{event_Id}">-->
+<!--                            <option th:each="event : ${list}"-->
+<!--                                    th:value="${event.id_event}"-->
+<!--                                    th:text="${event.id_event}+' : '+${event.name_event}"></option>-->
+<!--                        </select>-->
 
-                    </td>
-                </tr>
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Select project:</td>-->
+<!--                    <td>-->
+<!--                        <select th:field="*{project_Id}">-->
+<!--                            <option th:each="project : ${projectlist}"-->
+<!--                                    th:value="${project.id_project}"-->
+<!--                                    th:text="${project.id_project}+' : '+${project.name_project}"></option>-->
+<!--                        </select>-->
 
-                <tr>
-                    <td><input name="submit" type="submit" value="submit" /></td>
-                </tr>
-            </table>
-        </form>
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Select organization:</td>-->
+<!--                    <td>-->
+<!--                        <select th:field="*{organization_Id}">-->
+<!--                            <option th:each="org : ${orglist}"-->
+<!--                                    th:value="${org.id_organization}"-->
+<!--                                    th:text="${org.id_organization}+' : '+${org.name_organization}"></option>-->
+<!--                        </select>-->
 
 </div>
 </body>

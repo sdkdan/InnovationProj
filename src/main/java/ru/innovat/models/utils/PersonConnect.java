@@ -5,6 +5,7 @@ public class PersonConnect { //вспомогательный класс для 
     private int project_Id;
     private int organization_Id;
     private int typeEvent_id;
+    private int person_id;
 
     public int getTypeEvent_id() {
         return typeEvent_id;
@@ -12,6 +13,14 @@ public class PersonConnect { //вспомогательный класс для 
 
     public void setTypeEvent_id(int typeEvent_id) {
         this.typeEvent_id = typeEvent_id;
+    }
+
+    public int getPerson_id() {
+        return person_id;
+    }
+
+    public void setPerson_id(int person_id) {
+        this.person_id = person_id;
     }
 
     public int getEvent_Id() {
