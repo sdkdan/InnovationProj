@@ -88,11 +88,9 @@ public class ControllerInnovat {
         model.addAttribute("person", person );
         model.addAttribute("personcon", personcon );
         Person person1 = personService.findPerson(id);
-        person1.addEvent(eventService.findEvent(personcon.getEvent_Id()));
-        person1.addOrganization(organizationService.findOrganization(personcon.getOrganization_Id()));
-        person1.addProject(projectService.findProject(personcon.getProject_Id()));
-        personService.updatePerson(person1);
-
+        if(personcon.getEvent_Id() >= 1) {
+            personService.updatePerson(personService.addEvent(eventService.findEvent(personcon.getEvent_Id()),id));
+        }
         return "redirect:/person/" + id;
     }
 
