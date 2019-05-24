@@ -11,10 +11,13 @@
 <div class="container">
 
     <h2><td th:utext="${person.getSurname()} +' '+ ${person.getName()}+' ' + ${person.getThirdName()}">..</td></h2>
+
         <div class="pb-3">
             <a th:href="@{/person/{id}/edit(id=${person.id_person})}" class="btn btn-primary " role="button" aria-pressed="true">Изменить</a>
             <a th:href="@{/person/{id}/delete(id=${person.id_person})}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
-            <a th:href="@{/person/{id}/con(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Переход на таблицу связей</a>
+            <a th:href="@{/person/{id}/con(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить организацию</a>
+            <a th:href="@{/person/{id}/con(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить мероприятие</a>
+            <a th:href="@{/person/{id}/con(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить организацию</a>
         </div>
 
         <!-- Modal -->
@@ -35,15 +38,7 @@
             </div>
         </div>
         <div class="row border pb-3">
-            <div class="col border"><p>Фамилия</p></div>
-            <div class="col border"><td th:utext="${person.getSurname()}">..</td></div>
-            <div class="w-100"></div>
-            <div class="col border"><p>Имя</p></div>
-            <div class="col border"><td th:utext="${person.getName()}">..</td></div>
-            <div class="w-100"></div>
-            <div class="col border"><p>Отчество</p></div>
-            <div class="col border"><td th:utext="${person.getThirdName()}">..</td></div>
-            <div class="w-100"></div>
+
             <div class="col border "><p>Номер телефона</p></div>
             <div class="col border"><td th:utext="${person.getPhone_number_person()}">..</td></div>
             <div class="w-100"></div>
@@ -76,7 +71,7 @@
 <!--            <div class="col border"><td th:utext="${person.getPersonProj()}">..</td></div>-->
 <!--        </div>-->
             <div class="col-4   ">
-                <th3><img width = "32px" src="../../image/dog-tag.svg"  alt="Название"  > <td th:utext="${person.name}">..</td> </th3>
+
 
 
                 <!--<br class="small">   <td th:utext="${pe.project_description}">..</td></p>-->

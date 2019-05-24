@@ -8,10 +8,12 @@
 <body>
 <th:block th:include="/menu"></th:block>
 <!-- Вывод списка-->
-<div class="container">
 
-    <h3>Организации</h3>
+
+    <h1>Организации</h1>
+<div class=" m-1 p-1">
     <a th:href="@{organization/add}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
+</div>
     <table class="table">
         <thead>
         <tr>
@@ -24,7 +26,7 @@
         <tbody>
 
         <tr th:each="organization : ${organizationList}">
-            <td th:utext="${organization.getName_organization()}">..</td>
+            <td th:utext="${organization.getName_organization()}" class="w-50">..</td>
             <td th:utext="${organization.getCity_organization()}">..</td>
             <td th:utext="${organization.getSite_organization()}">..</td>
             <td>
@@ -39,7 +41,7 @@
 
         </tbody>
     </table>
-</div>
+
 
 
 <!-- вывод закончился -->

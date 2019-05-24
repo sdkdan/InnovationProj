@@ -10,23 +10,29 @@
 
 <body>
 <th:block th:include="/menu"></th:block>
-<h1>Список проектов</h1>
+<h1 class="m-3">Проекты</h1>
+
+<div class="container-fluid ">
+<div class=" m-3 ">
 <a th:href="@{project/add}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
-<table class="table">
+</div>
+
+<table class="table ">
     <thead>
     <tr>
-        <th>Название </th>
-        <th>Сайт</th>
-        <th>Номер телефона</th>
+        <th class="text-center border">Название </th>
+        <th class=" text-center border">Сайт</th>
+        <th class="text-center border">Описание</th>
+        <th class="text-center border">Возможности</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="project : ${projectList}">
-        <td th:utext="${project.name_project}">..</td>
-        <td th:utext="${project.site_project}">..</td>
-        <td th:utext="${project.number_Phone_project}">..</td>
-        <td>
-            <div class="text-center">
+        <td th:utext="${project.name_project}" class="w-25 border ">..</td>
+        <td th:utext="${project.site_project}" class="w-25 border">..</td>
+        <td th:utext="${project.project_description}" class=" w-25 border">..</td>
+        <td class="border">
+            <div class="text-center ">
                 <a th:href="@{project/{id}/delete(id=${project.id_project})}"> <img src="../static/image/delete-16.svg" th:src="@{image/delete-16.svg}" alt="Удалить" ></a>
                 <a th:href="@{project/{id}/edit(id=${project.id_project})}"> <img src="../static/image/update-16.svg" th:src="@{image/update-16.svg}" alt="Изменить" ></a>
                 <a th:href="@{project/{id}(id=${project.id_project})}"><img src="../static/image/show-16.png" th:src="@{image/show-16.png}" alt="Посмотреть"></a>
@@ -35,6 +41,6 @@
     </tr>
     </tbody>
 </table>
-
+</div>
 </body>
 </html>

@@ -11,8 +11,10 @@
 <body>
  <!--Include _menu.html -->
  <th:block th:include="/menu"></th:block>
-<h1>Cписок людей</h1>
+<h1>Люди</h1>
+ <div class=" m-1 p-1">
  <a th:href="@{person/add}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
+ </div>
  <table class="table">
      <thead>
      <tr>
@@ -21,7 +23,7 @@
          <th>Отчество</th>
          <th>Номер</th>
          <th>Дата рождения</th>
-         <th>Возможности</th>
+         <th class="text-center">Возможности</th>
      </tr>
      </thead>
      <tbody>

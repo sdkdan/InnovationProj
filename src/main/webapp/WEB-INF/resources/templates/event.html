@@ -7,27 +7,31 @@
 </head>
 <body>
 <th:block th:include="/menu"></th:block>
-<div class="container">
 
-    <h3>Ивенты</h3>
+
+    <h1>Конкурсы</h1>
+<div class=" m-1 p-1">
     <a th:href="@{event/add}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
+</div>
+
     <table class="table">
         <thead>
         <tr>
             <th>Название </th>
-            <th>Важность</th>
+            <th >Важность</th>
             <th>Сфера</th>
-            <th>Дата мероприятия</th>
-            <th>Возможности</th>
+            <th >Дата мероприятия</th>
+            <th class="text-center">Возможности</th>
         </tr>
         </thead>
         <tbody>
         <tr>
         <tr th:each="event : ${eventList}">
-            <td th:utext="${event.name_event}">..</td>
-            <td th:utext="${event.importance_event}">..</td>
+            <td th:utext="${event.name_event}" class="w-25">..</td>
+            <td th:utext="${event.importance_event}"> ..</td>
+            <td th:utext="${event.scope_event}" class="w-25"></td>
+
             <td th:utext="${event.date_event}">..</td>
-            <td th:utext="${event.scope_event}">..</td>
             <td>
                 <div class="text-center">
                     <a th:href="@{event/{id}/delete(id=${event.id_event})}"> <img src="../static/image/delete-16.svg" th:src="@{image/delete-16.svg}" alt="Удалить" ></a>
@@ -40,7 +44,6 @@
 
         </tbody>
     </table>
-</div>
 
 
 

@@ -8,13 +8,15 @@
 <body>
 <th:block th:include="/menu"></th:block>
 <!--выводим отдельную запись -->
-<div class="container">
-        <div class="pb-3 justify-content-center ">
-            <a th:href="@{/project/{id}/edit(id=${project.id_project})}" class="btn btn-primary " role="button" aria-pressed="true">Изменить</a>
-            <a th:href="@{/project/{id}/delete(id=${project.id_project})}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
-            <a type="button" class="btn btn-secondary" href="#">Переход на таблицу м-м</a>
-            <a type="button" class="btn btn-success" href="#">Переход на таблицу м-м</a>
-        </div>
+<div class="text-center m-2 "><h3><td th:utext="${project.name_project}">..</td></h3></div>
+<div class="d-flex justify-content-center ">
+
+            <a th:href="@{/project/{id}/edit(id=${project.id_project})}" class="btn btn-primary  p-1 m-1" role="button"  >Изменить</a>
+            <a th:href="@{/project/{id}/delete(id=${project.id_project})}"  class="btn btn-danger  p-1 m-1" data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
+            <a  class="btn btn-secondary p-1 m-1" href="#">Добавить человека</a>
+            <a  class="btn btn-success p-1 m-1" href="#">Добавить Организацию</a>
+            <a  class="btn btn-success  p-1 m-1" href="#">Добавить Мероприятие</a>
+
 </div>
 
 
@@ -22,11 +24,13 @@
 
     <!-- Контент разбит на 2 row -->
     <div class="row ">
-        <!-- блок с большой инфой о проекте-->
+
+
         <div class="col-7 mr-1 ">
 
             <h3><img width = "32px" src="../../image/Education.svg"  alt="О проекте"  > О проекте  </h3>
-            <div class="border">
+            <hr>
+            <div>
                 <h4> Cуть инновации:</h4>
                 <p class="small">
                 <td th:utext="${project.essence_inovations}">..</td>
@@ -46,39 +50,45 @@
                 </p>
             </div>
         </div>
-
-        <!-- -->
-        <!--Основная информация -->
+        <!-- блок с большой инфой о проекте-->
         <div class="col-4   ">
-            <th3><img width = "32px" src="../../image/dog-tag.svg"  alt="Название"  > <td th:utext="${project.name_project}">..</td> </th3>
+            <td th:utext="${project.name_project}">..</td>
+             <br>
+            <img width = "16px" src="../../image/dog-tag.svg"  alt="название"  > <a class="small pl-md-1 ">  </a><td th:utext="${project.project_description}" ><p>..</td></p>
+            <!--                <p><a class=" small"><img width = "16px" src="../../image/mail.svg"  alt="почта"  >адрес почты</a></p>-->
+            <img width = "16px" src="../../image/report.svg"  alt="решение"  > <a class="small pl-md-1 "> Уровень решения: </a><td th:utext="${project.level_solution}" ><p>..</td></p>
+            <img width = "16px" src="../../image/calendar.svg"  alt="решение" > <a class="small pl-md-1" >Дата старта: </a><td th:utext="${project.start_date}" > <p> ..</td></p>
+            <img width = "16px" src="../../image/pin.svg"  alt="решение"  ><a class="small pl-md-1"> </a><td th:utext="${project.site_project}" > <p>  ..</td></p>
 
-
-            <br class="small">   <td th:utext="${project.project_description}">..</td></p>
-
-
-<!--                <p><a class=" small"><img width = "16px" src="../../image/mail.svg"  alt="почта"  >адрес почты</a></p>-->
-                <p> <a class="small"><img width = "16px" src="../../image/report.svg"  alt="решение"  >уровень решения: </a><td th:utext="${project.level_solution}">..</td></p>
-                <p> <a class="small" ><img width = "16px" src="../../image/calendar.svg"  alt="решение"  >дата старта: </a><td th:utext="${project.start_date}">..</td></p>
-                <p>  <a class="small"> <img width = "16px" src="../../image/pin.svg"  alt="решение"  >сайт: </a><td th:utext="${project.site_project}">..</td></p>
-
-                <br>
-                <h3><img width = "32px" src="../../image/multiple-users-silhouette.svg"  alt="команда"  > О команде </h3>
+            <br>
+            <h3><img width = "32px" src="../../image/multiple-users-silhouette.svg"  alt="команда"  > О команде </h3>
+            <ul>
                 <tr th:each="person : ${project.getPersons()}">
-                <a class="small" th:href="@{/person/{id}(id=${person.id_person})}"><img width = "16px" src="../../image/businessman.svg"  alt="человек"  >  <td th:utext="${person.surname}  ">..</td> </a>
+                    <li>
+                        <a class="small pl-md-1" th:href="@{/person/{id}(id=${person.id_person})}">  <td th:utext="${person.getSurname()} +' '+ ${person.getName()}+' ' + ${person.getThirdName()}">..</td></a>
+                    </li>
                 </tr>
-                <br>
-                <h3><img width = "32px" src="../../image/teamwork.svg"  alt="команда"  > Организации </h3>
+            </ul>
+            <h3><img width = "32px" src="../../image/teamwork.svg"  alt="команда"  > Организации </h3>
+            <ul>
                 <tr th:each="org : ${project.getOrganizations()}">
-                    <a class="small" th:href="@{/organization/{id}(id=${org.id_organization})}"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  >  <td th:utext="${org.name_organization}  ">..</td> </a>
+                    <li>
+                        <a class="small pl-md-1" th:href="@{/organization/{id}(id=${org.id_organization})}"> <td th:utext="${org.name_organization}  ">..</td> </a>
+                    </li>
                 </tr>
+            </ul>
             <h3><img width = "32px" src="../../image/education.svg"  alt="команда"  > Мероприятия </h3>
-            <tr th:each="ev : ${project.getEvents()}">
-                <a class="small" th:href="@{/event/{id}(id=${ev.id_event})}"><img width = "16px" src="../../image/education.svg"  alt="человек"  >  <td th:utext="${ev.name_event}  ">..</td> </a>
-            </tr>
+            <ul>
+                <li>
+                    <tr th:each="ev : ${project.getEvents()}">
+                        <a class="small pl-md-1" th:href="@{/event/{id}(id=${ev.id_event})}">  <td th:utext="${ev.name_event}  ">..</td> </a>
+                    </tr>
+                </li>
+            </ul>
 
-<!--                <tr th:each="organization : ${organizations}">-->
-<!--                <a class="small" href="#"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  ><td th:utext="${organization.name_organization}">..</td></a><br>-->
-<!--                </tr>>-->
+            <!--                <tr th:each="organization : ${organizations}">-->
+            <!--                <a class="small" href="#"><img width = "16px" src="../../image/teamwork.svg"  alt="человек"  ><td th:utext="${organization.name_organization}">..</td></a><br>-->
+            <!--                </tr>>-->
 
         </div>
     </div>
