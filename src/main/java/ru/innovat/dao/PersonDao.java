@@ -52,8 +52,7 @@ public class PersonDao {
     @SuppressWarnings("unchecked")
     public List<Person> personList() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Person> personList = (List<Person>) session.createQuery("From Person").list();
-        return personList;
+        return (List<Person>) session.createQuery("From Person").list();
 
     }
 

@@ -20,11 +20,11 @@ public class OrganizationSevice {
 
 
 
-    public OrganizationSevice(){
-
+    public OrganizationSevice(OrganizationDao organizationDao){
+        this.organizationDao = organizationDao;
     }
-    @Autowired
-    private OrganizationDao organizationDao = new OrganizationDao();
+
+    private OrganizationDao organizationDao;
 
     @Transactional
     public void setOrganizationDao(OrganizationDao organizationDao){

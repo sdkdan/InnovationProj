@@ -18,8 +18,11 @@ import java.util.Set;
 public class ProjectDao {
 
 
-    @Autowired
     private SessionFactory sessionFactory;
+
+    public ProjectDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void  setSessionFactory(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
@@ -27,9 +30,7 @@ public class ProjectDao {
 
     public Project findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Project project = (Project) session.get(Project.class, id);
-
-        return project;
+        return (Project) session.get(Project.class, id);
     }
 
 

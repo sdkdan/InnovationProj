@@ -20,12 +20,12 @@ import java.util.Set;
 @Service
 public class EventService {
 
-    public EventService(){
+    public EventService(EventDao eventDao){
 
+        this.eventDao = eventDao;
     }
 
-    @Autowired
-    private EventDao eventDao = new EventDao();
+    private EventDao eventDao;
 
     @Transactional
     public void setEventDao(EventDao eventDao){

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:form="http://www.springframework.org/tags/form" xmlns:th="http://www.thymeleaf.org">
+>
+<head>
+    <meta charset="utf-8">
+    <title>Регистрация</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+</head>
+
+<body>
+<div>
+    <form action="#" th:action="@{/registration}" th:object="${userForm}" method="post">
+        <div class="form-group">
+            <label>Имяпользователя</label>
+            <input type="text" class="form-control" th:field="*{username}"   placeholder="Разработка ...">
+        </div>
+        <div class="form-group">
+            <label>eMail</label>
+            <input type="text" class="form-control" th:field="*{eMail}" placeholder="URL">
+        </div>
+        <div class="form-group">
+            <label>Имя</label>
+            <input class="form-control" th:field="*{name}" placeholder="Санкт-Петербург">
+        </div>
+        <div class="form-group">
+            <label>Фамилия</label>
+            <textarea class="form-control" type="text" th:field="*{lastName}" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Пароль</label>
+            <textarea class="form-control" type="text" th:field="*{password}" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Повторите</label>
+            <textarea class="form-control" type="text" th:field="*{passwordConfirm}" rows="1"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Полетели</button>
+    </form>
+    <a href="/">Главная</a>
+</div>
+</body>
+</html>

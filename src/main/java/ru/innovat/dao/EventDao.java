@@ -14,8 +14,11 @@ import java.util.List;
 public class EventDao {
 
 
-    @Autowired
     private SessionFactory sessionFactory;
+
+    public EventDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void setSessionFactory(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
@@ -23,8 +26,7 @@ public class EventDao {
 
     public Event findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Event event = (Event) session.get(Event.class, id);
-        return event;
+        return (Event) session.get(Event.class, id);
     }
 
 
@@ -49,8 +51,7 @@ public class EventDao {
     @SuppressWarnings("unchecked")
     public List<Event> eventList() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Event> eventList = (List<Event>) session.createQuery("From Event").list();
-        return eventList;
+        return (List<Event>) session.createQuery("From Event").list();
     }
     public TypeEvent findTypeEventById(int id) {
         return this.sessionFactory.getCurrentSession().get(TypeEvent.class, id);
@@ -58,8 +59,7 @@ public class EventDao {
 
     @SuppressWarnings("unchecked")
     public List<TypeEvent> findAllTypeEvents() {
-        List<TypeEvent> typeEvents = (List<TypeEvent>)  this.sessionFactory.getCurrentSession().createQuery("From TypeEvent").list();
-        return typeEvents;
+        return (List<TypeEvent>)  this.sessionFactory.getCurrentSession().createQuery("From TypeEvent").list();
     }
 
     public Event eventAllConnection(int id){

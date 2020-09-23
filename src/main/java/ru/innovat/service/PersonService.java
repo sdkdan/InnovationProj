@@ -19,11 +19,11 @@ public class PersonService {
 
 
 
-    public PersonService(){
-
+    public PersonService(PersonDao personDao){
+        this.personDao = personDao;
     }
-    @Autowired
-    private PersonDao personDao = new PersonDao();
+
+    private PersonDao personDao;
 
     @Transactional
     public void setPersonDao(PersonDao personDao){

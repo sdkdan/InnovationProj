@@ -18,7 +18,7 @@ public class Person {
     private String name;
     @Column(name = "Third_name")
     private String third_Name;
-    @Column(name = "Phone_number_person")
+    @Column(name = "Phone_number")
     private String phone_number_person;
     @Column(name = "Date_of_birth")
     private String date_of_birth;
@@ -71,7 +71,7 @@ public class Person {
     @JoinTable(name = "organization_person",
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_organization")
-    )private Set<Organization> organizations = new HashSet<Organization>();
+    ) private Set<Organization> organizations = new HashSet<Organization>();
 
     public Set<Organization> getOrganizations() {
         return this.organizations;

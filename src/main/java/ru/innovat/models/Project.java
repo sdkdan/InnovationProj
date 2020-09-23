@@ -4,6 +4,7 @@ package ru.innovat.models;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -193,5 +194,19 @@ public class Project {
 
     public void setNumber_Phone_project(String number_Phone_project) {
         this.number_Phone_project = number_Phone_project;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Project project = (Project) o;
+        return id_project == project.id_project &&
+                name_project.equals(project.name_project);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_project, name_project);
     }
 }

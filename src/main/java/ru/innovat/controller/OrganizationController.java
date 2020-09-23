@@ -1,0 +1,110 @@
+package ru.innovat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import ru.innovat.models.Event;
+import ru.innovat.models.Organization;
+import ru.innovat.models.Person;
+import ru.innovat.models.Project;
+import ru.innovat.models.utils.Connect;
+import ru.innovat.service.EventService;
+import ru.innovat.service.OrganizationSevice;
+import ru.innovat.service.PersonService;
+import ru.innovat.service.ProjectService;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@Controller
+public class OrganizationController {
+    private final PersonService personService;
+    private final ProjectService projectService;
+    private final EventService eventService;
+    private final OrganizationSevice organizationService;
+
+    public OrganizationController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService) {
+        this.personService = personService;
+        this.projectService = projectService;
+        this.eventService = eventService;
+        this.organizationService = organizationService;
+    }
+    @RequestMapping(value = "/organization")
+    public String listorganization(Model model) {
+        List<Organization> list = organizationService.organizationList();
+        model.addAttribute("organizationList", list);
+        return "organization";
+    }
+
+    @RequestMapping(value = "/organization/add", method = RequestMethod.GET)
+    public String getAddorganization(Model model) {
+        model.addAttribute("organization", new Organization());
+        return "addOrg";
+    }
+
+    @RequestMapping(value = "/organization/add", method = RequestMethod.POST)
+    public String addOrganization(@ModelAttribute Organization organization, Model model) {
+        model.addAttribute("organization", organization);
+        organizationService.addOrganization(organization);
+        return "redirect:/organization/" + organization.getId_organization();
+    }
+
+    @GetMapping("organization/{id}/delete")
+    public String deleteOrganization(@PathVariable("id") int id, Model model) {
+        organizationService.deleteOrganiztion(id);
+        return "redirect:/organization";
+    }
+
+    @GetMapping("organization/{id}")
+    public String oneOrganization(@PathVariable("id") int id, Model model){
+        Organization organization = organizationService.organizationAllConnection(id);
+        model.addAttribute("organization", organization);
+        return "oneOrg";
+    }
+
+    @GetMapping("organization/{id}/con")
+    public String oneOrganizationAddCon(@PathVariable("id") int id, Model model){
+        Organization organization = organizationService.organizationAllConnection(id);
+        Connect con = new Connect();
+        List<Event> eventList = eventService.eventList();
+        List<Project> projectList = projectService.projectList();
+        List<Person> personList = personService.personList();
+        model.addAttribute("organization", organization);
+        model.addAttribute("events",eventList);
+        model.addAttribute("projects",projectList);
+        model.addAttribute("persons",personList);
+        model.addAttribute("con",con);
+        return "addOrganizationCon";
+    }
+
+    @RequestMapping(value = "/organization/{id}/con", method = RequestMethod.POST)
+    public String organizationAddCon(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect con, Model model) throws Exception {
+        model.addAttribute("organization" , organization);
+        model.addAttribute("con" , con);
+        System.out.println(con.getPerson_id());
+        if(con.getPerson_id() >= 1){
+            organizationService.updateOrganization(organizationService.addPerson(personService.findPerson(con.getPerson_id()), id));
+        }
+        if(con.getProject_Id() >= 1){
+            organizationService.updateOrganization(organizationService.addPoject(projectService.findProject(con.getProject_Id()),id));
+        }
+        if(con.getEvent_Id() >= 1){
+            organizationService.updateOrganization(organizationService.addEvent(eventService.findEvent(con.getEvent_Id()),id));
+        }
+        return "redirect:/organization/" + id;
+    }
+    @GetMapping("/organization/{id}/edit")
+    public String showOrganizationForm(@PathVariable("id") int id, Model model) {
+        Organization organization = organizationService.findOrganization(id);
+        model.addAttribute("organization", organization);
+        return "updateOrganization";
+    }
+    @PostMapping("organization/{id}/update")
+    public String updateOrganization(@PathVariable("id") int id, @Valid Organization organization,
+                                     BindingResult result, Model model) {
+        organization.setId_organization(id);
+        organizationService.updateOrganization(organization);
+        return "redirect:/organization/" + organization.getId_organization();
+    }
+}

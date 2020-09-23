@@ -61,7 +61,7 @@
             <div class="col border"><p>Комментарий</p></div>
             <div class="col border"><td th:utext="${person.getComment()}">..</td></div>
             <div class="w-100"></div>
-<!--            <div class="col border"><p>Мероприятия</p></div>-->
+            <div class="col border"><p>Мероприятия</p></div>
 <!--            <div class="col border"><td th:utext="${person.getPersonEvents()}">..</td></div>-->
 <!--            <div class="w-100"></div>-->
 <!--            <div class="col border"><p>Организации</p></div>-->
@@ -69,7 +69,7 @@
 <!--            <div class="w-100"></div>-->
 <!--            <div class="col border"><p>Проекты</p></div>-->
 <!--            <div class="col border"><td th:utext="${person.getPersonProj()}">..</td></div>-->
-<!--        </div>-->
+        </div>
             <div class="col-4   ">
 
 
@@ -102,74 +102,8 @@
                 <!--                </tr>>-->
 
             </div>
-        <form name='f' th:object="${personcon}" method='POST'>
-            <table>
-                <tr>
-                    <td>Select event:</td>
-                    <td>
-                        <select th:field="*{event_Id}">
-                            <option value="-1"> Select event </option>
-                            <option th:each="event : ${list}"
-                                    th:value="${event.id_event}"
-                                    th:text="${event.id_event}+' : '+${event.name_event}"></option>
-                        </select>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>Select project:</td>
-                    <td>
-                        <select th:field="*{project_Id}">
-                            <option value="-1"> Select project </option>
-                            <option th:each="project : ${projectlist}"
-                                    th:value="${project.id_project}"
-                                    th:text="${project.id_project}+' : '+${project.name_project}"></option>
-                        </select>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>Select organization:</td>
-                    <td>
-                        <select th:field="*{organization_Id}">
-                            <option value="-1"> Select organiization </option>
-                            <option th:each="org : ${orglist}"
-                                    th:value="${org.id_organization}"
-                                    th:text="${org.id_organization}+' : '+${org.name_organization}"></option>
-                        </select>
-<!--        <form name='f' th:object="${personcon}" method='POST'>-->
-<!--            <table>-->
-<!--                <tr>-->
-<!--                    <td>Select event:</td>-->
-<!--                    <td>-->
-<!--                        <select th:field="*{event_Id}">-->
-<!--                            <option th:each="event : ${list}"-->
-<!--                                    th:value="${event.id_event}"-->
-<!--                                    th:text="${event.id_event}+' : '+${event.name_event}"></option>-->
-<!--                        </select>-->
-
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>Select project:</td>-->
-<!--                    <td>-->
-<!--                        <select th:field="*{project_Id}">-->
-<!--                            <option th:each="project : ${projectlist}"-->
-<!--                                    th:value="${project.id_project}"-->
-<!--                                    th:text="${project.id_project}+' : '+${project.name_project}"></option>-->
-<!--                        </select>-->
-
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>Select organization:</td>-->
-<!--                    <td>-->
-<!--                        <select th:field="*{organization_Id}">-->
-<!--                            <option th:each="org : ${orglist}"-->
-<!--                                    th:value="${org.id_organization}"-->
-<!--                                    th:text="${org.id_organization}+' : '+${org.name_organization}"></option>-->
-<!--                        </select>-->
-
+</div>
 </div>
 </body>
 <script src="../static/js/jquery-3.2.1.js"></script>

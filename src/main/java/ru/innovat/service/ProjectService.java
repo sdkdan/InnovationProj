@@ -11,6 +11,7 @@ import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,12 +20,11 @@ import java.util.Set;
 @Service
 public class ProjectService {
 
-    public ProjectService(){
-
+    public ProjectService(ProjectDao projectDao){
+        this.projectDao = projectDao;
     }
 
-    @Autowired
-    private ProjectDao projectDao = new ProjectDao();
+    private ProjectDao projectDao;
 
     @Transactional
     public void setProjectDao(ProjectDao projectDao){
@@ -114,4 +114,11 @@ public class ProjectService {
         project.addOrganization(organization);
         return project;
     }
+
+//    @Transactional
+//    public List<Project> dropDownList(Set<Project> projects){
+//        List<Project> projectddl = projectDao.projectList();
+//        projectddl.removeAll(projects);
+//        return projectddl;
+//    }
 }

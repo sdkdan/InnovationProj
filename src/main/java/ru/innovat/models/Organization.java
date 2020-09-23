@@ -37,7 +37,7 @@ public class Organization {
         events.add(event);
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "organization_person",
             joinColumns = @JoinColumn(name = "id_organization"),
             inverseJoinColumns = @JoinColumn(name = "id_person"))

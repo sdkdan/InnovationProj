@@ -16,6 +16,7 @@
     <mapping class="ru.innovat.models.Person"/>
     <mapping class="ru.innovat.models.Project"/>
     <mapping class="ru.innovat.models.Event"/>
+    <mapping class="ru.innovat.models.Organization"/>
     <!--<mapping class="ru.innovat.models.ConMarketPerson"/>-->
     <!--<mapping class="ru.innovat.models.ConMarketProject"/>-->
     <!--<mapping class="ru.innovat.models.ConTechnologyOrganization"/>-->

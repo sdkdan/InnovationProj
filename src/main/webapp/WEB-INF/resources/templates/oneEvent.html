@@ -15,9 +15,9 @@
     <div class="pb-3">
             <a th:href="@{/event/{id}/edit(id=${event.id_event})}" class="btn btn-primary " role="button" aria-pressed="true">Изменить</a>
             <a th:href="@{/event/{id}/delete(id=${event.id_event})}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
-            <a type="button" class="btn btn-secondary" href="#">Добавить Персонал</a>
-            <a type="button" class="btn btn-secondary" href="#">Добавить Организации</a>
-            <a type="button" class="btn btn-secondary" href="#">Добавить Проекты</a>
+        <a th:href="@{/event/{id}/con(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить организацию</a>
+        <a th:href="@{/event/{id}/con(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить персонал</a>
+        <a th:href="@{/event/{id}/con(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить проект</a>
      </div>
 
         <!-- Modal -->

@@ -14,8 +14,11 @@ import java.util.List;
 @Repository
 public class OrganizationDao {
 
-    @Autowired
     private SessionFactory sessionFactory;
+
+    public OrganizationDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
 
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -49,8 +52,7 @@ public class OrganizationDao {
     @SuppressWarnings("unchecked")
     public List<Organization> organizationList() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Organization> organizationList = (List<Organization>) session.createQuery("From Organization").list();
-        return organizationList;
+        return (List<Organization>) session.createQuery("From Organization").list();
 
     }
 
