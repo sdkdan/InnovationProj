@@ -1,5 +1,8 @@
 package ru.innovat.models;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.*;
 import java.util.HashSet;
 
@@ -7,14 +10,17 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Indexed
 @Table(name = "person")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_person;
     @Column(name = "Surname")
+    @Field
     private String surname;
     @Column(name = "Name")
+    @Field
     private String name;
     @Column(name = "Third_name")
     private String third_Name;

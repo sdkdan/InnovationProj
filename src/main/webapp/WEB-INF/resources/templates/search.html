@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<ol>
+    <li th:each="user : ${searchResults}">
+        <b><span th:text="${user.name}"></span></b> -
+        <span th:text="${user.surname}"></span> -
+    </li>
+</ol>
+
+
+
+<br />
+<hr />
+
+
+
+</body>
+
+</html>

@@ -1,31 +1,38 @@
-package ru.innovat.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import ru.innovat.models.*;
-import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationSevice;
-import ru.innovat.service.PersonService;
-import ru.innovat.service.ProjectService;
-import ru.innovat.models.utils.*;
+        package ru.innovat.controller;
 
-import javax.validation.Valid;
-import java.util.List;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.stereotype.Controller;
+        import org.springframework.ui.Model;
+        import org.springframework.validation.BindingResult;
+        import org.springframework.web.bind.annotation.*;
+//import ru.innovat.Search.PersonSearch;
+        import ru.innovat.Search.PersonSearch;
+        import ru.innovat.models.*;
+        import ru.innovat.service.EventService;
+        import ru.innovat.service.OrganizationSevice;
+        import ru.innovat.service.PersonService;
+        import ru.innovat.service.ProjectService;
+        import ru.innovat.models.utils.*;
+
+        import javax.validation.Valid;
+        import java.util.ArrayList;
+        import java.util.List;
 
 @Controller
-public class PersonController {
-    private final PersonService personService;
+ public class PersonController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationSevice organizationService;
+    private final PersonSearch personSearch;
+    private final PersonService personService;
 
-    public PersonController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService) {
+    public PersonController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService, PersonSearch personSearch) {
         this.personService = personService;
         this.projectService = projectService;
         this.eventService = eventService;
         this.organizationService = organizationService;
+        this.personSearch = personSearch;
     }
     @RequestMapping(value = "/person")
     public String listPerson(Model model) {
@@ -70,8 +77,10 @@ public class PersonController {
         Connect personConnect = new Connect();
         List<Event> eventList = eventService.eventList();
         List<Project> projectList = projectService.projectList();
-        projectList.removeAll(person.getProjects());
         List<Organization> organizationList = organizationService.organizationList();
+        eventList.removeAll(person.getEvents());
+        projectList.removeAll(person.getProjects());
+        organizationList.removeAll(person.getOrganizations());
         model.addAttribute("list", eventList);
         model.addAttribute("projectlist", projectList);
         model.addAttribute("orglist", organizationList);
@@ -112,5 +121,16 @@ public class PersonController {
         person.setId_person(id);
         personService.updatePerson(person);
         return "redirect:/person/" + person.getId_person();
+    }
+
+    @RequestMapping("/search")
+    public String search(String q, Model model) {
+        List searchResults = null;
+
+        searchResults = personSearch.fuzzySearch(q);
+        System.out.println("TEST!!!!"+searchResults);
+
+        model.addAttribute("searchResults", searchResults);
+        return "search";
     }
 }
