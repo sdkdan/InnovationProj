@@ -1,13 +1,12 @@
 
         package ru.innovat.controller;
 
-        import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
         import org.springframework.validation.BindingResult;
         import org.springframework.web.bind.annotation.*;
 //import ru.innovat.Search.PersonSearch;
-        import ru.innovat.Search.PersonSearch;
+        import ru.innovat.search.PersonSearch;
         import ru.innovat.models.*;
         import ru.innovat.service.EventService;
         import ru.innovat.service.OrganizationSevice;
@@ -16,7 +15,6 @@
         import ru.innovat.models.utils.*;
 
         import javax.validation.Valid;
-        import java.util.ArrayList;
         import java.util.List;
 
 @Controller
@@ -125,11 +123,12 @@
 
     @RequestMapping("/search")
     public String search(String q, Model model) {
-        List searchResults = null;
-
-        searchResults = personSearch.fuzzySearch(q);
-        System.out.println("TEST!!!!"+searchResults);
-
+        List<Person> searchResults;
+        if(q==null){
+            searchResults = personService.personList();
+        }else {
+            searchResults = personSearch.fuzzySearch(q);
+        }
         model.addAttribute("searchResults", searchResults);
         return "search";
     }
