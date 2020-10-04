@@ -121,15 +121,18 @@
         return "redirect:/person/" + person.getId_person();
     }
 
-    @RequestMapping("/search")
-    public String search(String q, Model model) {
+    @RequestMapping(value = "/search")
+    public String search(String query, Model model) {
         List<Person> searchResults;
-        if(q==null){
+        model.addAttribute("query", query);
+        System.out.println(query);
+        if(query==null){
             searchResults = personService.personList();
         }else {
-            searchResults = personSearch.fuzzySearch(q);
+            searchResults = personSearch.fuzzySearch(query);
         }
         model.addAttribute("searchResults", searchResults);
         return "search";
     }
+
 }

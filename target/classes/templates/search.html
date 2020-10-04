@@ -2,9 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-<input type="search" placeholder="Search for any site"/>
+<!--<input type="search" placeholder="Search for any site"/>-->
+<!--<form action="#" th:action="@{/search}" th:name="${query}" method="post">-->
+<!--<input type="text" class="form-control" th:field="${query}">-->
+<!--<button type="submit" class="btn btn-primary">Полетели</button>-->
+<form th:action="@{/search}">
+    <input type="text" th:name="query"/>
+    <input type="submit"/>
+</form>
 <ol>
-    <input type="text" class="ui_search_field _field" id="im_dialogs_search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Поиск">
+
     <li th:each="user : ${searchResults}">
         <b><span th:text="${user.name}"></span></b> -
         <span th:text="${user.surname}"></span> -
@@ -17,7 +24,7 @@
 <hr />
 
 
-
+</form>
 </body>
 
 </html>
