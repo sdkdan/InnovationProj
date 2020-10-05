@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-<input type="search" placeholder="Search for any site"/>
 <ol>
-    <input type="text" class="ui_search_field _field" id="im_dialogs_search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Поиск">
+    <form th:action="@{/search}">
+        <input type="text" th:name="q"/>
+        <input type="submit"/>
+    </form>
     <li th:each="user : ${searchResults}">
         <b><span th:text="${user.name}"></span></b> -
         <span th:text="${user.surname}"></span> -

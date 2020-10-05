@@ -9,6 +9,7 @@ import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
+import ru.innovat.search.ProjectSearch;
 import ru.innovat.service.EventService;
 import ru.innovat.service.OrganizationSevice;
 import ru.innovat.service.PersonService;
@@ -23,17 +24,24 @@ public class ProjectController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationSevice organizationService;
+    private final ProjectSearch projectSearch;
 
-    public ProjectController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService) {
+    public ProjectController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService, ProjectSearch projectSearch) {
         this.personService = personService;
         this.projectService = projectService;
         this.eventService = eventService;
         this.organizationService = organizationService;
+        this.projectSearch = projectSearch;
     }
     @RequestMapping(value = "/project")
-    public String listProject(Model model) {
-        Iterable<Project> list = projectService.projectList();
-        model.addAttribute("projectList", list);
+    public String listProject(String q, Model model) {
+        List<Project> searchResults;
+        if(q!=null){
+        if(q.length()>0){
+            searchResults = projectSearch.fuzzySearch(q);
+        }else searchResults = projectService.projectList();
+        }else searchResults = projectService.projectList();
+        model.addAttribute("projectList", searchResults);
         return "project";
     }
 

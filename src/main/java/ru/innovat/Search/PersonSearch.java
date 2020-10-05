@@ -39,7 +39,6 @@ public class PersonSearch {
 
     @Transactional
     public List<Person> fuzzySearch(String searchTerm) {
-
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Person.class).get();
         Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("name","surname")

@@ -10,6 +10,10 @@
 
 
     <h1>Конкурсы</h1>
+<form th:action="@{/event}">
+    <input type="text" th:name="q"/>
+    <button type="submit" class="btn btn-primary">поиск</button>
+</form>
 <div class=" m-1 p-1">
     <a th:href="@{event/add}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
 </div>

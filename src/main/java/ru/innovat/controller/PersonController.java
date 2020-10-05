@@ -33,16 +33,19 @@
         this.personSearch = personSearch;
     }
     @RequestMapping(value = "/person")
-    public String listPerson(Model model) {
-        List<Person> list = personService.personList();
-        model.addAttribute("personList", list);
+    public String listPerson(String q, Model model) {
+        List<Person> searchResults;
+        if(q!=null){
+        if(q.length()>0){
+            searchResults = personSearch.fuzzySearch(q);
+        }else searchResults = personService.personList();
+        }else searchResults = personService.personList();
+        model.addAttribute("personList", searchResults);
         return "person";
     }
 
     @RequestMapping(value = "/person/add", method = RequestMethod.GET)
     public String getAddPerson(Model model) {
-        List eventList = eventService.eventList();
-        model.addAttribute("list", eventList);
         model.addAttribute("person", new Person());
         return "add";
     }
@@ -107,9 +110,7 @@
     @GetMapping("/person/{id}/edit")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Person person = personService.findPerson(id);
-        List eventList = eventService.eventList(); //лист эвентов для выпадащего списка
         model.addAttribute("person", person);
-        model.addAttribute("list", eventList);
         //  model.addAttribute("event", event);
         return "updatePerson";
     }
@@ -124,7 +125,7 @@
     @RequestMapping("/search")
     public String search(String q, Model model) {
         List<Person> searchResults;
-        if(q==null){
+        if(q!=null){
             searchResults = personService.personList();
         }else {
             searchResults = personSearch.fuzzySearch(q);
@@ -132,4 +133,6 @@
         model.addAttribute("searchResults", searchResults);
         return "search";
     }
+
+
 }

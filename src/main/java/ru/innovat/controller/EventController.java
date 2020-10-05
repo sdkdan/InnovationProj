@@ -8,6 +8,8 @@ import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
+import ru.innovat.models.utils.TypeEvent;
+import ru.innovat.search.EventSearch;
 import ru.innovat.service.EventService;
         import ru.innovat.service.OrganizationSevice;
         import ru.innovat.service.PersonService;
@@ -21,24 +23,31 @@ public class EventController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationSevice organizationService;
+    private final EventSearch eventSearch;
 
-    public EventController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService) {
+    public EventController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService, EventSearch eventSearch) {
         this.personService = personService;
         this.projectService = projectService;
         this.eventService = eventService;
         this.organizationService = organizationService;
+        this.eventSearch = eventSearch;
     }
     @RequestMapping(value = "/event")
-    public String listEvent(Model model) {
-        List<Event> list = eventService.eventList();
-        model.addAttribute("eventList", list);
+    public String listEvent(String q, Model model) {
+        List<Event> searchResults;
+        if(q!=null){
+        if(q.length()>0){
+            searchResults = eventSearch.fuzzySearch(q);
+        }else searchResults = eventService.eventList();
+        }else searchResults = eventService.eventList();
+        model.addAttribute("eventList", searchResults);
         return "event";
     }
 
     @RequestMapping(value = "/event/add", method = RequestMethod.GET)
     public String getAddEvent(Model model) {
         model.addAttribute("event", new Event());
-        List typeEventList = eventService.findAllTypeEvents();
+        List<TypeEvent> typeEventList = eventService.findAllTypeEvents();
         model.addAttribute("list", typeEventList);
         return "addevent";
     }
