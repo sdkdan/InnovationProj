@@ -1,6 +1,5 @@
 package ru.innovat.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.UserDao;
-import ru.innovat.models.User;
+import ru.innovat.models.AppUser;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,31 +33,31 @@ public class UserService implements UserDetailsService {
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(username);
+        AppUser appUser = userDao.findByUsername(username);
 
-        if (user == null) {
+        if (appUser == null) {
             throw new UsernameNotFoundException("User not found");
         }
 
-        return user;
+        return appUser;
     }
 
     @Transactional
-    public User findUserById(int userId) {
-        Optional<User> userFromDb = Optional.ofNullable(userDao.findById(userId));
-        return userFromDb.orElse(new User());
+    public AppUser findUserById(int userId) {
+        Optional<AppUser> userFromDb = Optional.ofNullable(userDao.findById(userId));
+        return userFromDb.orElse(new AppUser());
     }
 
     @Transactional
-    public boolean saveUser(User user) {
-        User userFromDB = userDao.findByUsername(user.getUsername());
+    public boolean saveUser(AppUser appUser) {
+        AppUser appUserFromDB = userDao.findByUsername(appUser.getUsername());
 
-        if (userFromDB != null) {
+        if (appUserFromDB != null) {
             return false;
         }
 
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userDao.add(user);
+        appUser.setPassword(bCryptPasswordEncoder.encode(appUser.getPassword()));
+        userDao.add(appUser);
         return true;
     }
 

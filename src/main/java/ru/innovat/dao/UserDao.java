@@ -1,57 +1,74 @@
 package ru.innovat.dao;
 
 
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.innovat.models.User;
+import ru.innovat.models.AppUser;
 
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+
 
 @Repository
 public class UserDao {
     private SessionFactory sessionFactory;
+    private EntityManager entityManager;
 
-    public UserDao(SessionFactory sessionFactory) {
+    public UserDao(SessionFactory sessionFactory, EntityManager entityManager) {
         this.sessionFactory = sessionFactory;
+        this.entityManager = entityManager;
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public User findById(int id) {
+    public AppUser findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class, id);
-        return user;
+        AppUser appUser = (AppUser) session.get(AppUser.class, id);
+        return appUser;
     }
 
 
-    public User findByUsername(String username) {
+    public AppUser findByUsername(String username) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User) session.createQuery("SELECT U FROM User U WHERE U.username = :username").setParameter("username", username).uniqueResult();;
-        return user;
+        AppUser appUser = (AppUser) session.createQuery("SELECT U FROM AppUser U WHERE U.username = :username").setParameter("username", username).uniqueResult();;
+        return appUser;
+    }
+
+    public AppUser findUserAccount(String userName) {
+        try {
+            String sql = "Select e from " + AppUser.class.getName() + " e " //
+                    + " Where e.userName = :userName ";
+
+            Query query = (Query) entityManager.createQuery(sql, AppUser.class);
+            query.setParameter("userName", userName);
+
+            return (AppUser) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
 
-
-    public void add(User user) {
+    public void add(AppUser appUser) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(user);
+        session.persist(appUser);
     }
 
-    public void update(User user) {
+    public void update(AppUser appUser) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(user);
+        session.update(appUser);
     }
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User) session.load(User.class, id);
+        AppUser appUser = (AppUser) session.load(AppUser.class, id);
 
-        if (user != null) {
-            session.delete(user);
+        if (appUser != null) {
+            session.delete(appUser);
         }
     }
 }
