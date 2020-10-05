@@ -32,14 +32,15 @@
         this.organizationService = organizationService;
         this.personSearch = personSearch;
     }
+
     @RequestMapping(value = "/person")
     public String listPerson(String q, Model model) {
         List<Person> searchResults;
-        if(q!=null){
-        if(q.length()>0){
-            searchResults = personSearch.fuzzySearch(q);
-        }else searchResults = personService.personList();
-        }else searchResults = personService.personList();
+        if (q != null) {
+            if (q.length() > 0) {
+                searchResults = personSearch.fuzzySearch(q);
+            } else searchResults = personService.personList();
+        } else searchResults = personService.personList();
         model.addAttribute("personList", searchResults);
         return "person";
     }
@@ -66,14 +67,14 @@
     }
 
     @GetMapping("person/{id}")
-    public String onePerson(@PathVariable("id") int id,Model model){
-        model.addAttribute("person",personService.personAllConnections(id));
+    public String onePerson(@PathVariable("id") int id, Model model) {
+        model.addAttribute("person", personService.personAllConnections(id));
         return "onePerson";
     }
 
 
     @GetMapping("person/{id}/con")
-    public String  onePersonCon(@PathVariable("id") int id, Model model){
+    public String onePersonCon(@PathVariable("id") int id, Model model) {
         Person person = personService.personAllConnections(id);
         Connect personConnect = new Connect();
         List<Event> eventList = eventService.eventList();
@@ -85,7 +86,7 @@
         model.addAttribute("list", eventList);
         model.addAttribute("projectlist", projectList);
         model.addAttribute("orglist", organizationList);
-        model.addAttribute("personcon",personConnect);
+        model.addAttribute("personcon", personConnect);
         model.addAttribute("person", person);
         return "addPersonCon";
     }
@@ -93,8 +94,8 @@
 
     @RequestMapping(value = "/person/{id}/con", method = RequestMethod.POST)
     public String personAddCon(@PathVariable("id") int id, @ModelAttribute Person person, Connect personcon, Model model) {
-        model.addAttribute("person", person );
-        model.addAttribute("personcon", personcon );
+        model.addAttribute("person", person);
+        model.addAttribute("personcon", personcon);
         if (personcon.getEvent_Id() >= 1) {
             personService.updatePerson(personService.addEvent(eventService.findEvent(personcon.getEvent_Id()), id));
         }
@@ -114,6 +115,7 @@
         //  model.addAttribute("event", event);
         return "updatePerson";
     }
+
     @PostMapping("person/{id}/update")
     public String updateUser(@PathVariable("id") int id, @Valid Person person,
                              BindingResult result, @ModelAttribute String event, Model model) {
@@ -121,18 +123,5 @@
         personService.updatePerson(person);
         return "redirect:/person/" + person.getId_person();
     }
-
-    @RequestMapping("/search")
-    public String search(String q, Model model) {
-        List<Person> searchResults;
-        if(q!=null){
-            searchResults = personService.personList();
-        }else {
-            searchResults = personSearch.fuzzySearch(q);
-        }
-        model.addAttribute("searchResults", searchResults);
-        return "search";
-    }
-
 
 }
