@@ -1,56 +1,44 @@
 package ru.innovat.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "user_role", //
-        uniqueConstraints = { //
-                @UniqueConstraint(name = "USER_ROLE_UK", columnNames = { "User_Id", "Role_Id" }) })
+@Table(name = "user_role")
 public class UserRole {
 
     @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id_user_role;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_Id", nullable = false)
-    private AppUser appUser;
+    @JoinColumn(name = "id_user")
+    private AppUser id_user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_Id", nullable = false)
-    private Role role;
+    @JoinColumn(name = "id_role")
+    private Role id_role;
 
-    public Long getId() {
-        return id;
+    public int getId_user_role() {
+        return id_user_role;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_user_role(int id_user_role) {
+        this.id_user_role = id_user_role;
     }
 
-    public AppUser getAppUser() {
-        return appUser;
+    public AppUser getId_user() {
+        return id_user;
     }
 
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
+    public void setId_user(AppUser id_user) {
+        this.id_user = id_user;
     }
 
-    public Role getRole() {
-        return role;
+    public Role getId_role() {
+        return id_role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setId_role(Role id_role) {
+        this.id_role = id_role;
     }
-
 }

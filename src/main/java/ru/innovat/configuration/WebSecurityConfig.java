@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import ru.innovat.service.UserDetailsServiceImpl;
 import ru.innovat.service.UserService;
 
 import javax.sql.DataSource;
@@ -21,10 +22,10 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     final
-    UserService userService;
+    UserDetailsServiceImpl userService;
     final DataSource dataSource;
 
-    public WebSecurityConfig(UserService userService, DataSource dataSource) {
+    public WebSecurityConfig(UserDetailsServiceImpl userService, DataSource dataSource) {
         this.userService = userService;
         this.dataSource = dataSource;
     }
@@ -58,11 +59,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 ////                .logoutSuccessUrl("/");
         httpSecurity.csrf().disable();
         // The pages does not require login
-        httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/event", "/organization", "/project").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project").permitAll();
 
         // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.
-        httpSecurity.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+        httpSecurity.authorizeRequests().antMatchers("/event").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
         // For ADMIN only.
         httpSecurity.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");

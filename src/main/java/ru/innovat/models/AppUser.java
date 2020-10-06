@@ -11,7 +11,7 @@ import java.util.Collection;
 public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    private int id_user;
     @Basic
     @Column(name = "password")
     private String password;
@@ -30,12 +30,12 @@ public class AppUser implements UserDetails {
     @Transient
     private String passwordConfirm;
 
-    public int getUser_id() {
-        return user_id;
+    public int getId_user() {
+        return id_user;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
     @Override
@@ -72,6 +72,10 @@ public class AppUser implements UserDetails {
         return true;
     }
 
+//    public void setEnabled(boolean enabled) {
+////        this.enabled = enabled;
+////    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -104,7 +108,7 @@ public class AppUser implements UserDetails {
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "user_id=" + id_user +
                 ", password='" + password + '\'' +
                 ", username='" + username + '\'' +
                 ", eMail='" + eMail + '\'' +

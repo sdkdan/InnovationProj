@@ -26,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        AppUser appUser = this.userDAO.findUserAccount(userName);
+        AppUser appUser = this.userDAO.findByUsername(userName);
 
         if (appUser == null) {
             System.out.println("User not found! " + userName);
@@ -36,8 +36,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("Found User: " + appUser);
 
         // [ROLE_USER, ROLE_ADMIN,..]
-        List<String> roleNames = this.roleDAO.getRoleNames((long) appUser.getUser_id());
-
+        //List<String> roleNames = this.roleDAO.getRoleNames((int) appUser.getId_user());
+        List<String> roleNames = this.roleDAO.getRoleNames((int) appUser.getId_user());
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         if (roleNames != null) {
             for (String role : roleNames) {

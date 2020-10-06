@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.innovat.dao.utils.WebUtils;
+import ru.innovat.models.AppUser;
 import ru.innovat.service.UserService;
 
 import javax.validation.Valid;
@@ -62,10 +63,10 @@ public class RegistrationController {
     public String accessDenied(Model model, Principal principal) {
 
         if (principal != null) {
-            User loginedUser = (User) ((Authentication) principal).getPrincipal();
+            AppUser loginedUser = (AppUser) ((Authentication) principal).getPrincipal();
 
-            String userInfo = WebUtils.toString(loginedUser);
-
+            //String userInfo = WebUtils.toString(loginedUser);
+            String userInfo = loginedUser.getName();
             model.addAttribute("userInfo", userInfo);
 
             String message = "Hi " + principal.getName() //
