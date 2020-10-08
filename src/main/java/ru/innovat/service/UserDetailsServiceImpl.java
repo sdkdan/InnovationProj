@@ -18,11 +18,14 @@ import java.util.List;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserDao userDAO;
+    private final UserDao userDAO;
 
-    @Autowired
-    private RoleDao roleDAO;
+    private final RoleDao roleDAO;
+
+    public UserDetailsServiceImpl(RoleDao roleDAO, UserDao userDAO) {
+        this.roleDAO = roleDAO;
+        this.userDAO = userDAO;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -33,24 +36,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("User " + userName + " was not found in the database");
         }
 
-        System.out.println("Found User: " + appUser);
-
-        // [ROLE_USER, ROLE_ADMIN,..]
-        //List<String> roleNames = this.roleDAO.getRoleNames((int) appUser.getId_user());
         List<String> roleNames = this.roleDAO.getRoleNames((int) appUser.getId_user());
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         if (roleNames != null) {
             for (String role : roleNames) {
-                // ROLE_USER, ROLE_ADMIN,..
                 GrantedAuthority authority = new SimpleGrantedAuthority(role);
                 grantList.add(authority);
             }
         }
 
-        UserDetails userDetails = (UserDetails) new User(appUser.getUsername(), //
+        return (UserDetails) new User(appUser.getUsername(), //
                 appUser.getPassword(), grantList);
-
-        return userDetails;
     }
 
 }

@@ -27,6 +27,9 @@ public class AppUser implements UserDetails {
     @Basic
     @Column(name = "last_name")
     private String lastName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_role")
+    private Role id_role;
     @Transient
     private String passwordConfirm;
 
@@ -72,9 +75,13 @@ public class AppUser implements UserDetails {
         return true;
     }
 
-//    public void setEnabled(boolean enabled) {
-////        this.enabled = enabled;
-////    }
+    public Role getId_role(Role role_user) {
+        return id_role;
+    }
+
+    public void setId_role(Role id_role) {
+        this.id_role = id_role;
+    }
 
     public void setPassword(String password) {
         this.password = password;

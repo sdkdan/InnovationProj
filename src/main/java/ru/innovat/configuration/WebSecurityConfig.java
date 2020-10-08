@@ -38,32 +38,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity
-////                .csrf()
-////                .disable()
-////                .authorizeRequests()
-////                //Доступ только для не зарегистрированных пользователей
-////                .antMatchers("/registration").not().fullyAuthenticated()
-////                //Все остальные страницы требуют аутентификации
-////                .anyRequest().authenticated()
-////                .and()
-////                //Настройка для входа в систему
-////                .formLogin()
-////                .loginPage("/login")
-////                //Перенарпавление на главную страницу после успешного входа
-////                .defaultSuccessUrl("/person")
-////                .permitAll()
-////                .and()
-////                .logout()
-////                .permitAll()
-////                .logoutSuccessUrl("/");
         httpSecurity.csrf().disable();
         // The pages does not require login
-        httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project","/event").permitAll();
 
         // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.
-        httpSecurity.authorizeRequests().antMatchers("/event").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**", "/project/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
         // For ADMIN only.
         httpSecurity.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
@@ -88,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Config Remember Me.
         httpSecurity.authorizeRequests().and() //
                 .rememberMe().tokenRepository(this.persistentTokenRepository()) //
-                .tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
+                .tokenValiditySeconds(24 * 60 * 60); // 24h
     }
 
     @Autowired
