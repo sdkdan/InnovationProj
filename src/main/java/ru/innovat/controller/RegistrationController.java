@@ -39,15 +39,15 @@ public class RegistrationController {
         return "welcomePage";
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminPage(Model model, Principal principal) {
-
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        String userInfo = loggedInUser.getName();
-        model.addAttribute("userInfo", userInfo);
-
-        return "adminPage";
-    }
+//    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+//    public String adminPage(Model model, Principal principal) {
+//
+//        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+//        String userInfo = loggedInUser.getName();
+//        model.addAttribute("userInfo", userInfo);
+//
+//        return "adminPage";
+//    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {

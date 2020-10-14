@@ -6,6 +6,15 @@ public class Connect { //вспомогательный класс для вып
     private int organization_Id;
     private int typeEvent_id;
     private int person_id;
+    private int role_id;
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
+    }
 
     public int getTypeEvent_id() {
         return typeEvent_id;

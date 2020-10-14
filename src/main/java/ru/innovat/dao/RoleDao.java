@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.AppUser;
+import ru.innovat.models.Person;
+import ru.innovat.models.Role;
 
 @Repository
 @Transactional
@@ -22,8 +24,11 @@ public class RoleDao {
     private final SessionFactory sessionFactory;
 
     public RoleDao(SessionFactory sessionFactory) {
-
         this.sessionFactory = sessionFactory;
+    }
+
+    public Role getRoleById(int id){
+        return sessionFactory.getCurrentSession().get(Role.class, id);
     }
 
     public List<String> getRoleNames(int id_user) {
@@ -32,6 +37,12 @@ public class RoleDao {
         List<String> appUser = new ArrayList<>();
         appUser.add(role);
         return appUser;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Role> roleList(){
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<Role>) session.createQuery("From Role").list();
     }
 
 }

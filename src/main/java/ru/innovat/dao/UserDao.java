@@ -7,8 +7,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.AppUser;
+import ru.innovat.models.Person;
 
-
+import java.util.List;
 
 
 @Repository
@@ -53,5 +54,11 @@ public class UserDao {
         if (appUser != null) {
             session.delete(appUser);
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<AppUser> userList() {
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<AppUser>) session.createQuery("From AppUser").list();
     }
 }
