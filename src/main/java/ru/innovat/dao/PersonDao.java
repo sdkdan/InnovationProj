@@ -53,7 +53,6 @@ public class PersonDao {
     public List<Person> personList() {
         Session session = this.sessionFactory.getCurrentSession();
         return (List<Person>) session.createQuery("From Person").list();
-
     }
 
     public Person personAllConnections(int id){

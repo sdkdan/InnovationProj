@@ -1,15 +1,19 @@
 package ru.innovat.dao;
 
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.innovat.models.User;
+import org.springframework.transaction.annotation.Transactional;
+import ru.innovat.models.AppUser;
+import ru.innovat.models.Person;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 @Repository
+@Transactional
 public class UserDao {
     private SessionFactory sessionFactory;
 
@@ -21,37 +25,40 @@ public class UserDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public User findById(int id) {
+    public AppUser findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class, id);
-        return user;
+        return (AppUser) session.get(AppUser.class, id);
     }
 
 
-    public User findByUsername(String username) {
+    public AppUser findByUsername(String username) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User) session.createQuery("SELECT U FROM User U WHERE U.username = :username").setParameter("username", username).uniqueResult();;
-        return user;
+        AppUser appUser = (AppUser) session.createQuery("SELECT U FROM AppUser U WHERE U.username = :username").setParameter("username", username).uniqueResult();;
+        return appUser;
     }
 
-
-
-    public void add(User user) {
+    public void add(AppUser appUser) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(user);
+        session.persist(appUser);
     }
 
-    public void update(User user) {
+    public void update(AppUser appUser) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(user);
+        session.update(appUser);
     }
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User) session.load(User.class, id);
+        AppUser appUser = (AppUser) session.load(AppUser.class, id);
 
-        if (user != null) {
-            session.delete(user);
+        if (appUser != null) {
+            session.delete(appUser);
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<AppUser> userList() {
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<AppUser>) session.createQuery("From AppUser").list();
     }
 }
