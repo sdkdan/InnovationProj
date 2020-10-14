@@ -12,6 +12,10 @@
  <!--Include _menu.html -->
  <th:block th:include="/menu"></th:block>
 <h1>Люди</h1>
+ <form th:action="@{/person}">
+     <input type="text" th:name="q"/>
+     <button type="submit" class="btn btn-primary">поиск</button>
+ </form>
  <div class=" m-1 p-1">
  <a th:href="@{person/add}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
  </div>

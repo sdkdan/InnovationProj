@@ -1,6 +1,9 @@
 package ru.innovat.models;
 
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -8,11 +11,13 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Indexed
 @Table(name = "project")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_project;
+    @Field
     @Column(name = "Name_project")
     private String name_project;
     @Column(name = "Essence_innovation")
