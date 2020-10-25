@@ -11,8 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import ru.innovat.service.UserDetailsServiceImpl;
+//import ru.innovat.service.UserDetailsServiceImpl;
 import ru.innovat.service.UserService;
+
 
 import javax.sql.DataSource;
 
@@ -22,10 +23,10 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     final
-    UserDetailsServiceImpl userService;
+    UserService userService;
     final DataSource dataSource;
 
-    public WebSecurityConfig(UserDetailsServiceImpl userService, DataSource dataSource) {
+    public WebSecurityConfig(UserService userService, DataSource dataSource) {
         this.userService = userService;
         this.dataSource = dataSource;
     }
@@ -44,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.
-        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**", "/project/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**", "/project/**", "/myprofile/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
         // For ADMIN only.
         httpSecurity.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
@@ -65,7 +66,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 // Config for Logout Page
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
-
         // Config Remember Me.
         httpSecurity.authorizeRequests().and() //
                 .rememberMe().tokenRepository(this.persistentTokenRepository()) //

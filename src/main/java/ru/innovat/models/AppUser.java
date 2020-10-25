@@ -32,6 +32,9 @@ public class AppUser implements UserDetails {
     private Role id_role;
     @Transient
     private String passwordConfirm;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_block", referencedColumnName = "id_block")
+    private Blocked blocked;
 
     public int getId_user() {
         return id_user;
@@ -75,7 +78,7 @@ public class AppUser implements UserDetails {
         return true;
     }
 
-    public Role getId_role(Role role_user) {
+    public Role getId_role() {
         return id_role;
     }
 

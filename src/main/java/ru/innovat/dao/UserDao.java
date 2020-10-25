@@ -4,10 +4,10 @@ package ru.innovat.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.AppUser;
-import ru.innovat.models.Person;
 
 import java.util.List;
 
@@ -46,6 +46,7 @@ public class UserDao {
         Session session = this.sessionFactory.getCurrentSession();
         session.update(appUser);
     }
+
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
