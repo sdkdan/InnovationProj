@@ -177,7 +177,7 @@ public class RegistrationController {
     public String profile(Model model){
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String userInfo = loggedInUser.getName();
-        AppUser user = (AppUser) userService.loadUserByUsername(userInfo);
+        AppUser user =  userService.findUserByUsername(userInfo);
         model.addAttribute("user", user);
         return "myprofile";
     }
@@ -186,7 +186,7 @@ public class RegistrationController {
     public String editProfile(Model model){
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String userInfo = loggedInUser.getName();
-        AppUser user1 = (AppUser) userService.loadUserByUsername(userInfo);
+        AppUser user1 = userService.findUserByUsername(userInfo);
         model.addAttribute("user", user1);
         return "editUser";
     }
@@ -194,7 +194,7 @@ public class RegistrationController {
     public String updateProfile(@Valid AppUser user) {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String userInfo = loggedInUser.getName();
-        AppUser appUser = (AppUser) userService.loadUserByUsername(userInfo);
+        AppUser appUser = userService.findUserByUsername(userInfo);
         user.setId_user(appUser.getId_user());
         user.setPassword(appUser.getPassword());
         user.setRole(appUser.getId_role());

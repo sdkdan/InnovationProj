@@ -4,7 +4,6 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="ab6f4db3-d5b4-4440-82ae-9ff155ae5b42" />
           <unit-entry name="sessionFactory" />
         </datasource-map>
         <naming-strategy-map />
@@ -26,6 +25,7 @@
       <configuration>
         <fileset id="fileset" name="WebSecurityConfig" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/ru/innovat/configuration/WebSecurityConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/ru/innovat/Application.java</file>
         </fileset>
       </configuration>
     </facet>
