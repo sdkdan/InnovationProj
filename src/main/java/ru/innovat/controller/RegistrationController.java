@@ -86,9 +86,8 @@ public class RegistrationController {
     public String accessDenied(Model model, Principal principal) {
 
         if (principal != null) {
-            AppUser loginedUser = (AppUser) ((Authentication) principal).getPrincipal();
-
-            String userInfo = loginedUser.getName();
+            Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+            String userInfo = loggedInUser.getName();
             model.addAttribute("userInfo", userInfo);
 
             String message = "Hi " + principal.getName() //
