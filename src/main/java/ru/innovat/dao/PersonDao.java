@@ -15,9 +15,11 @@ public class PersonDao {
 
 //    private static final Logger logger = LoggerFactory.getLogger(PersonDao.class);
 
-    @Autowired
     private SessionFactory sessionFactory;
 
+    public PersonDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
 
     public void setSessionFactory(SessionFactory sessionFactory) {

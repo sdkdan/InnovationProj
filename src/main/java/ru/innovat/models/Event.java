@@ -116,6 +116,9 @@ public class Event {
     @JoinColumn(name="id_type_event", insertable=false, updatable=false)
     private TypeEvent typeEvent;
 
+
+
+
     public TypeEvent getTypeEvent() {
         return typeEvent;
     }

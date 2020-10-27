@@ -1,25 +1,37 @@
 package ru.innovat.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 import ru.innovat.dao.utils.WebUtils;
 import ru.innovat.models.AppUser;
 import ru.innovat.models.Role;
+import ru.innovat.models.VerificationToken;
+import ru.innovat.service.EmailService;
 import ru.innovat.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.security.Principal;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,9 +39,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegistrationController {
 
     private final UserService userService;
+    private final EmailService emailService;
 
-    public RegistrationController(UserService userService) {
+
+    public RegistrationController(UserService userService, EmailService emailService) {
         this.userService = userService;
+        this.emailService = emailService;
     }
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
@@ -60,6 +75,7 @@ public class RegistrationController {
         model.addAttribute("title", "Logout");
         return "logoutSuccessfulPage";
     }
+
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String accessDenied(Model model, Principal principal) {
 
@@ -72,32 +88,83 @@ public class RegistrationController {
             String message = "Hi " + principal.getName() //
                     + "<br> You do not have permission to access this page!";
             model.addAttribute("message", message);
-
         }
 
         return "403Page";
     }
 
-    @GetMapping("/registration")
-    public String registration(Model model) {
-        model.addAttribute("userForm", new AppUser());
-        return "registration";
+
+    @RequestMapping(value="/register", method = RequestMethod.GET)
+    public ModelAndView displayRegistration(ModelAndView modelAndView, AppUser userEntity)
+    {
+        modelAndView.addObject("userForm", userEntity);
+        modelAndView.setViewName("register");
+        return modelAndView;
     }
 
-    @PostMapping("/registration")
-    public String addUser(@ModelAttribute("userForm") @Valid AppUser userForm, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return "registration";
+
+
+    @RequestMapping(value="/register", method = RequestMethod.POST)
+    public ModelAndView registerUser(ModelAndView modelAndView, AppUser appUser)
+    {
+
+
+        if(userService.checkEmail(appUser.getEMail()))
+        {
+            modelAndView.addObject("message","This email already exists!");
+            modelAndView.setViewName("error");
+        }else{
+            if(userService.checkUsername(appUser.getUsername())){
+                modelAndView.addObject("message","This username already exists!");
+                modelAndView.setViewName("error");
+            } else
+            {
+                userService.saveUser(appUser);
+
+                VerificationToken verificationToken = new VerificationToken(UUID.randomUUID().toString(),appUser);
+                System.out.println(verificationToken.getExpiryDate());
+                userService.saveToken(verificationToken);
+
+                emailService.sendEmail(appUser.getEMail(),verificationToken);
+
+                modelAndView.addObject("emailId", appUser.getEMail());
+
+                modelAndView.setViewName("successfulRegisteration");
+            }
         }
-        if (!userForm.getPassword().equals(userForm.getPasswordConfirm())){
-            model.addAttribute("passwordError", "Пароли не совпадают");
-            return "registration";
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView confirmUserAccount(ModelAndView modelAndView, @RequestParam("token")String Token)
+    {
+        VerificationToken verificationToken = userService.findByToken(Token);
+
+        if(verificationToken != null)
+        {
+
+            if(verificationToken.getExpiryDate().compareTo(new Date()) > 0) {
+                AppUser appUser = userService.findUserByUsername(verificationToken.getUser().getUsername());
+                appUser.setEnabled(true);
+                userService.update(appUser);
+                userService.deleteToken(verificationToken.getId_token());
+                modelAndView.setViewName("accountVerified");
+            }else{
+                modelAndView.addObject("message","Время действия ссылки истекло, мы отправили на вашу почту новое поддтвержение");
+                VerificationToken newVerificationToken = new VerificationToken(UUID.randomUUID().toString(),verificationToken.getUser());
+                System.out.println(newVerificationToken.getExpiryDate());
+                userService.saveToken(newVerificationToken);
+                userService.deleteToken(verificationToken.getId_token());
+            }
         }
-        if (!userService.saveUser(userForm)){
-            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "registration";
+        else
+        {
+            modelAndView.addObject("message","Данная ссылка не действительна либо сломана");
+            modelAndView.setViewName("error");
         }
 
-        return "redirect:/login";
+
+        return modelAndView;
     }
 }

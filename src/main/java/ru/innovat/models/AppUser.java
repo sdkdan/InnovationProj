@@ -32,6 +32,26 @@ public class AppUser implements UserDetails {
     private Role id_role;
     @Transient
     private String passwordConfirm;
+    @Column(name = "enabled")
+    private boolean enabled;
+
+    public AppUser() {
+        super();
+        this.enabled=false;
+        Role role = new Role();
+        role.setId_role(2);
+        role.setRoleName("ROLE_USER");
+
+        id_role = role;
+    }
+
+    public Role getId_role() {
+        return id_role;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public int getId_user() {
         return id_user;
@@ -72,14 +92,14 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 
-    public Role getId_role(Role role_user) {
+    public Role getRole() {
         return id_role;
     }
 
-    public void setId_role(Role id_role) {
+    public void setRole(Role id_role) {
         this.id_role = id_role;
     }
 
@@ -87,11 +107,11 @@ public class AppUser implements UserDetails {
         this.password = password;
     }
 
-    public String geteMail() {
+    public String getEMail() {
         return eMail;
     }
 
-    public void seteMail(String eMail) {
+    public void setEMail(String eMail) {
         this.eMail = eMail;
     }
 

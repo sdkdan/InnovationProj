@@ -41,8 +41,6 @@
 
     @RequestMapping(value = "/person/add", method = RequestMethod.GET)
     public String getAddPerson(Model model) {
-        List eventList = eventService.eventList();
-        model.addAttribute("list", eventList);
         model.addAttribute("person", new Person());
         return "add";
     }
@@ -107,9 +105,7 @@
     @GetMapping("/person/{id}/edit")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Person person = personService.findPerson(id);
-        List eventList = eventService.eventList(); //лист эвентов для выпадащего списка
         model.addAttribute("person", person);
-        model.addAttribute("list", eventList);
         //  model.addAttribute("event", event);
         return "updatePerson";
     }
