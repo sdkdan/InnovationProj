@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.RoleDao;
-<<<<<<< Updated upstream
 import ru.innovat.dao.UserDao;
 import ru.innovat.models.AppUser;
 import ru.innovat.models.Person;
@@ -20,7 +19,6 @@ import ru.innovat.models.Role;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-=======
 import ru.innovat.dao.TokenDao;
 import ru.innovat.dao.UserDao;
 import ru.innovat.models.AppUser;
@@ -29,8 +27,7 @@ import ru.innovat.models.VerificationToken;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
-import java.util.Calendar;
->>>>>>> Stashed changes
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,17 +37,12 @@ public class UserService implements UserDetailsService {
     @PersistenceContext
     private EntityManager em;
     UserDao userDao;
-<<<<<<< Updated upstream
     RoleDao roleDao;
-
-
-    public UserService(UserDao userDao,@Lazy BCryptPasswordEncoder bCryptPasswordEncoder, RoleDao roleDao) {
-=======
+    private AppUser user;
     TokenDao tokenDao;
-    final RoleDao roleDao;
+
 
     public UserService(UserDao userDao, @Lazy BCryptPasswordEncoder bCryptPasswordEncoder, TokenDao tokenDao, RoleDao roleDao) {
->>>>>>> Stashed changes
         this.userDao = userDao;
         this.roleDao = roleDao;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -88,14 +80,24 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public AppUser findUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser appUser = userDao.findByUsername(username);
+            AppUser appUser = userDao.findByUsername(username);
 
-        if (appUser == null) {
-            throw new UsernameNotFoundException("User not found");
+            if (appUser == null) {
+                throw new UsernameNotFoundException("User not found");
+            }
+
+            return appUser;
         }
 
-        return appUser;
+    public AppUser getUser() {
+        return user;
     }
+
+    public void setUser(AppUser user) {
+        this.user = user;
+    }
+
+
 
     @Transactional
     public boolean checkUsername(String username) {
@@ -103,16 +105,7 @@ public class UserService implements UserDetailsService {
         return appUserFromDB != null;
     }
 
-<<<<<<< Updated upstream
-        if (appUserFromDB != null) {
-            return false;
-        }
-//        Role role = new Role();
-//        role.setId_role(2);
-//        role.setRoleName("ROLE_USER");
-//
-//        appUser.setId_role(role);
-=======
+
     @Transactional
     public boolean checkEmail(String email) {
         AppUser appUserFromDB = userDao.findByUsername(email);
@@ -122,22 +115,13 @@ public class UserService implements UserDetailsService {
     @Transactional
     public void saveUser(AppUser appUser) {
 
->>>>>>> Stashed changes
         appUser.setPassword(bCryptPasswordEncoder.encode(appUser.getPassword()));
         userDao.add(appUser);
     }
 
-    @Transactional
-    public boolean deleteUser(int userId) {
-        if (userDao.findById(userId) != null) {
-            userDao.delete(userId);
-            return true;
-        }
-        return false;
-    }
+
 
     @Transactional
-<<<<<<< Updated upstream
     public void updateUser(AppUser user) {
         userDao.update(user);
     }
@@ -165,12 +149,12 @@ public class UserService implements UserDetailsService {
     @Transactional
     public AppUser setRole(Role role, int id){
         AppUser user =  userDao.findById(id);
-        user.setId_role(role);
+        user.setRole(role);
         return user;
     }
 
 
-=======
+
     public void deleteToken(int id){
         tokenDao.delete(id);
     }
@@ -185,6 +169,7 @@ public class UserService implements UserDetailsService {
     public VerificationToken findByToken(String Token){
         return tokenDao.findByToken(Token);
     }
+
     @Transactional
     public AppUser getUser(String token) {
         VerificationToken verificationToken = tokenDao.findByToken(token);
@@ -197,5 +182,4 @@ public class UserService implements UserDetailsService {
     public void update(AppUser appUser){
         userDao.update(appUser);
     }
->>>>>>> Stashed changes
 }

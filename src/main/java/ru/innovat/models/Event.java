@@ -7,22 +7,25 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 import ru.innovat.models.utils.TypeEvent;
 @Entity
+@Indexed
 @Table(name = "event", schema = "", catalog = "x92176f5_inovat")
 public class Event {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_event;
-    @Basic
     @Column(name = "Site_event")
     private String site_event;
-    @Basic
+    @Field
     @Column(name = "Name_event")
     private String name_event;
+    @Field
     @Column(name = "Importance_event")
     private String importance_event;
+    @Field
     @Column(name = "Scope_event")
     private String scope_event;
     @Column(name = "Description")

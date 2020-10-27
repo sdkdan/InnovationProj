@@ -7,6 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -17,7 +18,9 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ru.innovat.dao.utils.WebUtils;
 import ru.innovat.models.AppUser;
+import ru.innovat.models.Person;
 import ru.innovat.models.Role;
+
 import ru.innovat.models.VerificationToken;
 import ru.innovat.service.EmailService;
 import ru.innovat.service.UserService;
@@ -34,10 +37,13 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+//import ru.innovat.service.UserDetailsServiceImpl;
+import ru.innovat.service.UserService;
 
 @Controller
 public class RegistrationController {
 
+    //private final UserService userService;
     private final UserService userService;
     private final EmailService emailService;
 
@@ -157,8 +163,7 @@ public class RegistrationController {
                 userService.saveToken(newVerificationToken);
                 userService.deleteToken(verificationToken.getId_token());
             }
-        }
-        else
+        } else
         {
             modelAndView.addObject("message","Данная ссылка не действительна либо сломана");
             modelAndView.setViewName("error");
@@ -166,5 +171,34 @@ public class RegistrationController {
 
 
         return modelAndView;
+    }
+
+    @GetMapping("myprofile")
+    public String profile(Model model){
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String userInfo = loggedInUser.getName();
+        AppUser user = (AppUser) userService.loadUserByUsername(userInfo);
+        model.addAttribute("user", user);
+        return "myprofile";
+    }
+
+    @GetMapping("myprofile/edit")
+    public String editProfile(Model model){
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String userInfo = loggedInUser.getName();
+        AppUser user1 = (AppUser) userService.loadUserByUsername(userInfo);
+        model.addAttribute("user", user1);
+        return "editUser";
+    }
+    @PostMapping("myprofile/update")
+    public String updateProfile(@Valid AppUser user) {
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String userInfo = loggedInUser.getName();
+        AppUser appUser = (AppUser) userService.loadUserByUsername(userInfo);
+        user.setId_user(appUser.getId_user());
+        user.setPassword(appUser.getPassword());
+        user.setRole(appUser.getId_role());
+        userService.updateUser(user);
+        return "redirect:/myprofile";
     }
 }

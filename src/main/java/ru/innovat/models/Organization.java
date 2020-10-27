@@ -1,20 +1,26 @@
 package ru.innovat.models;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Indexed
 @Table(name = "organization")
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_organization;
+    @Field
     @Column(name = "Name_organization")
     private String name_organization;
     @Column(name = "Site_organization")
     private String site_organization;
     @Column(name = "City_organization")
+    @Field
     private String city_organization;
     @Column(name = "Notes_organization")
     private String notes_organization;

@@ -33,9 +33,14 @@
         this.personSearch = personSearch;
     }
     @RequestMapping(value = "/person")
-    public String listPerson(Model model) {
-        List<Person> list = personService.personList();
-        model.addAttribute("personList", list);
+    public String listPerson(String q, Model model) {
+        List<Person> searchResults;
+        if(q!=null){
+        if(q.length()>0){
+            searchResults = personSearch.fuzzySearch(q);
+        }else searchResults = personService.personList();
+        }else searchResults = personService.personList();
+        model.addAttribute("personList", searchResults);
         return "person";
     }
 
@@ -117,15 +122,6 @@
         return "redirect:/person/" + person.getId_person();
     }
 
-    @RequestMapping("/search")
-    public String search(String q, Model model) {
-        List<Person> searchResults;
-        if(q==null){
-            searchResults = personService.personList();
-        }else {
-            searchResults = personSearch.fuzzySearch(q);
-        }
-        model.addAttribute("searchResults", searchResults);
-        return "search";
-    }
+
+
 }

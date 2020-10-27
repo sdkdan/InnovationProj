@@ -13,3 +13,9 @@ out/
 *.war
 *.ear
 *.nar
+*.xml
+*.iml
+*.xml
+.idea/workspace.xml
+HibernateQuickStart.iml
+*.iml
