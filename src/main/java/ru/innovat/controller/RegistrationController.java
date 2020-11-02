@@ -88,7 +88,6 @@ public class RegistrationController {
         if (principal != null) {
             Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
             String userInfo = loggedInUser.getName();
-
             model.addAttribute("userInfo", userInfo);
 
             String message = "Hi " + principal.getName() //
