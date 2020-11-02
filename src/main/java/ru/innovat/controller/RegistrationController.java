@@ -86,9 +86,9 @@ public class RegistrationController {
     public String accessDenied(Model model, Principal principal) {
 
         if (principal != null) {
-            AppUser loginedUser = (AppUser) ((Authentication) principal).getPrincipal();
+            Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+            String userInfo = loggedInUser.getName();
 
-            String userInfo = loginedUser.getName();
             model.addAttribute("userInfo", userInfo);
 
             String message = "Hi " + principal.getName() //
@@ -186,10 +186,21 @@ public class RegistrationController {
     public String editProfile(Model model){
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String userInfo = loggedInUser.getName();
-        AppUser user1 = userService.findUserByUsername(userInfo);
-        model.addAttribute("user", user1);
+        AppUser user = userService.findUserByUsername(userInfo);
+        model.addAttribute("user", user);
         return "editUser";
     }
+
+    @GetMapping("myprofile/editpassword")
+    public String editPassword(Model model){
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String userInfo = loggedInUser.getName();
+        AppUser user = userService.findUserByUsername(userInfo);
+        model.addAttribute("user", user);
+        return "editPassword";
+    }
+
+
     @PostMapping("myprofile/update")
     public String updateProfile(@Valid AppUser user) {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();

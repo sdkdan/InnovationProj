@@ -21,20 +21,22 @@
         <th>Фамилия</th>
         <th>Почта</th>
         <th>Имя пользователя</th>
+        <th>Статус</th>
     </tr>
     </thead>
 <tbody>
 <tr th:each="user : ${users}">
     <td th:utext="${user.name}">..</td>
     <td th:utext="${user.lastName}">..</td>
-    <td th:utext="${user.eMail}">..</td>
+    <td th:utext="${user.getEMail()}">..</td>
     <td th:utext="${user.username}">..</td>
+    <td th:utext="${user.getStatusToString()}">..</td>
     <td>
         <div class="text-center">
 <!--            <a th:href="@{person/{id}/delete(id=${person.id_person})}"> <img src="../static/image/delete-16.svg" th:src="@{image/delete-16.svg}" alt="Удалить"  ></a>-->
 <!--            <a th:href="@{person/{id}/edit(id=${person.id_person})}"> <img src="../static/image/update-16.svg"  th:src="@{image/update-16.svg}" alt="Изменить" ></a>-->
-            <a th:href="@{user/{id}(id=${user.id_user})}"><img src="../static/image/show-16.png" th:src="@{image/show-16.png}" alt="Посмотреть"></a>
-            <a th:href="@{/user/{id}/ban(id=${user.id_user})}" class="btn btn-primary " role="button" aria-pressed="true">Заблокировать</a>
+            <a th:href="@{/admin/user/{id}(id=${user.id_user})}"><img src="../static/image/show-16.png" th:src="@{image/show-16.png}" alt="Посмотреть"></a>
+            <a th:href="@{/admin/user/{id}/ban(id=${user.id_user})}" class="btn btn-primary " role="button" aria-pressed="true">Заблокировать</a>
         </div>
     </td>
 </tr>

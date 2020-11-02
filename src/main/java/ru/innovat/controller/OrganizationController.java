@@ -102,12 +102,14 @@ public class OrganizationController {
         }
         return "redirect:/organization/" + id;
     }
+
     @GetMapping("/organization/{id}/edit")
     public String showOrganizationForm(@PathVariable("id") int id, Model model) {
         Organization organization = organizationService.findOrganization(id);
         model.addAttribute("organization", organization);
         return "updateOrganization";
     }
+
     @PostMapping("organization/{id}/update")
     public String updateOrganization(@PathVariable("id") int id, @Valid Organization organization,
                                      BindingResult result, Model model) {

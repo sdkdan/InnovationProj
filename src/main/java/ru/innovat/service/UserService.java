@@ -1,6 +1,7 @@
 package ru.innovat.service;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,25 +12,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.innovat.dao.RoleDao;
-import ru.innovat.dao.UserDao;
-import ru.innovat.models.AppUser;
-import ru.innovat.models.Person;
-import ru.innovat.models.Role;
+import ru.innovat.dao.*;
+import ru.innovat.models.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import ru.innovat.dao.TokenDao;
+
 import ru.innovat.dao.UserDao;
 import ru.innovat.models.AppUser;
-import ru.innovat.models.VerificationToken;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.ArrayList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -40,14 +37,15 @@ public class UserService implements UserDetailsService {
     RoleDao roleDao;
     private AppUser user;
     TokenDao tokenDao;
+    BlockedDao blockedDao;
 
 
-    public UserService(UserDao userDao, @Lazy BCryptPasswordEncoder bCryptPasswordEncoder, TokenDao tokenDao, RoleDao roleDao) {
+    public UserService(UserDao userDao, @Lazy BCryptPasswordEncoder bCryptPasswordEncoder, TokenDao tokenDao, RoleDao roleDao, BlockedDao blockedDao) {
         this.userDao = userDao;
         this.roleDao = roleDao;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.tokenDao = tokenDao;
-        this.roleDao = roleDao;
+        this.blockedDao = blockedDao;
     }
 
     final
@@ -64,6 +62,17 @@ public class UserService implements UserDetailsService {
         }
         if(!appUser.isEnabled()){
             throw new UsernameNotFoundException("Вы не поддтвердили почту " + userName + " ");
+        }
+        if(!appUser.isAccountNonLocked()){
+            SimpleDateFormat formatter = new SimpleDateFormat("yyy-MM-dd", Locale.ENGLISH);
+            try {
+                Date date = formatter.parse(blockedDao.findById(appUser.getBlocked().getId_blocked()).getEndDate());
+                if(!(date.compareTo(new Date()) <0)) throw new UsernameNotFoundException("Все ясно бан " + userName + " ");
+                appUser.setBlocked(null);
+                userDao.update(appUser);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         List<String> roleNames = this.roleDao.getRoleNames((int) appUser.getId_user());
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
@@ -88,15 +97,6 @@ public class UserService implements UserDetailsService {
 
             return appUser;
         }
-
-    public AppUser getUser() {
-        return user;
-    }
-
-    public void setUser(AppUser user) {
-        this.user = user;
-    }
-
 
 
     @Transactional
@@ -179,7 +179,18 @@ public class UserService implements UserDetailsService {
         return null;
     }
 
+    @Transactional
     public void update(AppUser appUser){
         userDao.update(appUser);
+    }
+
+    @Transactional
+    public void addBlocked(Blocked blocked){
+        blockedDao.add(blocked);
+    }
+
+    @Transactional
+    public Blocked getBlocked(int id){
+        return blockedDao.findById(id);
     }
 }

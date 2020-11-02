@@ -34,6 +34,9 @@ public class AppUser implements UserDetails {
     private String passwordConfirm;
     @Column(name = "enabled")
     private boolean enabled;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_blocked")
+    private Blocked blocked;
 
     public AppUser() {
         super();
@@ -82,7 +85,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return (blocked == null);
     }
 
     @Override
@@ -154,5 +157,19 @@ public class AppUser implements UserDetails {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Blocked getBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(Blocked blocked) {
+        this.blocked = blocked;
+    }
+
+    public String getStatusToString(){
+        if(isAccountNonLocked()){
+            return "Активен";
+        }else return "Заблокирован";
     }
 }

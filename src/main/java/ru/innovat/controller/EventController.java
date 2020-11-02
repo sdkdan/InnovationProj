@@ -109,6 +109,7 @@ public class EventController {
         model.addAttribute("event", event);
         return "updateEvent";
     }
+
     @PostMapping("event/{id}/update")
     public String updateEvent(@PathVariable("id") int id, @Valid Event event,
                               BindingResult result, Model model) {
