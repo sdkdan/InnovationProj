@@ -21,10 +21,9 @@ public class EmailService {
     public void sendEmail(String email, VerificationToken verificationToken) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(email);
-        mailMessage.setSubject("Complete Registration!");
-        mailMessage.setText("To confirm your account, please click here : "
+        mailMessage.setSubject("Завершите регистрацию");
+        mailMessage.setText("Что бы подтвердить почту перейдите по ссылке : "
                 +"http://localhost:8080/confirm-account?token="+ verificationToken.getToken());
         javaMailSender.send(mailMessage);
     }
-
 }

@@ -1,6 +1,6 @@
 package ru.innovat.models.utils;
 
-public class Connect { //вспомогательный класс для выпадающих списков
+public class Connect {
     private int event_Id;
     private int project_Id;
     private int organization_Id;

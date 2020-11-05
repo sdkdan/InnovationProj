@@ -1,19 +1,13 @@
 package ru.innovat.controller;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.innovat.dao.utils.WebUtils;
 import ru.innovat.models.AppUser;
 import ru.innovat.models.Blocked;
-import ru.innovat.models.Person;
-import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
-//import ru.innovat.service.UserDetailsServiceImpl;
 import ru.innovat.service.UserService;
 
 import javax.validation.Valid;

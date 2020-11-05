@@ -28,17 +28,4 @@ public class TypeEvent {
         this.name_type_event = name_type_event;
     }
 
-
-
-//    public Set<Event> getAttachments() {
-//        return attachments;
-//    }
-//
-//    public void setAttachments(Set<Event> attachments) {
-//        this.attachments = attachments;
-//    }
-
-//    @OneToMany(mappedBy = "type_event", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    private Set<Event> attachments = new HashSet<>();
-
 }

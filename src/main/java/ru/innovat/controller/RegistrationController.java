@@ -1,44 +1,26 @@
 package ru.innovat.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
-import ru.innovat.dao.utils.WebUtils;
 import ru.innovat.models.AppUser;
-import ru.innovat.models.Person;
-import ru.innovat.models.Role;
 
 import ru.innovat.models.VerificationToken;
 import ru.innovat.service.EmailService;
 import ru.innovat.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
-import java.security.Principal;
 import java.security.Principal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import ru.innovat.service.UserDetailsServiceImpl;
-import ru.innovat.service.UserService;
+
+
 
 @Controller
 public class RegistrationController {

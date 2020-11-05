@@ -15,12 +15,10 @@ public class Blocked {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
     private AppUser appUser;
-    @Basic
     @Column(name = "enddate")
     private String endDate;
     @Column(name = "startdate")
     private Date startDate;
-    @Basic
     @Column(name = "comment")
     private String comment;
 

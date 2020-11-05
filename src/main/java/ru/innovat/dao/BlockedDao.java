@@ -3,9 +3,7 @@ package ru.innovat.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.Blocked;
-import ru.innovat.models.VerificationToken;
 
 import java.util.List;
 
