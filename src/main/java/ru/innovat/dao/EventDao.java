@@ -20,7 +20,7 @@ public class EventDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public void setSessionFactory(SessionFactory sessionFactory){
+    public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
@@ -42,27 +42,29 @@ public class EventDao {
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Event event = (Event)session.load(Event.class, id);
+        Event event = (Event) session.load(Event.class, id);
 
-        if(event != null){
+        if (event != null) {
             session.delete(event);
         }
     }
+
     @SuppressWarnings("unchecked")
     public List<Event> eventList() {
         Session session = this.sessionFactory.getCurrentSession();
         return (List<Event>) session.createQuery("From Event").list();
     }
+
     public TypeEvent findTypeEventById(int id) {
         return this.sessionFactory.getCurrentSession().get(TypeEvent.class, id);
     }
 
     @SuppressWarnings("unchecked")
     public List<TypeEvent> findAllTypeEvents() {
-        return (List<TypeEvent>)  this.sessionFactory.getCurrentSession().createQuery("From TypeEvent").list();
+        return (List<TypeEvent>) this.sessionFactory.getCurrentSession().createQuery("From TypeEvent").list();
     }
 
-    public Event eventAllConnection(int id){
+    public Event eventAllConnection(int id) {
         Event event = findById(id);
         Hibernate.initialize(event.getPersons());
         Hibernate.initialize(event.getOrganizations());

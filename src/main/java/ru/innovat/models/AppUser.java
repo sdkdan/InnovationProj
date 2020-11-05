@@ -40,7 +40,7 @@ public class AppUser implements UserDetails {
 
     public AppUser() {
         super();
-        this.enabled=false;
+        this.enabled = false;
         Role role = new Role();
         role.setId_role(2);
         role.setRoleName("ROLE_USER");
@@ -167,9 +167,9 @@ public class AppUser implements UserDetails {
         this.blocked = blocked;
     }
 
-    public String getStatusToString(){
-        if(isAccountNonLocked()){
+    public String getStatusToString() {
+        if (isAccountNonLocked()) {
             return "Активен";
-        }else return "Заблокирован";
+        } else return "Заблокирован";
     }
 }

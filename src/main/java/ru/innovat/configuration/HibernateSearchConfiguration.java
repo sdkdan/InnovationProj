@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import ru.innovat.search.PersonSearch;
 
 
-
 @EnableAutoConfiguration
 @Configuration
 public class HibernateSearchConfiguration {

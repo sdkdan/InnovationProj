@@ -37,13 +37,13 @@
         .container .right {
             float: right;
             margin-left: 20px;
-            margin-right:0;
+            margin-right: 0;
         }
 
         .container .left {
             float: left;
             margin-right: 20px;
-            margin-left:0;
+            margin-left: 0;
         }
 
         .time-right {
@@ -74,8 +74,8 @@
     </thead>
     <tbody>
     <tr th:each="message : ${messages}">
-<!--        <td th:utext="${message.message}">..</td>-->
-<!--        <td th:utext="${message.time}">..</td>-->
+        <!--        <td th:utext="${message.message}">..</td>-->
+        <!--        <td th:utext="${message.time}">..</td>-->
         <div th:if="${!message.user_message}" class="container darker">
             <p th:utext="${message.message}" class="left">..</p>
             <span th:utext="${message.time}" class="time-left">..</span>

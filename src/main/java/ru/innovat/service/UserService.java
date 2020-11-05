@@ -1,7 +1,6 @@
 package ru.innovat.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,21 +11,23 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.innovat.dao.*;
-import ru.innovat.models.*;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import ru.innovat.dao.BlockedDao;
+import ru.innovat.dao.RoleDao;
+import ru.innovat.dao.TokenDao;
 import ru.innovat.dao.UserDao;
 import ru.innovat.models.AppUser;
+import ru.innovat.models.Blocked;
+import ru.innovat.models.Role;
+import ru.innovat.models.VerificationToken;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 
 @Service
@@ -60,14 +61,15 @@ public class UserService implements UserDetailsService {
             System.out.println("Пользователь не найден " + userName);
             throw new UsernameNotFoundException("Пользователь " + userName + " не найдет в базе данных");
         }
-        if(!appUser.isEnabled()){
+        if (!appUser.isEnabled()) {
             throw new UsernameNotFoundException("Вы не поддтвердили почту " + userName + " ");
         }
-        if(!appUser.isAccountNonLocked()){
+        if (!appUser.isAccountNonLocked()) {
             SimpleDateFormat formatter = new SimpleDateFormat("yyy-MM-dd", Locale.ENGLISH);
             try {
                 Date date = formatter.parse(blockedDao.findById(appUser.getBlocked().getId_blocked()).getEndDate());
-                if(!(date.compareTo(new Date()) <0)) throw new UsernameNotFoundException("Все ясно бан " + userName + " ");
+                if (!(date.compareTo(new Date()) < 0))
+                    throw new UsernameNotFoundException("Все ясно бан " + userName + " ");
                 appUser.setBlocked(null);
                 userDao.update(appUser);
             } catch (ParseException e) {
@@ -89,14 +91,14 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public AppUser findUserByUsername(String username) throws UsernameNotFoundException {
-            AppUser appUser = userDao.findByUsername(username);
+        AppUser appUser = userDao.findByUsername(username);
 
-            if (appUser == null) {
-                throw new UsernameNotFoundException("User not found");
-            }
-
-            return appUser;
+        if (appUser == null) {
+            throw new UsernameNotFoundException("User not found");
         }
+
+        return appUser;
+    }
 
 
     @Transactional
@@ -120,7 +122,6 @@ public class UserService implements UserDetailsService {
     }
 
 
-
     @Transactional
     public void updateUser(AppUser user) {
         userDao.update(user);
@@ -137,36 +138,35 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public List<Role> roleList(){
+    public List<Role> roleList() {
         return roleDao.roleList();
     }
 
     @Transactional
-    public Role getRoleById(int id){
+    public Role getRoleById(int id) {
         return roleDao.getRoleById(id);
     }
 
     @Transactional
-    public AppUser setRole(Role role, int id){
-        AppUser user =  userDao.findById(id);
+    public AppUser setRole(Role role, int id) {
+        AppUser user = userDao.findById(id);
         user.setRole(role);
         return user;
     }
 
 
-
-    public void deleteToken(int id){
+    public void deleteToken(int id) {
         tokenDao.delete(id);
     }
 
     @Transactional
-    public void saveToken(VerificationToken verificationToken){
+    public void saveToken(VerificationToken verificationToken) {
         tokenDao.add(verificationToken);
     }
 
 
     @Transactional
-    public VerificationToken findByToken(String Token){
+    public VerificationToken findByToken(String Token) {
         return tokenDao.findByToken(Token);
     }
 
@@ -180,17 +180,17 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public void update(AppUser appUser){
+    public void update(AppUser appUser) {
         userDao.update(appUser);
     }
 
     @Transactional
-    public void addBlocked(Blocked blocked){
+    public void addBlocked(Blocked blocked) {
         blockedDao.add(blocked);
     }
 
     @Transactional
-    public Blocked getBlocked(int id){
+    public Blocked getBlocked(int id) {
         return blockedDao.findById(id);
     }
 }

@@ -5,8 +5,7 @@ import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 import java.util.HashSet;
-
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -41,7 +40,20 @@ public class Person {
     @Column(name = "Comment")
     private String comment;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id_person == person.id_person &&
+                Objects.equals(surname, person.surname) &&
+                Objects.equals(name, person.name);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_person, surname, name);
+    }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "person_event",
@@ -50,15 +62,7 @@ public class Person {
     public Set<Event> events = new HashSet<>();
 
 
-//    public String getPersonEvents() {  //метод для отображения Мероприятий на личной странице
-//        String i = "";
-//        for (Event event : events
-//             ) {
-//          i +=  event.getName_event() + "; ";
-//        }
-//        return i;
-//    }
-    public Set<Event> getEvents(){
+    public Set<Event> getEvents() {
         return events;
     }
 
@@ -68,63 +72,49 @@ public class Person {
     }
 
 
-    public void addEvent(Event event){
+    public void addEvent(Event event) {
         events.add(event);
     }
 
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_person",
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_organization")
-    ) private Set<Organization> organizations = new HashSet<Organization>();
+    )
+    private Set<Organization> organizations = new HashSet<Organization>();
 
     public Set<Organization> getOrganizations() {
         return this.organizations;
     }
 
-//    public String getPersonOrg() {  //метод для отображения организаций на личной странице
-//        String i = "";
-//        for (Organization organization : organizations
-//        ) {
-//            i +=  organization.getName_organization() + "; ";
-//        }
-//        return i;
-//    }
 
     public void setOrganizations(Set<Organization> organizations) {
         this.organizations = organizations;
     }
 
-    public void addOrganization(Organization organization){
+    public void addOrganization(Organization organization) {
         organizations.add(organization);
     }
 
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "project_person",
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_project")
-    )private Set<Project> projects = new HashSet<Project>();
+    )
+    private Set<Project> projects = new HashSet<Project>();
 
     public Set<Project> getProjects() {
         return this.projects;
     }
 
-//    public String getPersonProj() {  //метод для отображения проектов на личной странице
-//        String i = "";
-//        for (Project project : projects
-//        ) {
-//            i +=  project.getName_project() + "; ";
-//        }
-//        return i;
-//    }
 
     public void setProjects(Set<Project> projects) {
         this.projects = projects;
     }
 
-    public void addProject(Project project){
+    public void addProject(Project project) {
         projects.add(project);
     }
 
@@ -144,7 +134,7 @@ public class Person {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -152,6 +142,7 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getThird_Name() {
         return third_Name;
     }
@@ -159,7 +150,7 @@ public class Person {
     public void setThird_Name(String third_Name) {
         this.third_Name = third_Name;
     }
-   
+
     public String getThirdName() {
         return third_Name;
     }
@@ -168,73 +159,73 @@ public class Person {
         this.third_Name = third_Name;
     }
 
-    public String getPhone_number_person(){
+    public String getPhone_number_person() {
         return phone_number_person;
     }
 
 
-    public void setPhone_number_person(String phone_number_person){
+    public void setPhone_number_person(String phone_number_person) {
         this.phone_number_person = phone_number_person;
     }
 
 
-    public String getDate_of_birth(){
+    public String getDate_of_birth() {
         return date_of_birth;
     }
 
 
-    public void setDate_of_birth(String date_of_birth){
+    public void setDate_of_birth(String date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 
-    public String  getRating(){
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(String rating){
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public String getE_mail(){
+    public String getE_mail() {
         return e_mail;
     }
 
-    public void setE_mail(String e_mail){
+    public void setE_mail(String e_mail) {
         this.e_mail = e_mail;
     }
 
 
-    public String getFacebook(){
+    public String getFacebook() {
         return facebook;
     }
 
-    public void setFacebook(String facebook){
+    public void setFacebook(String facebook) {
         this.facebook = facebook;
     }
 
-    public String getVk(){
+    public String getVk() {
         return vk;
     }
 
-    public void setVk(String vk){
+    public void setVk(String vk) {
         this.vk = vk;
     }
 
 
-    public String getTwitter(){
+    public String getTwitter() {
         return twitter;
     }
 
 
-    public void setTwitter(String twitter){
+    public void setTwitter(String twitter) {
         this.twitter = twitter;
     }
 
-    public String getComment(){
+    public String getComment() {
         return comment;
     }
 
-    public void setComment(String comment){
+    public void setComment(String comment) {
         this.comment = comment;
     }
 

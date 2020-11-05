@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:utext="${title}"></title>
+</head>
+<body>
+<!-- Include _menu.html -->
+<th:block th:include="/menu"></th:block>
+
+<h2>Admin Page</h2>
+<h3>Welcome :
+    <span th:utext="${#request.userPrincipal.name}"></span>
+</h3>
+<b>This is protected page!</b>
+
+<br/><br/>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Почта</th>
+        <th>Имя пользователя</th>
+        <th>Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:utext="${user.name}">..</td>
+        <td th:utext="${user.lastName}">..</td>
+        <td th:utext="${user.getEMail()}">..</td>
+        <td th:utext="${user.username}">..</td>
+        <td th:utext="${user.getStatusToString()}">..</td>
+        <td>
+            <div class="text-center">
+                <a th:href="@{/admin/user/{id}(id=${user.id_user})}"><img src="../../image/show-16.png"
+                                                                          th:src="@{../../image/show-16.png}"
+                                                                          alt="Посмотреть"></a>
+                <a th:href="@{/admin/user/{id}/ban(id=${user.id_user})}" class="btn btn-primary " role="button"
+                   aria-pressed="true">Заблокировать</a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+</html>

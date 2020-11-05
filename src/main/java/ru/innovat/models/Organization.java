@@ -5,6 +5,7 @@ import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -25,7 +26,21 @@ public class Organization {
     @Column(name = "Notes_organization")
     private String notes_organization;
 
-    @ManyToMany(fetch = FetchType.LAZY )
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Organization that = (Organization) o;
+        return id_organization == that.id_organization &&
+                Objects.equals(name_organization, that.name_organization);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_organization, name_organization);
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "organization_event",
             joinColumns = @JoinColumn(name = "id_organization"),
             inverseJoinColumns = @JoinColumn(name = "id_event"))
@@ -39,11 +54,11 @@ public class Organization {
         this.events = events;
     }
 
-    public void addEvent(Event event){
+    public void addEvent(Event event) {
         events.add(event);
     }
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_person",
             joinColumns = @JoinColumn(name = "id_organization"),
             inverseJoinColumns = @JoinColumn(name = "id_person"))
@@ -57,15 +72,16 @@ public class Organization {
         this.persons = persons;
     }
 
-    public void addPerson(Person person){
+    public void addPerson(Person person) {
         persons.add(person);
     }
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_project",
             joinColumns = @JoinColumn(name = "id_organization"),
             inverseJoinColumns = @JoinColumn(name = "id_project")
-    )private Set<Project> projects = new HashSet<Project>();
+    )
+    private Set<Project> projects = new HashSet<Project>();
 
     public Set<Project> getProjects() {
         return this.projects;
@@ -76,10 +92,9 @@ public class Organization {
         this.projects = projects;
     }
 
-    public void addProject(Project project){
+    public void addProject(Project project) {
         projects.add(project);
     }
-
 
 
     public int getId_organization() {

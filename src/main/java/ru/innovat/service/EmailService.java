@@ -1,6 +1,5 @@
 package ru.innovat.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
@@ -23,7 +22,7 @@ public class EmailService {
         mailMessage.setTo(email);
         mailMessage.setSubject("Завершите регистрацию");
         mailMessage.setText("Что бы подтвердить почту перейдите по ссылке : "
-                +"http://localhost:8080/confirm-account?token="+ verificationToken.getToken());
+                + "http://localhost:8080/confirm-account?token=" + verificationToken.getToken());
         javaMailSender.send(mailMessage);
     }
 }

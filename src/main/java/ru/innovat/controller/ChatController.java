@@ -24,9 +24,9 @@ public class ChatController {
 
 
     @GetMapping("/support")
-    public String oneEventAddCon(Model model){
+    public String oneEventAddCon(Model model) {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("messages",messagesService.userMessages(userService.findUserByUsername(loggedInUser.getName()).getId_user()));
+        model.addAttribute("messages", messagesService.userMessages(userService.findUserByUsername(loggedInUser.getName()).getId_user()));
         return "support";
     }
 
@@ -35,7 +35,6 @@ public class ChatController {
 //
 //        return "redirect:/support";
 //    }
-
 
 
 }

@@ -1,12 +1,9 @@
 package ru.innovat.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.OrganizationDao;
-import ru.innovat.dao.PersonDao;
 import ru.innovat.models.Event;
 import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
@@ -60,21 +57,21 @@ public class OrganizationSevice {
     @Transactional
     public Organization organizationAllConnection(int id){return organizationDao.organizationAllConnection(id);}
 
-    //Сохраняем связи при перезаписи
+
     @Transactional
     public Organization saveSets (Organization organization , int id){
-        //Находим иcходную организацию
+
         Organization organization1 = new Organization();
 
-        //Перезаписываем связи в измененную организацию
+
         organization.setEvents(organization1.getEvents());
         organization.setProjects(organization1.getProjects());
         organization.setPersons(organization1.getPersons());
 
-        //Перезаписываем id
+
         organization.setId_organization(id);
 
-        //Возврощаем измененную организацию с перезаписанными связями
+
         return organization;
     }
 
@@ -86,7 +83,7 @@ public class OrganizationSevice {
         Set<Event> events = new HashSet<>();
 
 
-        //Записываем эти Set'ы в организацию
+
         organization.setProjects(projects);
         organization.setEvents(events);
         organization.setPersons(persons);
