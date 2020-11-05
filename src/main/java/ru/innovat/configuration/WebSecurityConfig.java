@@ -39,36 +39,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
-        // The pages does not require login
+
         httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project","/event").permitAll();
 
-        // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
-        // If no login, it will redirect to /login page.
+
         httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**", "/project/**", "/myprofile/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
-        // For ADMIN only.
+
         httpSecurity.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
 
-        // When the user has logged in as XX.
-        // But access a page that requires role YY,
-        // AccessDeniedException will be thrown.
         httpSecurity.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
-        // Config for Login Form
-        httpSecurity.authorizeRequests().and().formLogin()//
-                // Submit URL of login page.
-                .loginProcessingUrl("/j_spring_security_check") // Submit URL
-                .loginPage("/login")//
-                .defaultSuccessUrl("/person")//
-                .failureUrl("/login?error=true")//
-                .usernameParameter("username")//
+        httpSecurity.authorizeRequests().and().formLogin()
+                .loginProcessingUrl("/j_spring_security_check")
+                .loginPage("/login")
+                .defaultSuccessUrl("/person")
+                .failureUrl("/login?error=true")
+                .usernameParameter("username")
                 .passwordParameter("password")
-                // Config for Logout Page
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
-        // Config Remember Me.
-        httpSecurity.authorizeRequests().and() //
-                .rememberMe().tokenRepository(this.persistentTokenRepository()) //
-                .tokenValiditySeconds(24 * 60 * 60); // 24h
+        httpSecurity.authorizeRequests().and()
+                .rememberMe().tokenRepository(this.persistentTokenRepository())
+                .tokenValiditySeconds(24 * 60 * 60);
     }
 
     @Autowired

@@ -81,6 +81,7 @@ public class EventController {
         model.addAttribute("con",con);
         return "addEventCon";
     }
+
     @RequestMapping(value = "/event/{id}/con", method = RequestMethod.POST)
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event, Connect con, Model model) throws Exception {
         model.addAttribute("event",event);

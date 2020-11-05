@@ -23,8 +23,10 @@ import java.util.List;
 
 @Controller
 public class AdminController {
+
     //private final UserService userService;
     private final UserService userService;
+
     public AdminController(UserService userService){
         this.userService = userService;
     }
@@ -33,7 +35,6 @@ public class AdminController {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String userInfo = loggedInUser.getName();
         List<AppUser> users = userService.userList();
-        System.out.println(userService.findUserByUsername(userInfo).getName());
         users.remove(userService.findUserByUsername(userInfo));
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("users", users);
@@ -82,7 +83,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/user/{id}/unban", method = RequestMethod.GET)
-    public String addProject(@PathVariable("id") int id, Model model) {
+    public String unban(@PathVariable("id") int id, Model model) {
         AppUser appUser = userService.findUser(id);
         appUser.setBlocked(null);
         userService.update(appUser);

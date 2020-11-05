@@ -2,6 +2,7 @@ package ru.innovat.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.OrganizationDao;
@@ -76,11 +77,10 @@ public class OrganizationSevice {
         //Возврощаем измененную организацию с перезаписанными связями
         return organization;
     }
-    //
-    //Удаляет все связи (для того что бцы при удалении объекта не вылетала ошибка)
+
+
     @Transactional
     public void deleteSets(Organization organization){
-        //Создаем пустые Set'ы для того что бы удалить все связи у организации
         Set<Project> projects = new HashSet<>();
         Set<Person> persons = new HashSet<>();
         Set<Event> events = new HashSet<>();
@@ -91,7 +91,7 @@ public class OrganizationSevice {
         organization.setEvents(events);
         organization.setPersons(persons);
 
-        //Перезаписываем персону с пустыми Set'ами(Связями)
+
         organizationDao.update(organization);
     }
 
