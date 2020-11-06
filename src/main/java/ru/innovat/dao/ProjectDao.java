@@ -69,8 +69,7 @@ public class ProjectDao {
     @SuppressWarnings("unchecked")
     public List<Project> projectList() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Project> projectList = (List<Project>) session.createQuery("From Project").list();
-        return projectList;
+        return (List<Project>) session.createQuery("From Project").list();
 
     }
 

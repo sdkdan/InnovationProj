@@ -3,6 +3,7 @@ package ru.innovat.models;
 import org.hibernate.search.annotations.Field;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Messages {
@@ -18,7 +19,7 @@ public class Messages {
     private AppUser appUser;
 
     @Column(name = "time")
-    private String time;
+    private Date time;
 
     @Column(name = "user_message")
     private Boolean user_message;
@@ -47,11 +48,11 @@ public class Messages {
         this.appUser = appUser;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -61,5 +62,14 @@ public class Messages {
 
     public void setUser_message(Boolean user_message) {
         this.user_message = user_message;
+    }
+
+    public Messages(String message, AppUser appUser, Date time, Boolean user_message) {
+        this.message = message;
+        this.appUser = appUser;
+        this.time = time;
+        this.user_message = user_message;
+    }
+    public Messages() {
     }
 }

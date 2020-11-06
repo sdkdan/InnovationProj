@@ -62,9 +62,13 @@
 <!--Include _menu.html -->
 <th:block th:include="/menu"></th:block>
 <h1>Люди</h1>
-<form th:action="@{/sendmessage}">
-    <input type="text" th:name="q"/>
-    <button type="submit" class="btn btn-primary">Отправить</button>
+<form action="#" th:action="@{/support/send}" th:object="${newMessage}" method="post">
+    <div class="form-group">
+        <div class="col-md-4">
+            <input type="text" class="form-control" th:field="*{message}" placeholder="Обязательное поле">
+        </div>
+    </div>
+    <input type="submit" value="Submit">
 </form>
 <table class="table">
     <thead>
@@ -74,8 +78,6 @@
     </thead>
     <tbody>
     <tr th:each="message : ${messages}">
-<!--        <td th:utext="${message.message}">..</td>-->
-<!--        <td th:utext="${message.time}">..</td>-->
         <div th:if="${!message.user_message}" class="container darker">
             <p th:utext="${message.message}" class="left">..</p>
             <span th:utext="${message.time}" class="time-left">..</span>

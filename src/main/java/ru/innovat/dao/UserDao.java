@@ -2,6 +2,7 @@ package ru.innovat.dao;
 
 
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.security.core.userdetails.User;
@@ -61,5 +62,11 @@ public class UserDao {
     public List<AppUser> userList() {
         Session session = this.sessionFactory.getCurrentSession();
         return (List<AppUser>) session.createQuery("From AppUser").list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<AppUser> roleUserList() {
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<AppUser>) session.createQuery("SELECT A From AppUser A WHERE A.id_role.id_role =:id").setParameter("id",2).list();
     }
 }

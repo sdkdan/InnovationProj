@@ -193,4 +193,9 @@ public class UserService implements UserDetailsService {
     public Blocked getBlocked(int id){
         return blockedDao.findById(id);
     }
+
+    @Transactional
+    public List<AppUser> roleUserList(){
+        return userDao.roleUserList();
+    }
 }

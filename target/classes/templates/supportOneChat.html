@@ -62,7 +62,7 @@
 <!--Include _menu.html -->
 <th:block th:include="/menu"></th:block>
 <h1>Люди</h1>
-<form action="#" th:action="@{/support/send}" th:object="${newMessage}" method="post">
+<form action="#" th:action="@{/supportu/{id}/send (id=${idUser})}" th:object="${newMessage}" method="post">
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control" th:field="*{message}" placeholder="Обязательное поле">

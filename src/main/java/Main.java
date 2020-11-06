@@ -10,10 +10,7 @@ import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) throws ParseException {
-        String dateInString = "2222-03-12";
-        SimpleDateFormat formatter = new SimpleDateFormat("yyy-MM-dd", Locale.ENGLISH);
-        Date date = formatter.parse(dateInString);
-        System.out.println(date);
+        System.out.println(new Date());
 
     }
 }
