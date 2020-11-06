@@ -44,7 +44,7 @@ public class EventController {
             } else searchResults = eventService.eventList();
         } else searchResults = eventService.eventList();
         model.addAttribute("eventList", searchResults);
-        return "event";
+        return "event/event";
     }
 
     @RequestMapping(value = "/event/add", method = RequestMethod.GET)
@@ -52,7 +52,7 @@ public class EventController {
         model.addAttribute("event", new Event());
         List<TypeEvent> typeEventList = eventService.findAllTypeEvents();
         model.addAttribute("list", typeEventList);
-        return "addevent";
+        return "event/addevent";
     }
 
     @RequestMapping(value = "/event/add", method = RequestMethod.POST)
@@ -60,14 +60,14 @@ public class EventController {
         model.addAttribute("event", event);
 
         eventService.addEvent(event);
-        return "redirect:/event/" + event.getId_event();
+        return "redirect:event/event/" + event.getId_event();
     }
 
     @GetMapping("event/{id}")
     public String oneEvent(@PathVariable("id") int id, Model model) {
         Event event = eventService.eventAllConnections(id);
         model.addAttribute("event", event);
-        return "oneEvent";
+        return "event/oneEvent";
     }
 
     @GetMapping("event/{id}/con")
@@ -82,7 +82,7 @@ public class EventController {
         model.addAttribute("projects", projectList);
         model.addAttribute("persons", personList);
         model.addAttribute("con", con);
-        return "addEventCon";
+        return "event/addEventCon";
     }
 
     @RequestMapping(value = "/event/{id}/con", method = RequestMethod.POST)
@@ -98,28 +98,27 @@ public class EventController {
         if (con.getOrganization_Id() >= 1) {
             eventService.updateEvent(eventService.addOrganization(organizationService.findOrganization(con.getOrganization_Id()), id));
         }
-        return "redirect:/event/" + id;
+        return "redirect:event/event/" + id;
     }
 
 
     @GetMapping("event/{id}/delete")
-    public String deleteEvent(@PathVariable("id") int id, Model model) {
+    public String deleteEvent(@PathVariable("id") int id) {
         eventService.deleteEvent(id);
-        return "redirect:/event";
+        return "redirect:event/event";
     }
 
     @GetMapping("/event/{id}/edit")
     public String showEventForm(@PathVariable("id") int id, Model model) {
         Event event = eventService.findEvent(id);
         model.addAttribute("event", event);
-        return "updateEvent";
+        return "event/updateEvent";
     }
 
     @PostMapping("event/{id}/update")
-    public String updateEvent(@PathVariable("id") int id, @Valid Event event,
-                              BindingResult result, Model model) {
+    public String updateEvent(@PathVariable("id") int id, @Valid Event event) {
         event.setId_event(id);
         eventService.updateEvent(event);
-        return "redirect:/event/" + event.getId_event();
+        return "redirect:event/event/" + event.getId_event();
     }
 }

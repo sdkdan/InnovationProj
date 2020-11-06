@@ -2,10 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-<!--<input type="search" placeholder="Search for any site"/>-->
-<!--<form action="#" th:action="@{/search}" th:name="${query}" method="post">-->
-<!--<input type="text" class="form-control" th:field="${query}">-->
-<!--<button type="submit" class="btn btn-primary">Полетели</button>-->
 <form th:action="@{/search}">
     <input type="text" th:name="query"/>
     <input type="submit"/>
@@ -19,9 +15,8 @@
 </ol>
 
 
-
-<br />
-<hr />
+<br/>
+<hr/>
 
 
 </form>

@@ -12,13 +12,14 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
+
 import org.hibernate.search.jpa.Search;
 import ru.innovat.models.Project;
 
 @Repository
 @Transactional
 public class ProjectSearch {
-    // Spring will inject here the entity manager object
+
     @PersistenceContext
     private final EntityManager entityManager;
 
@@ -46,13 +47,12 @@ public class ProjectSearch {
 
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Project.class);
 
-        //execute search
 
         List<Project> personList = null;
         try {
-            return  (List<Project>)jpaQuery.getResultList();
+            return (List<Project>) jpaQuery.getResultList();
         } catch (NoResultException nre) {
-            ;//do nothing
+
         }
 
         return null;

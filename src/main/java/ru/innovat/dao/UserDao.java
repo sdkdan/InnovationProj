@@ -1,11 +1,10 @@
 package ru.innovat.dao;
 
 
-
 import org.hibernate.Hibernate;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.AppUser;
@@ -34,7 +33,8 @@ public class UserDao {
 
     public AppUser findByUsername(String username) {
         Session session = this.sessionFactory.getCurrentSession();
-        AppUser appUser = (AppUser) session.createQuery("SELECT U FROM AppUser U WHERE U.username = :username").setParameter("username", username).uniqueResult();;
+        AppUser appUser = (AppUser) session.createQuery("SELECT U FROM AppUser U WHERE U.username = :username").setParameter("username", username).uniqueResult();
+        ;
         return appUser;
     }
 

@@ -1,0 +1,41 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+</head>
+<body>
+<th:block th:include="/menu"></th:block>
+<form action="#" th:action="@{/register}" th:object="${userForm}" method="post">
+    <table>
+        <div class="form-group">
+            <label>Имя пользователя</label>
+            <input type="text" class="form-control" th:field="*{username}" placeholder="Разработка ...">
+        </div>
+        <div class="form-group">
+            <label>eMail</label>
+            <input type="text" class="form-control" th:field="*{eMail}" placeholder="URL">
+        </div>
+        <div class="form-group">
+            <label>Имя</label>
+            <input class="form-control" th:field="*{name}" placeholder="Санкт-Петербург">
+        </div>
+        <div class="form-group">
+            <label>Фамилия</label>
+            <textarea class="form-control" type="text" th:field="*{lastName}" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Пароль</label>
+            <textarea class="form-control" type="text" th:field="*{password}" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Повторите</label>
+            <textarea class="form-control" type="text" th:field="*{passwordConfirm}" rows="1"></textarea>
+        </div>
+        <tr>
+            <td><input type="reset" value="Clear"/></td>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

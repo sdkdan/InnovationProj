@@ -19,7 +19,7 @@ public class VerificationToken {
     @JoinColumn(nullable = false, name = "id_user")
     private AppUser user;
 
-    @Column(name="expirydate")
+    @Column(name = "expirydate")
     private Date expiryDate;
 
     public VerificationToken() {

@@ -1,10 +1,7 @@
 package ru.innovat.models;
 
-import org.hibernate.search.annotations.Indexed;
-
 import javax.persistence.*;
 import java.util.Date;
-
 
 @Entity
 @Table(name = "blocked")

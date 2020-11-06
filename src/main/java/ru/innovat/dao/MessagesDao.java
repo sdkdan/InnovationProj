@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public class MessagesDao {
-    
+
     SessionFactory sessionFactory;
 
 
@@ -21,21 +21,21 @@ public class MessagesDao {
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-    
-    public void add(Messages messages){
+
+    public void add(Messages messages) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(messages);
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(id);
     }
 
 
     @SuppressWarnings("unchecked")
-    public List<Messages> userMessages(int id){
+    public List<Messages> userMessages(int id) {
         Session session = sessionFactory.getCurrentSession();
-        return (List<Messages>)session.createQuery("SELECT M FROM Messages M where appUser.id_user =:id").setParameter("id", id).list();
+        return (List<Messages>) session.createQuery("SELECT M FROM Messages M where appUser.id_user =:id").setParameter("id", id).list();
     }
 }

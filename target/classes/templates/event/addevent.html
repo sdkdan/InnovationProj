@@ -1,0 +1,77 @@
+<! DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" type="text/css">
+
+</head>
+<body>
+<th:block th:include="/menu"></th:block>
+<div class="container">
+
+    <h1> Мероприятие</h1>
+    <h3>Форма для вставки новых мероприятий</h3>
+    <!-- форма -->
+    <form action="#" th:action="@{/event/add}" th:object="${event}" method="post">
+        <div class="form-group">
+            <label>Название</label>
+            <input type="text" class="form-control" th:field="*{name_event}" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+            <label>Сайт</label>
+            <input type="text" class="form-control" th:field="*{site_event}" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+            <label>Важность</label>
+            <textarea class="form-control" th:field="*{importance_event}" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Cфера</label>
+            <input type="text" class="form-control" th:field="*{scope_event}" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>Описание</label>
+            <textarea class="form-control" th:field="*{description}" rows="3">Обязательно</textarea>
+        </div>
+        <div class="form-group">
+            <label>Телефонный номер</label>
+            <input type="tel" class="form-control" th:field="*{phone_number}" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>Дата мероприятия</label>
+            <input type="date" class="form-control" th:field="*{date_event}" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>Комментарий</label>
+            <textarea class="form-control" th:field="*{comment}" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Призы</label>
+            <input type="text" class="form-control" th:field="*{prizes}" placeholder="">
+            <div class="form-group">
+                <label>Место проведения</label>
+                <input type="text" class="form-control" th:field="*{location_event}" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Тип мероприятия</label>
+            <select th:field="*{idTypeEvent}">
+                <option th:each="type : ${list}"
+                        th:value="${type.id_type_event}"
+                        th:text="${type.getName_type_event()}">Events
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Полетели</button>
+    </form>
+
+</div>
+</body>
+<script src="../../static/js/jquery-3.2.1.js"></script>
+<script src="../../static/js/popper.min.js"></script>
+<script src="../../static/js/bootstrap.min.js"></script>
+<script th:src="@{../../static/js/bootstrap-formhelpers-phone.js}"></script>
+<!--<script src="../static/css/js/bootstrap-formhelpers-datepicker.js"></script>-->
+</html>

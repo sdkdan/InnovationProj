@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+
+<body>
+<th:block th:include="/menu"></th:block>
+<h1 class="m-3">Проекты</h1>
+<form th:action="@{/templates/project}">
+    <input type="text" th:name="q"/>
+    <button type="submit" class="btn btn-primary">поиск</button>
+</form>
+<div class="container-fluid ">
+    <div class=" m-3 ">
+        <a th:href="@{project/add}" class="btn btn-primary " role="button" aria-pressed="true">Добавить</a>
+    </div>
+
+    <table class="table ">
+        <thead>
+        <tr>
+            <th class="text-center border">Название</th>
+            <th class=" text-center border">Сайт</th>
+            <th class="text-center border">Описание</th>
+            <th class="text-center border">Возможности</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="project : ${projectList}">
+            <td th:utext="${project.name_project}" class="w-25 border ">..</td>
+            <td th:utext="${project.site_project}" class="w-25 border">..</td>
+            <td th:utext="${project.project_description}" class=" w-25 border">..</td>
+            <td class="border">
+                <div class="text-center ">
+                    <a th:href="@{project/{id}/delete(id=${project.id_project})}"> <img
+                            src="../../static/image/delete-16.svg" th:src="@{../../image/delete-16.svg}" alt="Удалить"></a>
+                    <a th:href="@{project/{id}/edit(id=${project.id_project})}"> <img
+                            src="../../static/image/update-16.svg" th:src="@{../../image/update-16.svg}" alt="Изменить"></a>
+                    <a th:href="@{project/{id}(id=${project.id_project})}"><img src="../../static/image/show-16.png"
+                                                                                th:src="@{../../image/show-16.png}"
+                                                                                alt="Посмотреть"></a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

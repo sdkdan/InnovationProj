@@ -1,7 +1,5 @@
 package ru.innovat.models;
 
-import org.hibernate.search.annotations.Field;
-
 import javax.persistence.*;
 import java.util.Date;
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+<!--выводим отдельную запись -->
+<th:block th:include="/menu"></th:block>
+<div class="container">
+    <div class="pb-3">
+        <a th:href="@{/myprofile/edit}" class="btn btn-primary " role="button" aria-pressed="true">Изменить</a>
+        <a th:href="@{/logout}" class="btn btn-primary " role="button" aria-pressed="true">Выйти из профиля</a>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Вы уверены , что хотите удалить запись ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</a>
+                    <a type="button" class="btn btn-primary" href="../person/person.html">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row border pb-3">
+
+        <div class="col border "><p>Имя</p></div>
+        <div class="col border">
+            <td th:utext="${user.getName()}">..</td>
+        </div>
+        <div class="w-100"></div>
+        <div class="col border"><p>Фамилия</p></div>
+        <div class="col border ">
+            <td th:utext="${user.getLastName()}">..</td>
+        </div>
+        <div class="w-100"></div>
+        <div class="col border"><p>Почта</p></div>
+        <div class="col border">
+            <td th:utext="${user.getEMail()}">..</td>
+        </div>
+        <div class="w-100"></div>
+        <div class="col border"><p>Имя пользователя</p></div>
+        <div class="col border">
+            <td th:utext="${user.getUsername()}">..</td>
+        </div>
+        <div class="w-100"></div>
+    </div>
+
+
+</div>
+</div>
+</body>
+<script src="../../static/js/jquery-3.2.1.js"></script>
+<script src="../../static/js/popper.min.js"></script>
+<script src="../../static/js/bootstrap.min.js"></script>
+<html>

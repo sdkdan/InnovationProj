@@ -1,0 +1,44 @@
+! DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" type="text/css">
+
+</head>
+<body>
+<th:block th:include="/menu"></th:block>
+<div class="container">
+
+    <h1> Организации</h1>
+    <h3>Форма редактирования</h3>
+
+    <form action="#" th:action="@{/organization/{id}/update (id=${organization.id_organization})}"
+          th:object="${organization}" method="post">
+        <div class="form-group">
+            <label>Название</label>
+            <input type="text" class="form-control" th:field="*{name_organization}" placeholder="Разработка ...">
+        </div>
+        <div class="form-group">
+            <label>Сайт</label>
+            <input type="text" class="form-control" th:field="*{site_organization}" placeholder="URL">
+        </div>
+        <div class="form-group">
+            <label>Город</label>
+            <input class="form-control" th:field="*{city_organization}" placeholder="Санкт-Петербург">
+        </div>
+        <div class="form-group">
+            <label>Комментарий</label>
+            <textarea class="form-control" type="text" th:field="*{notes_organization}" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Полетели</button>
+    </form>
+
+</div>
+</body>
+<script src="../../static/js/jquery-3.2.1.js"></script>
+<script src="../../static/js/popper.min.js"></script>
+<script src="../../static/js/bootstrap.min.js"></script>
+<script th:src="@{../../static/js/bootstrap-formhelpers-phone.js}"></script>
+<!--<script src="../static/css/js/bootstrap-formhelpers-datepicker.js"></script>-->
+</html>
