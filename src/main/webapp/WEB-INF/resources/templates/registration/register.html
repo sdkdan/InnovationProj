@@ -9,15 +9,15 @@
     <table>
         <div class="form-group">
             <label>Имя пользователя</label>
-            <input type="text" class="form-control" th:field="*{username}" placeholder="Разработка ...">
+            <input type="text" class="form-control" th:field="*{username}" >
         </div>
         <div class="form-group">
             <label>eMail</label>
-            <input type="text" class="form-control" th:field="*{eMail}" placeholder="URL">
+            <input type="text" class="form-control" th:field="*{eMail}" >
         </div>
         <div class="form-group">
             <label>Имя</label>
-            <input class="form-control" th:field="*{name}" placeholder="Санкт-Петербург">
+            <input class="form-control" th:field="*{name}" >
         </div>
         <div class="form-group">
             <label>Фамилия</label>
@@ -25,11 +25,11 @@
         </div>
         <div class="form-group">
             <label>Пароль</label>
-            <textarea class="form-control" type="text" th:field="*{password}" rows="1"></textarea>
+            <input type="password" th:field="*{password}" rows="1"></textarea>
         </div>
         <div class="form-group">
             <label>Повторите</label>
-            <textarea class="form-control" type="text" th:field="*{passwordConfirm}" rows="1"></textarea>
+            <input type="password" th:field="*{passwordConfirm}" rows="1"></textarea>
         </div>
         <tr>
             <td><input type="reset" value="Clear"/></td>

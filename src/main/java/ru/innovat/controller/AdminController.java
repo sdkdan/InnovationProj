@@ -72,7 +72,7 @@ public class AdminController {
         userService.addBlocked(blocked);
         user.setBlocked(userService.getBlocked(blocked.getId_blocked()));
         userService.update(user);
-        return "redirect:" + id;
+        return "redirect:" ;
     }
 
     @RequestMapping(value = "/admin/user/{id}/unban", method = RequestMethod.GET)
@@ -80,6 +80,6 @@ public class AdminController {
         AppUser appUser = userService.findUser(id);
         appUser.setBlocked(null);
         userService.update(appUser);
-        return "redirect:" + id;
+        return "redirect:";
     }
 }

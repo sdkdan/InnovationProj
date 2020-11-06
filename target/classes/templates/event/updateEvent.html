@@ -64,6 +64,15 @@
             <label>Место проведения</label>
             <input type="text" class="form-control" th:field="*{location_event}" placeholder="Обязательное поле">
         </div>
+        <div class="form-group">
+            <label>Тип мероприятия</label>
+            <select th:field="*{idTypeEvent}">
+                <option th:each="type : ${list}"
+                        th:value="${type.id_type_event}"
+                        th:text="${type.getName_type_event()}">Events
+                </option>
+            </select>
+        </div>
 
 
         <button type="submit" class="btn btn-primary">Полетели</button>

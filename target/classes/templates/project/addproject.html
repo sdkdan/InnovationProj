@@ -16,7 +16,7 @@
     <form action="#" th:action="@{/project/add}" th:object="${project}" method="post">
         <div class="form-group">
             <label>Название</label>
-            <input type="text" class="form-control" th:field="*{name_project}" placeholder="Нужно">
+            <input type="text" class="form-control" th:field="*{name_project}" placeholder="Обязательное поле">
         </div>
         <div class="form-group">
             <label for="exampleTextarea">Суть инновации</label>

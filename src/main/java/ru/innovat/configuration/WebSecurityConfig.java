@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project", "/event").permitAll();
 
 
-        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**", "/project/**", "/myprofile/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**", "/project/**", "/myprofile/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_SUPPORT')");
 
         httpSecurity.authorizeRequests().antMatchers("/supportu/**").access("hasAnyRole('ROLE_SUPPORT')");
 

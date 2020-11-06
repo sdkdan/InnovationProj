@@ -81,6 +81,9 @@ public class ProjectController {
         List<Organization> organizationList = organizationService.organizationList();
         List<Event> eventList = eventService.eventList();
         List<Person> personList = personService.personList();
+        eventList.removeAll(project.getEvents());
+        personList.removeAll(project.getPersons());
+        organizationList.removeAll(project.getOrganizations());
         model.addAttribute("organizations", organizationList);
         model.addAttribute("events", eventList);
         model.addAttribute("project", project);
@@ -115,11 +118,11 @@ public class ProjectController {
 
 
     @PostMapping("project/{id}/update")
-    public String updateProject(@PathVariable("id") int id, @Valid Project project) {
+    public String updateProject(@PathVariable("id") int id, @Valid Project project, BindingResult bindingResult) {
 
         project.setId_project(id);
         projectService.updateProject(project);
-        return "redirect:" + project.getId_project();
+        return "redirect:";
     }
 
 }

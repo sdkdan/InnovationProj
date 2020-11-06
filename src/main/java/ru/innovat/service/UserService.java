@@ -103,15 +103,13 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public boolean checkUsername(String username) {
-        AppUser appUserFromDB = userDao.findByUsername(username);
-        return appUserFromDB != null;
+        return userDao.findByUsername(username) != null;
     }
 
 
     @Transactional
     public boolean checkEmail(String email) {
-        AppUser appUserFromDB = userDao.findByUsername(email);
-        return appUserFromDB != null;
+        return userDao.findByEmail(email)!=null;
     }
 
     @Transactional

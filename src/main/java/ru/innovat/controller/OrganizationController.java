@@ -56,7 +56,7 @@ public class OrganizationController {
     public String addOrganization(@ModelAttribute Organization organization, Model model) {
         model.addAttribute("organization", organization);
         organizationService.addOrganization(organization);
-        return "redirect:organization/" + organization.getId_organization();
+        return "redirect:" + organization.getId_organization();
     }
 
     @GetMapping("organization/{id}/delete")
@@ -79,6 +79,9 @@ public class OrganizationController {
         List<Event> eventList = eventService.eventList();
         List<Project> projectList = projectService.projectList();
         List<Person> personList = personService.personList();
+        eventList.removeAll(organization.getEvents());
+        personList.removeAll(organization.getPersons());
+        projectList.removeAll(organization.getProjects());
         model.addAttribute("organization", organization);
         model.addAttribute("events", eventList);
         model.addAttribute("projects", projectList);
@@ -112,7 +115,7 @@ public class OrganizationController {
     }
 
     @PostMapping("organization/{id}/update")
-    public String updateOrganization(@PathVariable("id") int id, @Valid Organization organization) {
+    public String updateOrganization(@PathVariable("id") int id, @Valid Organization organization, BindingResult bindingResult) {
         organization.setId_organization(id);
         organizationService.updateOrganization(organization);
         return "redirect:organization/" + organization.getId_organization();

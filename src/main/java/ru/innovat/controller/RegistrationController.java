@@ -71,25 +71,28 @@ public class RegistrationController {
 
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView displayRegistration(ModelAndView modelAndView, AppUser userEntity) {
-        modelAndView.addObject("userForm", userEntity);
-        modelAndView.setViewName("registration/register");
-        return modelAndView;
+    public String displayRegistration(Model model, AppUser userEntity) {
+        model.addAttribute("userForm", userEntity);
+        return "registration/register";
     }
 
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView registerUser(ModelAndView modelAndView, AppUser appUser) {
+    public String registerUser(Model model, AppUser appUser) {
 
 
         if (userService.checkEmail(appUser.getEMail())) {
-            modelAndView.addObject("message", "This email already exists!");
-            modelAndView.setViewName("error");
+            model.addAttribute("message", "Такая почта уже существует");
+            return "error";
         } else {
             if (userService.checkUsername(appUser.getUsername())) {
-                modelAndView.addObject("message", "This username already exists!");
-                modelAndView.setViewName("error");
+                model.addAttribute("message", "Имя пользователя уже занято");
+                return  "error";
             } else {
+                if(!(appUser.getPassword().equals(appUser.getPasswordConfirm()))) {
+                    model.addAttribute("message", "Пароли не совпадают");
+                    return  "error";
+                }
                 userService.saveUser(appUser);
 
                 VerificationToken verificationToken = new VerificationToken(UUID.randomUUID().toString(), appUser);
@@ -98,17 +101,16 @@ public class RegistrationController {
 
                 emailService.sendEmail(appUser.getEMail(), verificationToken);
 
-                modelAndView.addObject("emailId", appUser.getEMail());
+                model.addAttribute("emailId", appUser.getEMail());
 
-                modelAndView.setViewName("registration/successfulRegistration");
+                return "registration/successfulRegistration";
             }
         }
-        return modelAndView;
     }
 
 
     @RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView confirmUserAccount(ModelAndView modelAndView, @RequestParam("token") String Token) {
+    public String confirmUserAccount(Model model, @RequestParam("token") String Token) {
         VerificationToken verificationToken = userService.findByToken(Token);
 
         if (verificationToken != null) {
@@ -118,21 +120,19 @@ public class RegistrationController {
                 appUser.setEnabled(true);
                 userService.update(appUser);
                 userService.deleteToken(verificationToken.getId_token());
-                modelAndView.setViewName("registration/accountVerified");
+                model.addAttribute("registration/accountVerified");
             } else {
-                modelAndView.addObject("message", "Время действия ссылки истекло, мы отправили на вашу почту новое поддтвержение");
+                model.addAttribute("message", "Время действия ссылки истекло, мы отправили на вашу почту новое поддтвержение");
                 VerificationToken newVerificationToken = new VerificationToken(UUID.randomUUID().toString(), verificationToken.getUser());
                 System.out.println(newVerificationToken.getExpiryDate());
                 userService.saveToken(newVerificationToken);
                 userService.deleteToken(verificationToken.getId_token());
             }
         } else {
-            modelAndView.addObject("message", "Данная ссылка не действительна либо сломана");
-            modelAndView.setViewName("error");
+            model.addAttribute("message", "Данная ссылка не действительна либо сломана");
+            return "error";
         }
-
-
-        return modelAndView;
+        return "error";
     }
 
     @GetMapping("myprofile")

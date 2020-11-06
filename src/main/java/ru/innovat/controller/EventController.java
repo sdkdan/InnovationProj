@@ -60,7 +60,7 @@ public class EventController {
         model.addAttribute("event", event);
 
         eventService.addEvent(event);
-        return "redirect:event/event/" + event.getId_event();
+        return "redirect:" + event.getId_event();
     }
 
     @GetMapping("event/{id}")
@@ -77,6 +77,9 @@ public class EventController {
         List<Organization> organizationList = organizationService.organizationList();
         List<Project> projectList = projectService.projectList();
         List<Person> personList = personService.personList();
+        projectList.removeAll(event.getProjects());
+        personList.removeAll(event.getPersons());
+        organizationList.removeAll(event.getOrganizations());
         model.addAttribute("organizations", organizationList);
         model.addAttribute("event", event);
         model.addAttribute("projects", projectList);
@@ -105,20 +108,22 @@ public class EventController {
     @GetMapping("event/{id}/delete")
     public String deleteEvent(@PathVariable("id") int id) {
         eventService.deleteEvent(id);
-        return "redirect:event/event";
+        return "redirect:";
     }
 
     @GetMapping("/event/{id}/edit")
-    public String showEventForm(@PathVariable("id") int id, Model model) {
+    public String showEventForm(@PathVariable("id") int id,  Model model) {
         Event event = eventService.findEvent(id);
+        List<TypeEvent> typeEventList = eventService.findAllTypeEvents();
+        model.addAttribute("list", typeEventList);
         model.addAttribute("event", event);
         return "event/updateEvent";
     }
 
     @PostMapping("event/{id}/update")
-    public String updateEvent(@PathVariable("id") int id, @Valid Event event) {
+    public String updateEvent(@PathVariable("id") int id, @Valid Event event, BindingResult bindingResult) {
         event.setId_event(id);
         eventService.updateEvent(event);
-        return "redirect:event/event/" + event.getId_event();
+        return "redirect:";
     }
 }

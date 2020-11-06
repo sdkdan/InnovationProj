@@ -10,21 +10,18 @@
 <th:block th:include="/menu"></th:block>
 <div class="container">
 
-    <h1> Люди</h1>
-    <h3>Форма для вставки новых людей</h3>
-    <!-- форма -->
-
+    <h1> Форма для блокирования пользователя</h1>
     <form action="#" th:action="@{/admin/user/{id}/saveban (id=${user.getId_user()})}" th:object="${blocked}"
           method="post">
         <div class="form-group">
-            <label>Название</label>
-            <input type="text" class="form-control" th:field="*{comment}" placeholder="Разработка ...">
+            <label>Причина бана</label>
+            <input type="text" class="form-control" th:field="*{comment}" placeholder="Миша не души ...">
         </div>
         <div class="form-group">
-            <label>Сайт</label>
+            <label>Время окончания бана</label>
             <input type="date" class="form-control" th:field="*{endDate}" placeholder="URL">
         </div>
-        <button type="submit" class="btn btn-primary">Полетели</button>
+        <button type="submit" class="btn btn-primary">БАН!!!!</button>
     </form>
 
 </div>
