@@ -20,8 +20,6 @@ import ru.innovat.models.Blocked;
 import ru.innovat.models.Role;
 import ru.innovat.models.VerificationToken;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,11 +30,8 @@ import java.util.Locale;
 
 @Service
 public class UserService implements UserDetailsService {
-    @PersistenceContext
-    private EntityManager em;
     UserDao userDao;
     RoleDao roleDao;
-    private AppUser user;
     TokenDao tokenDao;
     BlockedDao blockedDao;
 
@@ -76,8 +71,8 @@ public class UserService implements UserDetailsService {
                 e.printStackTrace();
             }
         }
-        List<String> roleNames = this.roleDao.getRoleNames((int) appUser.getId_user());
-        List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
+        List<String> roleNames = this.roleDao.getRoleNames(appUser.getId_user());
+        List<GrantedAuthority> grantList = new ArrayList<>();
         if (roleNames != null) {
             for (String role : roleNames) {
                 GrantedAuthority authority = new SimpleGrantedAuthority(role);
@@ -85,8 +80,7 @@ public class UserService implements UserDetailsService {
             }
         }
 
-        return (UserDetails) new User(appUser.getUsername(), //
-                appUser.getPassword(), grantList);
+        return new User(appUser.getUsername(), appUser.getPassword(), grantList);
     }
 
     @Transactional

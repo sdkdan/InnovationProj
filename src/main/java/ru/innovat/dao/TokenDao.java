@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.innovat.models.Person;
 import ru.innovat.models.VerificationToken;
 
 import java.util.List;
@@ -25,8 +24,8 @@ public class TokenDao {
 
     public VerificationToken findByToken(String token) {
         Session session = this.sessionFactory.getCurrentSession();
-        VerificationToken verificationToken = (VerificationToken) session.createQuery("SELECT V FROM VerificationToken V WHERE V.token = :token").setParameter("token", token).uniqueResult();;
-        return verificationToken;
+        return (VerificationToken) session.createQuery("SELECT V FROM VerificationToken V WHERE V.token = :token").setParameter("token", token).uniqueResult();
+
     }
 
     public VerificationToken findById(int id) {
@@ -45,7 +44,7 @@ public class TokenDao {
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        VerificationToken verificationToken = (VerificationToken) session.load(VerificationToken.class, id);
+        VerificationToken verificationToken = session.load(VerificationToken.class, id);
 
         if (verificationToken != null) {
             session.delete(verificationToken);

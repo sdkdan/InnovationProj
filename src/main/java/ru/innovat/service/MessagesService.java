@@ -23,11 +23,6 @@ public class MessagesService {
 
 
     @Transactional
-    public void deleteMessage(int id){
-        messagesDao.delete(id);
-    }
-
-    @Transactional
     public List<Messages> userMessages(int id){
         return messagesDao.userMessages(id);
     }

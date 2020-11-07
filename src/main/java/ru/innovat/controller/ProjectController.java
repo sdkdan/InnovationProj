@@ -93,7 +93,7 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/project/{id}/con", method = RequestMethod.POST)
-    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect con, Model model) throws Exception {
+    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect con, Model model){
         model.addAttribute("project", project);
         model.addAttribute("con", con);
         if (con.getPerson_id() >= 1) {
@@ -106,7 +106,7 @@ public class ProjectController {
             projectService.updateProject(projectService.addEvent(eventService.findEvent(con.getEvent_Id()), id));
         }
 
-        return "redirect:" + id;
+        return "redirect:";
     }
 
     @GetMapping("/project/{id}/edit")

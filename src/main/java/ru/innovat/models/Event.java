@@ -1,12 +1,14 @@
 package ru.innovat.models;
 
-import javax.persistence.*;
-import java.util.*;
-
-import org.hibernate.SessionFactory;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import ru.innovat.models.utils.TypeEvent;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Indexed

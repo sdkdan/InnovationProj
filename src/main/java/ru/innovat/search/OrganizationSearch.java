@@ -25,15 +25,7 @@ public class OrganizationSearch {
         this.entityManager = entityManager;
     }
 
-    public void initializeHibernateSearch() {
 
-        try {
-            FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
-            fullTextEntityManager.createIndexer().startAndWait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Transactional
     @SuppressWarnings("unchecked")
@@ -47,7 +39,6 @@ public class OrganizationSearch {
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Organization.class);
 
 
-        List<Organization> personList = null;
         try {
             return (List<Organization>) jpaQuery.getResultList();
         } catch (NoResultException nre) {

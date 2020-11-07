@@ -24,15 +24,6 @@ public class EventSearch {
         this.entityManager = entityManager;
     }
 
-    public void initializeHibernateSearch() {
-
-        try {
-            FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
-            fullTextEntityManager.createIndexer().startAndWait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Transactional
     @SuppressWarnings("unchecked")
@@ -45,7 +36,6 @@ public class EventSearch {
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Event.class);
 
 
-        List<Event> personList = null;
         try {
             return (List<Event>) jpaQuery.getResultList();
         } catch (NoResultException nre) {

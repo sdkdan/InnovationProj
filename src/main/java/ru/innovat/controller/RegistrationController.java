@@ -1,24 +1,19 @@
 package ru.innovat.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import ru.innovat.models.AppUser;
-
 import ru.innovat.models.VerificationToken;
 import ru.innovat.service.EmailService;
 import ru.innovat.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.*;
-
-
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import java.util.Date;
+import java.util.UUID;
 
 
 @Controller

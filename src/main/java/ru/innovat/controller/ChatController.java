@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.dao.MessagesDao;
 import ru.innovat.models.Messages;
 import ru.innovat.service.MessagesService;
 import ru.innovat.service.UserService;
@@ -39,7 +38,7 @@ public class ChatController {
     }
 
     @PostMapping(value = "/support/send")
-    public String sendMessage(@ModelAttribute Messages newMessage, Model model){
+    public String sendMessage(@ModelAttribute Messages newMessage){
         newMessage.setAppUser(userService.findUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         newMessage.setTime(new Date());
         newMessage.setUser_message(true);
@@ -64,7 +63,7 @@ public class ChatController {
     }
 
     @PostMapping(value = "/supportu/{id}/send")
-    public String userSupportSend(@ModelAttribute Messages newMessage, @PathVariable("id") int id, Model model){
+    public String userSupportSend(@ModelAttribute Messages newMessage, @PathVariable("id") int id){
         newMessage.setAppUser(userService.findUser(id));
         newMessage.setTime(new Date());
         newMessage.setUser_message(false);

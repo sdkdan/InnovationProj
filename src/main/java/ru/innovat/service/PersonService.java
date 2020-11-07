@@ -21,12 +21,8 @@ public class PersonService {
         this.personDao = personDao;
     }
 
-    private PersonDao personDao;
+    private final PersonDao personDao;
 
-    @Transactional
-    public void setPersonDao(PersonDao personDao) {
-        this.personDao = personDao;
-    }
 
     @Transactional
     public Person findPerson(int id) {

@@ -3,7 +3,6 @@ package ru.innovat.dao;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.Event;
 import ru.innovat.models.utils.TypeEvent;
@@ -26,7 +25,7 @@ public class EventDao {
 
     public Event findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (Event) session.get(Event.class, id);
+        return session.get(Event.class, id);
     }
 
 
@@ -42,7 +41,7 @@ public class EventDao {
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Event event = (Event) session.load(Event.class, id);
+        Event event = session.load(Event.class, id);
 
         if (event != null) {
             session.delete(event);

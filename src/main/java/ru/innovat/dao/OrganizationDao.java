@@ -3,11 +3,9 @@ package ru.innovat.dao;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
-import ru.innovat.models.Organization;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import ru.innovat.models.Organization;
 
 import java.util.List;
 
@@ -37,7 +35,7 @@ public class OrganizationDao {
 
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Organization organization = (Organization) session.load(Organization.class, id);
+        Organization organization = session.load(Organization.class, id);
 
         if (organization != null) {
             session.delete(organization);

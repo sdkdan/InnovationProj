@@ -1,8 +1,6 @@
 package ru.innovat.dao;
 
 
-import org.hibernate.Hibernate;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -27,7 +25,7 @@ public class UserDao {
 
     public AppUser findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (AppUser) session.get(AppUser.class, id);
+        return session.get(AppUser.class, id);
     }
 
 
@@ -53,7 +51,7 @@ public class UserDao {
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        AppUser appUser = (AppUser) session.load(AppUser.class, id);
+        AppUser appUser = session.load(AppUser.class, id);
 
         if (appUser != null) {
             session.delete(appUser);

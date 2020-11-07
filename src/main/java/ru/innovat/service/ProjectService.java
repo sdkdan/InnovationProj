@@ -21,12 +21,7 @@ public class ProjectService {
         this.projectDao = projectDao;
     }
 
-    private ProjectDao projectDao;
-
-    @Transactional
-    public void setProjectDao(ProjectDao projectDao) {
-        this.projectDao = projectDao;
-    }
+    private final ProjectDao projectDao;
 
     @Transactional
     public Project findProject(int id) {

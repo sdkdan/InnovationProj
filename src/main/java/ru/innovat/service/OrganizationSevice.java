@@ -22,12 +22,7 @@ public class OrganizationSevice {
         this.organizationDao = organizationDao;
     }
 
-    private OrganizationDao organizationDao;
-
-    @Transactional
-    public void setOrganizationDao(OrganizationDao organizationDao){
-        this.organizationDao = organizationDao;
-    }
+    private final OrganizationDao organizationDao;
 
     @Transactional
     public Organization findOrganization(int id) {

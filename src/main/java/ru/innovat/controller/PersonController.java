@@ -60,7 +60,7 @@ public class PersonController {
     }
 
     @GetMapping("person/{id}/delete")
-    public String deleteUser(@PathVariable("id") int id, Model model) {
+    public String deleteUser(@PathVariable("id") int id) {
         personService.deleteSets(personService.findPerson(id));
         personService.deletePerson(id);
         return "redirect:/person";
@@ -120,7 +120,7 @@ public class PersonController {
                              BindingResult result, @ModelAttribute String event) {
         person.setId_person(id);
         personService.updatePerson(person);
-        return "redirect:/person/" + person.getId_person();
+        return "redirect:";
     }
 
 

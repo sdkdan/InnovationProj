@@ -22,12 +22,9 @@ public class EventService {
         this.eventDao = eventDao;
     }
 
-    private EventDao eventDao;
+    private final EventDao eventDao;
 
-    @Transactional
-    public void setEventDao(EventDao eventDao) {
-        this.eventDao = eventDao;
-    }
+
 
     @Transactional
     public Event findEvent(int id) {

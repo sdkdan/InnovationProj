@@ -23,7 +23,7 @@ public class ProjectDao {
 
     public Project findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (Project) session.get(Project.class, id);
+        return session.get(Project.class, id);
     }
 
 
@@ -39,7 +39,7 @@ public class ProjectDao {
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Project project = (Project) session.load(Project.class, id);
+        Project project = session.load(Project.class, id);
 
         if (project != null) {
             session.delete(project);

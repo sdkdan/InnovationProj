@@ -3,8 +3,6 @@ package ru.innovat.dao;
 import org.hibernate.*;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
@@ -41,7 +39,7 @@ public class PersonDao {
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Person person = (Person) session.load(Person.class, id);
+        Person person = session.load(Person.class, id);
 
         if (person != null) {
             session.delete(person);

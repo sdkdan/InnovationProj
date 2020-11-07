@@ -89,7 +89,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/event/{id}/con", method = RequestMethod.POST)
-    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event, Connect con, Model model) throws Exception {
+    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event, Connect con, Model model){
         model.addAttribute("event", event);
         model.addAttribute("con", con);
         if (con.getProject_Id() >= 1) {
@@ -101,7 +101,7 @@ public class EventController {
         if (con.getOrganization_Id() >= 1) {
             eventService.updateEvent(eventService.addOrganization(organizationService.findOrganization(con.getOrganization_Id()), id));
         }
-        return "redirect:event/event/" + id;
+        return "redirect:";
     }
 
 

@@ -91,7 +91,7 @@ public class OrganizationController {
     }
 
     @RequestMapping(value = "/organization/{id}/con", method = RequestMethod.POST)
-    public String organizationAddCon(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect con, Model model) throws Exception {
+    public String organizationAddCon(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect con, Model model){
         model.addAttribute("organization", organization);
         model.addAttribute("con", con);
         System.out.println(con.getPerson_id());
@@ -104,7 +104,7 @@ public class OrganizationController {
         if (con.getEvent_Id() >= 1) {
             organizationService.updateOrganization(organizationService.addEvent(eventService.findEvent(con.getEvent_Id()), id));
         }
-        return "organization" + id;
+        return "redirect:";
     }
 
     @GetMapping("/organization/{id}/edit")
@@ -118,6 +118,6 @@ public class OrganizationController {
     public String updateOrganization(@PathVariable("id") int id, @Valid Organization organization, BindingResult bindingResult) {
         organization.setId_organization(id);
         organizationService.updateOrganization(organization);
-        return "redirect:organization/" + organization.getId_organization();
+        return "redirect:";
     }
 }

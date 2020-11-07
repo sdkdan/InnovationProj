@@ -45,7 +45,7 @@ public class PersonSearch {
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Person.class);
 
 
-        List<Person> personList = null;
+
         try {
             return  (List<Person>)jpaQuery.getResultList();
         } catch (NoResultException nre) {
