@@ -35,6 +35,7 @@ public class EventSearch {
     }
 
     @Transactional
+    @SuppressWarnings("unchecked")
     public List<Event> fuzzySearch(String searchTerm) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Event.class).get();
@@ -48,7 +49,7 @@ public class EventSearch {
         try {
             return (List<Event>) jpaQuery.getResultList();
         } catch (NoResultException nre) {
-
+            nre.printStackTrace();
         }
 
         return null;

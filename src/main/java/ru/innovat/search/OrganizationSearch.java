@@ -36,6 +36,7 @@ public class OrganizationSearch {
     }
 
     @Transactional
+    @SuppressWarnings("unchecked")
     public List<Organization> fuzzySearch(String searchTerm) {
 
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
@@ -50,8 +51,7 @@ public class OrganizationSearch {
         try {
             return (List<Organization>) jpaQuery.getResultList();
         } catch (NoResultException nre) {
-
-
+            nre.printStackTrace();
         }
 
         return null;

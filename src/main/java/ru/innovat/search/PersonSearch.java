@@ -35,6 +35,7 @@ public class PersonSearch {
     }
 
     @Transactional
+    @SuppressWarnings("unchecked")
     public List<Person> fuzzySearch(String searchTerm) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Person.class).get();
@@ -46,10 +47,9 @@ public class PersonSearch {
 
         List<Person> personList = null;
         try {
-            return (List<Person>) jpaQuery.getResultList();
+            return  (List<Person>)jpaQuery.getResultList();
         } catch (NoResultException nre) {
-
-
+            nre.printStackTrace();
         }
 
         return null;

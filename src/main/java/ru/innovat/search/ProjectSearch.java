@@ -39,6 +39,7 @@ public class ProjectSearch {
     }
 
     @Transactional
+    @SuppressWarnings("unchecked")
     public List<Project> fuzzySearch(String searchTerm) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Project.class).get();
@@ -50,9 +51,10 @@ public class ProjectSearch {
 
         List<Project> personList = null;
         try {
+
             return (List<Project>) jpaQuery.getResultList();
         } catch (NoResultException nre) {
-
+            nre.printStackTrace();
         }
 
         return null;
