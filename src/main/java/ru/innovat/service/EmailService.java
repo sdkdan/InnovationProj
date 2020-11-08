@@ -16,7 +16,6 @@ public class EmailService {
         this.javaMailSender = javaMailSender;
     }
 
-    @Async
     public void sendEmail(String email, VerificationToken verificationToken) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(email);
