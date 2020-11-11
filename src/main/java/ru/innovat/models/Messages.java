@@ -1,9 +1,18 @@
 package ru.innovat.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Messages {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,52 +31,4 @@ public class Messages {
     @Column(name = "user_message")
     private Boolean user_message;
 
-    public int getId_message() {
-        return id_message;
-    }
-
-    public void setId_message(int id_message) {
-        this.id_message = id_message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public AppUser getAppUser() {
-        return appUser;
-    }
-
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    public Boolean getUser_message() {
-        return user_message;
-    }
-
-    public void setUser_message(Boolean user_message) {
-        this.user_message = user_message;
-    }
-
-    public Messages(String message, AppUser appUser, Date time, Boolean user_message) {
-        this.message = message;
-        this.appUser = appUser;
-        this.time = time;
-        this.user_message = user_message;
-    }
-    public Messages() {
-    }
 }

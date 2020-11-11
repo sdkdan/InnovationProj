@@ -1,5 +1,8 @@
 package ru.innovat.models;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,6 +11,9 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
+@ToString
 public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,8 +48,8 @@ public class AppUser implements UserDetails {
         super();
         this.enabled = false;
         Role role = new Role();
-        role.setId_role(2);
-        role.setRoleName("ROLE_USER");
+        role.setId_role(Roles.Role_User.id_role);
+        role.setRoleName(Roles.Role_User.name());
 
         id_role = role;
     }
@@ -56,27 +62,14 @@ public class AppUser implements UserDetails {
         this.enabled = enabled;
     }
 
-    public int getId_user() {
-        return id_user;
-    }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    @Override
-    public String getUsername() {
-        return username;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -110,43 +103,6 @@ public class AppUser implements UserDetails {
         this.password = password;
     }
 
-    public String getEMail() {
-        return eMail;
-    }
-
-    public void setEMail(String eMail) {
-        this.eMail = eMail;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + id_user +
-                ", password='" + password + '\'' +
-                ", username='" + username + '\'' +
-                ", eMail='" + eMail + '\'' +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
-
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
@@ -171,5 +127,15 @@ public class AppUser implements UserDetails {
         if (isAccountNonLocked()) {
             return "Активен";
         } else return "Заблокирован";
+    }
+}
+enum  Roles{
+    Role_Admin(1),
+    Role_User(2),
+    Role_Support(3);
+
+    int id_role;
+    Roles(int id_role) {
+        this.id_role = id_role;
     }
 }

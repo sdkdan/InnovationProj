@@ -1,25 +1,35 @@
 package ru.innovat.models;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Indexed
 @Table(name = "person")
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Person {
+    static final Logger logger = LoggerFactory.getLogger(Person.class);
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private int id_person;
     @Column(name = "Surname")
     @Field
     private String surname;
     @Column(name = "Name")
     @Field
+    @EqualsAndHashCode.Include
     private String name;
     @Column(name = "Third_name")
     private String third_Name;
@@ -39,22 +49,6 @@ public class Person {
     private String twitter;
     @Column(name = "Comment")
     private String comment;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return id_person == person.id_person &&
-                Objects.equals(surname, person.surname) &&
-                Objects.equals(name, person.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id_person, surname, name);
-    }
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "person_event",
             joinColumns = @JoinColumn(name = "id_person"),
@@ -117,117 +111,5 @@ public class Person {
     public void addProject(Project project) {
         projects.add(project);
     }
-
-
-    public int getId_person() {
-        return id_person;
-    }
-
-    public void setId_person(int id_person) {
-        this.id_person = id_person;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getThird_Name() {
-        return third_Name;
-    }
-
-    public void setThird_Name(String third_Name) {
-        this.third_Name = third_Name;
-    }
-
-    public String getThirdName() {
-        return third_Name;
-    }
-
-    public void setThirdName(String third_Name) {
-        this.third_Name = third_Name;
-    }
-
-    public String getPhone_number_person() {
-        return phone_number_person;
-    }
-
-
-    public void setPhone_number_person(String phone_number_person) {
-        this.phone_number_person = phone_number_person;
-    }
-
-
-    public String getDate_of_birth() {
-        return date_of_birth;
-    }
-
-
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public String getE_mail() {
-        return e_mail;
-    }
-
-    public void setE_mail(String e_mail) {
-        this.e_mail = e_mail;
-    }
-
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getVk() {
-        return vk;
-    }
-
-    public void setVk(String vk) {
-        this.vk = vk;
-    }
-
-
-    public String getTwitter() {
-        return twitter;
-    }
-
-
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
 
 }
