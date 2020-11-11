@@ -1,5 +1,8 @@
 package ru.innovat.models;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
@@ -11,12 +14,17 @@ import java.util.Set;
 @Entity
 @Indexed
 @Table(name = "organization")
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private int id_organization;
     @Field
     @Column(name = "Name_organization")
+    @EqualsAndHashCode.Include
     private String name_organization;
     @Column(name = "Site_organization")
     private String site_organization;
@@ -26,19 +34,6 @@ public class Organization {
     @Column(name = "Notes_organization")
     private String notes_organization;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Organization that = (Organization) o;
-        return id_organization == that.id_organization &&
-                Objects.equals(name_organization, that.name_organization);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id_organization, name_organization);
-    }
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "organization_event",
@@ -96,44 +91,4 @@ public class Organization {
         projects.add(project);
     }
 
-
-    public int getId_organization() {
-        return id_organization;
-    }
-
-    public void setId_organization(int id_organization) {
-        this.id_organization = id_organization;
-    }
-
-    public String getName_organization() {
-        return name_organization;
-    }
-
-    public void setName_organization(String name_organization) {
-        this.name_organization = name_organization;
-    }
-
-    public String getSite_organization() {
-        return site_organization;
-    }
-
-    public void setSite_organization(String site_organization) {
-        this.site_organization = site_organization;
-    }
-
-    public String getCity_organization() {
-        return city_organization;
-    }
-
-    public void setCity_organization(String city_organization) {
-        this.city_organization = city_organization;
-    }
-
-    public String getNotes_organization() {
-        return notes_organization;
-    }
-
-    public void setNotes_organization(String notes_organization) {
-        this.notes_organization = notes_organization;
-    }
 }

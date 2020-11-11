@@ -1,9 +1,14 @@
 package ru.innovat.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "role")
+@Getter
+@Setter
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,19 +17,4 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    public int getId_role() {
-        return id_role;
-    }
-
-    public void setId_role(int id_role) {
-        this.id_role = id_role;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
 }

@@ -1,5 +1,8 @@
 package ru.innovat.models;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import ru.innovat.models.utils.TypeEvent;
@@ -13,14 +16,19 @@ import java.util.Set;
 @Entity
 @Indexed
 @Table(name = "event", schema = "", catalog = "x92176f5_inovat")
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private int id_event;
     @Column(name = "Site_event")
     private String site_event;
     @Field
     @Column(name = "Name_event")
+    @EqualsAndHashCode.Include
     private String name_event;
     @Field
     @Column(name = "Importance_event")
@@ -46,20 +54,6 @@ public class Event {
     private String location_event;
     @Column(name = "id_type_event")
     private int idTypeEvent;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id_event == event.id_event &&
-                Objects.equals(name_event, event.name_event);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id_event, name_event);
-    }
 
     public int getIdTypeEvent() {
         return idTypeEvent;
@@ -138,108 +132,4 @@ public class Event {
         this.typeEvent = typeEvent;
     }
 
-
-    public int getId_event() {
-        return id_event;
-    }
-
-    public void setId_event(int id_event) {
-        this.id_event = id_event;
-    }
-
-    public String getSite_event() {
-        return site_event;
-    }
-
-    public void setSite_event(String site_event) {
-        this.site_event = site_event;
-    }
-
-    public String getName_event() {
-        return name_event;
-    }
-
-    public void setName_event(String name_event) {
-        this.name_event = name_event;
-    }
-
-    public String getImportance_event() {
-        return importance_event;
-    }
-
-    public void setImportance_event(String importance_event) {
-        this.importance_event = importance_event;
-    }
-
-    public String getScope_event() {
-        return scope_event;
-    }
-
-    public void setScope_event(String scope_event) {
-        this.scope_event = scope_event;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
-    }
-
-    public String getDate_event() {
-        return date_event;
-    }
-
-    public void setDate_event(String date_event) {
-        this.date_event = date_event;
-    }
-
-    public Date getDate_for_month() {
-        return date_for_month;
-    }
-
-    public void setDate_for_month(Date date_for_month) {
-        this.date_for_month = date_for_month;
-    }
-
-    public Date getDate_for_the_week() {
-        return date_for_the_week;
-    }
-
-    public void setDate_for_the_week(Date date_for_the_week) {
-        this.date_for_the_week = date_for_the_week;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getPrizes() {
-        return prizes;
-    }
-
-    public void setPrizes(String prizes) {
-        this.prizes = prizes;
-    }
-
-    public String getLocation_event() {
-        return location_event;
-    }
-
-    public void setLocation_event(String location_event) {
-        this.location_event = location_event;
-    }
 }
