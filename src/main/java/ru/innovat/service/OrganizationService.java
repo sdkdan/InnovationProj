@@ -14,11 +14,11 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class OrganizationSevice {
+public class OrganizationService {
 
 
 
-    public OrganizationSevice(OrganizationDao organizationDao){
+    public OrganizationService(OrganizationDao organizationDao){
         this.organizationDao = organizationDao;
     }
 

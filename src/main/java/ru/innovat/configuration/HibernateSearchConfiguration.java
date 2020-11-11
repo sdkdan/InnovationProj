@@ -12,15 +12,15 @@ import ru.innovat.search.PersonSearch;
 @Configuration
 public class HibernateSearchConfiguration {
 
-    private final EntityManager bentityManager;
+    private final EntityManager entityManager;
 
     public HibernateSearchConfiguration(EntityManager bentityManager) {
-        this.bentityManager = bentityManager;
+        this.entityManager = bentityManager;
     }
 
     @Bean
     PersonSearch hibernateSearchService() {
-        PersonSearch hibernateSearchService = new PersonSearch(bentityManager);
+        PersonSearch hibernateSearchService = new PersonSearch(entityManager);
         hibernateSearchService.initializeHibernateSearch();
         return hibernateSearchService;
     }

@@ -1,5 +1,6 @@
 package ru.innovat.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,7 +12,7 @@ import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
 import ru.innovat.search.OrganizationSearch;
 import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationSevice;
+import ru.innovat.service.OrganizationService;
 import ru.innovat.service.PersonService;
 import ru.innovat.service.ProjectService;
 
@@ -19,30 +20,18 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class OrganizationController {
     private final PersonService personService;
     private final ProjectService projectService;
     private final EventService eventService;
-    private final OrganizationSevice organizationService;
+    private final OrganizationService organizationService;
     private final OrganizationSearch organizationSearch;
 
-    public OrganizationController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService, OrganizationSearch organizationSearch) {
-        this.personService = personService;
-        this.projectService = projectService;
-        this.eventService = eventService;
-        this.organizationService = organizationService;
-        this.organizationSearch = organizationSearch;
-    }
 
     @RequestMapping(value = "/organization")
-    public String listorganization(String q, Model model) {
-        List<Organization> searchResults;
-        if (q != null) {
-            if (q.length() > 0) {
-                searchResults = organizationSearch.fuzzySearch(q);
-            } else searchResults = organizationService.organizationList();
-        } else searchResults = organizationService.organizationList();
-        model.addAttribute("organizationList", searchResults);
+    public String listorganization(String search, Model model) {
+        model.addAttribute("organizationList", organizationSearch.searchListOrganization(search));
         return "organization/organization";
     }
 

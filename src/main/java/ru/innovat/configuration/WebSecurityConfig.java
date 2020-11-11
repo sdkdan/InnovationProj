@@ -1,5 +1,7 @@
 package ru.innovat.configuration;
 
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,16 +19,12 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    final
-    UserService userService;
-    final DataSource dataSource;
 
-    public WebSecurityConfig(UserService userService, DataSource dataSource) {
-        this.userService = userService;
-        this.dataSource = dataSource;
-    }
+    final UserService userService;
+    final DataSource dataSource;
 
 
     @Bean

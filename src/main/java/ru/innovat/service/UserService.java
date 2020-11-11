@@ -1,6 +1,7 @@
 package ru.innovat.service;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,12 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.BlockedDao;
 import ru.innovat.dao.RoleDao;
-import ru.innovat.dao.TokenDao;
 import ru.innovat.dao.UserDao;
 import ru.innovat.models.AppUser;
 import ru.innovat.models.Blocked;
 import ru.innovat.models.Role;
-import ru.innovat.models.VerificationToken;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,23 +28,13 @@ import java.util.Locale;
 
 
 @Service
+@AllArgsConstructor
 public class UserService implements UserDetailsService {
-    UserDao userDao;
-    RoleDao roleDao;
-    TokenDao tokenDao;
-    BlockedDao blockedDao;
+    final UserDao userDao;
+    final RoleDao roleDao;
+    final BlockedDao blockedDao;
+    final EmailService emailService;
 
-
-    public UserService(UserDao userDao, @Lazy BCryptPasswordEncoder bCryptPasswordEncoder, TokenDao tokenDao, RoleDao roleDao, BlockedDao blockedDao) {
-        this.userDao = userDao;
-        this.roleDao = roleDao;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.tokenDao = tokenDao;
-        this.blockedDao = blockedDao;
-    }
-
-    final
-    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
     @Override
@@ -103,14 +92,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public boolean checkEmail(String email) {
-        return userDao.findByEmail(email)!=null;
-    }
-
-    @Transactional
-    public void saveUser(AppUser appUser) {
-
-        appUser.setPassword(bCryptPasswordEncoder.encode(appUser.getPassword()));
-        userDao.add(appUser);
+        return userDao.findByEmail(email) != null;
     }
 
 
@@ -147,30 +129,6 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public void deleteToken(int id) {
-        tokenDao.delete(id);
-    }
-
-    @Transactional
-    public void saveToken(VerificationToken verificationToken) {
-        tokenDao.add(verificationToken);
-    }
-
-
-    @Transactional
-    public VerificationToken findByToken(String Token) {
-        return tokenDao.findByToken(Token);
-    }
-
-    @Transactional
-    public AppUser getUser(String token) {
-        VerificationToken verificationToken = tokenDao.findByToken(token);
-        if (token != null) {
-            return verificationToken.getUser();
-        }
-        return null;
-    }
-
     @Transactional
     public void update(AppUser appUser) {
         userDao.update(appUser);
@@ -187,7 +145,14 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public List<AppUser> roleUserList(){
+    public List<AppUser> roleUserList() {
         return userDao.roleUserList();
+    }
+
+    public String checkAccount(AppUser appUser) {
+        if (checkEmail(appUser.getEMail())) return "Такая почта уже существует";
+        if (checkUsername(appUser.getUsername())) return "Имя пользователя уже занято";
+        if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))) return "Пароли не совпадают";
+        return null;
     }
 }

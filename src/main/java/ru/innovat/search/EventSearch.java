@@ -1,11 +1,13 @@
 package ru.innovat.search;
 
+import lombok.AllArgsConstructor;
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.Event;
+import ru.innovat.service.EventService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -15,17 +17,14 @@ import java.util.List;
 
 @Repository
 @Transactional
+@AllArgsConstructor
 public class EventSearch {
+
     @PersistenceContext
     private final EntityManager entityManager;
+    private final EventService eventService;
 
 
-    public EventSearch(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
-
-    @Transactional
     @SuppressWarnings("unchecked")
     public List<Event> fuzzySearch(String searchTerm) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
@@ -44,6 +43,16 @@ public class EventSearch {
 
         return null;
 
-
     }
+
+
+    @Transactional
+    public List<Event> searchEventList(String search){
+        if (search != null) {
+            if (search.length() > 0) {
+                return fuzzySearch(search);
+            } else return eventService.eventList();
+        } else return eventService.eventList();
+    }
+
 }

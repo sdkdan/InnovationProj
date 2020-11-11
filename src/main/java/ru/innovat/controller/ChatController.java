@@ -1,6 +1,7 @@
 package ru.innovat.controller;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,18 +16,12 @@ import ru.innovat.service.UserService;
 
 import java.util.Date;
 
+@RequiredArgsConstructor
 @Controller
 public class ChatController {
 
-    final
-    MessagesService messagesService;
-    final
-    UserService userService;
-
-    public ChatController(MessagesService messagesService, UserService userService) {
-        this.messagesService = messagesService;
-        this.userService = userService;
-    }
+    final MessagesService messagesService;
+    final UserService userService;
 
 
     @GetMapping("/support")

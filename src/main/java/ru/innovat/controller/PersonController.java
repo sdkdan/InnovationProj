@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.innovat.search.PersonSearch;
 import ru.innovat.models.*;
 import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationSevice;
+import ru.innovat.service.OrganizationService;
 import ru.innovat.service.PersonService;
 import ru.innovat.service.ProjectService;
 import ru.innovat.models.utils.*;
@@ -21,11 +21,11 @@ import java.util.List;
 public class PersonController {
     private final ProjectService projectService;
     private final EventService eventService;
-    private final OrganizationSevice organizationService;
+    private final OrganizationService organizationService;
     private final PersonSearch personSearch;
     private final PersonService personService;
 
-    public PersonController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService, PersonSearch personSearch) {
+    public PersonController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationService organizationService, PersonSearch personSearch) {
         this.personService = personService;
         this.projectService = projectService;
         this.eventService = eventService;

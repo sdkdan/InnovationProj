@@ -1,11 +1,13 @@
 package ru.innovat.search;
 
+import lombok.AllArgsConstructor;
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.Organization;
+import ru.innovat.service.OrganizationService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -15,19 +17,15 @@ import java.util.List;
 
 @Repository
 @Transactional
+@AllArgsConstructor
 public class OrganizationSearch {
 
     @PersistenceContext
     private final EntityManager entityManager;
-
-
-    public OrganizationSearch(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    private final OrganizationService organizationService;
 
 
 
-    @Transactional
     @SuppressWarnings("unchecked")
     public List<Organization> fuzzySearch(String searchTerm) {
 
@@ -49,4 +47,15 @@ public class OrganizationSearch {
 
 
     }
+
+
+    public List<Organization> searchListOrganization(String search) {
+        List<Organization> searchResults;
+        if (search != null) {
+            if (search.length() > 0) {
+                return fuzzySearch(search);
+            } else return organizationService.organizationList();
+        } else return organizationService.organizationList();
+    }
+
 }

@@ -11,7 +11,7 @@ import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
 import ru.innovat.search.ProjectSearch;
 import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationSevice;
+import ru.innovat.service.OrganizationService;
 import ru.innovat.service.PersonService;
 import ru.innovat.service.ProjectService;
 
@@ -23,10 +23,10 @@ public class ProjectController {
     private final PersonService personService;
     private final ProjectService projectService;
     private final EventService eventService;
-    private final OrganizationSevice organizationService;
+    private final OrganizationService organizationService;
     private final ProjectSearch projectSearch;
 
-    public ProjectController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService, ProjectSearch projectSearch) {
+    public ProjectController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationService organizationService, ProjectSearch projectSearch) {
         this.personService = personService;
         this.projectService = projectService;
         this.eventService = eventService;

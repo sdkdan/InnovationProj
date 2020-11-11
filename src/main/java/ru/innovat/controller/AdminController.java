@@ -1,5 +1,7 @@
 package ru.innovat.controller;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,15 +17,13 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class AdminController {
 
     private final UserService userService;
 
-    public AdminController(UserService userService) {
-        this.userService = userService;
-    }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    @GetMapping(value = "/admin")
     public String adminPage(Model model) {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String userInfo = loggedInUser.getName();
@@ -31,7 +31,6 @@ public class AdminController {
         users.remove(userService.findUserByUsername(userInfo));
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("users", users);
-
         return "user/adminPage";
     }
 
@@ -44,30 +43,27 @@ public class AdminController {
         return "user/oneUser";
     }
 
-    @RequestMapping(value = "/admin/user/{id}", method = RequestMethod.POST)
+    @PostMapping(value = "/admin/user/{id}")
     public String userAddRole(@PathVariable("id") int id, @ModelAttribute AppUser user, Connect connect, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("connect", connect);
         if (connect.getRole_id() >= 1) {
             userService.updateUser(userService.setRole(userService.getRoleById(connect.getRole_id()), id));
         }
-
         return "redirect:" + id;
     }
 
-    @RequestMapping(value = "/admin/user/{id}/ban", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/user/{id}/ban")
     public String getBanUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.findUser(id));
         model.addAttribute("blocked", new Blocked());
         return "user/banUser";
     }
 
-    @RequestMapping(value = "/admin/user/{id}/saveban", method = RequestMethod.POST)
+    @PostMapping(value = "/admin/user/{id}/saveban")
     public String banUser(@PathVariable("id") int id, @Valid Blocked blocked) {
         AppUser user = userService.findUser(id);
         blocked.setAppUser(user);
-        System.out.println(blocked.getComment());
-        System.out.println(blocked.getEndDate());
         blocked.setStartDate(new Date());
         userService.addBlocked(blocked);
         user.setBlocked(userService.getBlocked(blocked.getId_blocked()));
@@ -75,7 +71,7 @@ public class AdminController {
         return "redirect:" ;
     }
 
-    @RequestMapping(value = "/admin/user/{id}/unban", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/user/{id}/unban")
     public String unban(@PathVariable("id") int id) {
         AppUser appUser = userService.findUser(id);
         appUser.setBlocked(null);

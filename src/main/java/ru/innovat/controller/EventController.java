@@ -1,5 +1,6 @@
 package ru.innovat.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,7 @@ import ru.innovat.models.utils.Connect;
 import ru.innovat.models.utils.TypeEvent;
 import ru.innovat.search.EventSearch;
 import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationSevice;
+import ru.innovat.service.OrganizationService;
 import ru.innovat.service.PersonService;
 import ru.innovat.service.ProjectService;
 
@@ -20,30 +21,18 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class EventController {
     private final PersonService personService;
     private final ProjectService projectService;
     private final EventService eventService;
-    private final OrganizationSevice organizationService;
+    private final OrganizationService organizationService;
     private final EventSearch eventSearch;
 
-    public EventController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationSevice organizationService, EventSearch eventSearch) {
-        this.personService = personService;
-        this.projectService = projectService;
-        this.eventService = eventService;
-        this.organizationService = organizationService;
-        this.eventSearch = eventSearch;
-    }
 
     @RequestMapping(value = "/event")
-    public String listEvent(String q, Model model) {
-        List<Event> searchResults;
-        if (q != null) {
-            if (q.length() > 0) {
-                searchResults = eventSearch.fuzzySearch(q);
-            } else searchResults = eventService.eventList();
-        } else searchResults = eventService.eventList();
-        model.addAttribute("eventList", searchResults);
+    public String listEvent(String search, Model model) {
+        model.addAttribute("eventList", eventSearch.searchEventList(search));
         return "event/event";
     }
 
@@ -58,7 +47,6 @@ public class EventController {
     @RequestMapping(value = "/event/add", method = RequestMethod.POST)
     public String addEvent(@ModelAttribute Event event, Model model) {
         model.addAttribute("event", event);
-
         eventService.addEvent(event);
         return "redirect:" + event.getId_event();
     }
@@ -92,15 +80,7 @@ public class EventController {
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event, Connect con, Model model){
         model.addAttribute("event", event);
         model.addAttribute("con", con);
-        if (con.getProject_Id() >= 1) {
-            eventService.updateEvent(eventService.addProject(projectService.findProject(con.getProject_Id()), id));
-        }
-        if (con.getPerson_id() >= 1) {
-            eventService.updateEvent(eventService.addPerson(personService.findPerson(con.getPerson_id()), id));
-        }
-        if (con.getOrganization_Id() >= 1) {
-            eventService.updateEvent(eventService.addOrganization(organizationService.findOrganization(con.getOrganization_Id()), id));
-        }
+        eventService.addConnections(con,id);
         return "redirect:";
     }
 
