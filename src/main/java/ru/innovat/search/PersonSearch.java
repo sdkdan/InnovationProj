@@ -1,6 +1,9 @@
 package ru.innovat.search;
 
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
@@ -14,6 +17,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Repository
@@ -22,12 +26,8 @@ import java.util.List;
 public class PersonSearch {
     @PersistenceContext
     private final EntityManager entityManager;
-    private final PersonService personService;
-
-
 
     public void initializeHibernateSearch() {
-
         try {
             FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
             fullTextEntityManager.createIndexer().startAndWait();
@@ -54,14 +54,5 @@ public class PersonSearch {
         }
 
         return null;
-    }
-
-    @Transactional
-    public List<Person> searchPersonList(String search){
-        if (search != null) {
-            if (search.length() > 0) {
-                return fuzzySearch(search);
-            } else return personService.personList();
-        } else return personService.personList();
     }
 }

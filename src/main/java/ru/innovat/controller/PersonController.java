@@ -24,13 +24,12 @@ public class PersonController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationService organizationService;
-    private final PersonSearch personSearch;
     private final PersonService personService;
 
 
     @RequestMapping(value = "/person")
     public String listPerson(String search, Model model) {
-        model.addAttribute("personList", personSearch.searchPersonList(search));
+        model.addAttribute("personList", personService.searchPersonList(search));
         return "person/person";
     }
 

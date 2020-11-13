@@ -22,8 +22,6 @@ import java.util.List;
 public class ProjectSearch {
     @PersistenceContext
     private final EntityManager entityManager;
-    private final ProjectService projectService;
-
 
 
     @SuppressWarnings("unchecked")
@@ -46,13 +44,4 @@ public class ProjectSearch {
         return null;
     }
 
-
-    @Transactional
-    public List<Project> searchProjectList(String search){
-        if (search != null) {
-            if (search.length() > 0) {
-                return fuzzySearch(search);
-            } else return projectService.projectList();
-        } else return projectService.projectList();
-    }
 }

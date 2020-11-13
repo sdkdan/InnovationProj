@@ -27,12 +27,11 @@ public class EventController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationService organizationService;
-    private final EventSearch eventSearch;
 
 
     @RequestMapping(value = "/event")
     public String listEvent(String search, Model model) {
-        model.addAttribute("eventList", eventSearch.searchEventList(search));
+        model.addAttribute("eventList", eventService.searchEventList(search));
         return "event/event";
     }
 

@@ -1,6 +1,7 @@
 package ru.innovat.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.EventDao;
@@ -10,6 +11,7 @@ import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
 import ru.innovat.models.utils.TypeEvent;
+import ru.innovat.search.EventSearch;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,13 +19,14 @@ import java.util.Set;
 
 
 @Service
-@AllArgsConstructor
+@AllArgsConstructor(onConstructor=@__({@Lazy}))
 public class EventService {
 
     private final EventDao eventDao;
     private final OrganizationService organizationService;
     private final PersonService personService;
     private final ProjectService projectService;
+    private final EventSearch eventSearch;
 
 
 
@@ -89,21 +92,18 @@ public class EventService {
         eventDao.update(event);
     }
 
-    @Transactional
     public Event addOrganization(Organization organization, int id) {
         Event event = eventDao.findById(id);
         event.addOrganization(organization);
         return event;
     }
 
-    @Transactional
     public Event addProject(Project project, int id) {
         Event event = eventDao.findById(id);
         event.addProject(project);
         return event;
     }
 
-    @Transactional
     public Event addPerson(Person person, int id) {
         Event event = eventDao.findById(id);
         event.addPersons(person);
@@ -132,5 +132,14 @@ public class EventService {
             updateEvent(addOrganization(organizationService.findOrganization
                     (connect.getOrganization_Id()), id));
         }
+    }
+
+    @Transactional
+    public List<Event> searchEventList(String search){
+        if (search != null) {
+            if (search.length() > 0) {
+                return eventSearch.fuzzySearch(search);
+            } else return eventList();
+        } else return eventList();
     }
 }

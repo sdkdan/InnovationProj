@@ -26,12 +26,11 @@ public class ProjectController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationService organizationService;
-    private final ProjectSearch projectSearch;
 
 
     @RequestMapping(value = "/project")
     public String listProject(String search, Model model) {
-        model.addAttribute("projectList", projectSearch.searchProjectList(search));
+        model.addAttribute("projectList", projectService.searchProjectList(search));
         return "project/project";
     }
 

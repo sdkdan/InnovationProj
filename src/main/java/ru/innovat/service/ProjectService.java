@@ -2,6 +2,7 @@ package ru.innovat.service;
 
 
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.ProjectDao;
@@ -10,6 +11,7 @@ import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
+import ru.innovat.search.ProjectSearch;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,12 +19,13 @@ import java.util.Set;
 
 
 @Service
-@AllArgsConstructor
+@AllArgsConstructor(onConstructor=@__({@Lazy}))
 public class ProjectService {
     private final ProjectDao projectDao;
     private final OrganizationService organizationService;
     private final EventService eventService;
     private final PersonService personService;
+    private final ProjectSearch projectSearch;
 
     @Transactional
     public Project findProject(int id) {
@@ -88,21 +91,18 @@ public class ProjectService {
         projectDao.update(project);
     }
 
-    @Transactional
     public Project addEvent(Event event, int id) {
         Project project = projectDao.findById(id);
         project.addEvent(event);
         return project;
     }
 
-    @Transactional
     public Project addPerson(Person person, int id) {
         Project project = projectDao.findById(id);
         project.addPerson(person);
         return project;
     }
 
-    @Transactional
     public Project addOrganization(Organization organization, int id) {
         Project project = projectDao.findById(id);
         project.addOrganization(organization);
@@ -123,4 +123,12 @@ public class ProjectService {
         }
     }
 
+    @Transactional
+    public List<Project> searchProjectList(String search){
+        if (search != null) {
+            if (search.length() > 0) {
+                return projectSearch.fuzzySearch(search);
+            } else return projectList();
+        } else return projectList();
+    }
 }

@@ -1,6 +1,7 @@
 package ru.innovat.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.PersonDao;
@@ -9,6 +10,7 @@ import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
+import ru.innovat.search.PersonSearch;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,12 +18,13 @@ import java.util.Set;
 
 
 @Service
-@AllArgsConstructor
+@AllArgsConstructor(onConstructor=@__({@Lazy}))
 public class PersonService {
     private final PersonDao personDao;
     private final OrganizationService organizationService;
     private final EventService eventService;
     private final ProjectService projectService;
+    private final PersonSearch personSearch;
 
 
     @Transactional
@@ -89,21 +92,19 @@ public class PersonService {
         personDao.update(person);
     }
 
-    @Transactional
     public Person addEvent(Event event, int id) {
         Person person = personDao.findById(id);
         person.addEvent(event);
         return person;
     }
 
-    @Transactional
     public Person addOrganization(Organization organization, int id) {
         Person person = personDao.findById(id);
         person.addOrganization(organization);
         return person;
     }
 
-    @Transactional
+
     public Person addProject(Project project, int id) {
         Person person = personDao.findById(id);
         person.addProject(project);
@@ -122,5 +123,14 @@ public class PersonService {
             updatePerson(addOrganization(organizationService.findOrganization
                     (connect.getOrganization_Id()), id));
         }
+    }
+
+    @Transactional
+    public List<Person> searchPersonList(String search){
+        if (search != null) {
+            if (search.length() > 0) {
+                return personSearch.fuzzySearch(search);
+            } else return personList();
+        } else return personList();
     }
 }

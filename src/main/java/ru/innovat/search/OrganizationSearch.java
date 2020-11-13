@@ -19,11 +19,8 @@ import java.util.List;
 @Transactional
 @AllArgsConstructor
 public class OrganizationSearch {
-
     @PersistenceContext
     private final EntityManager entityManager;
-    private final OrganizationService organizationService;
-
 
 
     @SuppressWarnings("unchecked")
@@ -49,13 +46,6 @@ public class OrganizationSearch {
     }
 
 
-    public List<Organization> searchListOrganization(String search) {
-        List<Organization> searchResults;
-        if (search != null) {
-            if (search.length() > 0) {
-                return fuzzySearch(search);
-            } else return organizationService.organizationList();
-        } else return organizationService.organizationList();
-    }
+
 
 }

@@ -19,10 +19,8 @@ import java.util.List;
 @Transactional
 @AllArgsConstructor
 public class EventSearch {
-
     @PersistenceContext
     private final EntityManager entityManager;
-    private final EventService eventService;
 
 
     @SuppressWarnings("unchecked")
@@ -45,14 +43,5 @@ public class EventSearch {
 
     }
 
-
-    @Transactional
-    public List<Event> searchEventList(String search){
-        if (search != null) {
-            if (search.length() > 0) {
-                return fuzzySearch(search);
-            } else return eventService.eventList();
-        } else return eventService.eventList();
-    }
 
 }
