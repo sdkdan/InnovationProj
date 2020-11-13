@@ -46,7 +46,7 @@ public class RegistrationController {
     }
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @GetMapping(value = "/register")
     public String displayRegistration(Model model, AppUser userEntity) {
         model.addAttribute("userForm", userEntity);
         return "registration/register";
@@ -55,7 +55,7 @@ public class RegistrationController {
 
     //Можно ли в одном сервисе вызываь другой
     //Дилема сильное слабое связываение и if
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping(value = "/register")
     public String registerUser(Model model, AppUser appUser) {
         String checkAccount = userService.checkAccount(appUser);
         if(checkAccount != null) {
@@ -67,8 +67,8 @@ public class RegistrationController {
         return "registration/successfulRegistration";
     }
 
-
-    @RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
+//, method = {RequestMethod.GET, RequestMethod.POST}
+    @GetMapping(value = "/confirm-account")
     public String confirmUserAccount(Model model, @RequestParam("token") String token) {
         model.addAttribute("message",newUserService.emailVerification(token));
         return "registration/accountVerified";

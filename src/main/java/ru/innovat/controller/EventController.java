@@ -29,13 +29,13 @@ public class EventController {
     private final OrganizationService organizationService;
 
 
-    @RequestMapping(value = "/event")
+    @GetMapping(value = "/event")
     public String listEvent(String search, Model model) {
         model.addAttribute("eventList", eventService.searchEventList(search));
         return "event/event";
     }
 
-    @RequestMapping(value = "/event/add", method = RequestMethod.GET)
+    @GetMapping(value = "/event/add")
     public String getAddEvent(Model model) {
         model.addAttribute("event", new Event());
         List<TypeEvent> typeEventList = eventService.findAllTypeEvents();
@@ -43,7 +43,7 @@ public class EventController {
         return "event/addevent";
     }
 
-    @RequestMapping(value = "/event/add", method = RequestMethod.POST)
+    @PostMapping(value = "/event/add")
     public String addEvent(@ModelAttribute Event event, Model model) {
         model.addAttribute("event", event);
         eventService.addEvent(event);
@@ -75,7 +75,7 @@ public class EventController {
         return "event/addEventCon";
     }
 
-    @RequestMapping(value = "/event/{id}/con", method = RequestMethod.POST)
+    @PostMapping(value = "/event/{id}/con")
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event, Connect con, Model model){
         model.addAttribute("event", event);
         model.addAttribute("con", con);

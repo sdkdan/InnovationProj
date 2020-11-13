@@ -28,19 +28,19 @@ public class OrganizationController {
     private final OrganizationService organizationService;
 
 
-    @RequestMapping(value = "/organization")
+    @GetMapping(value = "/organization")
     public String listorganization(String search, Model model) {
         model.addAttribute("organizationList", organizationService.searchListOrganization(search));
         return "organization/organization";
     }
 
-    @RequestMapping(value = "/organization/add", method = RequestMethod.GET)
+    @GetMapping(value = "/organization/add")
     public String getAddorganization(Model model) {
         model.addAttribute("organization", new Organization());
         return "organization/addOrg";
     }
 
-    @RequestMapping(value = "/organization/add", method = RequestMethod.POST)
+    @PostMapping(value = "/organization/add")
     public String addOrganization(@ModelAttribute Organization organization, Model model) {
         model.addAttribute("organization", organization);
         organizationService.addOrganization(organization);
@@ -78,7 +78,7 @@ public class OrganizationController {
         return "organization/addOrganizationCon";
     }
 
-    @RequestMapping(value = "/organization/{id}/con", method = RequestMethod.POST)
+    @PostMapping(value = "/organization/{id}/con")
     public String organizationAddCon(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect con, Model model){
         organizationService.addConnections(con,id);
         model.addAttribute("organization", organization);

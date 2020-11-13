@@ -27,20 +27,20 @@ public class PersonController {
     private final PersonService personService;
 
 
-    @RequestMapping(value = "/person")
+    @GetMapping(value = "/person")
     public String listPerson(String search, Model model) {
         model.addAttribute("personList", personService.searchPersonList(search));
         return "person/person";
     }
 
-    @RequestMapping(value = "/person/add", method = RequestMethod.GET)
+    @GetMapping(value = "/person/add")
     public String getAddPerson(Model model) {
         model.addAttribute("person", new Person());
         return "person/add";
     }
 
 
-    @RequestMapping(value = "/person/add", method = RequestMethod.POST)
+    @PostMapping(value = "/person/add")
     public String addPerson(@ModelAttribute Person person, Model model) {
         model.addAttribute("person", person);
         personService.addPerson(person);
@@ -80,7 +80,7 @@ public class PersonController {
     }
 
 
-    @RequestMapping(value = "/person/{id}/con", method = RequestMethod.POST)
+    @PostMapping(value = "/person/{id}/con")
     public String personAddCon(@PathVariable("id") int id, @ModelAttribute Person person, Connect personcon, Model model) {
         model.addAttribute("person", person);
         model.addAttribute("personcon", personcon);

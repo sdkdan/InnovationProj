@@ -28,7 +28,7 @@ public class ProjectController {
     private final OrganizationService organizationService;
 
 
-    @RequestMapping(value = "/project")
+    @GetMapping(value = "/project")
     public String listProject(String search, Model model) {
         model.addAttribute("projectList", projectService.searchProjectList(search));
         return "project/project";
@@ -40,14 +40,14 @@ public class ProjectController {
         return "redirect:/project";
     }
 
-    @RequestMapping(value = "/project/add", method = RequestMethod.GET)
+    @GetMapping(value = "/project/add")
     public String getAddProject(Model model) {
 
         model.addAttribute("project", new Project());
         return "project/addproject";
     }
 
-    @RequestMapping(value = "/project/add", method = RequestMethod.POST)
+    @PostMapping(value = "/project/add")
     public String addProject(@ModelAttribute Project project, Model model) {
         model.addAttribute("project", project);
         projectService.addProject(project);
@@ -80,7 +80,7 @@ public class ProjectController {
         return "project/addProjectCon";
     }
 
-    @RequestMapping(value = "/project/{id}/con", method = RequestMethod.POST)
+    @PostMapping(value = "/project/{id}/con")
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect con, Model model){
         model.addAttribute("project", project);
         model.addAttribute("con", con);
