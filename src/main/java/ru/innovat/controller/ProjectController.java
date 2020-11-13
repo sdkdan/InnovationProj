@@ -1,5 +1,6 @@
 package ru.innovat.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class ProjectController {
     private final PersonService personService;
     private final ProjectService projectService;
@@ -26,23 +28,10 @@ public class ProjectController {
     private final OrganizationService organizationService;
     private final ProjectSearch projectSearch;
 
-    public ProjectController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationService organizationService, ProjectSearch projectSearch) {
-        this.personService = personService;
-        this.projectService = projectService;
-        this.eventService = eventService;
-        this.organizationService = organizationService;
-        this.projectSearch = projectSearch;
-    }
 
     @RequestMapping(value = "/project")
-    public String listProject(String q, Model model) {
-        List<Project> searchResults;
-        if (q != null) {
-            if (q.length() > 0) {
-                searchResults = projectSearch.fuzzySearch(q);
-            } else searchResults = projectService.projectList();
-        } else searchResults = projectService.projectList();
-        model.addAttribute("projectList", searchResults);
+    public String listProject(String search, Model model) {
+        model.addAttribute("projectList", projectSearch.searchProjectList(search));
         return "project/project";
     }
 
@@ -96,16 +85,7 @@ public class ProjectController {
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect con, Model model){
         model.addAttribute("project", project);
         model.addAttribute("con", con);
-        if (con.getPerson_id() >= 1) {
-            projectService.updateProject(projectService.addPerson(personService.findPerson(con.getPerson_id()), id));
-        }
-        if (con.getOrganization_Id() >= 1) {
-            projectService.updateProject(projectService.addOrganization(organizationService.findOrganization(con.getOrganization_Id()), id));
-        }
-        if (con.getEvent_Id() >= 1) {
-            projectService.updateProject(projectService.addEvent(eventService.findEvent(con.getEvent_Id()), id));
-        }
-
+        projectService.addConnections(con,id);
         return "redirect:";
     }
 

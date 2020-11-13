@@ -1,6 +1,7 @@
 package ru.innovat.service;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.OrganizationDao;
@@ -8,21 +9,20 @@ import ru.innovat.models.Event;
 import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
+import ru.innovat.models.utils.Connect;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Service
+@AllArgsConstructor
 public class OrganizationService {
-
-
-
-    public OrganizationService(OrganizationDao organizationDao){
-        this.organizationDao = organizationDao;
-    }
-
     private final OrganizationDao organizationDao;
+    private final PersonService personService;
+    private final EventService eventService;
+    private final ProjectService projectService;
+
 
     @Transactional
     public Organization findOrganization(int id) {
@@ -109,5 +109,16 @@ public class OrganizationService {
     }
 
 
+    public void addConnections(Connect connect,int id){
+        if (connect.getPerson_id() >= 1) {
+            updateOrganization(addPerson(personService.findPerson(connect.getPerson_id()), id));
+        }
+        if (connect.getProject_Id() >= 1) {
+            updateOrganization(addPoject(projectService.findProject(connect.getProject_Id()), id));
+        }
+        if (connect.getEvent_Id() >= 1) {
+            updateOrganization(addEvent(eventService.findEvent(connect.getEvent_Id()), id));
+        }
+    }
 
 }

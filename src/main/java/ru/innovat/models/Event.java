@@ -54,82 +54,35 @@ public class Event {
     private String location_event;
     @Column(name = "id_type_event")
     private int idTypeEvent;
-
-    public int getIdTypeEvent() {
-        return idTypeEvent;
-    }
-
-    public void setIdTypeEvent(int idTypeEvent) {
-        this.idTypeEvent = idTypeEvent;
-    }
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "person_event",
             joinColumns = @JoinColumn(name = "id_event"),
             inverseJoinColumns = @JoinColumn(name = "id_person")
     )
     private Set<Person> persons = new HashSet<Person>();
-
-
-    public Set<Person> getPersons() {
-        return this.persons;
-    }
-
-    public void setPersons(Set<Person> persons) {
-        this.persons = persons;
-    }
-
-    public void addPersons(Person person) {
-        persons.add(person);
-    }
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_event",
             joinColumns = @JoinColumn(name = "id_event"),
             inverseJoinColumns = @JoinColumn(name = "id_organization"))
     public Set<Organization> organizations = new HashSet<>();
-
-    public Set<Organization> getOrganizations() {
-        return organizations;
-    }
-
-    public void setOrganizations(Set<Organization> organizations) {
-        this.organizations = organizations;
-    }
-
-    public void addOrganization(Organization organization) {
-        organizations.add(organization);
-    }
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "event_project",
             joinColumns = @JoinColumn(name = "id_event"),
             inverseJoinColumns = @JoinColumn(name = "id_project"))
     public Set<Project> projects = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_type_event", insertable = false, updatable = false)
+    private TypeEvent typeEvent;
 
-    public Set<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(Set<Project> projects) {
-        this.projects = projects;
+    public void addPersons(Person person) {
+        persons.add(person);
     }
 
     public void addProject(Project project) {
         projects.add(project);
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_type_event", insertable = false, updatable = false)
-    private TypeEvent typeEvent;
-
-
-    public TypeEvent getTypeEvent() {
-        return typeEvent;
+    public void addOrganization(Organization organization) {
+        organizations.add(organization);
     }
-
-    public void setTypeEvent(TypeEvent typeEvent) {
-        this.typeEvent = typeEvent;
-    }
-
 }

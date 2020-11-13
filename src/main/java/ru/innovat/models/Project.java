@@ -47,67 +47,30 @@ public class Project {
     private String site_project;
     @Column(name = "Number_Phone_project")
     private String number_Phone_project;
-
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "project_person",
             joinColumns = @JoinColumn(name = "id_project"),
             inverseJoinColumns = @JoinColumn(name = "id_person")
     )
     private Set<Person> persons = new HashSet<Person>();
-
-    public Set<Person> getPersons() {
-        return this.persons;
-    }
-
-
-    public void setPersons(Set<Person> persons) {
-        this.persons = persons;
-    }
-
-    public void addPerson(Person person) {
-        persons.add(person);
-    }
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_project",
-
             joinColumns = @JoinColumn(name = "id_project"),
-
             inverseJoinColumns = @JoinColumn(name = "id_organization"))
     public Set<Organization> organizations = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "event_project",
+            joinColumns = @JoinColumn(name = "id_project"),
+            inverseJoinColumns = @JoinColumn(name = "id_event"))
+    public Set<Event> events = new HashSet<>();
 
-    public Set<Organization> getOrganizations() {
-        return organizations;
-    }
-
-    public void setOrganizations(Set<Organization> organizations) {
-        this.organizations = organizations;
+    public void addEvent(Event event) {
+        events.add(event);
     }
 
     public void addOrganization(Organization organization) {
         organizations.add(organization);
     }
 
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "event_project",
-
-            joinColumns = @JoinColumn(name = "id_project"),
-
-            inverseJoinColumns = @JoinColumn(name = "id_event"))
-    public Set<Event> events = new HashSet<>();
-
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
-
-    public void addEvent(Event event) {
-        events.add(event);
-    }
-
+    public void addPerson(Person person) { persons.add(person);}
 }

@@ -1,5 +1,6 @@
 package ru.innovat.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.PersonDao;
@@ -7,6 +8,7 @@ import ru.innovat.models.Event;
 import ru.innovat.models.Organization;
 import ru.innovat.models.Person;
 import ru.innovat.models.Project;
+import ru.innovat.models.utils.Connect;
 
 import java.util.HashSet;
 import java.util.List;
@@ -14,14 +16,12 @@ import java.util.Set;
 
 
 @Service
+@AllArgsConstructor
 public class PersonService {
-
-
-    public PersonService(PersonDao personDao) {
-        this.personDao = personDao;
-    }
-
     private final PersonDao personDao;
+    private final OrganizationService organizationService;
+    private final EventService eventService;
+    private final ProjectService projectService;
 
 
     @Transactional
@@ -97,7 +97,7 @@ public class PersonService {
     }
 
     @Transactional
-    public Person addOrganizatin(Organization organization, int id) {
+    public Person addOrganization(Organization organization, int id) {
         Person person = personDao.findById(id);
         person.addOrganization(organization);
         return person;
@@ -108,5 +108,19 @@ public class PersonService {
         Person person = personDao.findById(id);
         person.addProject(project);
         return person;
+    }
+
+    @Transactional
+    public void addConnections(Connect connect, int id){
+        if (connect.getProject_Id() >= 1) {
+            updatePerson(addProject(projectService.findProject(connect.getProject_Id()), id));
+        }
+        if (connect.getPerson_id() >= 1) {
+            updatePerson(addEvent(eventService.findEvent(connect.getPerson_id()), id));
+        }
+        if (connect.getOrganization_Id() >= 1) {
+            updatePerson(addOrganization(organizationService.findOrganization
+                    (connect.getOrganization_Id()), id));
+        }
     }
 }

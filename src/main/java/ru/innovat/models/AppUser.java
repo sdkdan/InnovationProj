@@ -35,7 +35,7 @@ public class AppUser implements UserDetails {
     private String lastName;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_role")
-    private Role id_role;
+    private Role role;
     @Transient
     private String passwordConfirm;
     @Column(name = "enabled")
@@ -50,25 +50,14 @@ public class AppUser implements UserDetails {
         Role role = new Role();
         role.setId_role(Roles.Role_User.id_role);
         role.setRoleName(Roles.Role_User.name());
-
-        id_role = role;
+        this.role = role;
     }
-
-    public Role getId_role() {
-        return id_role;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
-
 
 
     @Override
@@ -91,37 +80,6 @@ public class AppUser implements UserDetails {
         return enabled;
     }
 
-    public Role getRole() {
-        return id_role;
-    }
-
-    public void setRole(Role id_role) {
-        this.id_role = id_role;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Blocked getBlocked() {
-        return blocked;
-    }
-
-    public void setBlocked(Blocked blocked) {
-        this.blocked = blocked;
-    }
 
     public String getStatusToString() {
         if (isAccountNonLocked()) {

@@ -33,44 +33,16 @@ public class Organization {
     private String city_organization;
     @Column(name = "Notes_organization")
     private String notes_organization;
-
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "organization_event",
             joinColumns = @JoinColumn(name = "id_organization"),
             inverseJoinColumns = @JoinColumn(name = "id_event"))
     public Set<Event> events = new HashSet<>();
-
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
-
-    public void addEvent(Event event) {
-        events.add(event);
-    }
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_person",
             joinColumns = @JoinColumn(name = "id_organization"),
             inverseJoinColumns = @JoinColumn(name = "id_person"))
     public Set<Person> persons = new HashSet<>();
-
-    public Set<Person> getPersons() {
-        return persons;
-    }
-
-    public void setPersons(Set<Person> persons) {
-        this.persons = persons;
-    }
-
-    public void addPerson(Person person) {
-        persons.add(person);
-    }
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_project",
             joinColumns = @JoinColumn(name = "id_organization"),
@@ -78,17 +50,17 @@ public class Organization {
     )
     private Set<Project> projects = new HashSet<Project>();
 
-    public Set<Project> getProjects() {
-        return this.projects;
-    }
 
-
-    public void setProjects(Set<Project> projects) {
-        this.projects = projects;
+    public void addPerson(Person person) {
+        persons.add(person);
     }
 
     public void addProject(Project project) {
         projects.add(project);
+    }
+
+    public void addEvent(Event event) {
+        events.add(event);
     }
 
 }

@@ -54,7 +54,7 @@ public class ProfileController {
         AppUser appUser = userService.findUserByUsername(userInfo);
         user.setId_user(appUser.getId_user());
         user.setPassword(appUser.getPassword());
-        user.setRole(appUser.getId_role());
+        user.setRole(appUser.getRole());
         userService.updateUser(user);
         return "redirect:";
     }

@@ -81,18 +81,9 @@ public class OrganizationController {
 
     @RequestMapping(value = "/organization/{id}/con", method = RequestMethod.POST)
     public String organizationAddCon(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect con, Model model){
+        organizationService.addConnections(con,id);
         model.addAttribute("organization", organization);
         model.addAttribute("con", con);
-        System.out.println(con.getPerson_id());
-        if (con.getPerson_id() >= 1) {
-            organizationService.updateOrganization(organizationService.addPerson(personService.findPerson(con.getPerson_id()), id));
-        }
-        if (con.getProject_Id() >= 1) {
-            organizationService.updateOrganization(organizationService.addPoject(projectService.findProject(con.getProject_Id()), id));
-        }
-        if (con.getEvent_Id() >= 1) {
-            organizationService.updateOrganization(organizationService.addEvent(eventService.findEvent(con.getEvent_Id()), id));
-        }
         return "redirect:";
     }
 

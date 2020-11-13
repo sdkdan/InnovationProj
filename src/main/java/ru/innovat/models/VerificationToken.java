@@ -32,13 +32,13 @@ public class VerificationToken {
         calculateExpiryDate();
     }
 
-    public AppUser getUser() {
-        return user;
-    }
-
-    public void setUser(AppUser user) {
-        this.user = user;
-    }
+//    public AppUser getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(AppUser user) {
+//        this.user = user;
+//    }
 
     private void calculateExpiryDate() {
         final Calendar cal = Calendar.getInstance();

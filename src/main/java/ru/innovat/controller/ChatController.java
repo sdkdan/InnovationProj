@@ -1,6 +1,7 @@
 package ru.innovat.controller;
 
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +17,7 @@ import ru.innovat.service.UserService;
 
 import java.util.Date;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Controller
 public class ChatController {
 

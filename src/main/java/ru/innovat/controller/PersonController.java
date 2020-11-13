@@ -1,6 +1,7 @@
 
 package ru.innovat.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class PersonController {
     private final ProjectService projectService;
     private final EventService eventService;
@@ -25,23 +27,10 @@ public class PersonController {
     private final PersonSearch personSearch;
     private final PersonService personService;
 
-    public PersonController(PersonService personService, ProjectService projectService, EventService eventService, OrganizationService organizationService, PersonSearch personSearch) {
-        this.personService = personService;
-        this.projectService = projectService;
-        this.eventService = eventService;
-        this.organizationService = organizationService;
-        this.personSearch = personSearch;
-    }
 
     @RequestMapping(value = "/person")
-    public String listPerson(String q, Model model) {
-        List<Person> searchResults;
-        if (q != null) {
-            if (q.length() > 0) {
-                searchResults = personSearch.fuzzySearch(q);
-            } else searchResults = personService.personList();
-        } else searchResults = personService.personList();
-        model.addAttribute("personList", searchResults);
+    public String listPerson(String search, Model model) {
+        model.addAttribute("personList", personSearch.searchPersonList(search));
         return "person/person";
     }
 
@@ -96,15 +85,7 @@ public class PersonController {
     public String personAddCon(@PathVariable("id") int id, @ModelAttribute Person person, Connect personcon, Model model) {
         model.addAttribute("person", person);
         model.addAttribute("personcon", personcon);
-        if (personcon.getEvent_Id() >= 1) {
-            personService.updatePerson(personService.addEvent(eventService.findEvent(personcon.getEvent_Id()), id));
-        }
-        if (personcon.getOrganization_Id() >= 1) {
-            personService.updatePerson(personService.addOrganizatin(organizationService.findOrganization(personcon.getOrganization_Id()), id));
-        }
-        if (personcon.getProject_Id() >= 1) {
-            personService.updatePerson(personService.addProject(projectService.findProject(personcon.getProject_Id()), id));
-        }
+        personService.addConnections(personcon,id);
         return "redirect:";
     }
 
