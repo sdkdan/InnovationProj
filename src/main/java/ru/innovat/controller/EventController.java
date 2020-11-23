@@ -12,10 +12,7 @@ import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
 import ru.innovat.models.utils.TypeEvent;
 import ru.innovat.search.EventSearch;
-import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationService;
-import ru.innovat.service.PersonService;
-import ru.innovat.service.ProjectService;
+import ru.innovat.service.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -27,13 +24,8 @@ public class EventController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationService organizationService;
+    private final ConnectionService connectionService;
 
-
-    @GetMapping(value = "/event")
-    public String listEvent(String search, Model model) {
-        model.addAttribute("eventList", eventService.searchEventList(search));
-        return "event/event";
-    }
 
     @GetMapping(value = "/event/add")
     public String getAddEvent(Model model) {
@@ -79,7 +71,7 @@ public class EventController {
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event, Connect con, Model model){
         model.addAttribute("event", event);
         model.addAttribute("con", con);
-        eventService.addConnections(con,id);
+        connectionService.addConnections(con,eventService.findEvent(id));
         return "redirect:";
     }
 

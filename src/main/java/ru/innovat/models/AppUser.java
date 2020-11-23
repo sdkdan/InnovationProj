@@ -53,12 +53,10 @@ public class AppUser implements UserDetails {
         this.role = role;
     }
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
-
 
     @Override
     public boolean isAccountNonExpired() {
@@ -79,7 +77,6 @@ public class AppUser implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
-
 
     public String getStatusToString() {
         if (isAccountNonLocked()) {

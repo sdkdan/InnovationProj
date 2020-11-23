@@ -51,9 +51,7 @@ public class Organization {
     private Set<Project> projects = new HashSet<Project>();
 
 
-    public void addPerson(Person person) {
-        persons.add(person);
-    }
+    public void addPerson(Person person) { persons.add(person); }
 
     public void addProject(Project project) {
         projects.add(project);

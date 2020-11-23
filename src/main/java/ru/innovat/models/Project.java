@@ -28,7 +28,7 @@ public class Project {
     @EqualsAndHashCode.Include
     private String name_project;
     @Column(name = "Essence_innovation")
-    private String essence_inovations;
+    private String essence_innovations;
     @Column(name = "Solution_problem")
     private String solution_problems;
     @Column(name = "Level_solution")
@@ -53,12 +53,12 @@ public class Project {
             inverseJoinColumns = @JoinColumn(name = "id_person")
     )
     private Set<Person> persons = new HashSet<Person>();
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "organization_project",
             joinColumns = @JoinColumn(name = "id_project"),
             inverseJoinColumns = @JoinColumn(name = "id_organization"))
     public Set<Organization> organizations = new HashSet<>();
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "event_project",
             joinColumns = @JoinColumn(name = "id_project"),
             inverseJoinColumns = @JoinColumn(name = "id_event"))

@@ -11,10 +11,7 @@ import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
 import ru.innovat.search.ProjectSearch;
-import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationService;
-import ru.innovat.service.PersonService;
-import ru.innovat.service.ProjectService;
+import ru.innovat.service.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,13 +23,7 @@ public class ProjectController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationService organizationService;
-
-
-    @GetMapping(value = "/project")
-    public String listProject(String search, Model model) {
-        model.addAttribute("projectList", projectService.searchProjectList(search));
-        return "project/project";
-    }
+    private final ConnectionService connectionService;
 
     @GetMapping("/project/{id}/delete")
     public String deleteProject(@PathVariable("id") int id) {
@@ -53,7 +44,6 @@ public class ProjectController {
         projectService.addProject(project);
         return "redirect:" + project.getId_project();
     }
-
 
     @GetMapping("project/{id}")
     public String oneProject(@PathVariable("id") int id, Model model) {
@@ -84,7 +74,7 @@ public class ProjectController {
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect con, Model model){
         model.addAttribute("project", project);
         model.addAttribute("con", con);
-        projectService.addConnections(con,id);
+        connectionService.addConnections(con,projectService.findProject(id));
         return "redirect:";
     }
 
@@ -94,7 +84,6 @@ public class ProjectController {
         model.addAttribute("project", project);
         return "project/updateProject";
     }
-
 
     @PostMapping("project/{id}/update")
     public String updateProject(@PathVariable("id") int id, @Valid Project project, BindingResult bindingResult) {

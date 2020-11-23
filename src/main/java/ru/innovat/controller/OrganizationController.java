@@ -11,10 +11,7 @@ import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.models.utils.Connect;
 import ru.innovat.search.OrganizationSearch;
-import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationService;
-import ru.innovat.service.PersonService;
-import ru.innovat.service.ProjectService;
+import ru.innovat.service.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,13 +23,7 @@ public class OrganizationController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationService organizationService;
-
-
-    @GetMapping(value = "/organization")
-    public String listorganization(String search, Model model) {
-        model.addAttribute("organizationList", organizationService.searchListOrganization(search));
-        return "organization/organization";
-    }
+    private final ConnectionService connectionService;
 
     @GetMapping(value = "/organization/add")
     public String getAddorganization(Model model) {
@@ -80,7 +71,7 @@ public class OrganizationController {
 
     @PostMapping(value = "/organization/{id}/con")
     public String organizationAddCon(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect con, Model model){
-        organizationService.addConnections(con,id);
+        connectionService.addConnections(con,organizationService.organizationAllConnection(id));
         model.addAttribute("organization", organization);
         model.addAttribute("con", con);
         return "redirect:";

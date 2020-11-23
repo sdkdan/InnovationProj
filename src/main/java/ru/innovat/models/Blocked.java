@@ -23,6 +23,5 @@ public class Blocked {
     private Date startDate;
     @Column(name = "comment")
     private String comment;
-
 }
 

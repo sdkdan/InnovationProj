@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity
+@Table(name = "verificationtoken")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -47,8 +48,4 @@ public class VerificationToken {
         cal.getTime();
         expiryDate = cal.getTime();
     }
-
-
-
-
 }

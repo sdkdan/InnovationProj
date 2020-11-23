@@ -42,7 +42,7 @@
             <div>
                 <h4> Cуть инновации:</h4>
                 <p class="small">
-                <td th:utext="${project.essence_inovations}">..</td>
+                <td th:utext="${project.essence_innovations}">..</td>
                 </p>
 
                 <h4>Конкурентные преимущества :</h4>
@@ -84,7 +84,7 @@
                 <tr th:each="person : ${project.getPersons()}">
                     <li>
                         <a class="small pl-md-1" th:href="@{/person/{id}(id=${person.id_person})}">
-                            <td th:utext="${person.getSurname()} +' '+ ${person.getName()}+' ' + ${person.getThirdName()}">
+                            <td th:utext="${person.getSurname()} +' '+ ${person.getName()}+' ' + ${person.getThird_Name()}">
                                 ..
                             </td>
                         </a>

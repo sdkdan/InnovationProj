@@ -2,7 +2,6 @@ package ru.innovat.controller;
 
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -28,14 +27,16 @@ public class ChatController {
     @GetMapping("/support")
     public String oneEventAddCon(Model model) {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("messages",messagesService.userMessages(userService.findUserByUsername(loggedInUser.getName()).getId_user()));
+        model.addAttribute("messages",messagesService.userMessages(
+                userService.findUserByUsername(loggedInUser.getName()).getId_user()));
         model.addAttribute("newMessage",new Messages());
         return "support";
     }
 
     @PostMapping(value = "/support/send")
     public String sendMessage(@ModelAttribute Messages newMessage){
-        newMessage.setAppUser(userService.findUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        newMessage.setAppUser(userService.findUserByUsername(
+                SecurityContextHolder.getContext().getAuthentication().getName()));
         newMessage.setTime(new Date());
         newMessage.setUser_message(true);
         messagesService.addMessage(newMessage);
