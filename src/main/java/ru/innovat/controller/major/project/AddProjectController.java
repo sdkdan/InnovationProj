@@ -6,8 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.models.Project;
-import ru.innovat.service.ProjectService;
+import ru.innovat.models.major.Project;
+import ru.innovat.service.major.ProjectService;
+
 
 @Controller
 @AllArgsConstructor

@@ -5,9 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import ru.innovat.models.Event;
-import ru.innovat.service.EventService;
-import ru.innovat.service.SearchService;
+import ru.innovat.models.major.Event;
+import ru.innovat.service.major.EventService;
+import ru.innovat.service.major.SearchService;
+
 
 @Controller
 @AllArgsConstructor

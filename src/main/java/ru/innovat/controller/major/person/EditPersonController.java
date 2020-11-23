@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.models.Person;
-import ru.innovat.service.PersonService;
+import ru.innovat.models.major.Person;
+import ru.innovat.service.major.PersonService;
+
 
 import javax.validation.Valid;
 

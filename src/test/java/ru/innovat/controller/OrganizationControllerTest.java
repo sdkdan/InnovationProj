@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Organization;
 import ru.innovat.service.major.OrganizationService;
 

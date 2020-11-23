@@ -1,14 +1,14 @@
 package ru.innovat.controller.major.organization;
 
-import org.hibernate.annotations.Cache;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.models.Organization;
-import ru.innovat.service.OrganizationService;
+import ru.innovat.models.major.Organization;
+import ru.innovat.service.major.OrganizationService;
+
 
 import javax.validation.Valid;
 

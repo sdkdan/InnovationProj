@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.models.Organization;
-import ru.innovat.search.OrganizationSearch;
-import ru.innovat.service.OrganizationService;
+import ru.innovat.models.major.Organization;
+import ru.innovat.service.major.OrganizationService;
+
 
 @Controller
 @AllArgsConstructor

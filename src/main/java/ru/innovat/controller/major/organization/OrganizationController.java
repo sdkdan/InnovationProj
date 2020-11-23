@@ -3,18 +3,11 @@ package ru.innovat.controller.major.organization;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.innovat.models.Event;
-import ru.innovat.models.Organization;
-import ru.innovat.models.Person;
-import ru.innovat.models.Project;
-import ru.innovat.models.utils.Connect;
-import ru.innovat.search.OrganizationSearch;
-import ru.innovat.service.*;
+import ru.innovat.models.major.Organization;
+import ru.innovat.service.major.OrganizationService;
+import ru.innovat.service.major.SearchService;
 
-import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @AllArgsConstructor

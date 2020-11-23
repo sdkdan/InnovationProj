@@ -11,6 +11,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Project;
 import ru.innovat.service.major.ProjectService;
 

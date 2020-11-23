@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.innovat.service.*;
 import ru.innovat.service.major.PersonService;
 import ru.innovat.service.major.SearchService;
 

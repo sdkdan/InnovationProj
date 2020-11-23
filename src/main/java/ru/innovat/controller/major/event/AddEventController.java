@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.models.Event;
+import ru.innovat.models.major.Event;
 import ru.innovat.models.utils.TypeEvent;
-import ru.innovat.service.EventService;
+import ru.innovat.service.major.EventService;
 
 import java.util.List;
 

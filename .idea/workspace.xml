@@ -6,13 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="f5b1688a-34de-4102-b4bd-1ab1a5b915d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HibernateQuickStart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HibernateQuickStart.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/onePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/onePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/person.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/person.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/updatePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/updatePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/RegistrationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/controller/RegistrationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ru/innovat/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ru/innovat/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/authorization/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/authorization/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/authorization/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/authorization/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/authorization/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/authorization/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/event/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/event/AddEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/event/EditEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/event/EditEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/event/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/event/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/organization/AddOrganizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/organization/AddOrganizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/organization/OrganizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/organization/OrganizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/organization/UpdateOrganizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/organization/UpdateOrganizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/person/AddPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/person/AddPersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/person/ConnectPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/person/ConnectPersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/person/EditPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/person/EditPersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/person/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/person/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/project/AddProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/project/AddProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/project/EditProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/project/EditProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/project/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/major/project/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/support/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/support/ChatController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,12 +74,8 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\test\resources\ru\innovat" />
-      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\main\webapp\WEB-INF\resources" />
-      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\main\webapp\WEB-INF\resources\templates" />
-      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\main\webapp\WEB-INF\resources\templates\project" />
-      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\test\resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.innovat.configuration" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\test\java\resources" />
@@ -77,8 +83,12 @@
       <recent name="C:\work\InnovationProj-master2\src\main\webapp\WEB-INF\resources\templates" />
       <recent name="C:\Users\Стас\Documents\GitHub\InnovationProj\.idea" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ru.innovat.configuration" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\test\resources\ru\innovat" />
+      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\main\webapp\WEB-INF\resources" />
+      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\main\webapp\WEB-INF\resources\templates" />
+      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\main\webapp\WEB-INF\resources\templates\project" />
+      <recent name="C:\Users\er56s\Documents\GitHub\InnovationProj\src\test\resources" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Unnamed">
@@ -269,9 +279,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="765" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605263427660" />
-    <state x="572" y="464" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1605885523595">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="458" y="354" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1606159935009">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="458" y="354" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1606159935009" />
     <state x="572" y="464" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605885523595" />
     <state x="743" y="434" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606057691708">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -289,45 +300,45 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1605818958130" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606154546588">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606160439827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606154546588" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606160439827" />
     <state width="1877" height="251" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606150372991" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1606154546588">
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1606160439827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606154546588" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606160439827" />
     <state width="1877" height="251" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606150372989" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1606154546588">
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1606160439827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606154546588" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606160439827" />
     <state width="1877" height="251" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606150372987" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1606154546588">
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1606160439827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606154546588" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606160439827" />
     <state width="1877" height="251" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606150372989" />
-    <state width="1493" height="210" key="GridCell.Tab.1.bottom" timestamp="1606154546589">
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom" timestamp="1606160439828">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606154546589" />
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606160439828" />
     <state width="1877" height="251" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605872403090" />
-    <state width="1493" height="210" key="GridCell.Tab.1.center" timestamp="1606154546588">
+    <state width="1493" height="210" key="GridCell.Tab.1.center" timestamp="1606160439828">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606154546588" />
+    <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606160439828" />
     <state width="1877" height="251" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605872403090" />
-    <state width="1493" height="210" key="GridCell.Tab.1.left" timestamp="1606154546588">
+    <state width="1493" height="210" key="GridCell.Tab.1.left" timestamp="1606160439827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606154546588" />
+    <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606160439827" />
     <state width="1877" height="251" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605872403090" />
-    <state width="1493" height="210" key="GridCell.Tab.1.right" timestamp="1606154546588">
+    <state width="1493" height="210" key="GridCell.Tab.1.right" timestamp="1606160439828">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606154546588" />
+    <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606160439828" />
     <state width="1877" height="251" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605872403090" />
     <state x="490" y="195" width="941" height="690" key="Maven.ArtifactSearchDialog" timestamp="1602000155503">
       <screen x="0" y="0" width="1920" height="1080" />

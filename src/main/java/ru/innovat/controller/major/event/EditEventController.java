@@ -7,9 +7,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.models.Event;
+
+import ru.innovat.models.major.Event;
 import ru.innovat.models.utils.TypeEvent;
-import ru.innovat.service.EventService;
+import ru.innovat.service.major.EventService;
+
 
 import javax.validation.Valid;
 import java.util.List;
