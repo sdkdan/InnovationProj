@@ -25,7 +25,7 @@ public class RoleDao {
 
     public List<String> getRoleNames(int id_user) {
         Session session = this.sessionFactory.getCurrentSession();
-        String role = (String) session.createQuery("SELECT U.roleName FROM Role U, AppUser Au WHERE Au.id_user = :id AND Au.id_role.id_role = U.id_role").setParameter("id", id_user).uniqueResult();
+        String role = (String) session.createQuery("SELECT U.roleName FROM Role U, AppUser Au WHERE Au.id_user = :id AND Au.role.id_role = U.id_role").setParameter("id", id_user).uniqueResult();
         List<String> appUser = new ArrayList<>();
         appUser.add(role);
         return appUser;

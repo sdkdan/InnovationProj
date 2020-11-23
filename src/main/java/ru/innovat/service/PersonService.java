@@ -26,7 +26,6 @@ public class PersonService {
     private final ProjectService projectService;
     private final PersonSearch personSearch;
 
-
     @Transactional
     public Person findPerson(int id) {
         return personDao.findById(id);
@@ -60,35 +59,22 @@ public class PersonService {
 
     @Transactional
     public Person saveSets(Person person, int id) {
-
         Person person1 = new Person();
-
-
         person.setOrganizations(person1.getOrganizations());
         person.setProjects(person1.getProjects());
         person.setEvents(person1.getEvents());
-
-
         person.setId_person(id);
-
-
         return person;
     }
 
-
     @Transactional
     public void deleteSets(Person person) {
-
         Set<Project> projects = new HashSet<>();
         Set<Organization> organizations = new HashSet<>();
         Set<Event> events = new HashSet<>();
-
-
         person.setProjects(projects);
         person.setEvents(events);
         person.setOrganizations(organizations);
-
-
         personDao.update(person);
     }
 

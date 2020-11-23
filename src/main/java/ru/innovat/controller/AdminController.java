@@ -47,9 +47,9 @@ public class AdminController {
     public String userAddRole(@PathVariable("id") int id, @ModelAttribute AppUser user, Connect connect, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("connect", connect);
-        if (connect.getRole_id() >= 1) {
-            userService.updateUser(userService.setRole(userService.getRoleById(connect.getRole_id()), id));
-        }
+
+        userService.updateUser(userService.setRole(userService.getRoleById(connect.getRole_id()), id));
+
         return "redirect:" + id;
     }
 
@@ -68,7 +68,7 @@ public class AdminController {
         userService.addBlocked(blocked);
         user.setBlocked(userService.getBlocked(blocked.getId_blocked()));
         userService.update(user);
-        return "redirect:" ;
+        return "redirect:";
     }
 
     @GetMapping(value = "/admin/user/{id}/unban")
@@ -77,5 +77,10 @@ public class AdminController {
         appUser.setBlocked(null);
         userService.update(appUser);
         return "redirect:";
+    }
+
+    @GetMapping(value = "/menu")
+    public String menu() {
+        return "menu";
     }
 }

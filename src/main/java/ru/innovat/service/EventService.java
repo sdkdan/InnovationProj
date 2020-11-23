@@ -21,14 +21,11 @@ import java.util.Set;
 @Service
 @AllArgsConstructor(onConstructor=@__({@Lazy}))
 public class EventService {
-
     private final EventDao eventDao;
     private final OrganizationService organizationService;
     private final PersonService personService;
     private final ProjectService projectService;
     private final EventSearch eventSearch;
-
-
 
     @Transactional
     public Event findEvent(int id) {
@@ -63,32 +60,21 @@ public class EventService {
     @Transactional
     public Event saveSets(Event event, int id) {
         Event event1 = new Event();
-
         event.setOrganizations(event1.getOrganizations());
         event.setProjects(event1.getProjects());
         event.setPersons(event1.getPersons());
-
-
         event.setId_event(id);
-
-
         return event;
     }
 
-
     @Transactional
     public void deleteSets(Event event) {
-
         Set<Project> projects = new HashSet<>();
         Set<Organization> organizations = new HashSet<>();
         Set<Person> persons = new HashSet<>();
-
-
         event.setProjects(projects);
         event.setPersons(persons);
         event.setOrganizations(organizations);
-
-
         eventDao.update(event);
     }
 

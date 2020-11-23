@@ -2,9 +2,9 @@ package ru.innovat.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.innovat.models.utils.RolesEnum;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -13,7 +13,6 @@ import java.util.Collection;
 @Table(name = "users")
 @Getter
 @Setter
-@ToString
 public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,8 +47,8 @@ public class AppUser implements UserDetails {
         super();
         this.enabled = false;
         Role role = new Role();
-        role.setId_role(Roles.Role_User.id_role);
-        role.setRoleName(Roles.Role_User.name());
+        role.setId_role(RolesEnum.Role_User.id_role);
+        role.setRoleName(RolesEnum.Role_User.name());
         this.role = role;
     }
 
@@ -85,15 +84,5 @@ public class AppUser implements UserDetails {
         if (isAccountNonLocked()) {
             return "Активен";
         } else return "Заблокирован";
-    }
-}
-enum  Roles{
-    Role_Admin(1),
-    Role_User(2),
-    Role_Support(3);
-
-    int id_role;
-    Roles(int id_role) {
-        this.id_role = id_role;
     }
 }

@@ -12,6 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "verificationtoken")
 public class VerificationToken {
     private static final int EXPIRATION = 60 * 24;
 
@@ -47,8 +48,5 @@ public class VerificationToken {
         cal.getTime();
         expiryDate = cal.getTime();
     }
-
-
-
 
 }

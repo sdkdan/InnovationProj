@@ -37,13 +37,13 @@
         .container .right {
             float: right;
             margin-left: 20px;
-            margin-right:0;
+            margin-right: 0;
         }
 
         .container .left {
             float: left;
             margin-right: 20px;
-            margin-left:0;
+            margin-left: 0;
         }
 
         .time-right {
@@ -61,7 +61,7 @@
 <body>
 <!--Include _menu.html -->
 <th:block th:include="/menu"></th:block>
-<form action="#" th:action="@{/supportu/{id}/send (id=${idUser})}" th:object="${newMessage}" method="post">
+<form action="#" th:action="@{/help/send}" th:object="${newMessage}" method="post">
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control" th:field="*{message}" placeholder="Обязательное поле">
@@ -71,10 +71,7 @@
 </form>
 <table class="table">
     <thead>
-    <tr>
-
-    </tr>
-    </thead>
+</thead>
     <tbody>
     <tr th:each="message : ${messages}">
         <div th:if="${!message.user_message}" class="container darker">

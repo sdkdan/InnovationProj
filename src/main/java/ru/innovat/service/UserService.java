@@ -35,12 +35,10 @@ public class UserService implements UserDetailsService {
     final BlockedDao blockedDao;
     final EmailService emailService;
 
-
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         AppUser appUser = this.userDao.findByUsername(userName);
-
         if (appUser == null) {
             System.out.println("Пользователь не найден " + userName);
             throw new UsernameNotFoundException("Пользователь " + userName + " не найдет в базе данных");
@@ -68,33 +66,17 @@ public class UserService implements UserDetailsService {
                 grantList.add(authority);
             }
         }
-
         return new User(appUser.getUsername(), appUser.getPassword(), grantList);
     }
 
     @Transactional
     public AppUser findUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = userDao.findByUsername(username);
-
         if (appUser == null) {
             throw new UsernameNotFoundException("User not found");
         }
-
         return appUser;
     }
-
-
-    @Transactional
-    public boolean checkUsername(String username) {
-        return userDao.findByUsername(username) != null;
-    }
-
-
-    @Transactional
-    public boolean checkEmail(String email) {
-        return userDao.findByEmail(email) != null;
-    }
-
 
     @Transactional
     public void updateUser(AppUser user) {
@@ -128,7 +110,6 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-
     @Transactional
     public void update(AppUser appUser) {
         userDao.update(appUser);
@@ -149,10 +130,4 @@ public class UserService implements UserDetailsService {
         return userDao.roleUserList();
     }
 
-    public String checkAccount(AppUser appUser) {
-        if (checkEmail(appUser.getEMail())) return "Такая почта уже существует";
-        if (checkUsername(appUser.getUsername())) return "Имя пользователя уже занято";
-        if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))) return "Пароли не совпадают";
-        return null;
-    }
 }

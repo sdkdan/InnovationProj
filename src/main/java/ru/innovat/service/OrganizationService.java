@@ -26,7 +26,6 @@ public class OrganizationService {
     private final ProjectService projectService;
     private final OrganizationSearch organizationSearch;
 
-
     @Transactional
     public Organization findOrganization(int id) {
         return this.organizationDao.findById(id);
@@ -58,18 +57,11 @@ public class OrganizationService {
 
     @Transactional
     public Organization saveSets (Organization organization , int id){
-
         Organization organization1 = new Organization();
-
-
         organization.setEvents(organization1.getEvents());
         organization.setProjects(organization1.getProjects());
         organization.setPersons(organization1.getPersons());
-
-
         organization.setId_organization(id);
-
-
         return organization;
     }
 
@@ -79,14 +71,9 @@ public class OrganizationService {
         Set<Project> projects = new HashSet<>();
         Set<Person> persons = new HashSet<>();
         Set<Event> events = new HashSet<>();
-
-
-
         organization.setProjects(projects);
         organization.setEvents(events);
         organization.setPersons(persons);
-
-
         organizationDao.update(organization);
     }
 

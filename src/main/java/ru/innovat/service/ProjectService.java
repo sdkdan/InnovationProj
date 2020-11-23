@@ -59,35 +59,23 @@ public class ProjectService {
 
     @Transactional
     public Project saveSets(Project project, int id) {
-
         Project project1 = new Project();
-
-
         project.setOrganizations(project1.getOrganizations());
         project.setPersons(project1.getPersons());
         project.setEvents(project1.getEvents());
-
-
         project.setId_project(id);
-
-
         return project;
     }
 
 
     @Transactional
     public void deleteSets(Project project) {
-
         Set<Person> persons = new HashSet<>();
         Set<Organization> organizations = new HashSet<>();
         Set<Event> events = new HashSet<>();
-
-
         project.setPersons(persons);
         project.setEvents(events);
         project.setOrganizations(organizations);
-
-
         projectDao.update(project);
     }
 

@@ -57,7 +57,7 @@ public class RegistrationController {
     //Дилема сильное слабое связываение и if
     @PostMapping(value = "/register")
     public String registerUser(Model model, AppUser appUser) {
-        String checkAccount = userService.checkAccount(appUser);
+        String checkAccount = newUserService.checkAccount(appUser);
         if(checkAccount != null) {
             model.addAttribute("message",checkAccount);
             return "error";
