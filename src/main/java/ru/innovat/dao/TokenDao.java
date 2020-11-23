@@ -24,8 +24,8 @@ public class TokenDao {
 
     public VerificationToken findByToken(String token) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (VerificationToken) session.createQuery("SELECT V FROM VerificationToken V WHERE V.token = :token").setParameter("token", token).uniqueResult();
-
+        return (VerificationToken) session.createQuery("SELECT V FROM VerificationToken V WHERE V.token = :token")
+                .setParameter("token", token).uniqueResult();
     }
 
     public VerificationToken findById(int id) {

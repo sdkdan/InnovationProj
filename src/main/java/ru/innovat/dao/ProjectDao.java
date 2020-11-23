@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.Project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -57,9 +58,9 @@ public class ProjectDao {
 
 
     @SuppressWarnings("unchecked")
-    public List<Project> projectList() {
+    public ArrayList<Project> projectList() {
         Session session = this.sessionFactory.getCurrentSession();
-        return (List<Project>) session.createQuery("From Project").list();
+        return (ArrayList<Project>) session.createQuery("From Project").list();
     }
 
 }

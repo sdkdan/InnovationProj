@@ -34,7 +34,7 @@ public class Person {
     @Column(name = "Third_name")
     private String third_Name;
     @Column(name = "Phone_number")
-    private String phone_number_person;
+    private String phone_number;
     @Column(name = "Date_of_birth")
     private String date_of_birth;
     @Column(name = "E_mail")

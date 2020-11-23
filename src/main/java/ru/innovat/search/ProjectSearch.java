@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -25,7 +26,7 @@ public class ProjectSearch {
 
 
     @SuppressWarnings("unchecked")
-    public List<Project> fuzzySearch(String searchTerm) {
+    public ArrayList<Project> fuzzySearch(String searchTerm) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Project.class).get();
         Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("name_project")
@@ -36,7 +37,7 @@ public class ProjectSearch {
 
         try {
 
-            return (List<Project>) jpaQuery.getResultList();
+            return (ArrayList<Project>) jpaQuery.getResultList();
         } catch (NoResultException nre) {
             nre.printStackTrace();
         }

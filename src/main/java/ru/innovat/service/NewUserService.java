@@ -22,15 +22,12 @@ public class NewUserService {
     final UserDao userDao;
     final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
-
     @Transactional
     public void saveUser(AppUser appUser) {
         appUser.setPassword(bCryptPasswordEncoder.encode(appUser.getPassword()));
         userDao.add(appUser);
         saveToken(appUser);
     }
-
 
     @Transactional
     public void deleteToken(int id) {
@@ -43,7 +40,6 @@ public class NewUserService {
         tokenDao.add(verificationToken);
         emailService.sendEmail(appUser.getEMail(),verificationToken);
     }
-
 
     @Transactional
     public VerificationToken findByToken(String Token) {
