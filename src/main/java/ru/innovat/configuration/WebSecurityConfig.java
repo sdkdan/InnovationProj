@@ -35,15 +35,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
-        httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project", "/event")
-                .permitAll();
-        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**",
-                "/project/**", "/myprofile/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_SUPPORT')");
 
-        httpSecurity.authorizeRequests().antMatchers("/supportu/**").access("hasAnyRole('ROLE_SUPPORT')");
-        httpSecurity.authorizeRequests().antMatchers("/support/**").access("hasAnyRole('ROLE_USER')");
+        httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project", "/event").permitAll();
+
+
+        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**", "/project/**", "/myprofile/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_SUPPORT')");
+
+        httpSecurity.authorizeRequests().antMatchers("/support/**").access("hasAnyRole('ROLE_SUPPORT')");
+
+        httpSecurity.authorizeRequests().antMatchers("/help/**").access("hasAnyRole('ROLE_USER')");
+
         httpSecurity.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+
         httpSecurity.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+
         httpSecurity.authorizeRequests().and().formLogin()
                 .loginProcessingUrl("/j_spring_security_check")
                 .loginPage("/login")

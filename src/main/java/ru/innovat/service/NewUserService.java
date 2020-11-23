@@ -1,6 +1,7 @@
 package ru.innovat.service;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,5 +74,22 @@ public class NewUserService {
         } else {
             return  "Данная ссылка не действительна либо сломана";
         }
+    }
+
+    @Transactional
+    public boolean checkUsername(String username) {
+        return userDao.findByUsername(username) != null;
+    }
+
+    @Transactional
+    public boolean checkEmail(String email) {
+        return userDao.findByEmail(email) != null;
+    }
+
+    public String checkAccount(AppUser appUser) {
+        if (checkEmail(appUser.getEMail())) return "Такая почта уже существует";
+        if (checkUsername(appUser.getUsername())) return "Имя пользователя уже занято";
+        if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))) return "Пароли не совпадают";
+        return null;
     }
 }

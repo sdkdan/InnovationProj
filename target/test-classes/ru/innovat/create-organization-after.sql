@@ -1,0 +1,10 @@
+delete from organization_event;
+delete from organization_person;
+delete from organization_project;
+delete from person_event;
+delete from project_person;
+delete from event_project;
+delete from project;
+delete from organization;
+delete from person;
+delete from event;
