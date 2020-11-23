@@ -5,190 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5b1688a-34de-4102-b4bd-1ab1a5b915d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/event/event.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/event/oneEvent.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/organization/oneOrg.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/organization/organization.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/project/oneProject.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/project/project.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/user/adminPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Event/_1.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Event/_1.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Event/segments_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Organization/_4.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Organization/_4.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Organization/segments_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Person/_7.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Person/_7.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Person/segments_8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Project/_3.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ru.innovat.models.Project/segments_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/configuration/HibernateSearchConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/configuration/HibernateSearchConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/configuration/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/configuration/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/OrganizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/OrganizationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/PersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/BlockedDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/BlockedDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/EventDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/EventDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/MessagesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/MessagesDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/OrganizationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/PersonDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/PersonDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/ProjectDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/ProjectDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/RoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/TokenDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/TokenDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/AppUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Blocked.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Blocked.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Organization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Organization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/models/VerificationToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/models/VerificationToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/search/EventSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/search/EventSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/search/OrganizationSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/search/OrganizationSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/search/PersonSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/search/PersonSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/search/ProjectSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/search/ProjectSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/MessagesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/MessagesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/OrganizationSevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/OrganizationSevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/PersonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/innovat/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/innovat/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/403Page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/403Page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/accountVerified.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/accountVerified.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addEventCon.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/event/addEventCon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addOrg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/organization/addOrg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addOrganizationCon.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/organization/addOrganizationCon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addPersonCon.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/addPersonCon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addProjectCon.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/project/addProjectCon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/event/addevent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/addproject.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/project/addproject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/adminPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/banUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/user/banUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/editPassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/user/editPassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/editUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/user/editUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/event.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/loginPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/loginPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/logoutSuccessfulPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/logoutSuccessfulPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/myprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/user/myprofile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneEvent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneOrg.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/onePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/onePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneProject.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/oneUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/user/oneUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/organization.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/person.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/project.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registrationConfirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/registrationConfirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/successRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/successRegister.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/successfulRegisteration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/successfulRegistration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/support.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/support.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updateEvent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/event/updateEvent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updateOrganization.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/organization/updateOrganization.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updatePerson.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/person/updatePerson.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/updateProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/project/updateProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/welcomePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/templates/registration/welcomePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/configuration/HibernateConf.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/configuration/HibernateConf.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/configuration/HibernateSearchConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/configuration/HibernateSearchConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/configuration/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/configuration/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/EventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/controller/EventController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/OrganizationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/controller/OrganizationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/controller/PersonController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/ProjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/controller/ProjectController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/controller/RegistrationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/controller/RegistrationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/EventDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/dao/EventDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/PersonDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/dao/PersonDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/ProjectDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/dao/ProjectDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/dao/UserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/levels/FirstLevelMarketDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/levels/FirstLevelSkillDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/levels/FirstLevelTechnologyDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/levels/SecondLevelMarketDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/levels/SecondLevelSkillDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/levels/SecondLevelTechnologyDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/levels/ThirdLevelMarketDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/levels/ThirdLevelTechnologyDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/dao/utils/DevelopmentRolePersonDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Event.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Organization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Organization.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/models/Project.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/levels/FirstLevelMarket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/levels/FirstLevelSkill.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/levels/FirstLevelTechnology.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/levels/SecondLevelMarket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/levels/SecondLevelSkill.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/levels/SecondLevelTechnology.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/levels/ThirdLevelMarket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/levels/ThirdLevelTechnology.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/models/utils/PersonConnect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/search/EventSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/search/EventSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/search/PersonSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/search/PersonSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/EventService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/EventService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/OrganizationSevice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/OrganizationSevice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/PersonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/PersonService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/ProjectService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/ProjectService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/innovat/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/levels/FirstLevelMarketService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/levels/FirstLevelSkillService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/levels/FirstLevelTechnologyService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/levels/SecondLevelMarketService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/levels/SecondLevelSkillService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/levels/SecondLevelTechnologyService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/levels/ThirdLevelMarketService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/levels/ThirdLevelTechnologyService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/innovat/service/utils/DevelopmentRolePersonService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/403Page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/accountVerified.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addEventCon.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addOrg.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addOrganizationCon.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addPersonCon.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addProjectCon.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addevent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/addproject.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/adminPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/banUser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/editPassword.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/editUser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/event.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/loginPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/logoutSuccessfulPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/myprofile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/oneEvent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/oneOrg.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/onePerson.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/oneProject.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/oneUser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/organization.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/person.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/project.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/registration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/registrationConfirm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/successRegister.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/successfulRegisteration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/support.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/support.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/updateEvent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/updateOrganization.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/updatePerson.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/updateProject.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/welcomePage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,17 +75,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.ConnectionServiceTest.addConnectionToPersonTest">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ConnectionServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HibernateQuickStart" />
       <extension name="coverage">
@@ -366,7 +172,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>

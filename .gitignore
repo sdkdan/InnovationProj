@@ -19,3 +19,4 @@ out/
 .idea/workspace.xml
 HibernateQuickStart.iml
 *.iml
+ru.innovat.models.Organization/_r.cfs
