@@ -4,37 +4,27 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import ru.innovat.dao.ProjectDao;
-import ru.innovat.models.Event;
-import ru.innovat.models.Organization;
-import ru.innovat.models.Person;
 import ru.innovat.models.Project;
 import ru.innovat.service.EventService;
 import ru.innovat.service.OrganizationService;
 import ru.innovat.service.PersonService;
 import ru.innovat.service.ProjectService;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Sql(value = {"create-project-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("application-test.properties")
+@TestPropertySource("../../../resources/application-test.properties")
 @Transactional
 public class ProjectServiceWithBDTest {
 

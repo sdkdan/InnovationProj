@@ -15,6 +15,4 @@ import ru.innovat.service.UserService;
 public class EmailServiceTest {
     @Autowired
     private EmailService emailService;
-
-
 }

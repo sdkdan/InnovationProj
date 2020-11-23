@@ -1,0 +1,31 @@
+package ru.innovat.controller.major.organization;
+
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import ru.innovat.models.Organization;
+import ru.innovat.search.OrganizationSearch;
+import ru.innovat.service.OrganizationService;
+
+@Controller
+@AllArgsConstructor
+public class AddOrganizationController {
+    OrganizationService organizationService;
+
+    @GetMapping(value = "/organization/add")
+    public String getAddorganization(Model model) {
+        model.addAttribute("organization", new Organization());
+        return "organization/addOrg";
+    }
+
+    @PostMapping(value = "/organization/add")
+    public String addOrganization(@ModelAttribute Organization organization, Model model) {
+        model.addAttribute("organization", organization);
+        organizationService.addOrganization(organization);
+        return "redirect:" + organization.getId_organization();
+    }
+
+}

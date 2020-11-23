@@ -1,11 +1,8 @@
 package ru.innovat;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 //import org.mockito.ArgumentMatchers;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,8 +18,6 @@ import ru.innovat.models.utils.RolesEnum;
 import ru.innovat.service.NewUserService;
 import ru.innovat.service.UserService;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @Sql(value = {"delete-user.sql", "create-user-for-service.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("application-test.properties")
+@TestPropertySource("../../../resources/application-test.properties")
 @Transactional
 public class UserServiceTest {
     @Autowired

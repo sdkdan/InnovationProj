@@ -1,4 +1,4 @@
-package ru.innovat.controller;
+package ru.innovat.controller.major.authorization;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -16,8 +16,6 @@ import java.security.Principal;
 @Controller
 @AllArgsConstructor
 public class RegistrationController {
-
-    private final UserService userService;
     private final NewUserService newUserService;
 
 

@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@TestPropertySource("application-test.properties")
+@TestPropertySource("../../../resources/application-test.properties")
 @Sql(value = {"create-project-before.sql"})
 @Transactional
 public class ConnectionServiceTest {

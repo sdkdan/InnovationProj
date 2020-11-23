@@ -5,33 +5,25 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import ru.innovat.dao.TokenDao;
-import ru.innovat.dao.UserDao;
 import ru.innovat.models.AppUser;
 import ru.innovat.models.Role;
 import ru.innovat.models.utils.RolesEnum;
 import ru.innovat.models.VerificationToken;
-import ru.innovat.service.EmailService;
 import ru.innovat.service.NewUserService;
 import ru.innovat.service.UserService;
 
 import javax.persistence.EntityManager;
-
-import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource("application-test.properties")
+@TestPropertySource("../../../resources/application-test.properties")
 @Sql(value = {"create-user-for-service.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Transactional

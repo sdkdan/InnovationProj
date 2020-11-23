@@ -1,4 +1,4 @@
-package ru.innovat.controller;
+package ru.innovat.controller.major.authorization;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;

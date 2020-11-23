@@ -11,7 +11,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.innovat.controller.OrganizationController;
+import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.Project;
 import ru.innovat.service.ProjectService;
 
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource("application-test.properties")
+@TestPropertySource("resources/application-test.properties")
 @Sql(value = {"create-project-before.sql","create-user-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @WithUserDetails(value = "test")

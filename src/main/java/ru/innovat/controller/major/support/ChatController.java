@@ -1,4 +1,4 @@
-package ru.innovat.controller;
+package ru.innovat.controller.major.support;
 
 
 import lombok.AllArgsConstructor;
