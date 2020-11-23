@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @Sql(value = {"delete-user.sql", "create-user-for-service.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("application-test.properties")
+@TestPropertySource("../../../resources/application-test.properties")
 @Transactional
 public class UserServiceTest {
     @Autowired

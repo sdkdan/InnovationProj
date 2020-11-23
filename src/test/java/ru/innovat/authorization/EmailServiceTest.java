@@ -14,6 +14,4 @@ import ru.innovat.service.authorization.EmailService;
 public class EmailServiceTest {
     @Autowired
     private EmailService emailService;
-
-
 }
