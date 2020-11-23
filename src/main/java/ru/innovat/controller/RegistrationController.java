@@ -6,9 +6,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.innovat.models.AppUser;
-import ru.innovat.service.NewUserService;
-import ru.innovat.service.UserService;
+import ru.innovat.models.authorization.AppUser;
+import ru.innovat.service.authorization.NewUserService;
+import ru.innovat.service.authorization.UserService;
 
 import java.security.Principal;
 

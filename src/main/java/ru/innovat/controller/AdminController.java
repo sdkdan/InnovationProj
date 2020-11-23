@@ -1,16 +1,15 @@
 package ru.innovat.controller;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.innovat.models.AppUser;
-import ru.innovat.models.Blocked;
+import ru.innovat.models.authorization.AppUser;
+import ru.innovat.models.authorization.Blocked;
 import ru.innovat.models.utils.Connect;
-import ru.innovat.service.UserService;
+import ru.innovat.service.authorization.UserService;
 
 import javax.validation.Valid;
 import java.util.Date;

@@ -7,10 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 //import ru.innovat.Search.PersonSearch;
-import ru.innovat.search.PersonSearch;
-import ru.innovat.models.*;
-import ru.innovat.service.*;
+import ru.innovat.models.major.Event;
+import ru.innovat.models.major.Organization;
+import ru.innovat.models.major.Person;
+import ru.innovat.models.major.Project;
 import ru.innovat.models.utils.*;
+import ru.innovat.service.major.*;
 
 import javax.validation.Valid;
 import java.util.List;

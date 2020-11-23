@@ -6,8 +6,7 @@ import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.stereotype.Repository;
-import ru.innovat.models.Event;
-import ru.innovat.service.EventService;
+import ru.innovat.models.major.Event;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

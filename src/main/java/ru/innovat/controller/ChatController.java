@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.models.Messages;
-import ru.innovat.service.MessagesService;
-import ru.innovat.service.UserService;
+import ru.innovat.models.support.Messages;
+import ru.innovat.service.support.MessagesService;
+import ru.innovat.service.authorization.UserService;
 
 import java.util.Date;
 

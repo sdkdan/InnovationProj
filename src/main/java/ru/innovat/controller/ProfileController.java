@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.innovat.models.AppUser;
-import ru.innovat.service.UserService;
+import ru.innovat.models.authorization.AppUser;
+import ru.innovat.service.authorization.UserService;
 
 import javax.validation.Valid;
 
