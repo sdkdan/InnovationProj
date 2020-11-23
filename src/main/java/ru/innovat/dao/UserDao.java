@@ -28,10 +28,10 @@ public class UserDao {
         return session.get(AppUser.class, id);
     }
 
-
     public AppUser findByUsername(String username) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (AppUser) session.createQuery("SELECT U FROM AppUser U WHERE U.username = :username").setParameter("username", username).uniqueResult();
+        return (AppUser) session.createQuery("SELECT U FROM AppUser U WHERE U.username = :username")
+                .setParameter("username", username).uniqueResult();
     }
 
     public void add(AppUser appUser) {
@@ -46,13 +46,13 @@ public class UserDao {
 
     public AppUser findByEmail(String email) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (AppUser) (session.createQuery("SELECT A FROM AppUser A WHERE eMail =:eMail ").setParameter("eMail", email).uniqueResult());
+        return (AppUser) (session.createQuery("SELECT A FROM AppUser A WHERE eMail =:eMail ")
+                .setParameter("eMail", email).uniqueResult());
     }
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         AppUser appUser = session.load(AppUser.class, id);
-
         if (appUser != null) {
             session.delete(appUser);
         }
@@ -67,6 +67,7 @@ public class UserDao {
     @SuppressWarnings("unchecked")
     public List<AppUser> roleUserList() {
         Session session = this.sessionFactory.getCurrentSession();
-        return (List<AppUser>) session.createQuery("SELECT A From AppUser A WHERE A.id_role.id_role =:id").setParameter("id", 2).list();
+        return (List<AppUser>) session.createQuery("SELECT A From AppUser A WHERE A.role.id_role =:id")
+                .setParameter("id", 2).list();
     }
 }

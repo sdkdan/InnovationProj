@@ -83,18 +83,15 @@ public class UserService implements UserDetailsService {
         return appUser;
     }
 
-
     @Transactional
     public boolean checkUsername(String username) {
         return userDao.findByUsername(username) != null;
     }
 
-
     @Transactional
     public boolean checkEmail(String email) {
         return userDao.findByEmail(email) != null;
     }
-
 
     @Transactional
     public void updateUser(AppUser user) {
@@ -127,7 +124,6 @@ public class UserService implements UserDetailsService {
         user.setRole(role);
         return user;
     }
-
 
     @Transactional
     public void update(AppUser appUser) {

@@ -29,25 +29,16 @@ public class BlockedDao {
         session.persist(blocked);
     }
 
-    public void update(Blocked blocked) {
-        Session session = sessionFactory.getCurrentSession();
-        session.update(blocked);
-    }
-
-    public void delete(Blocked blocked) {
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(blocked);
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<Blocked> blockedList() {
-        Session session = sessionFactory.getCurrentSession();
-        return (List<Blocked>) session.createQuery("SELECT * FROM Blocked");
-    }
-
-    public Blocked findByUserId(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
-        return (Blocked) session.createQuery("SELECT B FROM Blocked B WHERE B.appUser.id_user = :id_user").setParameter("id_user", id).uniqueResult();
-    }
+//    @SuppressWarnings("unchecked")
+//    public List<Blocked> blockedList() {
+//        Session session = sessionFactory.getCurrentSession();
+//        return (List<Blocked>) session.createQuery("SELECT * FROM Blocked");
+//    }
+//
+//    public Blocked findByUserId(int id) {
+//        Session session = this.sessionFactory.getCurrentSession();
+//        return (Blocked) session.createQuery("SELECT B FROM Blocked B WHERE B.appUser.id_user = :id_user")
+//                .setParameter("id_user", id).uniqueResult();
+//    }
 
 }

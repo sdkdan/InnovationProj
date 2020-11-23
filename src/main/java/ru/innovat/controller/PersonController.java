@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.*;
 //import ru.innovat.Search.PersonSearch;
 import ru.innovat.search.PersonSearch;
 import ru.innovat.models.*;
-import ru.innovat.service.EventService;
-import ru.innovat.service.OrganizationService;
-import ru.innovat.service.PersonService;
-import ru.innovat.service.ProjectService;
+import ru.innovat.service.*;
 import ru.innovat.models.utils.*;
 
 import javax.validation.Valid;
@@ -25,20 +22,14 @@ public class PersonController {
     private final EventService eventService;
     private final OrganizationService organizationService;
     private final PersonService personService;
-
-
-    @GetMapping(value = "/person")
-    public String listPerson(String search, Model model) {
-        model.addAttribute("personList", personService.searchPersonList(search));
-        return "person/person";
-    }
+    private final SearchService searchService;
+    private final ConnectionService connectionService;
 
     @GetMapping(value = "/person/add")
     public String getAddPerson(Model model) {
         model.addAttribute("person", new Person());
         return "person/add";
     }
-
 
     @PostMapping(value = "/person/add")
     public String addPerson(@ModelAttribute Person person, Model model) {
@@ -49,7 +40,6 @@ public class PersonController {
 
     @GetMapping("person/{id}/delete")
     public String deleteUser(@PathVariable("id") int id) {
-        personService.deleteSets(personService.findPerson(id));
         personService.deletePerson(id);
         return "redirect:/person";
     }
@@ -59,7 +49,6 @@ public class PersonController {
         model.addAttribute("person", personService.personAllConnections(id));
         return "person/onePerson";
     }
-
 
     @GetMapping("person/{id}/con")
     public String onePersonCon(@PathVariable("id") int id, Model model) {
@@ -79,12 +68,11 @@ public class PersonController {
         return "person/addPersonCon";
     }
 
-
     @PostMapping(value = "/person/{id}/con")
-    public String personAddCon(@PathVariable("id") int id, @ModelAttribute Person person, Connect personcon, Model model) {
+    public String personAddCon(@PathVariable("id") int id, @ModelAttribute Person person, Connect personcon, Model model){
         model.addAttribute("person", person);
         model.addAttribute("personcon", personcon);
-        personService.addConnections(personcon,id);
+        connectionService.addConnections(personcon, personService.findPerson(id));
         return "redirect:";
     }
 

@@ -21,7 +21,6 @@ public class MessagesService {
         messagesDao.add(messages);
     }
 
-
     @Transactional
     public List<Messages> userMessages(int id){
         return messagesDao.userMessages(id);
