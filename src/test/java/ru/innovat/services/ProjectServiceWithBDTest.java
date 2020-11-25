@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
 @SpringBootTest
 @Sql(value = {"create-project-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("application-test.properties")
+@TestPropertySource("../../../../resources/application-test.properties")
 @Transactional
 public class ProjectServiceWithBDTest {
 
