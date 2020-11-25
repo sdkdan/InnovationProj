@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -17,11 +18,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import ru.innovat.controller.major.event.EventController;
-import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Event;
-import ru.innovat.models.major.Organization;
 import ru.innovat.service.major.EventService;
-import ru.innovat.service.major.OrganizationService;
 
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.hamcrest.CoreMatchers.hasItem;
@@ -39,7 +37,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureWebMvc
 @WithUserDetails("test")
 @AutoConfigureMockMvc
-@TestPropertySource("application-test.properties")
+@TestPropertySource("/application-test.properties")
+@Sql(value = {"/sql/create-event-before.sql","/sql/create-user-before.sql"},
+        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class EventControllerTest {
     @Autowired
     EventController eventController;

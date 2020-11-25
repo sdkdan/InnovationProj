@@ -24,9 +24,9 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql(value = {"create-event-before.sql"},
+@Sql(value = {"/sql/create-event-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("../../../../resources/application-test.properties")
+@TestPropertySource("/application-test.properties")
 @Transactional
 public class EventServiceTest {
     @Autowired
@@ -99,30 +99,4 @@ public class EventServiceTest {
         assertThat(event.getPrizes()).isEqualTo(updatedEvent.getPrizes());
     }
 
-//    @Test
-//    public void  addEventTest(){
-//        Event event = new Event();
-//        event.setSite_event("testsite");
-//        event.setName_event("test");
-//        event.setImportance_event("test");
-//        event.setScope_event("test");
-//        event.setDescription("test");
-//        event.setPhone_number("1111");
-//        event.setDate_event("28.12.1997");
-//        event.setComment("test");
-//        event.setPrizes("test");
-//        eventService.addEvent(event);
-//        verify(eventService,times(1)).addEvent(event);
-//        Event addedEvent = eventService.findEvent(15);
-//        assertThat(event.getId_event()).isEqualTo(addedEvent.getId_event());
-//        assertThat(event.getSite_event()).isEqualTo(addedEvent.getSite_event());
-//        assertThat(event.getName_event()).isEqualTo(addedEvent.getName_event());
-//        assertThat(event.getImportance_event()).isEqualTo(addedEvent.getImportance_event());
-//        assertThat(event.getScope_event()).isEqualTo(addedEvent.getScope_event());
-//        assertThat(event.getDescription()).isEqualTo(addedEvent.getDescription());
-//        assertThat(event.getPhone_number()).isEqualTo(addedEvent.getPhone_number());
-//        assertThat(event.getDate_event()).isEqualTo(addedEvent.getDate_event());
-//        assertThat(event.getComment()).isEqualTo(addedEvent.getComment());
-//        assertThat(event.getPrizes()).isEqualTo(addedEvent.getPrizes());
-//    }
 }

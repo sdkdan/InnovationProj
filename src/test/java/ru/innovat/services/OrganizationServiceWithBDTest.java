@@ -23,9 +23,9 @@ import static org.springframework.test.web.client.ExpectedCount.times;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql(value = {"create-organization-before.sql"},
+@Sql(value = {"/sql/create-organization-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("../../../../resources/application-test.properties")
+@TestPropertySource("/application-test.properties")
 @Transactional
 public class OrganizationServiceWithBDTest {
     @Autowired
@@ -94,7 +94,6 @@ public class OrganizationServiceWithBDTest {
 //        assertThat(organization.getSite_organization()).isEqualTo(addedOrganization.getSite_organization());
 //        assertThat(organization.getNotes_organization()).isEqualTo(addedOrganization.getNotes_organization());
 //    }
-
 
 }
 

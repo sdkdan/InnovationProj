@@ -24,9 +24,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql(value = {"delete-user.sql", "create-user-for-service.sql"},
+@Sql(value = {"/sql/delete-user.sql", "/sql/create-user-for-service.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("../../../resources/application-test.properties")
+@TestPropertySource("/application-test.properties")
 @Transactional
 public class UserServiceTest {
     @Autowired
@@ -124,7 +124,5 @@ public class UserServiceTest {
         assertThat(appUser.getEMail()).isEqualTo("testEmail");
         assertThat(appUser.getUsername()).isEqualTo(updatedUser.getUsername());
     }
-
-
 
 }
