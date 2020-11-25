@@ -63,23 +63,8 @@ public class OrganizationControllerTest {
     }
 
     @Test
-    public void requestLoginForm() throws Exception {
-        this.mockMvc.perform(get("/admin"))
-                .andDo(print())
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("http://localhost/login"));
-    }
-
-    @Test
     public void organizationPageTest() throws Exception {
         this.mockMvc.perform(get("/organization"))
-                .andDo(print())
-                .andExpect(SecurityMockMvcResultMatchers.authenticated());
-    }
-
-    @Test
-    public void menuPageTest() throws Exception {
-        this.mockMvc.perform(get("/menu"))
                 .andDo(print())
                 .andExpect(SecurityMockMvcResultMatchers.authenticated());
     }
@@ -91,13 +76,6 @@ public class OrganizationControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(xpath("/html/body/table/tbody/tr[1]/td[1]").string("Политех"));
-    }
-
-    @Test
-    public void menuPageTextTest() throws Exception {
-        this.mockMvc.perform(get("/menu"))
-                .andDo(print())
-                .andExpect(xpath("/html/body/nav/div/ul/li[6]/a").string("Профиль"));
     }
 
     @Test
