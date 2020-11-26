@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.search.annotations.Field;
-import org.springframework.stereotype.Indexed;
+import org.hibernate.search.annotations.Indexed;
 
 
 import javax.persistence.*;
@@ -16,6 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Indexed
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,7 +9,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.major.Organization;
-import ru.innovat.models.major.Project;
 import ru.innovat.service.major.EventService;
 import ru.innovat.service.major.OrganizationService;
 import ru.innovat.service.major.PersonService;
@@ -19,11 +18,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
-import static org.springframework.test.web.client.ExpectedCount.times;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql(value = {"/sql/create-organization-before.sql"},
+@Sql(value = {"/create-organization-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @TestPropertySource("/application-test.properties")
 @Transactional

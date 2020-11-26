@@ -25,13 +25,13 @@ public class OrganizationService {
     }
 
     @Transactional
-    public void deleteOrganiztion(int id) {
+    public void deleteOrganization(int id) {
         this.organizationDao.delete(id);
     }
 
     @Transactional
-    public void updateOrganization(Organization organizaion) {
-        this.organizationDao.update(organizaion);
+    public void updateOrganization(Organization organization) {
+        this.organizationDao.update(organization);
     }
 
     @Transactional

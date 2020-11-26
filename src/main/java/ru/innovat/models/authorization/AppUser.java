@@ -1,5 +1,6 @@
 package ru.innovat.models.authorization;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +14,7 @@ import java.util.Collection;
 @Table(name = "users")
 @Getter
 @Setter
+@EqualsAndHashCode(exclude = {"role", "blocked", "password", "passwordConfirm", "enabled"} )
 public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +34,7 @@ public class AppUser implements UserDetails {
     @Basic
     @Column(name = "last_name")
     private String lastName;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role")
     private Role role;
     @Transient

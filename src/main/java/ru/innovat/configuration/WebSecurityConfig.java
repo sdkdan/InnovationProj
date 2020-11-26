@@ -34,18 +34,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        //httpSecurity.csrf().disable();
+        httpSecurity.csrf().disable();
         httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project",
                 "/event").permitAll();
 
         httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**",
-                "/project/**", "/myprofile/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_SUPPORT')");
+                "/project/**", "/myprofile/**").access("hasAnyRole('USER', 'ADMIN','SUPPORT')");
 
-        httpSecurity.authorizeRequests().antMatchers("/support/**").access("hasAnyRole('ROLE_SUPPORT')");
+        httpSecurity.authorizeRequests().antMatchers("/support/**").access("hasAnyRole('SUPPORT')");
 
-        httpSecurity.authorizeRequests().antMatchers("/help/**").access("hasAnyRole('ROLE_USER')");
+        httpSecurity.authorizeRequests().antMatchers("/help/**").access("hasAnyRole('USER')");
 
-        httpSecurity.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+        httpSecurity.authorizeRequests().antMatchers("/admin/**").access("hasRole('ADMIN')");
 
         httpSecurity.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .tokenValiditySeconds(24 * 60 * 60);
     }
 
-    //    @Autowired
+//        @Autowired
 //    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
 //    }

@@ -33,9 +33,7 @@ public class OrganizationDao {
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
         Organization organization = session.load(Organization.class, id);
-        if (organization != null) {
-            session.delete(organization);
-        }
+        if (organization != null) session.delete(organization);
     }
 
     public void update(Organization organization) {

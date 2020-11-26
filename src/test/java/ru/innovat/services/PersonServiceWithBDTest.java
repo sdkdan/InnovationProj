@@ -9,7 +9,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.major.Person;
-import ru.innovat.models.major.Project;
 import ru.innovat.service.major.EventService;
 import ru.innovat.service.major.OrganizationService;
 import ru.innovat.service.major.PersonService;
@@ -24,7 +23,7 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql(value = {"/sql/create-person.sql"},
+@Sql(value = {"/sql/create-person-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @TestPropertySource("/application-test.properties")
 @Transactional

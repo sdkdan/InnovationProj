@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Service
-@AllArgsConstructor(onConstructor=@__({@Lazy}))
+@AllArgsConstructor
 public class PersonService {
     private final PersonDao personDao;
 

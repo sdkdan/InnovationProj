@@ -4,99 +4,152 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-import ru.innovat.controller.major.event.EventController;
+import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Event;
+import ru.innovat.models.major.Project;
 import ru.innovat.service.major.EventService;
+import ru.innovat.service.major.ProjectService;
+import ru.innovat.service.major.SearchService;
 
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.core.AllOf.allOf;
-import static org.junit.Assert.assertEquals;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureWebMvc
-@WithUserDetails("test")
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
-@Sql(value = {"/sql/create-event-before.sql","/sql/create-user-before.sql"},
+@Sql(value = {"/create-event-before.sql", "/create-user-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@WithUserDetails(value = "test")
 public class EventControllerTest {
     @Autowired
-    EventController eventController;
-    @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
     @Autowired
     EventService eventService;
     @Autowired
-    private WebApplicationContext webApplicationContext;
+    SearchService searchService;
 
     @Test
-    public void contextLoads() throws Exception {
-    }
-
-    @Test
-    public void shouldReturnDefaultMessage() throws Exception {
+    public void events() throws Exception {
         this.mockMvc.perform(get("/event"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content()
-                        .string(containsString("Мероприятия")));
+                .andExpect(view().name("event/event"))
+                .andExpect(model().attribute("eventList", hasSize(2)))
+                .andExpect(model().attribute("eventList", hasItem(
+                        allOf(
+                                hasProperty("name_event", is("test")),
+                                hasProperty("description", is("test")),
+                                hasProperty("scope_event", is("test"))
+                        )
+                )));
     }
 
     @Test
-    public void eventPageTest() throws Exception {
-        this.mockMvc.perform(get("/event"))
-                .andDo(print())
-                .andExpect(SecurityMockMvcResultMatchers.authenticated());
+    public void findByIdEventTest() throws Exception {
+        mockMvc.perform(get("/event/{id}", 1))
+                .andExpect(status().isOk())
+                .andExpect(view().name("event/oneEvent"))
+                .andExpect(model().attribute("event",
+                        hasProperty("name_event", is("test"))))
+                .andExpect(model().attribute("event",
+                        hasProperty("scope_event", is("test"))));
     }
 
     @Test
-    public void eventListTest() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        this.mockMvc.perform(get("/event"))
+    public void eventSearchTest() throws Exception {
+        mockMvc.perform(get("/event?search=test"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(xpath("/html/body/table/tbody/tr[1]/td[1]").string("Лул"));
+                .andExpect(view().name("event/event"))
+                .andExpect(model().attribute("eventList", hasSize(1)))
+                .andExpect(model().attribute("eventList", hasItem(
+                        allOf(
+                                hasProperty("name_event", is("test")),
+                                hasProperty("scope_event", is("test")),
+                                hasProperty("description", is("test"))
+                        )
+                )));
     }
 
     @Test
     public void addNewEventTest() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/event/add")
-                .param("event", String.valueOf(new Event()))
-                .contentType(MediaType.TEXT_HTML)
-                .accept(MediaType.TEXT_HTML))
+        mockMvc.perform(post("/event/add")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("site_event", "testsite")
+                .param("name_event", "test")
+                .param("importance_event", "test")
+                .param("scope_event", "test")
+                .param("description", "test")
+                .param("phone_number", "1111")
+                .param("date_event", "28.12.1997")
+                .param("date_for_month", "28.12.1997")
+                .param("date_for_the_week", "28.12.1997")
+                .param("comment", "test")
+                .param("prizes", "test")
+                .param("location_event", "test")
+                .sessionAttr("event", new Event())
+        )
                 .andExpect(status().is3xxRedirection());
+        mockMvc.perform(get("/event"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("event/event"))
+                .andExpect(model().attribute("eventList", hasSize(2)))
+                .andExpect(model().attribute("eventList", hasItem(
+                        allOf(
+                                hasProperty("name_event", is("test")),
+                                hasProperty("site_event", is("test")),
+                                hasProperty("description", is("test"))
+                        )
+                )));
     }
 
     @Test
-    public void deleteEvent() throws Exception {
-        String uri = "/event/1";
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        assertEquals(content, "Event is deleted successfully");
+    public void eventEditTest() throws Exception {
+        mockMvc.perform(post("/event/1/update")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("site_event", "testsite")
+                .param("name_event", "test1")
+                .param("importance_event", "test")
+                .param("scope_event", "test")
+                .param("description", "test")
+                .param("phone_number", "1111")
+                .param("date_event", "28.12.1997")
+                .param("date_for_month", "28.12.1997")
+                .param("date_for_the_week", "28.12.1997")
+                .param("comment", "test")
+                .param("prizes", "test")
+                .param("location_event", "test")
+                .sessionAttr("project", new Project())
+        )
+                .andExpect(status().is3xxRedirection());
+
+        mockMvc.perform(get("/event/{id}", 1))
+                .andExpect(status().isOk())
+                .andExpect(view().name("event/oneEvent"))
+                .andExpect(model().attribute("event",
+                        hasProperty("name_event", is("test1"))))
+                .andExpect(model().attribute("project",
+                        hasProperty("site_event", is("testsite"))));
+    }
+
+    @Test
+    public void deleteEventTest() throws Exception{
+        mockMvc.perform(get("/event/1/delete"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
     }
 
 }

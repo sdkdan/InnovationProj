@@ -26,8 +26,7 @@ public class AddEventController {
     }
 
     @PostMapping(value = "/event/add")
-    public String addEvent(@ModelAttribute Event event, Model model) {
-        model.addAttribute("event", event);
+    public String addEvent(@ModelAttribute Event event) {
         eventService.addEvent(event);
         return "redirect:" + event.getId_event();
     }
