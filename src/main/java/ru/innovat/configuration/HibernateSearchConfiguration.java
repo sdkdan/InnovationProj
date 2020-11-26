@@ -11,11 +11,10 @@ import ru.innovat.search.PersonSearch;
 @EnableAutoConfiguration
 @Configuration
 public class HibernateSearchConfiguration {
-
     private final EntityManager entityManager;
 
-    public HibernateSearchConfiguration(EntityManager bentityManager) {
-        this.entityManager = bentityManager;
+    public HibernateSearchConfiguration(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Bean

@@ -25,8 +25,6 @@ public class PersonDao {
         return sessionFactory.getCurrentSession().get(Person.class, id);
     }
 
-
-
     public void add(Person person) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(person);
@@ -40,10 +38,7 @@ public class PersonDao {
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Person person = session.load(Person.class, id);
-
-        if (person != null) {
-            session.delete(person);
-        }
+        if (person != null) session.delete(person);
     }
 
     @SuppressWarnings("unchecked")

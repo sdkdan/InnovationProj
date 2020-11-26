@@ -33,7 +33,6 @@ public class UserService implements UserDetailsService {
     final BlockedDao blockedDao;
     final EmailService emailService;
 
-
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -73,7 +72,6 @@ public class UserService implements UserDetailsService {
     @Transactional
     public AppUser findUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = userDao.findByUsername(username);
-
         if (appUser == null) {
             throw new UsernameNotFoundException("User not found");
         }

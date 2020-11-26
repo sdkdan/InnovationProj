@@ -15,7 +15,6 @@ import javax.validation.Valid;
 @Controller
 @AllArgsConstructor
 public class ProfileController {
-
     final UserService userService;
 
     @GetMapping("myprofile")

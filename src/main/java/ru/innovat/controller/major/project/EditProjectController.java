@@ -26,7 +26,6 @@ public class EditProjectController {
 
     @PostMapping("project/{id}/update")
     public String updateProject(@PathVariable("id") int id, @Valid Project project, BindingResult bindingResult) {
-
         project.setId_project(id);
         projectService.updateProject(project);
         return "redirect:";

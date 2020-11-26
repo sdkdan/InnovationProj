@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 @Repository
 public class ProjectDao {
-
     private SessionFactory sessionFactory;
 
     public ProjectDao(SessionFactory sessionFactory) {
@@ -26,7 +25,6 @@ public class ProjectDao {
         return session.get(Project.class, id);
     }
 
-
     public void add(Project project) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(project);
@@ -40,12 +38,8 @@ public class ProjectDao {
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Project project = session.load(Project.class, id);
-
-        if (project != null) {
-            session.delete(project);
-        }
+        if (project != null) session.delete(project);
     }
-
 
     public Project projectAllConnections(int id) {
         Project project = findById(id);
@@ -54,7 +48,6 @@ public class ProjectDao {
         Hibernate.initialize(project.getEvents());
         return project;
     }
-
 
     @SuppressWarnings("unchecked")
     public ArrayList<Project> projectList() {

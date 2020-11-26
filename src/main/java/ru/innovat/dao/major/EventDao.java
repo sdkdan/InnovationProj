@@ -11,8 +11,6 @@ import java.util.List;
 
 @Repository
 public class EventDao {
-
-
     private SessionFactory sessionFactory;
 
     public EventDao(SessionFactory sessionFactory) {
@@ -42,10 +40,7 @@ public class EventDao {
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Event event = session.load(Event.class, id);
-
-        if (event != null) {
-            session.delete(event);
-        }
+        if (event != null)session.delete(event);
     }
 
     @SuppressWarnings("unchecked")

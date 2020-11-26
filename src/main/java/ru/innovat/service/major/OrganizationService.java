@@ -41,5 +41,4 @@ public class OrganizationService {
 
     @Transactional
     public Organization organizationAllConnection(int id){return organizationDao.organizationAllConnection(id);}
-
 }

@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 @Transactional
 public class RoleDao {
-
     private final SessionFactory sessionFactory;
 
     public RoleDao(SessionFactory sessionFactory) {
@@ -37,5 +36,4 @@ public class RoleDao {
         Session session = this.sessionFactory.getCurrentSession();
         return (List<Role>) session.createQuery("From Role").list();
     }
-
 }

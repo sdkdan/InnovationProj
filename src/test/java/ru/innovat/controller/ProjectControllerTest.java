@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Project;
 import ru.innovat.service.major.ProjectService;
+import ru.innovat.service.major.SearchService;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -37,6 +38,8 @@ public class ProjectControllerTest {
     OrganizationController organizationController;
     @Autowired
     ProjectService projectService;
+    @Autowired
+    SearchService searchService;
 
     @Test
     public void projects() throws Exception {
@@ -117,7 +120,7 @@ public class ProjectControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("project/project"))
-                .andExpect(model().attribute("projectList", hasSize(2)))
+                .andExpect(model().attribute("projectList", hasSize(3)))
                 .andExpect(model().attribute("projectList", hasItem(
                         allOf(
                                 hasProperty("name_project", is("test")),

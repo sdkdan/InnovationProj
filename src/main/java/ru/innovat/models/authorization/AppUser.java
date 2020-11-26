@@ -78,8 +78,6 @@ public class AppUser implements UserDetails {
     }
 
     public String getStatusToString() {
-        if (isAccountNonLocked()) {
-            return "Активен";
-        } else return "Заблокирован";
+        return  (isAccountNonLocked()) ? "Активен" : "Заблокирован";
     }
 }

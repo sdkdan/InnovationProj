@@ -44,5 +44,4 @@ public class PersonService {
     public Person personAllConnections(int id) {
         return personDao.personAllConnections(id);
     }
-
 }

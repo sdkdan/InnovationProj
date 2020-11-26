@@ -67,7 +67,6 @@ public class Person {
     )
     private Set<Project> projects = new HashSet<Project>();
 
-
     public void addProject(Project project) {
         projects.add(project);
     }

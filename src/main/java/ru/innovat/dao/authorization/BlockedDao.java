@@ -38,5 +38,4 @@ public class BlockedDao {
 //        return (Blocked) session.createQuery("SELECT B FROM Blocked B WHERE B.appUser.id_user = :id_user")
 //                .setParameter("id_user", id).uniqueResult();
 //    }
-
 }

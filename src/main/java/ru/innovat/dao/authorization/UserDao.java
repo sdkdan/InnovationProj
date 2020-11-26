@@ -50,14 +50,6 @@ public class UserDao {
                 .setParameter("eMail", email).uniqueResult());
     }
 
-    public void delete(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
-        AppUser appUser = session.load(AppUser.class, id);
-        if (appUser != null) {
-            session.delete(appUser);
-        }
-    }
-
     @SuppressWarnings("unchecked")
     public List<AppUser> userList() {
         Session session = this.sessionFactory.getCurrentSession();

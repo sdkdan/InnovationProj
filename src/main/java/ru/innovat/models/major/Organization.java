@@ -4,14 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
+import org.springframework.stereotype.Indexed;
+
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Indexed
 @Table(name = "organization")
 @Getter
 @Setter
@@ -47,8 +47,7 @@ public class Organization {
             joinColumns = @JoinColumn(name = "id_organization"),
             inverseJoinColumns = @JoinColumn(name = "id_project")
     )
-    private Set<Project> projects = new HashSet<Project>();
-
+    private Set<Project> projects = new HashSet<>();
 
     public void addPerson(Person person) { persons.add(person); }
 
