@@ -38,11 +38,10 @@ public class PersonSearch {
                 .matching(searchTerm).createQuery();
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Person.class);
         try {
-            return  (List<Person>)jpaQuery.getResultList();
+            return (List<Person>) jpaQuery.getResultList();
         } catch (NoResultException nre) {
             nre.printStackTrace();
         }
-
         return null;
     }
 }

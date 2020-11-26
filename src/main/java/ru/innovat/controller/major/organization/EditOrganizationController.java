@@ -13,7 +13,7 @@ import ru.innovat.service.major.OrganizationService;
 import javax.validation.Valid;
 
 @Controller
-public class UpdateOrganizationController {
+public class EditOrganizationController {
     OrganizationService organizationService;
 
     @GetMapping("/organization/{id}/edit")

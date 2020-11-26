@@ -1,4 +1,4 @@
-package ru.innovat.controller.major.event;
+package ru.innovat.controller.major.project;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,36 +18,36 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-public class ConnectEventController {
+public class ConnectionProjectController {
     private final PersonService personService;
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationService organizationService;
     private final ConnectionService connectionService;
 
-    @GetMapping("event/{id}/con")
-    public String oneEventAddCon(@PathVariable("id") int id, Model model) {
+    @GetMapping("project/{id}/con")
+    public String oneProjectAddCon(@PathVariable("id") int id, Model model) {
         Connect con = new Connect();
-        Event event = eventService.eventAllConnections(id);
+        Project project = projectService.projectAllConnections(id);
         List<Organization> organizationList = organizationService.organizationList();
-        List<Project> projectList = projectService.projectList();
+        List<Event> eventList = eventService.eventList();
         List<Person> personList = personService.personList();
-        projectList.removeAll(event.getProjects());
-        personList.removeAll(event.getPersons());
-        organizationList.removeAll(event.getOrganizations());
+        eventList.removeAll(project.getEvents());
+        personList.removeAll(project.getPersons());
+        organizationList.removeAll(project.getOrganizations());
         model.addAttribute("organizations", organizationList);
-        model.addAttribute("event", event);
-        model.addAttribute("projects", projectList);
+        model.addAttribute("events", eventList);
+        model.addAttribute("project", project);
         model.addAttribute("persons", personList);
         model.addAttribute("con", con);
-        return "event/addEventCon";
+        return "project/addProjectCon";
     }
 
-    @PostMapping(value = "/event/{id}/con")
-    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event, Connect con, Model model){
-        model.addAttribute("event", event);
+    @PostMapping(value = "/project/{id}/con")
+    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect con, Model model){
+        model.addAttribute("project", project);
         model.addAttribute("con", con);
-        connectionService.addConnections(con,eventService.findEvent(id));
+        connectionService.addConnections(con,projectService.findProject(id));
         return "redirect:";
     }
 }

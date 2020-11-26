@@ -27,15 +27,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
-@Sql(value = {"/sql/create-project-before.sql","/sql/create-user-before.sql"},
+@Sql(value = {"/sql/create-project-before.sql", "/create-user-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @WithUserDetails(value = "test")
-//@Sql(value = {"/messages-list-after.sql", "/create-"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class ProjectControllerTest {
     @Autowired
     MockMvc mockMvc;
-    @Autowired
-    OrganizationController organizationController;
     @Autowired
     ProjectService projectService;
     @Autowired
@@ -129,9 +126,6 @@ public class ProjectControllerTest {
                         )
                 )));
     }
-
-
-
 
     @Test
     public void projectEditTest() throws Exception {

@@ -16,14 +16,14 @@ public class OrganizationController {
     private final SearchService searchService;
 
     @GetMapping(value = "/organization")
-    public String listorganization(String search, Model model) {
+    public String listOrganization(String search, Model model) {
         model.addAttribute("organizationList", searchService.searchListOrganization(search));
         return "organization/organization";
     }
 
     @GetMapping("organization/{id}/delete")
     public String deleteOrganization(@PathVariable("id") int id) {
-        organizationService.deleteOrganiztion(id);
+        organizationService.deleteOrganization(id);
         return "redirect:organization";
     }
 

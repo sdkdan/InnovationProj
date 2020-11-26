@@ -1,4 +1,4 @@
--- delete from organization;
+delete from organization;
 delete from organization_event;
 delete from organization_person;
 delete from organization_project;
@@ -26,3 +26,5 @@ INSERT INTO `users` (`id_user`, `username`, `password`, `email`, `name`, `last_n
 '2', '1', NULL);
 INSERT INTO `organization` (`Id_organization`, `Name_organization`, `Site_organization`, `City_organization`, `Notes_organization`)
  VALUES ('1', 'Политех', 'spbbu@kek.ru', 'Nursultan',  'DFDFD');
+INSERT INTO `organization` (`Id_organization`, `Name_organization`, `Site_organization`, `City_organization`, `Notes_organization`)
+ VALUES ('2', 'Spbpu', 'spb@kek.ru', 'Almaty',  'note');

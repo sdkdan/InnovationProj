@@ -22,8 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@TestPropertySource("../../../../resources/application-test.properties")
-@Sql(value = {"../../../../resources/sql/create-project-before.sql"})
+@TestPropertySource("/application-test.properties")
+@Sql(value = {"/sql/create-project-before.sql"})
 @Transactional
 public class ConnectionServiceTest {
     @Autowired

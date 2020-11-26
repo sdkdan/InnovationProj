@@ -23,8 +23,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource("application-test.properties")
-@Sql(value = {"create-user-for-service.sql"},
+@TestPropertySource("/application-test.properties")
+@Sql(value = {"/sql/create-user-for-service.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Transactional
 public class NewUserServiceTest {
@@ -94,10 +94,5 @@ public class NewUserServiceTest {
         VerificationToken verificationToken = newUserService.findByToken(token);
         assertThat(token).isEqualTo(verificationToken.getToken());
     }
-
-
-
-
-
 
 }

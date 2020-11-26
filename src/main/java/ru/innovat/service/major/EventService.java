@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Service
-@AllArgsConstructor(onConstructor=@__({@Lazy}))
+@AllArgsConstructor
 public class EventService {
     private final EventDao eventDao;
 

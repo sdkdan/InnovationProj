@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -34,17 +35,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
+        httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project",
+                "/event").permitAll();
 
-        httpSecurity.authorizeRequests().antMatchers("/person", "/login", "/organization", "/project", "/event").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**",
+                "/project/**", "/myprofile/**").access("hasAnyRole('USER', 'ADMIN','SUPPORT')");
 
+        httpSecurity.authorizeRequests().antMatchers("/support/**").access("hasAnyRole('SUPPORT')");
 
-        httpSecurity.authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**", "/project/**", "/myprofile/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_SUPPORT')");
+        httpSecurity.authorizeRequests().antMatchers("/help/**").access("hasAnyRole('USER')");
 
-        httpSecurity.authorizeRequests().antMatchers("/support/**").access("hasAnyRole('ROLE_SUPPORT')");
-
-        httpSecurity.authorizeRequests().antMatchers("/help/**").access("hasAnyRole('ROLE_USER')");
-
-        httpSecurity.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+        httpSecurity.authorizeRequests().antMatchers("/admin/**").access("hasRole('ADMIN')");
 
         httpSecurity.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
@@ -61,9 +62,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .tokenValiditySeconds(24 * 60 * 60);
     }
 
-    @Autowired
-    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+//        @Autowired
+//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+//    }
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {//второй вариант настройки
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(userService);
+        return daoAuthenticationProvider;
     }
 
     @Bean

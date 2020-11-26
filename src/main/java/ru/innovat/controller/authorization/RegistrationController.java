@@ -20,7 +20,6 @@ public class RegistrationController {
 
     @GetMapping(value = "/login")
     public String loginPage() {
-
         return "registration/loginPage";
     }
 
@@ -39,7 +38,6 @@ public class RegistrationController {
         model.addAttribute("message", message);
         return "registration/403Page";
     }
-
 
     @GetMapping(value = "/register")
     public String displayRegistration(Model model, AppUser userEntity) {

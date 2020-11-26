@@ -17,6 +17,7 @@ import java.util.Set;
 @Setter
 @Indexed
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Indexed
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -18,7 +18,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-public class ConnectPersonController {
+public class ConnectionPersonController {
     private final ProjectService projectService;
     private final EventService eventService;
     private final OrganizationService organizationService;
