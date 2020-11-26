@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.search.annotations.Field;
-import org.springframework.stereotype.Indexed;
+import org.hibernate.search.annotations.Indexed;
 
 
 import javax.persistence.*;
@@ -15,6 +15,7 @@ import java.util.Set;
 @Table(name = "organization")
 @Getter
 @Setter
+@Indexed
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Organization {
     @Id

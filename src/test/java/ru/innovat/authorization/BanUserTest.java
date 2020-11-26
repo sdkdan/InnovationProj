@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource("application-test.properties")
-@Sql(value = {"create-user-for-ban.sql"},
+@Sql(value = {"../../../../resources/sql/create-user-for-ban.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class BanUserTest {
     @Autowired
