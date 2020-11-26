@@ -16,7 +16,7 @@ import ru.innovat.service.authorization.UserService;
 import javax.sql.DataSource;
 
 
-@Configuration
+
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

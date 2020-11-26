@@ -42,5 +42,4 @@ public class ProjectService {
     public Project projectAllConnections(int id) {
         return projectDao.projectAllConnections(id);
     }
-
 }

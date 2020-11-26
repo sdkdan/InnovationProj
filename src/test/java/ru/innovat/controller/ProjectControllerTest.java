@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Project;
 import ru.innovat.service.major.ProjectService;
+import ru.innovat.service.major.SearchService;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -25,8 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource("application-test.properties")
-@Sql(value = {"create-project-before.sql","create-user-before.sql"},
+@TestPropertySource("/application-test.properties")
+@Sql(value = {"/sql/create-project-before.sql","/sql/create-user-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @WithUserDetails(value = "test")
 //@Sql(value = {"/messages-list-after.sql", "/create-"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
@@ -37,6 +38,8 @@ public class ProjectControllerTest {
     OrganizationController organizationController;
     @Autowired
     ProjectService projectService;
+    @Autowired
+    SearchService searchService;
 
     @Test
     public void projects() throws Exception {
@@ -117,7 +120,7 @@ public class ProjectControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("project/project"))
-                .andExpect(model().attribute("projectList", hasSize(2)))
+                .andExpect(model().attribute("projectList", hasSize(3)))
                 .andExpect(model().attribute("projectList", hasItem(
                         allOf(
                                 hasProperty("name_project", is("test")),

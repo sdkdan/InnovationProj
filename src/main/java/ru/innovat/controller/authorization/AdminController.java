@@ -18,9 +18,7 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class AdminController {
-
     private final UserService userService;
-
 
     @GetMapping(value = "/admin")
     public String adminPage(Model model) {
@@ -46,9 +44,7 @@ public class AdminController {
     public String userAddRole(@PathVariable("id") int id, @ModelAttribute AppUser user, Connect connect, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("connect", connect);
-
         userService.updateUser(userService.setRole(userService.getRoleById(connect.getRole_id()), id));
-
         return "redirect:" + id;
     }
 

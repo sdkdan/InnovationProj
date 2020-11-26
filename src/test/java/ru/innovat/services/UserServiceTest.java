@@ -24,13 +24,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql(value = {"delete-user.sql", "create-user-for-service.sql"},
+@Sql(value = {"../../../../resources/sql/delete-user.sql", "../../../../resources/sql/create-user-for-service.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("../../../resources/application-test.properties")
+@TestPropertySource("../../../../resources/application-test.properties")
 @Transactional
 public class UserServiceTest {
-    @Autowired
-    private UserDao userDao;
     @Autowired
     private UserService userService;
     @Autowired

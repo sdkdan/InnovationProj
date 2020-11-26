@@ -27,8 +27,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource("application-test.properties")
-@Sql(value = {"create-user-for-chat.sql"},
+@TestPropertySource("../../../../resources/application-test.properties")
+@Sql(value = {"../../../../resources/sql/create-user-for-chat.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class ChatControllerTest {
     @Autowired
@@ -48,7 +48,7 @@ public class ChatControllerTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(get("/support"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("http://localhost/login"));;
+                .andExpect(redirectedUrl("http://localhost/login"));
     }
 
     @Test
@@ -72,7 +72,7 @@ public class ChatControllerTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(get("/help"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("http://localhost/login"));;
+                .andExpect(redirectedUrl("http://localhost/login"));
     }
 
     @Test

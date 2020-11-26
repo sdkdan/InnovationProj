@@ -55,6 +55,4 @@ public class EventService {
     public List<TypeEvent> findAllTypeEvents() {
         return eventDao.findAllTypeEvents();
     }
-
-
 }

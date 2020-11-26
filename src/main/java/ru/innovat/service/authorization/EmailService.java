@@ -7,9 +7,7 @@ import ru.innovat.models.authorization.VerificationToken;
 
 @Service("emailService")
 public class EmailService {
-
     private final JavaMailSender javaMailSender;
-
 
     public EmailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;

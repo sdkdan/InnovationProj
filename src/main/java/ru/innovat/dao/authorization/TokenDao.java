@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 @Transactional
 public class TokenDao {
-
     private SessionFactory sessionFactory;
 
     public TokenDao(SessionFactory sessionFactory) {
@@ -44,11 +43,7 @@ public class TokenDao {
 
     public void delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        VerificationToken verificationToken = session.load(VerificationToken.class, id);
-
-        if (verificationToken != null) {
-            session.delete(verificationToken);
-        }
+        session.delete(id);
     }
 
     @SuppressWarnings("unchecked")

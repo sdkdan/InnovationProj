@@ -18,7 +18,6 @@ import java.security.Principal;
 public class RegistrationController {
     private final NewUserService newUserService;
 
-
     @GetMapping(value = "/login")
     public String loginPage() {
 
@@ -48,7 +47,6 @@ public class RegistrationController {
         return "registration/register";
     }
 
-
     //Можно ли в одном сервисе вызываь другой
     //Дилема сильное слабое связываение и if
     @PostMapping(value = "/register")
@@ -63,7 +61,6 @@ public class RegistrationController {
         return "registration/successfulRegistration";
     }
 
-//, method = {RequestMethod.GET, RequestMethod.POST}
     @GetMapping(value = "/confirm-account")
     public String confirmUserAccount(Model model, @RequestParam("token") String token) {
         model.addAttribute("message",newUserService.emailVerification(token));

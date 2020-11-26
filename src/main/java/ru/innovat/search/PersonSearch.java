@@ -36,11 +36,7 @@ public class PersonSearch {
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Person.class).get();
         Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("name", "surname")
                 .matching(searchTerm).createQuery();
-
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Person.class);
-
-
-
         try {
             return  (List<Person>)jpaQuery.getResultList();
         } catch (NoResultException nre) {

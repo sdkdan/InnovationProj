@@ -21,24 +21,18 @@ public class ProjectSearch {
     @PersistenceContext
     private final EntityManager entityManager;
 
-
     @SuppressWarnings("unchecked")
     public ArrayList<Project> fuzzySearch(String searchTerm) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Project.class).get();
         Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("name_project")
                 .matching(searchTerm).createQuery();
-
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Project.class);
-
-
         try {
-
             return (ArrayList<Project>) jpaQuery.getResultList();
         } catch (NoResultException nre) {
             nre.printStackTrace();
         }
-
         return null;
     }
 

@@ -9,9 +9,7 @@ import java.util.List;
 
 @Repository
 public class MessagesDao {
-
     SessionFactory sessionFactory;
-
 
     public MessagesDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -25,12 +23,6 @@ public class MessagesDao {
         Session session = sessionFactory.getCurrentSession();
         session.persist(messages);
     }
-
-    public void delete(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(id);
-    }
-
 
     @SuppressWarnings("unchecked")
     public List<Messages> userMessages(int id) {

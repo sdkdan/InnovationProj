@@ -19,10 +19,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Controller
 public class ChatController {
-
     final MessagesService messagesService;
     final UserService userService;
-
 
     @GetMapping("/help")
     public String oneEventAddCon(Model model) {
