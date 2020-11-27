@@ -44,10 +44,8 @@ public class ConnectionProjectController {
     }
 
     @PostMapping(value = "/project/{id}/con")
-    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect con, Model model){
-        model.addAttribute("project", project);
-        model.addAttribute("con", con);
-        connectionService.addConnections(con,projectService.findProject(id));
+    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect connect){
+        connectionService.addConnections(connect,projectService.findProject(id));
         return "redirect:";
     }
 }

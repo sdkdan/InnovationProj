@@ -11,11 +11,8 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Organization;
-import ru.innovat.models.major.Project;
 import ru.innovat.service.major.OrganizationService;
-import ru.innovat.service.major.ProjectService;
 import ru.innovat.service.major.SearchService;
 
 import static org.hamcrest.Matchers.*;
@@ -29,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
-@Sql(value = {"/create-organization-before.sql", "/create-user-before.sql"},
+@Sql(value = {"/sql/create-organization-before.sql", "/sql/create-user-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @WithUserDetails(value = "test")
 public class OrganizationControllerTest {

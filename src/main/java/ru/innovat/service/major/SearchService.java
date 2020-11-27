@@ -11,10 +11,6 @@ import ru.innovat.search.EventSearch;
 import ru.innovat.search.OrganizationSearch;
 import ru.innovat.search.PersonSearch;
 import ru.innovat.search.ProjectSearch;
-import ru.innovat.service.major.EventService;
-import ru.innovat.service.major.OrganizationService;
-import ru.innovat.service.major.PersonService;
-import ru.innovat.service.major.ProjectService;
 
 import java.util.ArrayList;
 import java.util.List;

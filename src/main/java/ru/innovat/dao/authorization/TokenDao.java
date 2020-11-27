@@ -47,7 +47,7 @@ public class TokenDao {
     }
 
     @SuppressWarnings("unchecked")
-    public List<VerificationToken> VerificationTokenList() {
+    public List<VerificationToken> verificationTokenList() {
         Session session = this.sessionFactory.getCurrentSession();
         return (List<VerificationToken>) session.createQuery("From VerificationToken").list();
     }

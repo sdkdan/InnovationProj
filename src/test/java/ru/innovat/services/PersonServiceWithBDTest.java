@@ -131,5 +131,4 @@ public class PersonServiceWithBDTest {
         assertThat(person.getTwitter()).isEqualTo(addedPerson.getTwitter());
     }
 
-
 }

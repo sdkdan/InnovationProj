@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql(value = {"/create-organization-before.sql"},
+@Sql(value = {"/sql/create-organization-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @TestPropertySource("/application-test.properties")
 @Transactional
@@ -61,7 +61,6 @@ public class OrganizationServiceWithBDTest {
         assertThat(organizationList.get(1).getNotes_organization()).isEqualTo("DFDFD");
     }
 
-
     @Test
     public void updateOrganizationTest() {
         Organization organization = organizationService.findOrganization(1);
@@ -75,23 +74,6 @@ public class OrganizationServiceWithBDTest {
         assertThat(organization.getSite_organization()).isEqualTo(updatedOrganization.getSite_organization());
         assertThat(organization.getNotes_organization()).isEqualTo(updatedOrganization.getNotes_organization());
     }
-
-//    @Test
-//    public void  addProjectTest(){
-//        Organization organization = new Organization();
-//        organization.setCity_organization("testCity");
-//        organization.setName_organization("testName");
-//        organization.setNotes_organization("testNotes");
-//        organization.setSite_organization("site");
-//        organizationService.addOrganization(organization);
-//        verify(organizationService,times(1)).addOrganization(organization);
-//        Organization addedOrganization = organizationService.findOrganization(2);
-//        assertThat(organization.getId_organization()).isEqualTo(addedOrganization.getId_organization());
-//        assertThat(organization.getName_organization()).isEqualTo(addedOrganization.getName_organization());
-//        assertThat(organization.getCity_organization()).isEqualTo(addedOrganization.getCity_organization());
-//        assertThat(organization.getSite_organization()).isEqualTo(addedOrganization.getSite_organization());
-//        assertThat(organization.getNotes_organization()).isEqualTo(addedOrganization.getNotes_organization());
-//    }
 
 }
 

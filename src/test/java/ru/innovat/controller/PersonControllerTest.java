@@ -13,9 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Person;
-import ru.innovat.models.major.Project;
 import ru.innovat.service.major.PersonService;
-import ru.innovat.service.major.ProjectService;
 import ru.innovat.service.major.SearchService;
 
 import static org.hamcrest.Matchers.*;
@@ -29,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
-@Sql(value = {"/sql/create-person-before.sql", "/create-user-before.sql"},
+@Sql(value = {"/sql/create-person-before.sql", "/sql/create-user-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @WithUserDetails(value = "test")
 public class PersonControllerTest {
@@ -103,20 +101,6 @@ public class PersonControllerTest {
                 .sessionAttr("person", new Person())
         )
                 .andExpect(status().is3xxRedirection());
-
-
-
-//                .andExpect(view().name("redirect:**"))
-//                .andExpect(redirectedUrl("**"));
-
-//        mockMvc.perform(get("/project/{id}", 50))
-////                .andExpect(status().isOk())
-////                .andExpect(view().name("project/oneProject"))
-////                .andExpect(model().attribute("project",
-////                        hasProperty("name_project", is("test"))))
-////                .andExpect(model().attribute("project",
-////                        hasProperty("site_project", is("test"))));
-
         mockMvc.perform(get("/person"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -165,16 +149,5 @@ public class PersonControllerTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
     }
-
-
-//    @Test
-//    public void addConnProjectTest() throws Exception{
-//        mockMvc.perform(post("/project/{id}/con")
-//                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-//                .param("","")
-//
-//        )
-//
-//    }
 
 }

@@ -107,36 +107,4 @@ public class ProjectServiceWithBDTest {
         assertThat(project.getCompetitive_advantages()).isEqualTo(updatedProject.getCompetitive_advantages());
     }
 
-//    @Test
-//    public void  addProjectTest(){
-//        Project project = new Project();
-//        project.setName_project("test");
-//        project.setExpertise_project("test");
-//        project.setSite_project("test");
-//        project.setProject_description("test");
-//        project.setNumber_Phone_project("99999999999");
-//        project.setCurrent_stage("test");
-//        project.setStart_date("2221-04-23");
-//        project.setLevel_solution("test");
-//        project.setSolution_problems("test");
-//        project.setEssence_inovations("test");
-//        project.setCompetitive_advantages("test");
-//        projectService.addProject(project);
-//        verify(projectService,times(1)).addProject(project);
-//        Project addedProject = projectService.findProject(15);
-//        assertThat(project.getId_project()).isEqualTo(addedProject.getId_project());
-//        assertThat(project.getName_project()).isEqualTo(addedProject.getName_project());
-//        assertThat(project.getExpertise_project()).isEqualTo(addedProject.getExpertise_project());
-//        assertThat(project.getSite_project()).isEqualTo(addedProject.getSite_project());
-//        assertThat(project.getProject_description()).isEqualTo(addedProject.getProject_description());
-//        assertThat(project.getNumber_Phone_project()).isEqualTo(addedProject.getNumber_Phone_project());
-//        assertThat(project.getCurrent_stage()).isEqualTo(addedProject.getCurrent_stage());
-//        assertThat(project.getStart_date()).isEqualTo(addedProject.getStart_date());
-//        assertThat(project.getLevel_solution()).isEqualTo(addedProject.getLevel_solution());
-//        assertThat(project.getSolution_problems()).isEqualTo(addedProject.getSolution_problems());
-//        assertThat(project.getEssence_inovations()).isEqualTo(addedProject.getEssence_inovations());
-//        assertThat(project.getCompetitive_advantages()).isEqualTo(addedProject.getCompetitive_advantages());
-//    }
-
-
 }

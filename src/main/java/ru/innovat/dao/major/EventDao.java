@@ -26,7 +26,6 @@ public class EventDao {
         return session.get(Event.class, id);
     }
 
-
     public void add(Event event) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(event);

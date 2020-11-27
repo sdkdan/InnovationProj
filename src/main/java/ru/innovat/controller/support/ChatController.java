@@ -14,6 +14,7 @@ import ru.innovat.models.support.Messages;
 import ru.innovat.service.support.MessagesService;
 import ru.innovat.service.authorization.UserService;
 
+import java.security.Principal;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -23,31 +24,27 @@ public class ChatController {
     final UserService userService;
 
     @GetMapping("/help")
-    public String oneEventAddCon(Model model) {
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+    public String helpForm(Model model, Principal principal) {
         model.addAttribute("messages",messagesService.userMessages(
-                userService.findUserByUsername(loggedInUser.getName()).getId_user()));
+                userService.findUserByUsername(principal.getName()).getId_user()));
         model.addAttribute("newMessage",new Messages());
         return "help";
     }
 
     @PostMapping(value = "/help/send")
-    public String sendMessage(@ModelAttribute Messages newMessage){
-        newMessage.setAppUser(userService.findUserByUsername(
-                SecurityContextHolder.getContext().getAuthentication().getName()));
+    public String sendMessage(@ModelAttribute Messages newMessage, Principal principal){
+        newMessage.setAppUser(userService.findUserByUsername(principal.getName()));
         newMessage.setTime(new Date());
         newMessage.setUser_message(true);
         messagesService.addMessage(newMessage);
         return "redirect:/help";
     }
 
-
     @GetMapping(value = "/support")
     public String userSupportList(Model model){
         model.addAttribute("users",   userService.roleUserList());
         return "support";
     }
-
 
     @GetMapping(value = "/support/{id}")
     public String userSupport(@PathVariable("id") int id, Model model){

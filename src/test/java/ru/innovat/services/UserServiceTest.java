@@ -36,25 +36,6 @@ public class UserServiceTest {
     @Autowired
     private NewUserService newUserService;
 
-//    @Test
-//    public void addUser() {
-//        AppUser user = new AppUser();
-//
-//        user.setEMail("some@mail.ru");
-//
-//        userDao.add(user);
-//
-//        Assert.assertNotNull(user.getBlocked());
-//        Assert.assertTrue(CoreMatchers.is(user.getRole()).matches(Collections.singleton(Roles.Role_User)));
-//
-//        Mockito.verify(userDao, Mockito.times(1)).add(user);
-//        Mockito.verify(mailSender, Mockito.times(1))
-//                .send(
-//                        ArgumentMatchers.eq(user.getEMail()),
-//                        ArgumentMatchers.anyString(),
-//                        ArgumentMatchers.anyString()
-//                );
-//    }
     @Test
     public void loadByUsernameTest() throws Exception{
         UserDetails username = userService.loadUserByUsername("test");

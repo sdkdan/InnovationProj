@@ -21,15 +21,6 @@ public class PersonSearch {
     @PersistenceContext
     private final EntityManager entityManager;
 
-    public void initializeHibernateSearch() {
-        try {
-            FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
-            fullTextEntityManager.createIndexer().startAndWait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     @SuppressWarnings("unchecked")
     public List<Person> fuzzySearch(String searchTerm) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);

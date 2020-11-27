@@ -37,7 +37,6 @@ public class ConnectionServiceTest {
     @Autowired
     ConnectionService connectService;
 
-
     @Test
     public void addConnectionToProjectTest(){
         Connect connect = new Connect();

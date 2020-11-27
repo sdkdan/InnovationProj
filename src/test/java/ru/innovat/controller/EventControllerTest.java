@@ -11,11 +11,9 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Event;
 import ru.innovat.models.major.Project;
 import ru.innovat.service.major.EventService;
-import ru.innovat.service.major.ProjectService;
 import ru.innovat.service.major.SearchService;
 
 import static org.hamcrest.Matchers.*;
@@ -29,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
-@Sql(value = {"/create-event-before.sql", "/create-user-before.sql"},
+@Sql(value = {"/sql/create-event-before.sql", "/sql/create-user-before.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @WithUserDetails(value = "test")
 public class EventControllerTest {
