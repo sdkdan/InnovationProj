@@ -14,7 +14,7 @@ import java.util.Set;
 
 @Entity
 @Indexed
-@Table(name = "event", schema = "", catalog = "x92176f5_inovat")
+@Table(name = "event")
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)

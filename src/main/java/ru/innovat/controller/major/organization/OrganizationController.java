@@ -33,5 +33,4 @@ public class OrganizationController {
         model.addAttribute("organization", organization);
         return "organization/oneOrg";
     }
-
 }

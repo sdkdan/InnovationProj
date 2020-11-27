@@ -74,16 +74,15 @@ public class NewUserService {
         }
     }
 
-    @Transactional
     public boolean checkUsername(String username) {
         return userDao.findByUsername(username) != null;
     }
 
-    @Transactional
     public boolean checkEmail(String email) {
         return userDao.findByEmail(email) != null;
     }
 
+    @Transactional
     public String checkAccount(AppUser appUser) {
         if (checkEmail(appUser.getEMail())) return "Такая почта уже существует";
         if (checkUsername(appUser.getUsername())) return "Имя пользователя уже занято";

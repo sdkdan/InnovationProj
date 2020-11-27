@@ -16,7 +16,7 @@ public class AddPersonController {
     private final PersonService personService;
 
     @GetMapping(value = "/person/add")
-    public String getAddPerson(Model model) {
+    public String addPersonPage(Model model) {
         model.addAttribute("person", new Person());
         return "person/add";
     }

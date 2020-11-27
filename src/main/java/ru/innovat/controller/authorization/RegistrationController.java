@@ -23,7 +23,7 @@ public class RegistrationController {
         return "registration/loginPage";
     }
 
-    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
+    @GetMapping(value = "/logoutSuccessful")
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
         return "registration/logoutSuccessfulPage";
@@ -31,31 +31,28 @@ public class RegistrationController {
 
     @GetMapping(value = "/403")
     public String accessDenied(Model model, Principal principal) {
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        String userInfo = loggedInUser.getName();
-        model.addAttribute("userInfo", userInfo);
-        String message = "Hi " + principal.getName() + "<br> You do not have permission to access this page!";
-        model.addAttribute("message", message);
+        model.addAttribute("userInfo", principal.getName());
+        model.addAttribute("message", "Hi " + principal.getName() + "<br> You do not have permission to access this page!");
         return "registration/403Page";
     }
 
     @GetMapping(value = "/register")
-    public String displayRegistration(Model model, AppUser userEntity) {
-        model.addAttribute("userForm", userEntity);
+    public String registrationPage(Model model) {
+        model.addAttribute("userForm", new AppUser());
         return "registration/register";
     }
 
     //Можно ли в одном сервисе вызываь другой
     //Дилема сильное слабое связываение и if
     @PostMapping(value = "/register")
-    public String registerUser(Model model, AppUser appUser) {
-        String checkAccount = newUserService.checkAccount(appUser);
+    public String registrationUser(Model model, @ModelAttribute AppUser userForm) {
+        String checkAccount = newUserService.checkAccount(userForm);
         if(checkAccount != null) {
             model.addAttribute("message",checkAccount);
             return "error";
         }
-        newUserService.saveUser(appUser);
-        model.addAttribute("emailId", appUser.getEMail());
+        newUserService.saveUser(userForm);
+        model.addAttribute("emailId", userForm.getEMail());
         return "registration/successfulRegistration";
     }
 

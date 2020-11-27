@@ -38,7 +38,6 @@ public class ConnectionService {
     @Transactional
     public void addConnections(Connect connect, Person person){
         if (connect.getProject_Id() >= 1) {
-            System.out.println(person.getComment());
             person.addProject(projectService.findProject(connect.getProject_Id()));
         }
         if (connect.getEvent_Id() >= 1) {

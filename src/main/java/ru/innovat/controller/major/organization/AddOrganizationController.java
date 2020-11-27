@@ -16,7 +16,7 @@ public class AddOrganizationController {
     OrganizationService organizationService;
 
     @GetMapping(value = "/organization/add")
-    public String getAddorganization(Model model) {
+    public String addOrganizationPage(Model model) {
         model.addAttribute("organization", new Organization());
         return "organization/addOrg";
     }

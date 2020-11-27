@@ -26,8 +26,8 @@ public class ConnectionEventController {
     private final ConnectionService connectionService;
 
     @GetMapping("event/{id}/con")
-    public String oneEventAddCon(@PathVariable("id") int id, Model model) {
-        Connect con = new Connect();
+    public String eventAddConnectionPage(@PathVariable("id") int id, Model model) {
+        Connect connect = new Connect();
         Event event = eventService.eventAllConnections(id);
         List<Organization> organizationList = organizationService.organizationList();
         List<Project> projectList = projectService.projectList();
@@ -39,13 +39,13 @@ public class ConnectionEventController {
         model.addAttribute("event", event);
         model.addAttribute("projects", projectList);
         model.addAttribute("persons", personList);
-        model.addAttribute("con", con);
+        model.addAttribute("con", connect);
         return "event/addEventCon";
     }
 
     @PostMapping(value = "/event/{id}/con")
-    public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Event event, Connect con){
-        connectionService.addConnections(con,eventService.findEvent(id));
+    public String eventAddConnection(@PathVariable("id") int id, @ModelAttribute Event event, Connect connect){
+        connectionService.addConnections(connect,eventService.findEvent(id));
         return "redirect:";
     }
 }

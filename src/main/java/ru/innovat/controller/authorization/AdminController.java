@@ -12,6 +12,7 @@ import ru.innovat.models.utils.Connect;
 import ru.innovat.service.authorization.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -21,9 +22,8 @@ public class AdminController {
     private final UserService userService;
 
     @GetMapping(value = "/admin")
-    public String adminPage(Model model) {
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        String userInfo = loggedInUser.getName();
+    public String adminPage(Model model, Principal principal) {
+        String userInfo = principal.getName();
         List<AppUser> users = userService.userList();
         users.remove(userService.findUserByUsername(userInfo));
         model.addAttribute("userInfo", userInfo);
@@ -41,7 +41,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "/admin/user/{id}")
-    public String userAddRole(@PathVariable("id") int id, @ModelAttribute AppUser user, Connect connect, Model model) {
+    public String setUserRole(@PathVariable("id") int id, @ModelAttribute AppUser user, Connect connect, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("connect", connect);
         userService.updateUser(userService.setRole(userService.getRoleById(connect.getRole_id()), id));
@@ -49,14 +49,14 @@ public class AdminController {
     }
 
     @GetMapping(value = "/admin/user/{id}/ban")
-    public String getBanUser(@PathVariable("id") int id, Model model) {
+    public String pageBanUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.findUser(id));
         model.addAttribute("blocked", new Blocked());
         return "user/banUser";
     }
 
     @PostMapping(value = "/admin/user/{id}/saveban")
-    public String banUser(@PathVariable("id") int id, @Valid Blocked blocked) {
+    public String banUser(@PathVariable("id") int id, @ModelAttribute Blocked blocked) {
         AppUser user = userService.findUser(id);
         blocked.setAppUser(user);
         blocked.setStartDate(new Date());
@@ -72,10 +72,5 @@ public class AdminController {
         appUser.setBlocked(null);
         userService.update(appUser);
         return "redirect:";
-    }
-
-    @GetMapping(value = "/menu")
-    public String menu() {
-        return "menu";
     }
 }
