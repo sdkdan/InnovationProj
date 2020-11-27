@@ -45,7 +45,7 @@ public class ConnectionEventController {
 
     @PostMapping(value = "/event/{id}/con")
     public String eventAddConnection(@PathVariable("id") int id, @ModelAttribute Event event, Connect connect){
-        connectionService.addConnections(connect,eventService.findEvent(id));
+        connectionService.addConnections(connect,eventService.eventAllConnections(id));
         return "redirect:";
     }
 }

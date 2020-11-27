@@ -45,7 +45,7 @@ public class ConnectionPersonController {
 
     @PostMapping(value = "/person/{id}/con")
     public String personAddConnection(@PathVariable("id") int id, @ModelAttribute Person person, Connect connect){
-        connectionService.addConnections(connect, personService.findPerson(id));
+        connectionService.addConnections(connect, personService.personAllConnections(id));
         return "redirect:";
     }
 }
