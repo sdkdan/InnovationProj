@@ -34,16 +34,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/person", "/login", "/organization", "/project",
                 "/event")
                 .permitAll()
-                .and()
-                .authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**",
+                .and().authorizeRequests().antMatchers("/event/**", "/person/**", "/organization/**",
                 "/project/**", "/myprofile/**").access("hasAnyRole('USER', 'ADMIN','SUPPORT')")
                 .and().authorizeRequests().antMatchers("/support/**").access("hasAnyRole('SUPPORT')")
                 .and().authorizeRequests().antMatchers("/help/**").access("hasAnyRole('USER')")
                 .and().authorizeRequests().antMatchers("/admin/**").access("hasRole('ADMIN')")
-                .and().authorizeRequests()
                 .and().exceptionHandling()
                 .accessDeniedPage("/403")
-                .and().authorizeRequests()
                 .and().formLogin()
                 .loginProcessingUrl("/j_spring_security_check")
                 .loginPage("/login")
@@ -53,8 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and().logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/logoutSuccessful")
-                .and().authorizeRequests();
+                .logoutSuccessUrl("/logoutSuccessful");
     }
 
 //    @Autowired
