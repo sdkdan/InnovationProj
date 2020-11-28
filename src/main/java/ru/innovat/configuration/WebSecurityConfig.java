@@ -54,10 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/logoutSuccessful")
-                .and().authorizeRequests()
-                .and().rememberMe()
-                .tokenRepository(this.persistentTokenRepository())
-                .tokenValiditySeconds(24 * 60 * 60);
+                .and().authorizeRequests();
     }
 
 //    @Autowired
@@ -71,12 +68,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
         daoAuthenticationProvider.setUserDetailsService(userService);
         return daoAuthenticationProvider;
-    }
-
-    @Bean
-    public PersistentTokenRepository persistentTokenRepository() {
-        JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
-        db.setDataSource(dataSource);
-        return db;
     }
 }
