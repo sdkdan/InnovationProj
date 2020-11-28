@@ -20,8 +20,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Controller
 public class ChatController {
-    final MessagesService messagesService;
-    final UserService userService;
+    private final MessagesService messagesService;
+    private final UserService userService;
 
     @GetMapping("/help")
     public String helpForm(Model model, Principal principal) {

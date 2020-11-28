@@ -1,5 +1,6 @@
 package ru.innovat.dao.support;
 
+import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -8,16 +9,9 @@ import ru.innovat.models.support.Messages;
 import java.util.List;
 
 @Repository
+@AllArgsConstructor
 public class MessagesDao {
-    SessionFactory sessionFactory;
-
-    public MessagesDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private final SessionFactory sessionFactory;
 
     public void add(Messages messages) {
         Session session = sessionFactory.getCurrentSession();

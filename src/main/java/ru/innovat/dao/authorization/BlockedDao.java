@@ -1,21 +1,15 @@
 package ru.innovat.dao.authorization;
 
+import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.authorization.Blocked;
 
 @Repository
+@AllArgsConstructor
 public class BlockedDao {
-    private SessionFactory sessionFactory;
-
-    public BlockedDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private final SessionFactory sessionFactory;
 
     public Blocked findById(int id) {
         Session session = sessionFactory.getCurrentSession();

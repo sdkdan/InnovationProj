@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @Controller
 @AllArgsConstructor
 public class EditOrganizationController {
-    OrganizationService organizationService;
+    private final OrganizationService organizationService;
 
     @GetMapping("/organization/{id}/edit")
     public String showOrganizationForm(@PathVariable("id") int id, Model model) {

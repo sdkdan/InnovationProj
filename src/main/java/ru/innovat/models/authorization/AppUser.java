@@ -19,19 +19,14 @@ public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_user;
-    @Basic
     @Column(name = "password")
     private String password;
-    @Basic
     @Column(name = "username")
     private String username;
-    @Basic
     @Column(name = "email")
     private String eMail;
-    @Basic
     @Column(name = "name")
     private String name;
-    @Basic
     @Column(name = "last_name")
     private String lastName;
     @ManyToOne(fetch = FetchType.EAGER)

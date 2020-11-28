@@ -19,17 +19,13 @@ public class Messages {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_message;
-
     @Column(name = "message")
     private String message;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user")
     private AppUser appUser;
-
     @Column(name = "time")
     private Date time;
-
     @Column(name = "user_message")
     private Boolean user_message;
 

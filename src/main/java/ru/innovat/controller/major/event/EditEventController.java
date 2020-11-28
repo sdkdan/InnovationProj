@@ -20,7 +20,7 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class EditEventController {
-    EventService eventService;
+    private final EventService eventService;
 
     @GetMapping("/event/{id}/edit")
     public String showEventForm(@PathVariable("id") int id, Model model) {

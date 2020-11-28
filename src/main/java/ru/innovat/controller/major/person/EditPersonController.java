@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @Controller
 @AllArgsConstructor
 public class EditPersonController {
-    PersonService personService;
+    private final PersonService personService;
 
     @GetMapping("/person/{id}/edit")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {

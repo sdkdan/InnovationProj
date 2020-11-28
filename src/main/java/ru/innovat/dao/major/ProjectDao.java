@@ -1,5 +1,6 @@
 package ru.innovat.dao.major;
 
+import lombok.AllArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,16 +10,9 @@ import ru.innovat.models.major.Project;
 import java.util.ArrayList;
 
 @Repository
+@AllArgsConstructor
 public class ProjectDao {
-    private SessionFactory sessionFactory;
-
-    public ProjectDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private final SessionFactory sessionFactory;
 
     public Project findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
