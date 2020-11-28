@@ -15,7 +15,7 @@ import javax.validation.Valid;
 @Controller
 @AllArgsConstructor
 public class EditProjectController {
-    ProjectService projectService;
+    private final ProjectService projectService;
 
     @GetMapping("/project/{id}/edit")
     public String showProjectForm(@PathVariable("id") int id, Model model) {

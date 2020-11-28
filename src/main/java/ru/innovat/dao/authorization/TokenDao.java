@@ -1,5 +1,6 @@
 package ru.innovat.dao.authorization;
 
+import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -9,17 +10,9 @@ import ru.innovat.models.authorization.VerificationToken;
 import java.util.List;
 
 @Repository
-@Transactional
+@AllArgsConstructor
 public class TokenDao {
-    private SessionFactory sessionFactory;
-
-    public TokenDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private final SessionFactory sessionFactory;
 
     public VerificationToken findByToken(String token) {
         Session session = this.sessionFactory.getCurrentSession();

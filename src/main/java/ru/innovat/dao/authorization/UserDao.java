@@ -1,6 +1,7 @@
 package ru.innovat.dao.authorization;
 
 
+import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -11,17 +12,9 @@ import java.util.List;
 
 
 @Repository
-@Transactional
+@AllArgsConstructor
 public class UserDao {
-    private SessionFactory sessionFactory;
-
-    public UserDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private final SessionFactory sessionFactory;
 
     public AppUser findById(int id) {
         Session session = this.sessionFactory.getCurrentSession();

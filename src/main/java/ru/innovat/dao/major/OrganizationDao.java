@@ -1,6 +1,7 @@
 package ru.innovat.dao.major;
 
 
+import lombok.AllArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,16 +11,9 @@ import ru.innovat.models.major.Organization;
 import java.util.List;
 
 @Repository
+@AllArgsConstructor
 public class OrganizationDao {
-    private SessionFactory sessionFactory;
-
-    public OrganizationDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private final SessionFactory sessionFactory;
 
     public Organization findById(int id) {
         return sessionFactory.getCurrentSession().get(Organization.class, id);

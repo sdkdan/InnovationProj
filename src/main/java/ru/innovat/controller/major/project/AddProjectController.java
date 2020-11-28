@@ -13,7 +13,7 @@ import ru.innovat.service.major.ProjectService;
 @Controller
 @AllArgsConstructor
 public class AddProjectController {
-    ProjectService projectService;
+    private final ProjectService projectService;
 
     @GetMapping(value = "/project/add")
     public String getAddProject(Model model) {

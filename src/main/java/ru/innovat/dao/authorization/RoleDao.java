@@ -1,5 +1,6 @@
 package ru.innovat.dao.authorization;
 
+import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -10,13 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-@Transactional
+@AllArgsConstructor
 public class RoleDao {
     private final SessionFactory sessionFactory;
-
-    public RoleDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     public Role getRoleById(int id) {
         return sessionFactory.getCurrentSession().get(Role.class, id);

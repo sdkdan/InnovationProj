@@ -1,5 +1,6 @@
 package ru.innovat.dao.major;
 
+import lombok.AllArgsConstructor;
 import org.hibernate.*;
 
 import java.util.List;
@@ -9,17 +10,9 @@ import org.springframework.stereotype.Repository;
 import ru.innovat.models.major.Person;
 
 @Repository
+@AllArgsConstructor
 public class PersonDao {
-
-    private SessionFactory sessionFactory;
-
-    public PersonDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private final SessionFactory sessionFactory;
 
     public Person findById(int id) {
         return sessionFactory.getCurrentSession().get(Person.class, id);
