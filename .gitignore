@@ -6,3 +6,6 @@
 *.war
 *.ear
 *.nar
+target/
+write.lock
+segments_1
