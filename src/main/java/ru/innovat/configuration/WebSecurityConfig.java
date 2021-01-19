@@ -19,8 +19,8 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    final UserService userService;
-    final DataSource dataSource;
+    private final UserService userService;
+    private final DataSource dataSource;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -52,11 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/logoutSuccessful");
     }
-
-//    @Autowired
-//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
-//    }
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {//второй вариант настройки

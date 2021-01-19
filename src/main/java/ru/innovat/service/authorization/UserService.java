@@ -28,10 +28,10 @@ import java.util.Locale;
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
-    final UserDao userDao;
-    final RoleDao roleDao;
-    final BlockedDao blockedDao;
-    final EmailService emailService;
+    private final UserDao userDao;
+    private final RoleDao roleDao;
+    private final BlockedDao blockedDao;
+    private final EmailService emailService;
 
     @Transactional
     @Override

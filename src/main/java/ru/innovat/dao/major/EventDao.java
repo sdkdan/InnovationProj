@@ -16,39 +16,39 @@ public class EventDao {
     private final SessionFactory sessionFactory;
 
     public Event findById(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return session.get(Event.class, id);
     }
 
     public void add(Event event) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.persist(event);
     }
 
     public void update(Event event) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.update(event);
     }
 
     public void delete(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         Event event = session.load(Event.class, id);
         if (event != null)session.delete(event);
     }
 
     @SuppressWarnings("unchecked")
     public List<Event> eventList() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (List<Event>) session.createQuery("From Event").list();
     }
 
     public TypeEvent findTypeEventById(int id) {
-        return this.sessionFactory.getCurrentSession().get(TypeEvent.class, id);
+        return sessionFactory.getCurrentSession().get(TypeEvent.class, id);
     }
 
     @SuppressWarnings("unchecked")
     public List<TypeEvent> findAllTypeEvents() {
-        return (List<TypeEvent>) this.sessionFactory.getCurrentSession().createQuery("From TypeEvent").list();
+        return (List<TypeEvent>) sessionFactory.getCurrentSession().createQuery("From TypeEvent").list();
     }
 
     public Event eventAllConnection(int id) {

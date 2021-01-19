@@ -17,31 +17,30 @@ import java.security.Principal;
 @Controller
 @AllArgsConstructor
 public class ProfileController {
-    final UserService userService;
+    private final UserService userService;
 
-    @GetMapping("myprofile")
+    @GetMapping("/myprofile")
     public String profile(Model model, Principal principal) {
         AppUser user = userService.findUserByUsername(principal.getName());
         model.addAttribute("user", user);
         return "user/myprofile";
     }
 
-    @GetMapping("myprofile/edit")
+    @GetMapping("/myprofile/edit")
     public String editProfile(Model model, Principal principal) {
         AppUser user = userService.findUserByUsername(principal.getName());
         model.addAttribute("user", user);
         return "user/editUser";
     }
 
-    @GetMapping("myprofile/editpassword")
+    @GetMapping("/myprofile/editpassword")
     public String editPassword(Model model, Principal principal) {
         AppUser user = userService.findUserByUsername(principal.getName());
         model.addAttribute("user", user);
         return "user/editPassword";
     }
 
-    //Теряются данные
-    @PostMapping("myprofile/update")
+    @PostMapping("/myprofile/update")
     public String updateProfile(@ModelAttribute AppUser user, Principal principal) {
         AppUser appUser = userService.findUserByUsername(principal.getName());
         user.setId_user(appUser.getId_user());

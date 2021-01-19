@@ -17,41 +17,41 @@ public class UserDao {
     private final SessionFactory sessionFactory;
 
     public AppUser findById(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return session.get(AppUser.class, id);
     }
 
     public AppUser findByUsername(String username) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (AppUser) session.createQuery("SELECT U FROM AppUser U WHERE U.username = :username")
                 .setParameter("username", username).uniqueResult();
     }
 
     public void add(AppUser appUser) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.persist(appUser);
     }
 
     public void update(AppUser appUser) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.update(appUser);
     }
 
     public AppUser findByEmail(String email) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (AppUser) (session.createQuery("SELECT A FROM AppUser A WHERE eMail =:eMail ")
                 .setParameter("eMail", email).uniqueResult());
     }
 
     @SuppressWarnings("unchecked")
     public List<AppUser> userList() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (List<AppUser>) session.createQuery("From AppUser").list();
     }
 
     @SuppressWarnings("unchecked")
     public List<AppUser> roleUserList() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (List<AppUser>) session.createQuery("SELECT A From AppUser A WHERE A.role.id_role =:id")
                 .setParameter("id", 2).list();
     }

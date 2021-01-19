@@ -16,10 +16,10 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class NewUserService {
-    final TokenDao tokenDao;
-    final EmailService emailService;
-    final UserDao userDao;
-    final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final TokenDao tokenDao;
+    private final EmailService emailService;
+    private final UserDao userDao;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
     public void saveUser(AppUser appUser) {

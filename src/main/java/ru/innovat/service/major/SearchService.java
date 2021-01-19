@@ -18,17 +18,17 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class SearchService {
-  ProjectService projectService;
-  ProjectSearch projectSearch;
-  PersonService personService;
-  PersonSearch personSearch;
-  EventService eventService;
-  EventSearch eventSearch;
-  OrganizationService organizationService;
-  OrganizationSearch organizationSearch;
+    private final ProjectService projectService;
+    private final ProjectSearch projectSearch;
+    private final PersonService personService;
+    private final PersonSearch personSearch;
+    private final EventService eventService;
+    private final EventSearch eventSearch;
+    private final OrganizationService organizationService;
+    private final OrganizationSearch organizationSearch;
 
     @Transactional
-    public ArrayList<Project> searchProjectList(String search){
+    public List<Project> searchProjectList(String search) {
         if (search != null) {
             if (search.length() > 0) {
                 return projectSearch.fuzzySearch(search);
@@ -37,7 +37,7 @@ public class SearchService {
     }
 
     @Transactional
-    public List<Person> searchPersonList(String search){
+    public List<Person> searchPersonList(String search) {
         if (search != null) {
             if (search.length() > 0) {
                 return personSearch.fuzzySearch(search);
@@ -46,7 +46,7 @@ public class SearchService {
     }
 
     @Transactional
-    public List<Event> searchEventList(String search){
+    public List<Event> searchEventList(String search) {
         if (search != null) {
             if (search.length() > 0) {
                 return eventSearch.fuzzySearch(search);

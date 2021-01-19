@@ -19,24 +19,24 @@ public class PersonDao {
     }
 
     public void add(Person person) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.persist(person);
     }
 
     public void update(Person person) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.update(person);
     }
 
     public void delete(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         Person person = session.load(Person.class, id);
         if (person != null) session.delete(person);
     }
 
     @SuppressWarnings("unchecked")
     public List<Person> personList() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (List<Person>) session.createQuery("From Person").list();
     }
 

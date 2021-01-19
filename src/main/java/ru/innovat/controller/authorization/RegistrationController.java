@@ -42,13 +42,11 @@ public class RegistrationController {
         return "registration/register";
     }
 
-    //Можно ли в одном сервисе вызываь другой
-    //Дилема сильное слабое связываение и if
     @PostMapping(value = "/register")
     public String registrationUser(Model model, @ModelAttribute AppUser userForm) {
         String checkAccount = newUserService.checkAccount(userForm);
-        if(checkAccount != null) {
-            model.addAttribute("message",checkAccount);
+        if (checkAccount != null) {
+            model.addAttribute("message", checkAccount);
             return "error";
         }
         newUserService.saveUser(userForm);
@@ -58,7 +56,7 @@ public class RegistrationController {
 
     @GetMapping(value = "/confirm-account")
     public String confirmUserAccount(Model model, @RequestParam("token") String token) {
-        model.addAttribute("message",newUserService.emailVerification(token));
+        model.addAttribute("message", newUserService.emailVerification(token));
         return "registration/accountVerified";
     }
 }

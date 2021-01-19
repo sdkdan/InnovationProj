@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class MessagesService {
-    final MessagesDao messagesDao;
+    private final MessagesDao messagesDao;
 
     public MessagesService(MessagesDao messagesDao) {
         this.messagesDao = messagesDao;

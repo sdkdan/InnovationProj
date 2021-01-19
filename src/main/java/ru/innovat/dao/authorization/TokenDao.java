@@ -15,7 +15,7 @@ public class TokenDao {
     private final SessionFactory sessionFactory;
 
     public VerificationToken findByToken(String token) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (VerificationToken) session.createQuery("SELECT V FROM VerificationToken V WHERE V.token = :token")
                 .setParameter("token", token).uniqueResult();
     }
@@ -25,17 +25,17 @@ public class TokenDao {
     }
 
     public void add(VerificationToken verificationToken) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.persist(verificationToken);
     }
 
     public void update(VerificationToken verificationToken) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.update(verificationToken);
     }
 
     public void delete(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         session.delete(id);
     }
 

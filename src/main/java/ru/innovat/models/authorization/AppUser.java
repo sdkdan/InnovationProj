@@ -44,8 +44,8 @@ public class AppUser implements UserDetails {
         super();
         this.enabled = false;
         Role role = new Role();
-        role.setId_role(RolesEnum.Role_User.id_role);
-        role.setRoleName(RolesEnum.Role_User.name());
+        role.setId_role(RolesEnum.ROLE_USER.id_role);
+        role.setRoleName(RolesEnum.ROLE_USER.name());
         this.role = role;
     }
 
@@ -61,7 +61,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return (blocked == null);
+        return blocked == null;
     }
 
     @Override

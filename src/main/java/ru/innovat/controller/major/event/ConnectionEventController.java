@@ -25,7 +25,7 @@ public class ConnectionEventController {
     private final OrganizationService organizationService;
     private final ConnectionService connectionService;
 
-    @GetMapping("event/{id}/con")
+    @GetMapping("event/{id}/connect")
     public String eventAddConnectionPage(@PathVariable("id") int id, Model model) {
         Connect connect = new Connect();
         Event event = eventService.eventAllConnections(id);
@@ -43,9 +43,9 @@ public class ConnectionEventController {
         return "event/addEventCon";
     }
 
-    @PostMapping(value = "/event/{id}/con")
+    @PostMapping(value = "/event/{id}/connect")
     public String eventAddConnection(@PathVariable("id") int id, @ModelAttribute Event event, Connect connect){
-        connectionService.addConnections(connect,eventService.eventAllConnections(id));
+        connectionService.addConnections(connect, eventService.eventAllConnections(id));
         return "redirect:";
     }
 }

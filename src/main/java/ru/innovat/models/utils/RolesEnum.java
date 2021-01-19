@@ -1,9 +1,9 @@
 package ru.innovat.models.utils;
 
-public enum  RolesEnum{
-    Role_Admin(1),
-    Role_User(2),
-    Role_Support(3);
+public enum RolesEnum{
+    ROLE_ADMIN(1),
+    ROLE_USER(2),
+    ROLE_SUPPORT(3);
 
     public int id_role;
     RolesEnum(int id_role) {

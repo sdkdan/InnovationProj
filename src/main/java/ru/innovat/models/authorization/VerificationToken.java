@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 
+import static ru.innovat.models.utils.CalculateExpiryDate.calculateDate;
+
 @Entity
 @Table(name = "verificationtoken")
 @Getter
@@ -37,6 +39,6 @@ public class VerificationToken {
         cal.setTimeInMillis(new Date().getTime());
         cal.add(Calendar.MINUTE, VerificationToken.EXPIRATION);
         cal.getTime();
-        expiryDate = cal.getTime();
+        expiryDate = calculateDate();
     }
 }

@@ -52,8 +52,8 @@ public class NewUserServiceTest {
     public void saveUserTest() throws Exception{
         AppUser appUser = new AppUser();
         Role role = new Role();
-        role.setId_role(RolesEnum.Role_User.id_role);
-        role.setRoleName(RolesEnum.Role_User.name());
+        role.setId_role(RolesEnum.ROLE_USER.id_role);
+        role.setRoleName(RolesEnum.ROLE_USER.name());
         appUser.setUsername("test4");
         appUser.setLastName("test");
         appUser.setName("test");
@@ -72,8 +72,8 @@ public class NewUserServiceTest {
     public void emailVerification()  throws Exception{
         AppUser appUser = new AppUser();
         Role role = new Role();
-        role.setId_role(RolesEnum.Role_User.id_role);
-        role.setRoleName(RolesEnum.Role_User.name());
+        role.setId_role(RolesEnum.ROLE_USER.id_role);
+        role.setRoleName(RolesEnum.ROLE_USER.name());
         appUser.setUsername("test5");
         appUser.setLastName("test");
         appUser.setName("test");

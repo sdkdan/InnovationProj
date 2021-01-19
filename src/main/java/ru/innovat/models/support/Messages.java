@@ -27,6 +27,6 @@ public class Messages {
     @Column(name = "time")
     private Date time;
     @Column(name = "user_message")
-    private Boolean user_message;
+    private Boolean userMessage;
 
 }

@@ -46,8 +46,8 @@ public class UserServiceTest {
     public void userList() throws Exception{
         AppUser appUser = new AppUser();
         Role role = new Role();
-        role.setId_role(RolesEnum.Role_User.id_role);
-        role.setRoleName(RolesEnum.Role_User.name());
+        role.setId_role(RolesEnum.ROLE_USER.id_role);
+        role.setRoleName(RolesEnum.ROLE_USER.name());
         appUser.setUsername("test11");
         appUser.setLastName("test");
         appUser.setName("test");
@@ -95,8 +95,8 @@ public class UserServiceTest {
     public void updateUserTest() throws Exception{
         AppUser appUser = userService.findUser(1);
         Role role = new Role();
-        role.setId_role(RolesEnum.Role_User.id_role);
-        role.setRoleName(RolesEnum.Role_User.name());
+        role.setId_role(RolesEnum.ROLE_USER.id_role);
+        role.setRoleName(RolesEnum.ROLE_USER.name());
         appUser.setEMail("testEmail");
         appUser.setName("testName");
         userService.updateUser(appUser);
