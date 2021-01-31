@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.authorization.VerificationToken;
+import ru.innovat.models.major.Event;
 
 import java.util.List;
 
@@ -36,7 +37,8 @@ public class TokenDao {
 
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        session.delete(id);
+        VerificationToken verificationToken = session.load(VerificationToken.class, id);
+        if (verificationToken != null)session.delete(verificationToken);
     }
 
     @SuppressWarnings("unchecked")

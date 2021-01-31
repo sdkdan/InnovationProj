@@ -41,10 +41,6 @@ public class Event {
     private String phone_number;
     @Column(name = "Date_event")
     private String date_event;
-    @Column(name = "Date_for_month")
-    private Date date_for_month;
-    @Column(name = "Date_for_the_week")
-    private Date date_for_the_week;
     @Column(name = "Comment")
     private String comment;
     @Column(name = "Prizes")

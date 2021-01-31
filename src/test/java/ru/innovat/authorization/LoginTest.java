@@ -43,7 +43,7 @@ public class LoginTest {
 
     @PersistenceContext
     private EntityManager entityManager;
-
+    @Autowired
     private MockMvc mockMvc;
     private String token = "testtoken";
 

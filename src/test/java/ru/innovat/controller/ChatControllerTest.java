@@ -72,7 +72,7 @@ public class ChatControllerTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(get("/help"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("http://localhost/login"));;
+                .andExpect(redirectedUrl("http://localhost/login"));
     }
 
     @Test
