@@ -74,11 +74,11 @@
 </thead>
     <tbody>
     <tr th:each="message : ${messages}">
-        <div th:if="${!message.user_message}" class="container darker">
+        <div th:if="${!message.userMessage}" class="container darker">
             <p th:utext="${message.message}" class="left">..</p>
             <span th:utext="${message.time}" class="time-left">..</span>
         </div>
-        <div th:if="${message.user_message}" class="container">
+        <div th:if="${message.userMessage}" class="container">
             <p th:utext="${message.message}" class="right">..</p>
             <span th:utext="${message.time}" class="time-right">..</span>
         </div>

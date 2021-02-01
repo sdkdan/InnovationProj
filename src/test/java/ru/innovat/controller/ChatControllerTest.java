@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import ru.innovat.models.support.Messages;
+import ru.innovat.service.authorization.UserService;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.*;
@@ -33,7 +34,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ChatControllerTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
+    @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    private UserService userService;
 
     @Test
     @WithMockUser(username = "test", password = "pwd", roles = "SUPPORT")
@@ -84,7 +88,7 @@ public class ChatControllerTest {
     }
 
     @Test
-    @WithUserDetails(value = "test1")
+    @WithMockUser(username = "test1", password = "pwd", roles = "USER")
     public void checkSendingMessageFromUser() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(post("/help/send")
@@ -98,14 +102,14 @@ public class ChatControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(model().attribute("messages", hasItem(
                         allOf(
-                                hasProperty("user_message", is(true)),
+                                hasProperty("userMessage", is(true)),
                                 hasProperty("message", is("test"))
                         )
                 )));
     }
 
     @Test
-    @WithUserDetails(value = "test2")
+    @WithMockUser(username = "test2", password = "pwd", roles = "SUPPORT")
     public void checkSendingMessageFromSupport() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(post("/support/2/send")
@@ -120,7 +124,7 @@ public class ChatControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(model().attribute("messages", hasItem(
                         allOf(
-                                hasProperty("user_message", is(false)),
+                                hasProperty("userMessage", is(false)),
                                 hasProperty("message", is("test"))
                         )
                 )));
