@@ -11,6 +11,5 @@ write.lock
 segments_1
 *.cfe
 *.cfe
-*.cfe
 *.cfs
-*.cfs
+
