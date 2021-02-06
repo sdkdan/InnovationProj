@@ -19,22 +19,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Sql(value = {"/sql/create-organization-before.sql"},
-        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("/application-test.properties")
-@Transactional
-public class OrganizationServiceWithBDTest {
-    @Autowired
-    ProjectService projectService;
-    @Autowired
-    EventService eventService;
-    @Autowired
-    PersonService personService;
-    @Autowired
-    OrganizationService organizationService;
-
+public class OrganizationServiceWithBDTest extends ConfigServiceTest {
 
     @Test
     public void testFindByIdWithBD() {

@@ -22,32 +22,26 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Sql(value = {"/sql/delete-user.sql", "/sql/create-user-for-service.sql"},
-        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("/application-test.properties")
-@Transactional
-public class UserServiceTest {
-    @Autowired
-    private UserDao userDao;
+
+public class UserServiceTest extends ConfigServiceTest {
     @Autowired
     private UserService userService;
     @Autowired
     private NewUserService newUserService;
 
     @Test
-    public void loadByUsernameTest() throws Exception{
+    public void loadByUsername() {
         UserDetails username = userService.loadUserByUsername("test");
         assertThat("test").isEqualTo(username.getUsername());
     }
 
     @Test
-    public void userList() throws Exception{
+    public void getUserList() {
         AppUser appUser = new AppUser();
         Role role = new Role();
         role.setId_role(RolesEnum.ROLE_USER.id_role);
         role.setRoleName(RolesEnum.ROLE_USER.name());
+
         appUser.setUsername("test11");
         appUser.setLastName("test");
         appUser.setName("test");
@@ -56,6 +50,7 @@ public class UserServiceTest {
         appUser.setEMail("testtttt@ru");
         appUser.setRole(role);
         appUser.setEnabled(true);
+
         AppUser appUser2 = new AppUser();
         appUser2.setUsername("test2");
         appUser2.setLastName("test");
@@ -65,34 +60,34 @@ public class UserServiceTest {
         appUser2.setEMail("testtttt@ru");
         appUser2.setRole(role);
         appUser2.setEnabled(true);
+
         newUserService.saveUser(appUser);
         newUserService.saveUser(appUser2);
         List<AppUser> users = userService.userList();
-        System.out.println("USERS SIZE " + users);
         assertThat(users.size()).isEqualTo(2);
     }
 
     @Test
-    public void findByUsernameTest() throws Exception{
+    public void findByUsername() {
         AppUser appUser = userService.findUserByUsername("test");
         assertThat("test").isEqualTo(appUser.getUsername());
     }
 
     @Test
-    public void findUserByIdTest() throws Exception{
+    public void findUserById() {
         AppUser appUser = userService.findUserByUsername("test");
         int id = 1;
         assertThat(id).isEqualTo(appUser.getId_user());
     }
 
     @Test
-    public void getRoleByIdTest() throws Exception{
+    public void getRoleById() {
         String role = "ROLE_ADMIN";
         assertThat(role).isEqualTo(userService.getRoleById(1).getRoleName());
     }
 
     @Test
-    public void updateUserTest() throws Exception{
+    public void updateUser() {
         AppUser appUser = userService.findUser(1);
         Role role = new Role();
         role.setId_role(RolesEnum.ROLE_USER.id_role);

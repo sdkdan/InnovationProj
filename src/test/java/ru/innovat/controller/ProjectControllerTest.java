@@ -1,21 +1,13 @@
 package ru.innovat.controller;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 import ru.innovat.models.major.Person;
 import ru.innovat.models.major.Project;
+import ru.innovat.search.ProjectSearch;
 import ru.innovat.service.major.ProjectService;
-import ru.innovat.service.major.SearchService;
 
 import java.util.List;
 
@@ -26,20 +18,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
 @WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
-public class ProjectControllerTest {
-    @Autowired
-    MockMvc mockMvc;
+public class ProjectControllerTest extends ConfigControllerTest{
     @Autowired
     ProjectService projectService;
     @Autowired
-    SearchService searchService;
+    ProjectSearch projectSearch;
 
     @Test
-    public void projects() throws Exception {
+    public void getProjectsList() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
             this.mockMvc.perform(get("/project"))
@@ -49,15 +36,18 @@ public class ProjectControllerTest {
                     .andExpect(model().attribute("projectList", hasSize(projectList.size())))
                     .andExpect(model().attribute("projectList", hasItem(
                             allOf(
-                                    hasProperty("name_project", is(projectList.get(projectList.size()-1).getName_project())),
-                                    hasProperty("site_project", is(projectList.get(projectList.size()-1).getSite_project())),
-                                    hasProperty("project_description", is(projectList.get(projectList.size()-1).getProject_description()))
+                                    hasProperty("name_project", is(projectList.get(projectList.size()-1)
+                                            .getName_project())),
+                                    hasProperty("site_project", is(projectList.get(projectList.size()-1)
+                                            .getSite_project())),
+                                    hasProperty("project_description", is(projectList.get(projectList
+                                            .size()-1).getProject_description()))
                             ))));
         }
     }
 
     @Test
-    public void findByIdProjectTest() throws Exception {
+    public void findByIdProject() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
             int lastIdProject = projectList.get(projectList.size()-1).getId_project();
@@ -66,31 +56,41 @@ public class ProjectControllerTest {
                     .andExpect(view().name("project/oneProject"))
                     .andExpect(model().attribute("project",
                             allOf(
-                                    hasProperty("name_project", is(projectList.get(projectList.size()-1).getName_project())),
-                                    hasProperty("site_project", is(projectList.get(projectList.size()-1).getSite_project())),
-                                    hasProperty("project_description", is(projectList.get(projectList.size()-1).getProject_description()))
+                                    hasProperty("name_project", is(projectList.get(projectList.size()-1)
+                                            .getName_project())),
+                                    hasProperty("site_project", is(projectList.get(projectList.size()-1)
+                                            .getSite_project())),
+                                    hasProperty("project_description", is(projectList.get(projectList
+                                            .size()-1).getProject_description()))
                             )));
         }
     }
 
     @Test
-    public void projectSearchTest() throws Exception {
-        mockMvc.perform(get("/project?search=Базы"))
+    public void projectSearch() throws Exception {
+        Project lastProject = projectService.projectList().get(projectService
+                .projectList().size() - 1);
+        String lastProjectName = lastProject.getName_project();
+        int foundedProjectsListSize = projectSearch.fuzzySearch(lastProjectName).size();
+        Project lastFoundedProject = projectSearch.fuzzySearch(lastProjectName).get(projectSearch
+                .fuzzySearch(lastProjectName).size() - 1);
+        mockMvc.perform(get("/project?search=" + lastProjectName))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("project/project"))
-                .andExpect(model().attribute("projectList", hasSize(1)))
+                .andExpect(model().attribute("projectList", hasSize(foundedProjectsListSize)))
                 .andExpect(model().attribute("projectList", hasItem(
                         allOf(
-                                hasProperty("name_project", is("База данных инновационных проектов")),
-                                hasProperty("site_project", is("dl.spbstu.ru")),
-                                hasProperty("project_description", is("Описание проекта:..."))
+                                hasProperty("name_project", is(lastFoundedProject.getName_project())),
+                                hasProperty("site_project", is(lastFoundedProject.getSite_project())),
+                                hasProperty("project_description", is(lastFoundedProject
+                                        .getProject_description()))
                         )
                 )));
     }
 
     @Test
-    public void addNewProjectTest() throws Exception {
+    public void addNewProject() throws Exception {
         List<Project> projectList = projectService.projectList();
         int projectListSize = projectList.size();
         int newAddedProject = 1;
@@ -126,7 +126,7 @@ public class ProjectControllerTest {
     }
 
     @Test
-    public void projectEditTest() throws Exception {
+    public void projectEdit() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
             int lastIdProject = projectList.get(projectList.size() - 1).getId_project();
@@ -158,7 +158,7 @@ public class ProjectControllerTest {
     }
 
     @Test
-    public void deleteProjectTest() throws Exception{
+    public void deleteProject() throws Exception{
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
             int projectLastId = projectList.get(projectList.size()-1).getId_project();

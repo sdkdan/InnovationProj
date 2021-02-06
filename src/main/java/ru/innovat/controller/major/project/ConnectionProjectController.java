@@ -25,7 +25,7 @@ public class ConnectionProjectController {
     private final OrganizationService organizationService;
     private final ConnectionService connectionService;
 
-    @GetMapping("project/{id}/con")
+    @GetMapping("project/{id}/connect")
     public String oneProjectAddCon(@PathVariable("id") int id, Model model) {
         Connect con = new Connect();
         Project project = projectService.projectAllConnections(id);
@@ -43,7 +43,7 @@ public class ConnectionProjectController {
         return "project/addProjectCon";
     }
 
-    @PostMapping(value = "/project/{id}/con")
+    @PostMapping(value = "/project/{id}/connect")
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect connect){
         connectionService.addConnections(connect,projectService.projectAllConnections(id));
         return "redirect:";

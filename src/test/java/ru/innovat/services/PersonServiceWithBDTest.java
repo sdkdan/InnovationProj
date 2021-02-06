@@ -21,23 +21,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Sql(value = {"/sql/create-person-before.sql"},
-        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("/application-test.properties")
-@Transactional
-public class PersonServiceWithBDTest {
 
-    @Autowired
-    ProjectService projectService;
-    @Autowired
-    EventService eventService;
-    @Autowired
-    PersonService personService;
-    @Autowired
-    OrganizationService organizationService;
-
+public class PersonServiceWithBDTest extends ConfigServiceTest {
 
     @Test
     public void testFindByIdWithBD() {
@@ -56,7 +41,7 @@ public class PersonServiceWithBDTest {
     }
 
     @Test
-    public void projectListTest(){
+    public void projectListTest() {
         List<Person> personList = personService.personList();
         assertThat(personList.get(0).getId_person()).isEqualTo(1);
         assertThat(personList.get(0).getName()).isEqualTo("test");
@@ -83,7 +68,7 @@ public class PersonServiceWithBDTest {
     }
 
     @Test
-    public void updateProjectTest(){
+    public void updateProjectTest() {
         Person person = personService.findPerson(1);
         person.setName("testName");
         person.setSurname("testSurname");
@@ -103,7 +88,7 @@ public class PersonServiceWithBDTest {
     }
 
     @Test
-    public void  addPersonTest(){
+    public void addPersonTest() {
         Person person = new Person();
         person.setName("test");
         person.setSurname("test");
@@ -116,7 +101,7 @@ public class PersonServiceWithBDTest {
         person.setPhone_number("88005553535");
         person.setTwitter("Твитер");
         personService.addPerson(person);
-        verify(personService,times(1)).addPerson(person);
+        verify(personService, times(1)).addPerson(person);
         Person addedPerson = personService.findPerson(15);
         assertThat(person.getId_person()).isEqualTo(addedPerson.getId_person());
         assertThat(person.getName()).isEqualTo(addedPerson.getName());

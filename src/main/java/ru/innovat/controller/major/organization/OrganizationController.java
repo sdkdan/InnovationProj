@@ -5,19 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.innovat.models.major.Organization;
+import ru.innovat.search.EventSearch;
 import ru.innovat.service.major.OrganizationService;
-import ru.innovat.service.major.SearchService;
 
 
 @Controller
 @AllArgsConstructor
 public class OrganizationController {
     private final OrganizationService organizationService;
-    private final SearchService searchService;
+    private final EventSearch searchService;
 
     @GetMapping(value = "/organization")
     public String listOrganization(String search, Model model) {
-        model.addAttribute("organizationList", searchService.searchListOrganization(search));
+        model.addAttribute("organizationList", searchService.fuzzySearch(search));
         return "organization/organization";
     }
 

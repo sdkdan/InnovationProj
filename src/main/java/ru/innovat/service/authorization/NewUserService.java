@@ -10,7 +10,10 @@ import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.authorization.VerificationToken;
 
 
+import java.lang.annotation.Target;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -88,5 +91,10 @@ public class NewUserService {
         if (checkUsername(appUser.getUsername())) return "Имя пользователя уже занято";
         if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))) return "Пароли не совпадают";
         return null;
+    }
+
+    @Transactional
+    public List<VerificationToken> tokenList () {
+        return tokenDao.verificationTokenList();
     }
 }

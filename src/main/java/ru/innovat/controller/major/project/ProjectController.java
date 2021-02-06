@@ -4,19 +4,19 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.innovat.search.ProjectSearch;
 import ru.innovat.service.major.ProjectService;
-import ru.innovat.service.major.SearchService;
 
 
 @Controller
 @AllArgsConstructor
 public class ProjectController {
     private final ProjectService projectService;
-    private final SearchService searchService;
+    private final ProjectSearch searchService;
 
     @GetMapping(value = "/project")
     public String listProject(String search, Model model) {
-        model.addAttribute("projectList", searchService.searchProjectList(search));
+        model.addAttribute("projectList", searchService.fuzzySearch(search));
         return "project/project";
     }
 

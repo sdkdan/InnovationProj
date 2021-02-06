@@ -6,19 +6,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.innovat.models.major.Event;
+import ru.innovat.search.EventSearch;
 import ru.innovat.service.major.EventService;
-import ru.innovat.service.major.SearchService;
 
 
 @Controller
 @AllArgsConstructor
 public class EventController {
     private final EventService eventService;
-    private final SearchService searchService;
+    private final EventSearch searchService;
 
     @GetMapping(value = "/event")
     public String listEvent(String search, Model model) {
-        model.addAttribute("eventList", searchService.searchEventList(search));
+        model.addAttribute("eventList", searchService.fuzzySearch(search));
         return "event/event";
     }
 

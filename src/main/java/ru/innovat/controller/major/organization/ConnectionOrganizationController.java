@@ -27,7 +27,7 @@ public class ConnectionOrganizationController {
     private final OrganizationService organizationService;
     private final ConnectionService connectionService;
 
-    @GetMapping("organization/{id}/con")
+    @GetMapping("organization/{id}/connect")
     public String organizationAddConnectionPage(@PathVariable("id") int id, Model model) {
         Organization organization = organizationService.organizationAllConnection(id);
         Connect connect = new Connect();
@@ -45,7 +45,7 @@ public class ConnectionOrganizationController {
         return "organization/addOrganizationCon";
     }
 
-    @PostMapping(value = "/organization/{id}/con")
+    @PostMapping(value = "/organization/{id}/connect")
     public String organizationAddConnection(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect connect){
         connectionService.addConnections(connect,organizationService.organizationAllConnection(id));
         return "redirect:";

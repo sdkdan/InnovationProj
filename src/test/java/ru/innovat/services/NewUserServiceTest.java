@@ -20,15 +20,8 @@ import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
-@TestPropertySource("/application-test.properties")
-@Sql(value = {"/sql/create-user-for-service.sql"},
-        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@Transactional
-public class NewUserServiceTest {
 
+public class NewUserServiceTest extends ConfigServiceTest {
     @Autowired
     NewUserService newUserService;
     @Autowired
@@ -37,7 +30,7 @@ public class NewUserServiceTest {
     UserService userService;
 
     @Test
-    public void testFindTokenWithBD() throws Exception {
+    public void testFindTokenWithBD() {
         AppUser appUser = new AppUser();
         appUser.setId_user(1);
         VerificationToken token = new VerificationToken("testToken", appUser);
@@ -49,7 +42,7 @@ public class NewUserServiceTest {
     }
 
     @Test
-    public void saveUserTest() throws Exception{
+    public void saveUserTest() {
         AppUser appUser = new AppUser();
         Role role = new Role();
         role.setId_role(RolesEnum.ROLE_USER.id_role);
@@ -69,7 +62,7 @@ public class NewUserServiceTest {
     }
 
     @Test
-    public void emailVerification()  throws Exception{
+    public void emailVerification() {
         AppUser appUser = new AppUser();
         Role role = new Role();
         role.setId_role(RolesEnum.ROLE_USER.id_role);
@@ -89,7 +82,7 @@ public class NewUserServiceTest {
     }
 
     @Test
-    public void findByToken() throws Exception{
+    public void findByToken() {
         String token = "testToken";
         VerificationToken verificationToken = newUserService.findByToken(token);
         assertThat(token).isEqualTo(verificationToken.getToken());

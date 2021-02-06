@@ -12,37 +12,37 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Organization;
 import ru.innovat.models.major.Person;
+import ru.innovat.search.PersonSearch;
 import ru.innovat.service.major.PersonService;
-import ru.innovat.service.major.SearchService;
+
 
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
+
 @WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
-public class PersonControllerTest {
-    @Autowired
-    MockMvc mockMvc;
+public class PersonControllerTest extends ConfigControllerTest{
     @Autowired
     OrganizationController organizationController;
     @Autowired
     PersonService personService;
     @Autowired
-    SearchService searchService;
+    PersonSearch personSearch;
 
     @Test
-    public void persons() throws Exception {
+    public void getPersonsList() throws Exception {
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         List<Person> personList = personService.personList();
         if (personList.size() > 0) {
             this.mockMvc.perform(get("/person"))
@@ -61,7 +61,7 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void findByIdPersonTest() throws Exception {
+    public void findByIdPerson() throws Exception {
         List<Person> personList = personService.personList();
         if (personList.size() > 0) {
             int personLastId = personList.get(personList.size()-1).getId_person();
@@ -79,23 +79,29 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void personSearchTest() throws Exception {
-        mockMvc.perform(get("/person?search=Марцинкевич"))
+    public void personSearch() throws Exception {
+        Person lastPerson = personService.personList().get(personService
+                .personList().size() - 1);
+        String lastPersonName = lastPerson.getName();
+        int foundedPersonsListSize = personSearch.fuzzySearch(lastPersonName).size();
+        Person lastFoundedPerson = personSearch.fuzzySearch(lastPersonName).get(personSearch
+                .fuzzySearch(lastPersonName).size() - 1);
+        mockMvc.perform(get("/person?search=" + lastPersonName))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("person/person"))
-                .andExpect(model().attribute("personList", hasSize(1)))
+                .andExpect(model().attribute("personList", hasSize(foundedPersonsListSize)))
                 .andExpect(model().attribute("personList", hasItem(
                         allOf(
-                                hasProperty("name", is("Марцинкевич")),
-                                hasProperty("surname", is("Максим")),
-                                hasProperty("date_of_birth", is("1997-28-02"))
+                                hasProperty("name", is(lastFoundedPerson.getName())),
+                                hasProperty("surname", is(lastFoundedPerson.getSurname())),
+                                hasProperty("date_of_birth", is(lastFoundedPerson.getDate_of_birth()))
                         )
                 )));
     }
 
     @Test
-    public void addNewPersonTest() throws Exception {
+    public void addNewPerson() throws Exception {
         int personListSize = personService.personList().size();
         int newAddedPerson = 1;
             mockMvc.perform(post("/person/add")
@@ -130,7 +136,7 @@ public class PersonControllerTest {
         }
 
     @Test
-    public void personEditTest() throws Exception {
+    public void personEdit() throws Exception {
         List<Person> personList = personService.personList();
         if (personList.size() > 0) {
             int lastIdPerson = personList.get(personList.size() - 1).getId_person();
@@ -164,7 +170,7 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void deletePersonTest() throws Exception{
+    public void deletePerson() throws Exception{
         List<Person> personList = personService.personList();
         if (personList.size() > 0) {
             int personLastId = personList.get(personList.size()-1).getId_person();

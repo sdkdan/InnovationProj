@@ -32,7 +32,7 @@
     </div>
 
 
-    <form name='f' th:object="${con}" method='POST'>
+    <form name='f' th:action="@{/event/{id}/connect (id=${event.id_event})}" th:object="${con}" method='POST'>
         <div class="row  pb-3">
             <div class="col border"><p>Выберите проект</p></div>
             <div class="col border">
@@ -50,7 +50,7 @@
         </div>
     </form>
 
-    <form name='a' th:object="${con}" method='POST'>
+    <form name='a' th:action="@{/event/{id}/connect (id=${event.id_event})}" th:object="${con}" method='POST'>
         <div class="row  pb-3">
             <div class="col border"><p>Выберите персонал</p></div>
             <div class="col border">
@@ -68,7 +68,7 @@
     </form>
 
 
-    <form name='a' th:object="${con}" method='POST'>
+    <form name='a' th:action="@{/event/{id}/connect (id=${event.id_event})}" th:object="${con}" method='POST'>
         <div class="row  pb-3">
             <div class="col border"><p>Выберите организацию</p></div>
             <div class="col border">
