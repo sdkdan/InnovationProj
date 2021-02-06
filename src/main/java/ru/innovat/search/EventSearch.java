@@ -1,6 +1,7 @@
 package ru.innovat.search;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
@@ -17,9 +18,8 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EventSearch {
-
     @PersistenceContext
     private final EntityManager entityManager;
 
@@ -30,7 +30,7 @@ public class EventSearch {
         int distanceUpToSearch = 1;
         int prefixLength = 1;
         Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(distanceUpToSearch).withPrefixLength(prefixLength)
-                .onFields("name_event", "importance_event", "scope_event")
+                .onFields("nameEvent", "importanceEvent", "scopeEvent")
                 .matching(searchTerm).createQuery();
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Event.class);
         return Optional.ofNullable(jpaQuery.getResultList()).orElseThrow(NoResultException::new);

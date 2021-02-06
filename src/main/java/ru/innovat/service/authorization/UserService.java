@@ -2,6 +2,8 @@ package ru.innovat.service.authorization;
 
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,6 +18,8 @@ import ru.innovat.dao.authorization.UserDao;
 import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.authorization.Blocked;
 import ru.innovat.models.authorization.Role;
+import ru.innovat.service.utils.DateExpired;
+import ru.innovat.service.utils.DateFormatConfig;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,37 +30,41 @@ import java.util.Locale;
 
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Slf4j
 public class UserService implements UserDetailsService {
     private final UserDao userDao;
     private final RoleDao roleDao;
     private final BlockedDao blockedDao;
-    private final EmailService emailService;
 
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        AppUser appUser = this.userDao.findByUsername(userName);
+        AppUser appUser = userDao.findByUsername(userName);
 
         if (appUser == null) {
-            System.out.println("Пользователь не найден " + userName);
             throw new UsernameNotFoundException("Пользователь " + userName + " не найдет в базе данных");
-        }
-        if (!appUser.isEnabled()) {
-            throw new UsernameNotFoundException("Вы не поддтвердили почту " + userName + " ");
-        }
-        if (!appUser.isAccountNonLocked()) {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyy-MM-dd", Locale.ENGLISH);
-            try {
-                Date date = formatter.parse(blockedDao.findById(appUser.getBlocked().getId_blocked()).getEndDate());
-                if (!(date.compareTo(new Date()) < 0))
-                    throw new UsernameNotFoundException("Все ясно бан " + userName + " ");
-                appUser.setBlocked(null);
-                userDao.update(appUser);
-            } catch (ParseException e) {
-                e.printStackTrace();
+        } else {
+            if (!appUser.isEnabled()) {
+                throw new UsernameNotFoundException("Вы не поддтвердили почту " + userName + " ");
+            } else {
+                if (!appUser.isAccountNonLocked()) {
+                    SimpleDateFormat formatter = DateFormatConfig.dateFormat();
+                    try {
+                        Date banDate = formatter.parse(blockedDao.findById(appUser.getBlocked().getId_blocked()).getEndDate());
+                        if (!DateExpired.isExpired(banDate)) {
+                            throw new UsernameNotFoundException("Все ясно бан " + userName + " ");
+                        } else {
+                            appUser.setBlocked(null);
+                            userDao.update(appUser);
+                        }
+                    } catch (ParseException e) {
+                        log.error("login exception");
+                    }
+                }
             }
         }
+
         List<String> roleNames = this.roleDao.getRoleNames(appUser.getId_user());
         List<GrantedAuthority> grantList = new ArrayList<>();
         if (roleNames != null) {
@@ -77,16 +85,6 @@ public class UserService implements UserDetailsService {
         }
 
         return appUser;
-    }
-
-    @Transactional
-    public boolean checkUsername(String username) {
-        return userDao.findByUsername(username) != null;
-    }
-
-    @Transactional
-    public boolean checkEmail(String email) {
-        return userDao.findByEmail(email) != null;
     }
 
     @Transactional
@@ -139,12 +137,5 @@ public class UserService implements UserDetailsService {
     @Transactional
     public List<AppUser> roleUserList() {
         return userDao.roleUserList();
-    }
-
-    public String checkAccount(AppUser appUser) {
-        if (checkEmail(appUser.getEMail())) return "Такая почта уже существует";
-        if (checkUsername(appUser.getUsername())) return "Имя пользователя уже занято";
-        if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))) return "Пароли не совпадают";
-        return null;
     }
 }

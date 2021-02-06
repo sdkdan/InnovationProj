@@ -24,29 +24,29 @@ public class Event {
     @EqualsAndHashCode.Include
     private int id_event;
     @Column(name = "Site_event")
-    private String site_event;
+    private String siteEvent;
     @Field
     @Column(name = "Name_event")
     @EqualsAndHashCode.Include
-    private String name_event;
+    private String nameEvent;
     @Field
     @Column(name = "Importance_event")
-    private String importance_event;
+    private String importanceEvent;
     @Field
     @Column(name = "Scope_event")
-    private String scope_event;
+    private String scopeEvent;
     @Column(name = "Description")
     private String description;
     @Column(name = "Phone_number")
-    private String phone_number;
+    private String phoneNumber;
     @Column(name = "Date_event")
-    private String date_event;
+    private String dateEvent;
     @Column(name = "Comment")
     private String comment;
     @Column(name = "Prizes")
     private String prizes;
     @Column(name = "Location_event")
-    private String location_event;
+    private String locationEvent;
     @Column(name = "id_type_event")
     private int idTypeEvent;
     @ManyToMany(fetch = FetchType.LAZY)

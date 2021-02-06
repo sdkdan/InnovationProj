@@ -1,6 +1,8 @@
 package ru.innovat.service.authorization;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.lang.Nullable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,14 +10,15 @@ import ru.innovat.dao.authorization.TokenDao;
 import ru.innovat.dao.authorization.UserDao;
 import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.authorization.VerificationToken;
+import ru.innovat.service.utils.DateExpired;
 
 
 import java.util.Date;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
-public class NewUserService {
+@RequiredArgsConstructor
+public class RegistrationService {
     private final TokenDao tokenDao;
     private final EmailService emailService;
     private final UserDao userDao;
@@ -46,7 +49,7 @@ public class NewUserService {
     }
 
     @Transactional
-    public AppUser getUser(String token) {
+    public @Nullable AppUser getUser(String token) {
         VerificationToken verificationToken = tokenDao.findByToken(token);
         if (token != null) {
             return verificationToken.getUser();
@@ -58,7 +61,7 @@ public class NewUserService {
     public String emailVerification(String token) {
         VerificationToken verificationToken = findByToken(token);
         if (verificationToken != null) {
-            if (verificationToken.getExpiryDate().after(new Date())) {
+            if (DateExpired.isExpired(verificationToken.getExpiryDate())) {
                 AppUser appUser = userDao.findByUsername(verificationToken.getUser().getUsername());
                 appUser.setEnabled(true);
                 userDao.update(appUser);
@@ -83,10 +86,16 @@ public class NewUserService {
     }
 
     @Transactional
-    public String checkAccount(AppUser appUser) {
-        if (checkEmail(appUser.getEMail())) return "Такая почта уже существует";
-        if (checkUsername(appUser.getUsername())) return "Имя пользователя уже занято";
-        if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))) return "Пароли не совпадают";
+    public @Nullable String registeredAccountStatus(AppUser appUser) {
+        if (checkEmail(appUser.getEMail())) {
+            return "Такая почта уже существует";
+        }
+        if (checkUsername(appUser.getUsername())){
+            return "Имя пользователя уже занято";
+        }
+        if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))){
+            return "Пароли не совпадают";
+        }
         return null;
     }
 }

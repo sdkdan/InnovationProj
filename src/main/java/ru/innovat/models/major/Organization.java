@@ -25,14 +25,14 @@ public class Organization {
     @Field
     @Column(name = "Name_organization")
     @EqualsAndHashCode.Include
-    private String name_organization;
+    private String nameOrganization;
     @Column(name = "Site_organization")
-    private String site_organization;
+    private String siteOrganization;
     @Column(name = "City_organization")
     @Field
-    private String city_organization;
+    private String cityOrganization;
     @Column(name = "Notes_organization")
-    private String notes_organization;
+    private String notesOrganization;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "organization_event",
             joinColumns = @JoinColumn(name = "id_organization"),

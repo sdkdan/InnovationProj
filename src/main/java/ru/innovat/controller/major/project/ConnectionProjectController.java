@@ -1,6 +1,7 @@
 package ru.innovat.controller.major.project;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ import ru.innovat.service.major.*;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ConnectionProjectController {
     private final PersonService personService;
     private final ProjectService projectService;
@@ -25,7 +26,7 @@ public class ConnectionProjectController {
     private final OrganizationService organizationService;
     private final ConnectionService connectionService;
 
-    @GetMapping("project/{id}/con")
+    @GetMapping("project/{id}/connect")
     public String oneProjectAddCon(@PathVariable("id") int id, Model model) {
         Connect con = new Connect();
         Project project = projectService.projectAllConnections(id);
@@ -43,7 +44,7 @@ public class ConnectionProjectController {
         return "project/addProjectCon";
     }
 
-    @PostMapping(value = "/project/{id}/con")
+    @PostMapping(value = "/project/{id}/connect")
     public String eventAddCon(@PathVariable("id") int id, @ModelAttribute Project project, Connect connect){
         connectionService.addConnections(connect,projectService.projectAllConnections(id));
         return "redirect:";

@@ -54,7 +54,7 @@ public class PersonControllerTest {
                             allOf(
                                     hasProperty("name", is(personList.get(personList.size()-1).getName())),
                                     hasProperty("surname", is(personList.get(personList.size()-1).getSurname())),
-                                    hasProperty("date_of_birth", is(personList.get(personList.size()-1).getDate_of_birth()))
+                                    hasProperty("dateOfBirth", is(personList.get(personList.size()-1).getDateOfBirth()))
                             )
                     )));
         }
@@ -72,7 +72,7 @@ public class PersonControllerTest {
                             allOf(
                                     hasProperty("name", is(personList.get(personList.size()-1).getName())),
                                     hasProperty("surname", is(personList.get(personList.size()-1).getSurname())),
-                                    hasProperty("date_of_birth", is(personList.get(personList.size()-1).getDate_of_birth()))
+                                    hasProperty("dateOfBirth", is(personList.get(personList.size()-1).getDateOfBirth()))
                             )
                             ));
         }
@@ -89,7 +89,7 @@ public class PersonControllerTest {
                         allOf(
                                 hasProperty("name", is("Марцинкевич")),
                                 hasProperty("surname", is("Максим")),
-                                hasProperty("date_of_birth", is("1997-28-02"))
+                                hasProperty("dateOfBirth", is("1997-28-02"))
                         )
                 )));
     }
@@ -102,10 +102,10 @@ public class PersonControllerTest {
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                     .param("surname", "Максим")
                     .param("name", "Марцинкевич")
-                    .param("third_Name", "Абрамович")
-                    .param("phone_number", "88005553535")
-                    .param("date_of_birth", "1997-28-02")
-                    .param("e_mail", "SlavaUkraine@geroyam.slava")
+                    .param("thirdName", "Абрамович")
+                    .param("phoneNumber", "88005553535")
+                    .param("dateOfBirth", "1997-28-02")
+                    .param("eMail", "SlavaUkraine@geroyam.slava")
                     .param("facebook", "Фейсбук")
                     .param("vk", "ВК")
                     .param("rating", "10")
@@ -124,7 +124,7 @@ public class PersonControllerTest {
                             allOf(
                                     hasProperty("name", is("Марцинкевич")),
                                     hasProperty("surname", is("Максим")),
-                                    hasProperty("e_mail", is("SlavaUkraine@geroyam.slava"))
+                                    hasProperty("eMail", is("SlavaUkraine@geroyam.slava"))
                             )
                     )));
         }
@@ -138,10 +138,10 @@ public class PersonControllerTest {
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                     .param("surname", "Максим")
                     .param("name", "Марцинкевич")
-                    .param("third_Name", "Абрамович")
-                    .param("phone_number", "88005553535")
-                    .param("date_of_birth", "1997-28-02")
-                    .param("e_mail", "SlavaUkraine@geroyam.slava")
+                    .param("thirdName", "Абрамович")
+                    .param("phoneNumber", "88005553535")
+                    .param("dateOfBirth", "1997-28-02")
+                    .param("eMail", "SlavaUkraine@geroyam.slava")
                     .param("facebook", "Фейсбук")
                     .param("vk", "ВК")
                     .param("rating", "10")
@@ -158,7 +158,7 @@ public class PersonControllerTest {
                             allOf(
                             hasProperty("name", is("Марцинкевич")),
                             hasProperty("surname", is("Максим")),
-                            hasProperty("e_mail", is("SlavaUkraine@geroyam.slava"))
+                            hasProperty("eMail", is("SlavaUkraine@geroyam.slava"))
                     )));
         }
     }

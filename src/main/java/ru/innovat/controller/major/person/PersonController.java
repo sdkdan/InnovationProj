@@ -2,6 +2,7 @@
 package ru.innovat.controller.major.person;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import ru.innovat.service.major.PersonService;
 import ru.innovat.service.major.SearchService;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PersonController {
     private final PersonService personService;
     private final SearchService searchService;

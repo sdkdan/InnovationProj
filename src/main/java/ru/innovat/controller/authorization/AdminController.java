@@ -1,23 +1,23 @@
 package ru.innovat.controller.authorization;
 
-import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.authorization.Blocked;
 import ru.innovat.models.utils.Connect;
 import ru.innovat.service.authorization.UserService;
 
-import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AdminController {
     private final UserService userService;
 

@@ -43,16 +43,16 @@ public class EventControllerTest {
         int newAddedEvent = 1;
         mockMvc.perform(post("/event/add")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("site_event", "https://www.spbstu.ru/")
-                .param("name_event", "inovatproject")
-                .param("importance_event", "Not important")
-                .param("scope_event", "local")
+                .param("siteEvent", "https://www.spbstu.ru/")
+                .param("nameEvent", "inovatproject")
+                .param("importanceEvent", "Not important")
+                .param("scopeEvent", "local")
                 .param("description", "Test event")
-                .param("phone_number", "88005553535")
-                .param("date_event", "28.12.2020")
+                .param("phoneNumber", "88005553535")
+                .param("dateEvent", "28.12.2020")
                 .param("comment", "Test event")
                 .param("prizes", "none")
-                .param("location_event", "online")
+                .param("locationEvent", "online")
                 .param("idTypeEvent", "1")
                 .sessionAttr("event", new Event())
         )
@@ -65,8 +65,8 @@ public class EventControllerTest {
                 .andExpect(model().attribute("eventList", hasSize(eventListSize + newAddedEvent)))
                 .andExpect(model().attribute("eventList", hasItem(
                         allOf(
-                                hasProperty("name_event", is("inovatproject")),
-                                hasProperty("site_event", is("https://www.spbstu.ru/")),
+                                hasProperty("nameEvent", is("inovatproject")),
+                                hasProperty("siteEvent", is("https://www.spbstu.ru/")),
                                 hasProperty("description", is("Test event"))
                         )
                 )));
@@ -84,11 +84,11 @@ public class EventControllerTest {
                     .andExpect(model().attribute("eventList", hasItem(
                             allOf(
                                     hasProperty("name_event", is(eventList.get(eventList.size()-1)
-                                            .getName_event())),
+                                            .getNameEvent())),
                                     hasProperty("description", is(eventList.get(eventList.size()-1)
                                             .getDescription())),
                                     hasProperty("scope_event", is(eventList.get(eventList.size()-1)
-                                            .getScope_event()))
+                                            .getScopeEvent()))
                             )
                     )));
         }
@@ -104,11 +104,11 @@ public class EventControllerTest {
                     .andExpect(model().attribute("event",
                             allOf(
                                     hasProperty("name_event", is(eventList.get(eventList.size()-1)
-                                            .getName_event())),
+                                            .getNameEvent())),
                                     hasProperty("description", is(eventList.get(eventList.size()-1)
                                             .getDescription())),
                                     hasProperty("scope_event", is(eventList.get(eventList.size()-1)
-                                            .getScope_event()))
+                                            .getScopeEvent()))
                             )
                     ));
         }

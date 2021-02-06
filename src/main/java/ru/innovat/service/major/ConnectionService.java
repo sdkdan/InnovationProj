@@ -1,6 +1,7 @@
 package ru.innovat.service.major;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.major.Event;
@@ -14,22 +15,23 @@ import ru.innovat.service.major.PersonService;
 import ru.innovat.service.major.ProjectService;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ConnectionService {
     private final OrganizationService organizationService;
     private final EventService eventService;
     private final PersonService personService;
     private final ProjectService projectService;
+    private static final int oneConnect = 1;
 
     @Transactional
     public void addConnections(Connect connect, Event event){
-        if (connect.getProject_Id() >= 1) {
+        if (connect.getProject_Id() >= oneConnect) {
             event.addProject(projectService.findProject(connect.getProject_Id()));
         }
-        if (connect.getPerson_id() >= 1) {
+        if (connect.getPerson_id() >= oneConnect) {
             event.addPersons(personService.findPerson(connect.getPerson_id()));
         }
-        if (connect.getOrganization_Id() >= 1) {
+        if (connect.getOrganization_Id() >= oneConnect) {
             event.addOrganization(organizationService.findOrganization(connect.getOrganization_Id()));
         }
         eventService.updateEvent(event);
@@ -37,13 +39,13 @@ public class ConnectionService {
 
     @Transactional
     public void addConnections(Connect connect, Person person){
-        if (connect.getProject_Id() >= 1) {
+        if (connect.getProject_Id() >= oneConnect) {
             person.addProject(projectService.findProject(connect.getProject_Id()));
         }
-        if (connect.getEvent_Id() >= 1) {
+        if (connect.getEvent_Id() >= oneConnect) {
             person.addEvent(eventService.findEvent(connect.getEvent_Id()));
         }
-        if (connect.getOrganization_Id() >= 1) {
+        if (connect.getOrganization_Id() >= oneConnect) {
             person.addOrganization(organizationService.findOrganization(connect.getOrganization_Id()));
         }
         personService.updatePerson(person);
@@ -51,13 +53,13 @@ public class ConnectionService {
 
     @Transactional
     public void addConnections(Connect connect, Project project){
-        if (connect.getPerson_id() >= 1) {
+        if (connect.getPerson_id() >= oneConnect) {
             project.addPerson(personService.findPerson(connect.getPerson_id()));
         }
-        if (connect.getEvent_Id() >= 1) {
+        if (connect.getEvent_Id() >= oneConnect) {
             project.addEvent(eventService.findEvent(connect.getEvent_Id()));
         }
-        if (connect.getOrganization_Id() >= 1) {
+        if (connect.getOrganization_Id() >= oneConnect) {
             project.addOrganization(organizationService.findOrganization(connect.getOrganization_Id()));
         }
         projectService.updateProject(project);
@@ -65,13 +67,13 @@ public class ConnectionService {
 
     @Transactional
     public void addConnections(Connect connect, Organization organization){
-        if (connect.getPerson_id() >= 1) {
+        if (connect.getPerson_id() >= oneConnect) {
             organization.addPerson(personService.findPerson(connect.getPerson_id()));
         }
-        if (connect.getProject_Id() >= 1) {
+        if (connect.getProject_Id() >= oneConnect) {
             organization.addProject(projectService.findProject(connect.getProject_Id()));
         }
-        if (connect.getEvent_Id() >= 1) {
+        if (connect.getEvent_Id() >= oneConnect) {
             organization.addEvent(eventService.findEvent(connect.getEvent_Id()));
         }
         organizationService.updateOrganization(organization);

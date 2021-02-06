@@ -1,6 +1,7 @@
 package ru.innovat.dao.authorization;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -11,7 +12,7 @@ import ru.innovat.models.major.Event;
 import java.util.List;
 
 @Repository
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TokenDao {
     private final SessionFactory sessionFactory;
 

@@ -11,7 +11,7 @@
 <div class="container">
 
     <h2>
-        <td th:utext="${event.getName_event()}">..</td>
+        <td th:utext="${event.getNameEvent()}">..</td>
     </h2>
 
     <div class="pb-3">
@@ -19,11 +19,11 @@
            aria-pressed="true">Изменить</a>
         <a th:href="@{/event/{id}/delete(id=${event.id_event})}" type="button" class="btn btn-danger"
            data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
-        <a th:href="@{/event/{id}/con(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить
+        <a th:href="@{/event/{id}/connect(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить
             организацию</a>
-        <a th:href="@{/event/{id}/con(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить
+        <a th:href="@{/event/{id}/connect(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить
             персонал</a>
-        <a th:href="@{/event/{id}/con(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить
+        <a th:href="@{/event/{id}/connect(id=${event.id_event})}" type="button" class="btn btn-secondary" href="#">Добавить
             проект</a>
     </div>
 
@@ -50,27 +50,27 @@
     <div class="row ">
         <div class="col border w-25"><p>Название</p></div>
         <div class="col border w-75">
-            <td th:utext="${event.name_event}">..</td>
+            <td th:utext="${event.nameEvent}">..</td>
         </div>
 
     </div>
     <div class="row  ">
         <div class="col border "><p>Сайт</p></div>
         <div class="col border">
-            <td th:utext="${event.site_event}">..</td>
+            <td th:utext="${event.siteEvent}">..</td>
         </div>
     </div>
     <div class="row ">
         <div class="col border "><p>Важность</p></div>
         <div class="col border">
-            <td th:utext="${event.importance_event}">..</td>
+            <td th:utext="${event.importanceEvent}">..</td>
         </div>
     </div>
     <div class="row ">
 
         <div class="col border "><p>Сфера</p></div>
         <div class="col border">
-            <td th:utext="${event.scope_event}">..</td>
+            <td th:utext="${event.scopeEvent}">..</td>
         </div>
     </div>
     <div class="row ">
@@ -88,7 +88,7 @@
     <div class="row ">
         <div class="col border "><p>Дата мероприятия</p></div>
         <div class="col border">
-            <td th:utext="${event.date_event}">..</td>
+            <td th:utext="${event.dateEvent}">..</td>
         </div>
     </div>
     <div class="row ">
@@ -106,13 +106,13 @@
     <div class="row">
         <div class="col border "><p>Место проведения</p></div>
         <div class="col border">
-            <td th:utext="${event.location_event}">..</td>
+            <td th:utext="${event.locationEvent}">..</td>
         </div>
     </div>
     <div class="row">
         <div class="col border "><p>Тип мероприятия</p></div>
         <div class="col border">
-            <td th:utext="${event.location_event}">..</td>
+            <td th:utext="${event.locationEvent}">..</td>
         </div>
     </div>
 </div>
@@ -136,7 +136,7 @@
                 <a class="small" th:href="@{/organization/{id}(id=${org.id_organization})}"><img width="16px"
                                                                                                  src="../../image/teamwork.svg"
                                                                                                  alt="человек">
-                    <td th:utext="${org.name_organization}  ">..</td>
+                    <td th:utext="${org.nameOrganization}  ">..</td>
                 </a>
             </tr>
         </div>
@@ -150,7 +150,7 @@
                     <a class="small" th:href="@{/project/{id}(id=${prj.id_project})}"><img width="16px"
                                                                                            src="../../image/education.svg"
                                                                                            alt="человек">
-                        <td th:utext="${prj.name_project}  ">..</td>
+                        <td th:utext="${prj.nameProject}  ">..</td>
                     </a><br>
                 </div>
             </tr>

@@ -1,6 +1,7 @@
 package ru.innovat.dao.major;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +12,7 @@ import ru.innovat.models.utils.TypeEvent;
 import java.util.List;
 
 @Repository
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EventDao {
     private final SessionFactory sessionFactory;
 

@@ -16,47 +16,47 @@
     <form action="#" th:action="@{/project/add}" th:object="${project}" method="post">
         <div class="form-group">
             <label>Название</label>
-            <input type="text" class="form-control" th:field="*{name_project}" placeholder="Обязательное поле">
+            <input type="text" class="form-control" th:field="*{nameProject}" placeholder="Обязательное поле">
         </div>
         <div class="form-group">
             <label for="exampleTextarea">Суть инновации</label>
-            <textarea class="form-control" id="exampleTextarea" th:field="*{essence_innovations}" rows="5"></textarea>
+            <textarea class="form-control" id="exampleTextarea" th:field="*{essenceInnovations}" rows="5"></textarea>
         </div>
         <div class="form-group">
             <label>Решение проблемы</label>
-            <textarea class="form-control" id="exampleTextarea" th:field="*{solution_problems}" rows="5"></textarea>
+            <textarea class="form-control" id="exampleTextarea" th:field="*{solutionProblems}" rows="5"></textarea>
         </div>
         <div class="form-group">
             <label>Уровень решения</label>
-            <input type="text" class="form-control" th:field="*{level_solution}" placeholder="">
+            <input type="text" class="form-control" th:field="*{levelSolution}" placeholder="">
         </div>
         <div class="form-group">
             <label for="exampleTextarea">Конкурентные преимушества</label>
-            <input class="form-control" type="text" th:field="*{competitive_advantages}" rows="5">
+            <input class="form-control" type="text" th:field="*{competitiveAdvantages}" rows="5">
         </div>
         <div class="form-group">
             <label>Дата</label>
-            <input type="date" class="form-control" th:field="*{start_date}" placeholder="">
+            <input type="date" class="form-control" th:field="*{startDate}" placeholder="">
         </div>
         <div class="form-group">
             <label>Текущая стадия</label>
-            <input type="text" class="form-control" th:field="*{current_stage}" placeholder="">
+            <input type="text" class="form-control" th:field="*{currentStage}" placeholder="">
         </div>
         <div class="form-group">
             <label for="exampleTextarea">Экспертиза Проекта</label>
-            <textarea class="form-control" type="text" th:field="*{expertise_project}" rows="5"></textarea>
+            <textarea class="form-control" type="text" th:field="*{expertiseProject}" rows="5"></textarea>
         </div>
         <div class="form-group">
             <label>Описание проекта</label>
-            <textarea class="form-control" type="text" th:field="*{project_description}" rows="5"></textarea>
+            <textarea class="form-control" type="text" th:field="*{projectDescription}" rows="5"></textarea>
         </div>
         <div class="form-group">
             <label>Сайт</label>
-            <input type="text" class="form-control" th:field="*{site_project}" placeholder="">
+            <input type="text" class="form-control" th:field="*{siteProject}" placeholder="">
         </div>
         <div class="form-group">
             <label for="exampleTextarea">Номер телефона</label>
-            <input type="tel" class="form-control" th:field="*{number_Phone_project}" placeholder=""></div>
+            <input type="tel" class="form-control" th:field="*{numberPhoneProject}" placeholder=""></div>
         <button type="submit" class="btn btn-primary">Полетели</button>
     </form>
 

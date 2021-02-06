@@ -1,6 +1,7 @@
 package ru.innovat.controller.major.event;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,7 @@ import ru.innovat.service.major.SearchService;
 
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EventController {
     private final EventService eventService;
     private final SearchService searchService;

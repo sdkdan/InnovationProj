@@ -25,27 +25,27 @@ public class Project {
     @Field
     @Column(name = "Name_project")
     @EqualsAndHashCode.Include
-    private String name_project;
+    private String nameProject;
     @Column(name = "Essence_innovation")
-    private String essence_innovations;
+    private String essenceInnovations;
     @Column(name = "Solution_problem")
-    private String solution_problems;
+    private String solutionProblems;
     @Column(name = "Level_solution")
-    private String level_solution;
+    private String levelSolution;
     @Column(name = "Competitive_advantages")
-    private String competitive_advantages;
+    private String competitiveAdvantages;
     @Column(name = "Start_date")
-    private String start_date;
+    private String startDate;
     @Column(name = "Current_stage")
-    private String current_stage;
+    private String currentStage;
     @Column(name = "Expertise_project")
-    private String expertise_project;
+    private String expertiseProject;
     @Column(name = "Project_description")
-    private String project_description;
+    private String projectDescription;
     @Column(name = "Site_project")
-    private String site_project;
+    private String siteProject;
     @Column(name = "Number_Phone_project")
-    private String number_Phone_project;
+    private String numberPhoneProject;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "project_person",
             joinColumns = @JoinColumn(name = "id_project"),

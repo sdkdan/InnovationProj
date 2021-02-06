@@ -1,6 +1,7 @@
 package ru.innovat.dao.major;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.*;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import ru.innovat.models.major.Person;
 
 @Repository
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PersonDao {
     private final SessionFactory sessionFactory;
 

@@ -71,9 +71,9 @@
         </thead>
         <tbody>
         <tr th:each="project : ${projectList}">
-            <td th:utext="${project.name_project}" class="w-25 border ">..</td>
-            <td th:utext="${project.site_project}" class="w-25 border">..</td>
-            <td th:utext="${project.project_description}" class=" w-25 border">..</td>
+            <td th:utext="${project.nameProject}" class="w-25 border ">..</td>
+            <td th:utext="${project.siteProject}" class="w-25 border">..</td>
+            <td th:utext="${project.projectDescription}" class=" w-25 border">..</td>
             <td class="border">
                 <div class="text-center ">
                     <a th:href="@{project/{id}/delete(id=${project.id_project})}"> <img

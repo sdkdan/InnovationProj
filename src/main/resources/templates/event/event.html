@@ -31,11 +31,11 @@
     <tbody>
     <tr>
     <tr th:each="event : ${eventList}">
-        <td th:utext="${event.name_event}" class="w-25">..</td>
-        <td th:utext="${event.importance_event}"> ..</td>
-        <td th:utext="${event.scope_event}" class="w-25"></td>
+        <td th:utext="${event.nameEvent}" class="w-25">..</td>
+        <td th:utext="${event.importanceEvent}"> ..</td>
+        <td th:utext="${event.scopeEvent}" class="w-25"></td>
 
-        <td th:utext="${event.date_event}">..</td>
+        <td th:utext="${event.dateEvent}">..</td>
         <td>
             <div class="text-center">
                 <a th:href="@{event/{id}/delete(id=${event.id_event})}"> <img src="../../static/image/delete-16.svg"

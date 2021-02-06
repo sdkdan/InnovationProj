@@ -15,7 +15,7 @@ import ru.innovat.models.authorization.AppUser;
 //import ru.innovat.models.Roles;
 import ru.innovat.models.authorization.Role;
 import ru.innovat.models.utils.RolesEnum;
-import ru.innovat.service.authorization.NewUserService;
+import ru.innovat.service.authorization.RegistrationService;
 import ru.innovat.service.authorization.UserService;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
     @Autowired
-    private NewUserService newUserService;
+    private RegistrationService newUserService;
 
     @Test
     public void loadByUsernameTest() throws Exception{

@@ -11,7 +11,7 @@
 <div class="container">
 
     <h2>
-        <td th:utext="${person.getSurname()} +' '+ ${person.getName()}+' ' + ${person.getThird_Name()}">..</td>
+        <td th:utext="${person.getSurname()} +' '+ ${person.getName()}+' ' + ${person.getThirdName()}">..</td>
     </h2>
 
     <div class="pb-3">
@@ -19,11 +19,11 @@
            aria-pressed="true">Изменить</a>
         <a th:href="@{/person/{id}/delete(id=${person.id_person})}" type="button" class="btn btn-danger"
            data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
-        <a th:href="@{/person/{id}/con(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить
+        <a th:href="@{/person/{id}/connect(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить
             организацию</a>
-        <a th:href="@{/person/{id}/con(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить
+        <a th:href="@{/person/{id}/connect(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить
             мероприятие</a>
-        <a th:href="@{/person/{id}/con(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить
+        <a th:href="@{/person/{id}/connect(id=${person.id_person})}" type="button" class="btn btn-secondary" href="#">Добавить
             организацию</a>
     </div>
 
@@ -49,17 +49,17 @@
 
         <div class="col border "><p>Номер телефона</p></div>
         <div class="col border">
-            <td th:utext="${person.getPhone_number()}">..</td>
+            <td th:utext="${person.getPhoneNumber()}">..</td>
         </div>
         <div class="w-100"></div>
         <div class="col border"><p>Дата рождения</p></div>
         <div class="col border ">
-            <td th:utext="${person.getDate_of_birth()}">..</td>
+            <td th:utext="${person.getDateOfBirth()}">..</td>
         </div>
         <div class="w-100"></div>
         <div class="col border"><p>Почта</p></div>
         <div class="col border">
-            <td th:utext="${person.getE_mail()}">..</td>
+            <td th:utext="${person.getEMail()}">..</td>
         </div>
         <div class="w-100"></div>
         <div class="col border"><p>Facebook</p></div>
@@ -101,7 +101,7 @@
             <a class="small" th:href="@{/organization/{id}(id=${org.id_organization})}"><img width="16px"
                                                                                              src="../../image/teamwork.svg"
                                                                                              alt="человек">
-                <td th:utext="${org.name_organization}  ">..</td>
+                <td th:utext="${org.nameOrganization}  ">..</td>
             </a>
         </tr>
         <h3><img width="32px" src="../../image/education.svg" alt="команда"> Мероприятия </h3>
@@ -109,7 +109,7 @@
             <a class="small" th:href="@{/event/{id}(id=${ev.id_event})}"><img width="16px"
                                                                               src="../../image/education.svg"
                                                                               alt="человек">
-                <td th:utext="${ev.name_event}  ">..</td>
+                <td th:utext="${ev.nameEvent}  ">..</td>
             </a>
         </tr>
     </div>

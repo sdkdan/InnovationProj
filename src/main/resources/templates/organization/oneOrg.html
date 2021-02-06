@@ -11,18 +11,18 @@
 <div class="container">
 
     <h2>
-        <td th:utext="${organization.getName_organization()}">..</td>
+        <td th:utext="${organization.getNameOrganization()}">..</td>
         <h2>
             <div class="pb-3">
                 <a th:href="@{/organization/{id}/edit(id=${organization.id_organization})}" class="btn btn-primary "
                    role="button" aria-pressed="true">Изменить</a>
                 <a th:href="@{/organization/{id}/delete(id=${organization.id_organization})}" type="button"
                    class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Удалить</a>
-                <a th:href="@{/organization/{id}/con(id=${organization.id_organization})}" type="button"
+                <a th:href="@{/organization/{id}/connect(id=${organization.id_organization})}" type="button"
                    class="btn btn-secondary" href="#">Добавить мероприятие</a>
-                <a th:href="@{/organization/{id}/con(id=${organization.id_organization})}" type="button"
+                <a th:href="@{/organization/{id}/connect(id=${organization.id_organization})}" type="button"
                    class="btn btn-secondary" href="#">Добавить персонал</a>
-                <a th:href="@{/organization/{id}/con(id=${organization.id_organization})}" type="button"
+                <a th:href="@{/organization/{id}/connect(id=${organization.id_organization})}" type="button"
                    class="btn btn-secondary" href="#">Добавить проект</a>
             </div>
 
@@ -48,22 +48,22 @@
             <div class="row border pb-3">
                 <div class="col border"><p>Название</p></div>
                 <div class="col border">
-                    <td th:utext="${organization.getName_organization()}">..</td>
+                    <td th:utext="${organization.getNameOrganization()}">..</td>
                 </div>
                 <div class="w-100"></div>
                 <div class="col border"><p>Сайт</p></div>
                 <div class="col border">
-                    <td th:utext="${organization.getSite_organization()}">..</td>
+                    <td th:utext="${organization.getSiteOrganization()}">..</td>
                 </div>
                 <div class="w-100"></div>
                 <div class="col border"><p>Город</p></div>
                 <div class="col border">
-                    <td th:utext="${organization.getCity_organization()}">..</td>
+                    <td th:utext="${organization.getCityOrganization()}">..</td>
                 </div>
                 <div class="w-100"></div>
                 <div class="col border "><p>Заметки</p></div>
                 <div class="col border">
-                    <td th:utext="${organization.getNotes_organization()}">..</td>
+                    <td th:utext="${organization.getNotesOrganization()}">..</td>
                 </div>
                 <div class="w-100"></div>
             </div>
@@ -76,7 +76,7 @@
                         <a class="small" th:href="@{/project/{id}(id=${prj.id_project})}"><img width="16px"
                                                                                                src="../../image/teamwork.svg"
                                                                                                alt="человек">
-                            <td th:utext="${prj.name_project}  ">..</td>
+                            <td th:utext="${prj.nameProject}  ">..</td>
                         </a>
                     </tr>
                     <br>
@@ -97,7 +97,7 @@
                         <a class="small" th:href="@{/event/{id}(id=${ev.id_event})}"><img width="16px"
                                                                                           src="../../image/education.svg"
                                                                                           alt="человек">
-                            <td th:utext="${ev.name_event}  ">..</td>
+                            <td th:utext="${ev.nameEvent}  ">..</td>
                         </a>
                     </tr>
                 </div>

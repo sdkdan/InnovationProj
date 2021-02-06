@@ -33,9 +33,9 @@
     <tr th:each="person : ${personList}">
         <td th:utext="${person.name}">..</td>
         <td th:utext="${person.surname}">..</td>
-        <td th:utext="${person.third_Name}">..</td>
-        <td th:utext="${person.phone_number}">..</td>
-        <td th:utext="${person.date_of_birth}">..</td>
+        <td th:utext="${person.thirdName}">..</td>
+        <td th:utext="${person.phoneNumber}">..</td>
+        <td th:utext="${person.dateOfBirth}">..</td>
         <td>
             <div class="text-center">
                 <a th:href="@{person/{id}/delete(id=${person.id_person})}"> <img src="../../image/delete-16.svg"

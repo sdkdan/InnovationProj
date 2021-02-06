@@ -16,19 +16,19 @@
     <form action="#" th:action="@{/event/add}" th:object="${event}" method="post">
         <div class="form-group">
             <label>Название</label>
-            <input type="text" class="form-control" th:field="*{name_event}" placeholder="Обязательно">
+            <input type="text" class="form-control" th:field="*{nameEvent}" placeholder="Обязательно">
         </div>
         <div class="form-group">
             <label>Сайт</label>
-            <input type="text" class="form-control" th:field="*{site_event}" placeholder="Обязательно">
+            <input type="text" class="form-control" th:field="*{siteEvent}" placeholder="Обязательно">
         </div>
         <div class="form-group">
             <label>Важность</label>
-            <textarea class="form-control" th:field="*{importance_event}" rows="3"></textarea>
+            <textarea class="form-control" th:field="*{importanceEvent}" rows="3"></textarea>
         </div>
         <div class="form-group">
             <label>Cфера</label>
-            <input type="text" class="form-control" th:field="*{scope_event}" placeholder="">
+            <input type="text" class="form-control" th:field="*{scopeEvent}" placeholder="">
         </div>
         <div class="form-group">
             <label>Описание</label>
@@ -36,11 +36,11 @@
         </div>
         <div class="form-group">
             <label>Телефонный номер</label>
-            <input type="tel" class="form-control" th:field="*{phone_number}" placeholder="">
+            <input type="tel" class="form-control" th:field="*{phoneNumber}" placeholder="">
         </div>
         <div class="form-group">
             <label>Дата мероприятия</label>
-            <input type="date" class="form-control" th:field="*{date_event}" placeholder="">
+            <input type="date" class="form-control" th:field="*{dateEvent}" placeholder="">
         </div>
         <div class="form-group">
             <label>Комментарий</label>
@@ -51,7 +51,7 @@
             <input type="text" class="form-control" th:field="*{prizes}" placeholder="">
             <div class="form-group">
                 <label>Место проведения</label>
-                <input type="text" class="form-control" th:field="*{location_event}" placeholder="">
+                <input type="text" class="form-control" th:field="*{locationEvent}" placeholder="">
             </div>
         </div>
         <div class="form-group">
@@ -59,7 +59,7 @@
             <select th:field="*{idTypeEvent}">
                 <option th:each="type : ${list}"
                         th:value="${type.id_type_event}"
-                        th:text="${type.getName_type_event()}">Events
+                        th:text="${type.getNameTypeEvent()}">Events
                 </option>
             </select>
         </div>

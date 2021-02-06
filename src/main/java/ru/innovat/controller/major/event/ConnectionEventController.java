@@ -1,6 +1,7 @@
 package ru.innovat.controller.major.event;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ import ru.innovat.service.major.*;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ConnectionEventController {
     private final PersonService personService;
     private final ProjectService projectService;

@@ -1,6 +1,7 @@
 package ru.innovat.controller.authorization;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProfileController {
     private final UserService userService;
 

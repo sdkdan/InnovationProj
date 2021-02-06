@@ -1,9 +1,7 @@
 package ru.innovat.controller.support;
 
 
-import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.innovat.models.support.Messages;
-import ru.innovat.service.support.MessagesService;
 import ru.innovat.service.authorization.UserService;
+import ru.innovat.service.support.MessagesService;
 
 import java.security.Principal;
 import java.util.Date;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Controller
 public class ChatController {
     private final MessagesService messagesService;

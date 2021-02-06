@@ -1,6 +1,7 @@
 package ru.innovat.controller.major.person;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ import ru.innovat.service.major.*;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ConnectionPersonController {
     private final ProjectService projectService;
     private final EventService eventService;
@@ -25,7 +26,7 @@ public class ConnectionPersonController {
     private final PersonService personService;
     private final ConnectionService connectionService;
 
-    @GetMapping("person/{id}/con")
+    @GetMapping("person/{id}/connect")
     public String personAddConnectionPage(@PathVariable("id") int id, Model model) {
         Person person = personService.personAllConnections(id);
         Connect connect = new Connect();
@@ -43,7 +44,7 @@ public class ConnectionPersonController {
         return "person/addPersonCon";
     }
 
-    @PostMapping(value = "/person/{id}/con")
+    @PostMapping(value = "/person/{id}/connect")
     public String personAddConnection(@PathVariable("id") int id, @ModelAttribute Person person, Connect connect){
         connectionService.addConnections(connect, personService.personAllConnections(id));
         return "redirect:";

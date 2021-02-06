@@ -11,7 +11,7 @@
 <div class="container">
 
     <h2>
-        <td th:utext="${event.getName_event()}"> ..</td>
+        <td th:utext="${event.getNameEvent()}"> ..</td>
     </h2>
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -39,7 +39,7 @@
                 <select th:field="*{project_Id}">
                     <option th:each="project : ${projects}"
                             th:value="${project.id_project}"
-                            th:text="${project.id_project}+' : '+${project.name_project}"></option>
+                            th:text="${project.id_project}+' : '+${project.nameProject}"></option>
                 </select>
             </div>
             <div class="w-100"></div>
@@ -75,7 +75,7 @@
                 <select th:field="*{organization_Id}">
                     <option th:each="org : ${organizations}"
                             th:value="${org.id_organization}"
-                            th:text="${org.id_organization}+' : '+${org.name_organization}"></option>
+                            th:text="${org.id_organization}+' : '+${org.nameOrganization}"></option>
                 </select>
             </div>
             <div class="w-100"></div>
@@ -90,7 +90,7 @@
                 <h3>Проекты</h3>
                 <tr th:each="project : ${event.getProjects()}">
                     <a class="small" th:href="@{/project/{id}(id=${project.id_project})}">
-                        <td th:utext="${project.name_project}  ">..</td>
+                        <td th:utext="${project.nameProject}  ">..</td>
                     </a>
                 </tr>
             </div>
@@ -109,7 +109,7 @@
                 <h3>Организации</h3>
                 <tr th:each="organization : ${event.getOrganizations()}">
                     <a class="small" th:href="@{/organization/{id}(id=${organization.id_organization})}">
-                        <td th:utext="${organization.name_organization}  ">..</td>
+                        <td th:utext="${organization.nameOrganization}  ">..</td>
                     </a>
             </div>
         </div>

@@ -49,27 +49,27 @@ public class OrganizationControllerTest {
                     .andExpect(model().attribute("organizationList", hasSize(organizationList.size())))
                     .andExpect(model().attribute("organizationList", hasItem(
                             allOf(
-                                    hasProperty("name_organization", is(organizationList.get(organizationList.size()-1).getName_organization())),
-                                    hasProperty("site_organization", is(organizationList.get(organizationList.size()-1).getSite_organization())),
-                                    hasProperty("notes_organization", is(organizationList.get(organizationList.size()-1).getNotes_organization())
+                                    hasProperty("nameOrganization", is(organizationList.get(organizationList.size()-1).getNameOrganization())),
+                                    hasProperty("siteOrganization", is(organizationList.get(organizationList.size()-1).getSiteOrganization())),
+                                    hasProperty("notesOrganization", is(organizationList.get(organizationList.size()-1).getNotesOrganization())
                             )
                     ))));
         }
     }
 
     @Test
-    public void findByIdOrganizationTest() throws Exception {
+    public void findById_organizationTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
-            int lastIdOrganization = organizationList.get(organizationList.size()-1).getId_organization();
-            mockMvc.perform(get("/organization/{id}", lastIdOrganization))
+            int lastId_organization = organizationList.get(organizationList.size()-1).getId_organization();
+            mockMvc.perform(get("/organization/{id}", lastId_organization))
                     .andExpect(status().isOk())
                     .andExpect(view().name("organization/oneOrg"))
                     .andExpect(model().attribute("organization",
                             allOf(
-                                    hasProperty("name_organization", is(organizationList.get(organizationList.size()-1).getName_organization())),
-                                    hasProperty("site_organization", is(organizationList.get(organizationList.size()-1).getSite_organization())),
-                                    hasProperty("notes_organization", is(organizationList.get(organizationList.size()-1).getNotes_organization())
+                                    hasProperty("nameOrganization", is(organizationList.get(organizationList.size()-1).getNameOrganization())),
+                                    hasProperty("siteOrganization", is(organizationList.get(organizationList.size()-1).getSiteOrganization())),
+                                    hasProperty("notesOrganization", is(organizationList.get(organizationList.size()-1).getNotesOrganization())
                                     ))));
         }
     }
@@ -83,9 +83,9 @@ public class OrganizationControllerTest {
                     .andExpect(model().attribute("organizationList", hasSize(1)))
                     .andExpect(model().attribute("organizationList", hasItem(
                             allOf(
-                                    hasProperty("name_organization", is("Политех")),
-                                    hasProperty("site_organization", is("spbbu@kek.ru")),
-                                    hasProperty("notes_organization", is("DFDFD"))
+                                    hasProperty("nameOrganization", is("Политех")),
+                                    hasProperty("siteOrganization", is("spbbu@kek.ru")),
+                                    hasProperty("notesOrganization", is("DFDFD"))
                             ))));
         }
 
@@ -95,10 +95,10 @@ public class OrganizationControllerTest {
         int newAddedOrganization = 1;
         mockMvc.perform(post("/organization/add")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("name_organization", "Политех")
-                .param("site_organization", "https://www.spbstu.ru/")
-                .param("notes_organization", "university in spb")
-                .param("city_organization", "Saint-Petersburg")
+                .param("nameOrganization", "Политех")
+                .param("siteOrganization", "https://www.spbstu.ru/")
+                .param("notesOrganization", "university in spb")
+                .param("cityOrganization", "Saint-Petersburg")
                 .sessionAttr("organization", new Organization())
         )
                 .andExpect(status().is3xxRedirection());
@@ -110,9 +110,9 @@ public class OrganizationControllerTest {
                 .andExpect(model().attribute("organizationList", hasSize(organizationListSize + newAddedOrganization)))
                 .andExpect(model().attribute("organizationList", hasItem(
                         allOf(
-                                hasProperty("name_organization", is("Политех")),
-                                hasProperty("site_organization", is("https://www.spbstu.ru/")),
-                                hasProperty("notes_organization", is("university in spb"))
+                                hasProperty("nameOrganization", is("Политех")),
+                                hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
+                                hasProperty("notesOrganization", is("university in spb"))
                         ))));
     }
 
@@ -120,25 +120,25 @@ public class OrganizationControllerTest {
     public void organizationEditTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
-            int lastIdOrganization = organizationList.size();
-            mockMvc.perform(post("/organization/{id}/update",lastIdOrganization)
+            int lastId_organization = organizationList.size();
+            mockMvc.perform(post("/organization/{id}/update",lastId_organization)
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("name_organization", "Политех Петра")
-                    .param("site_organization", "https://www.spbstu.ru/")
-                    .param("notes_organization", "university in spb")
-                    .param("city_organization", "Saint-Petersburg")
+                    .param("nameOrganization", "Политех Петра")
+                    .param("siteOrganization", "https://www.spbstu.ru/")
+                    .param("notesOrganization", "university in spb")
+                    .param("cityOrganization", "Saint-Petersburg")
                     .sessionAttr("organization", new Organization())
             )
                     .andExpect(status().is3xxRedirection());
 
-            mockMvc.perform(get("/organization/{id}", lastIdOrganization))
+            mockMvc.perform(get("/organization/{id}", lastId_organization))
                     .andExpect(status().isOk())
                     .andExpect(view().name("organization/oneOrg"))
                     .andExpect(model().attribute("organization",
                             allOf(
-                                    hasProperty("name_organization", is("Политех Петра")),
-                                    hasProperty("site_organization", is("https://www.spbstu.ru/")),
-                                    hasProperty("notes_organization", is("university in spb"))
+                                    hasProperty("nameOrganization", is("Политех Петра")),
+                                    hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
+                                    hasProperty("notesOrganization", is("university in spb"))
                             )));
         }
     }

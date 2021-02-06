@@ -32,13 +32,13 @@ public class Person {
     @EqualsAndHashCode.Include
     private String name;
     @Column(name = "Third_name")
-    private String third_Name;
+    private String thirdName;
     @Column(name = "Phone_number")
-    private String phone_number;
+    private String phoneNumber;
     @Column(name = "Date_of_birth")
-    private String date_of_birth;
+    private String dateOfBirth;
     @Column(name = "E_mail")
-    private String e_mail;
+    private String eMail;
     @Column(name = "Facebook")
     private String facebook;
     @Column(name = "VK")

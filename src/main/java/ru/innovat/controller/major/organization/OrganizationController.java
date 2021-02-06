@@ -1,6 +1,7 @@
 package ru.innovat.controller.major.organization;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,7 @@ import ru.innovat.service.major.SearchService;
 
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrganizationController {
     private final OrganizationService organizationService;
     private final SearchService searchService;

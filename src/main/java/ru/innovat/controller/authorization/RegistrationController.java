@@ -1,22 +1,19 @@
 package ru.innovat.controller.authorization;
 
-import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.innovat.models.authorization.AppUser;
-import ru.innovat.service.authorization.NewUserService;
-import ru.innovat.service.authorization.UserService;
+import ru.innovat.service.authorization.RegistrationService;
 
 import java.security.Principal;
 
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RegistrationController {
-    private final NewUserService newUserService;
+    private final RegistrationService registrationService;
 
     @GetMapping(value = "/login")
     public String loginPage() {
@@ -44,19 +41,19 @@ public class RegistrationController {
 
     @PostMapping(value = "/register")
     public String registrationUser(Model model, @ModelAttribute AppUser userForm) {
-        String checkAccount = newUserService.checkAccount(userForm);
+        String checkAccount = registrationService.registeredAccountStatus(userForm);
         if (checkAccount != null) {
             model.addAttribute("message", checkAccount);
             return "error";
         }
-        newUserService.saveUser(userForm);
+        registrationService.saveUser(userForm);
         model.addAttribute("emailId", userForm.getEMail());
         return "registration/successfulRegistration";
     }
 
     @GetMapping(value = "/confirm-account")
     public String confirmUserAccount(Model model, @RequestParam("token") String token) {
-        model.addAttribute("message", newUserService.emailVerification(token));
+        model.addAttribute("message", registrationService.emailVerification(token));
         return "registration/accountVerified";
     }
 }

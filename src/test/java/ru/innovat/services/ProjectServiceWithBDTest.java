@@ -42,17 +42,17 @@ public class ProjectServiceWithBDTest {
     public void testFindByIdWithBD() {
         Project project = projectService.findProject(1);
         assertThat(project.getId_project()).isEqualTo(1);
-        assertThat(project.getName_project()).isEqualTo("База данных инновационных проектов");
-        assertThat(project.getExpertise_project()).isEqualTo("Экспертиза проекта:...");
-        assertThat(project.getSite_project()).isEqualTo("dl.spbstu.ru");
-        assertThat(project.getProject_description()).isEqualTo("Описание проекта:...");
-        assertThat(project.getNumber_Phone_project()).isEqualTo("+79213004090");
-        assertThat(project.getCurrent_stage()).isEqualTo("Текущая стадия:...");
-        assertThat(project.getStart_date()).isEqualTo("2020-10-20");
-        assertThat(project.getLevel_solution()).isEqualTo("Уровень решения:...");
-        assertThat(project.getSolution_problems()).isEqualTo("Решение проблемы:...");
-        assertThat(project.getEssence_innovations()).isEqualTo("Суть инновации:...");
-        assertThat(project.getCompetitive_advantages()).isEqualTo("Конкурентные преимущества:...");
+        assertThat(project.getNameProject()).isEqualTo("База данных инновационных проектов");
+        assertThat(project.getExpertiseProject()).isEqualTo("Экспертиза проекта:...");
+        assertThat(project.getSiteProject()).isEqualTo("dl.spbstu.ru");
+        assertThat(project.getProjectDescription()).isEqualTo("Описание проекта:...");
+        assertThat(project.getNumberPhoneProject()).isEqualTo("+79213004090");
+        assertThat(project.getCurrentStage()).isEqualTo("Текущая стадия:...");
+        assertThat(project.getStartDate()).isEqualTo("2020-10-20");
+        assertThat(project.getLevelSolution()).isEqualTo("Уровень решения:...");
+        assertThat(project.getSolutionProblems()).isEqualTo("Решение проблемы:...");
+        assertThat(project.getEssenceInnovations()).isEqualTo("Суть инновации:...");
+        assertThat(project.getCompetitiveAdvantages()).isEqualTo("Конкурентные преимущества:...");
     }
 
 
@@ -60,51 +60,51 @@ public class ProjectServiceWithBDTest {
     public void projectListTest(){
         List<Project> projectList = projectService.projectList();
         assertThat(projectList.get(0).getId_project()).isEqualTo(1);
-        assertThat(projectList.get(0).getName_project()).isEqualTo("База данных инновационных проектов");
-        assertThat(projectList.get(0).getExpertise_project()).isEqualTo("Экспертиза проекта:...");
-        assertThat(projectList.get(0).getSite_project()).isEqualTo("dl.spbstu.ru");
-        assertThat(projectList.get(0).getProject_description()).isEqualTo("Описание проекта:...");
-        assertThat(projectList.get(0).getNumber_Phone_project()).isEqualTo("+79213004090");
-        assertThat(projectList.get(0).getCurrent_stage()).isEqualTo("Текущая стадия:...");
-        assertThat(projectList.get(0).getStart_date()).isEqualTo("2020-10-20");
-        assertThat(projectList.get(0).getLevel_solution()).isEqualTo("Уровень решения:...");
-        assertThat(projectList.get(0).getSolution_problems()).isEqualTo("Решение проблемы:...");
-        assertThat(projectList.get(0).getEssence_innovations()).isEqualTo("Суть инновации:...");
-        assertThat(projectList.get(0).getCompetitive_advantages()).isEqualTo("Конкурентные преимущества:...");
+        assertThat(projectList.get(0).getNameProject()).isEqualTo("База данных инновационных проектов");
+        assertThat(projectList.get(0).getExpertiseProject()).isEqualTo("Экспертиза проекта:...");
+        assertThat(projectList.get(0).getSiteProject()).isEqualTo("dl.spbstu.ru");
+        assertThat(projectList.get(0).getProjectDescription()).isEqualTo("Описание проекта:...");
+        assertThat(projectList.get(0).getNumberPhoneProject()).isEqualTo("+79213004090");
+        assertThat(projectList.get(0).getCurrentStage()).isEqualTo("Текущая стадия:...");
+        assertThat(projectList.get(0).getStartDate()).isEqualTo("2020-10-20");
+        assertThat(projectList.get(0).getLevelSolution()).isEqualTo("Уровень решения:...");
+        assertThat(projectList.get(0).getSolutionProblems()).isEqualTo("Решение проблемы:...");
+        assertThat(projectList.get(0).getEssenceInnovations()).isEqualTo("Суть инновации:...");
+        assertThat(projectList.get(0).getCompetitiveAdvantages()).isEqualTo("Конкурентные преимущества:...");
         assertThat(projectList.get(1).getId_project()).isEqualTo(2);
-        assertThat(projectList.get(1).getName_project()).isEqualTo("Просмотр Gachimuchi");
-        assertThat(projectList.get(1).getExpertise_project()).isEqualTo("Экспертиза проекта");
-        assertThat(projectList.get(1).getSite_project()).isEqualTo("Gachi.com");
-        assertThat(projectList.get(1).getProject_description()).isEqualTo("Описание проекта");
-        assertThat(projectList.get(1).getNumber_Phone_project()).isEqualTo("88005553535");
-        assertThat(projectList.get(1).getCurrent_stage()).isEqualTo("Текущая стадия");
-        assertThat(projectList.get(1).getStart_date()).isEqualTo("2020-11-22");
-        assertThat(projectList.get(1).getLevel_solution()).isEqualTo("Уровень решения");
-        assertThat(projectList.get(1).getSolution_problems()).isEqualTo("Решение проблемы");
-        assertThat(projectList.get(1).getEssence_innovations()).isEqualTo("Суть инновации");
-        assertThat(projectList.get(1).getCompetitive_advantages()).isEqualTo("Конкурентные преимущества");
+        assertThat(projectList.get(1).getNameProject()).isEqualTo("Просмотр Gachimuchi");
+        assertThat(projectList.get(1).getExpertiseProject()).isEqualTo("Экспертиза проекта");
+        assertThat(projectList.get(1).getSiteProject()).isEqualTo("Gachi.com");
+        assertThat(projectList.get(1).getProjectDescription()).isEqualTo("Описание проекта");
+        assertThat(projectList.get(1).getNumberPhoneProject()).isEqualTo("88005553535");
+        assertThat(projectList.get(1).getCurrentStage()).isEqualTo("Текущая стадия");
+        assertThat(projectList.get(1).getStartDate()).isEqualTo("2020-11-22");
+        assertThat(projectList.get(1).getLevelSolution()).isEqualTo("Уровень решения");
+        assertThat(projectList.get(1).getSolutionProblems()).isEqualTo("Решение проблемы");
+        assertThat(projectList.get(1).getEssenceInnovations()).isEqualTo("Суть инновации");
+        assertThat(projectList.get(1).getCompetitiveAdvantages()).isEqualTo("Конкурентные преимущества");
     }
 
 
     @Test
     public void updateProjectTest(){
         Project project = projectService.findProject(1);
-        project.setCompetitive_advantages("test");
-        project.setName_project("test");
+        project.setCompetitiveAdvantages("test");
+        project.setNameProject("test");
         projectService.updateProject(project);
         Project updatedProject = projectService.findProject(1);
         assertThat(project.getId_project()).isEqualTo(updatedProject.getId_project());
-        assertThat(project.getName_project()).isEqualTo(updatedProject.getName_project());
-        assertThat(project.getExpertise_project()).isEqualTo(updatedProject.getExpertise_project());
-        assertThat(project.getSite_project()).isEqualTo(updatedProject.getSite_project());
-        assertThat(project.getProject_description()).isEqualTo(updatedProject.getProject_description());
-        assertThat(project.getNumber_Phone_project()).isEqualTo(updatedProject.getNumber_Phone_project());
-        assertThat(project.getCurrent_stage()).isEqualTo(updatedProject.getCurrent_stage());
-        assertThat(project.getStart_date()).isEqualTo(updatedProject.getStart_date());
-        assertThat(project.getLevel_solution()).isEqualTo(updatedProject.getLevel_solution());
-        assertThat(project.getSolution_problems()).isEqualTo(updatedProject.getSolution_problems());
-        assertThat(project.getEssence_innovations()).isEqualTo(updatedProject.getEssence_innovations());
-        assertThat(project.getCompetitive_advantages()).isEqualTo(updatedProject.getCompetitive_advantages());
+        assertThat(project.getNameProject()).isEqualTo(updatedProject.getNameProject());
+        assertThat(project.getExpertiseProject()).isEqualTo(updatedProject.getExpertiseProject());
+        assertThat(project.getSiteProject()).isEqualTo(updatedProject.getSiteProject());
+        assertThat(project.getProjectDescription()).isEqualTo(updatedProject.getProjectDescription());
+        assertThat(project.getNumberPhoneProject()).isEqualTo(updatedProject.getNumberPhoneProject());
+        assertThat(project.getCurrentStage()).isEqualTo(updatedProject.getCurrentStage());
+        assertThat(project.getStartDate()).isEqualTo(updatedProject.getStartDate());
+        assertThat(project.getLevelSolution()).isEqualTo(updatedProject.getLevelSolution());
+        assertThat(project.getSolutionProblems()).isEqualTo(updatedProject.getSolutionProblems());
+        assertThat(project.getEssenceInnovations()).isEqualTo(updatedProject.getEssenceInnovations());
+        assertThat(project.getCompetitiveAdvantages()).isEqualTo(updatedProject.getCompetitiveAdvantages());
     }
 
 }

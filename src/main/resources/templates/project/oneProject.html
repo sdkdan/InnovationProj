@@ -10,7 +10,7 @@
 <!--выводим отдельную запись -->
 <div class="text-center m-2 ">
     <h3>
-        <td th:utext="${project.name_project}">..</td>
+        <td th:utext="${project.nameProject}">..</td>
     </h3>
 </div>
 <div class="d-flex justify-content-center ">
@@ -19,11 +19,11 @@
        role="button">Изменить</a>
     <a th:href="@{/project/{id}/delete(id=${project.id_project})}" class="btn btn-danger  p-1 m-1" data-toggle="modal"
        data-target="#exampleModalCenter">Удалить</a>
-    <a th:href="@{/project/{id}/con(id=${project.id_project})}" type="button" class="btn btn-secondary" href="#">Добавить
+    <a th:href="@{/project/{id}/connect(id=${project.id_project})}" type="button" class="btn btn-secondary" href="#">Добавить
         персонал</a>
-    <a th:href="@{/project/{id}/con(id=${project.id_project})}" type="button" class="btn btn-secondary" href="#">Добавить
+    <a th:href="@{/project/{id}/connect(id=${project.id_project})}" type="button" class="btn btn-secondary" href="#">Добавить
         мероприятие</a>
-    <a th:href="@{/project/{id}/con(id=${project.id_project})}" type="button" class="btn btn-secondary" href="#">Добавить
+    <a th:href="@{/project/{id}/connect(id=${project.id_project})}" type="button" class="btn btn-secondary" href="#">Добавить
         организацию</a>
 
 </div>
@@ -42,40 +42,40 @@
             <div>
                 <h4> Cуть инновации:</h4>
                 <p class="small">
-                <td th:utext="${project.essence_innovations}">..</td>
+                <td th:utext="${project.essenceInnovations}">..</td>
                 </p>
 
                 <h4>Конкурентные преимущества :</h4>
                 <p class="small">
-                <td th:utext="${project.competitive_advantages}">..</td>
+                <td th:utext="${project.competitiveAdvantages}">..</td>
                 </p>
                 <h4>Решаемые проблемы :</h4>
                 <p class="small">
-                <td th:utext="${project.solution_problems}">..</td>
+                <td th:utext="${project.solutionProblems}">..</td>
                 </p>
                 <h4>Экспертиза проекта :</h4>
                 <p class=" small">
-                <td th:utext="${project.expertise_project}">..</td>
+                <td th:utext="${project.expertiseProject}">..</td>
                 </p>
             </div>
         </div>
         <!-- блок с большой инфой о проекте-->
         <div class="col-4   ">
-            <td th:utext="${project.name_project}">..</td>
+            <td th:utext="${project.nameProject}">..</td>
             <br>
             <img width="16px" src="../../image/dog-tag.svg" alt="название"> <a class="small pl-md-1 "> </a>
-            <td th:utext="${project.project_description}"><p>..</td>
+            <td th:utext="${project.projectDescription}"><p>..</td>
             </p>
             <!--                <p><a class=" small"><img width = "16px" src="../../image/mail.svg"  alt="почта"  >адрес почты</a></p>-->
             <img width="16px" src="../../image/report.svg" alt="решение"> <a class="small pl-md-1 "> Уровень
             решения: </a>
-            <td th:utext="${project.level_solution}"><p>..</td>
+            <td th:utext="${project.levelSolution}"><p>..</td>
             </p>
             <img width="16px" src="../../image/calendar.svg" alt="решение"> <a class="small pl-md-1">Дата старта: </a>
-            <td th:utext="${project.start_date}"><p> ..</td>
+            <td th:utext="${project.getStartDate}"><p> ..</td>
             </p>
             <img width="16px" src="../../image/pin.svg" alt="решение"><a class="small pl-md-1"> </a>
-            <td th:utext="${project.site_project}"><p> ..</td>
+            <td th:utext="${project.siteProject}"><p> ..</td>
             </p>
 
             <br>
@@ -84,7 +84,7 @@
                 <tr th:each="person : ${project.getPersons()}">
                     <li>
                         <a class="small pl-md-1" th:href="@{/person/{id}(id=${person.id_person})}">
-                            <td th:utext="${person.getSurname()} +' '+ ${person.getName()}+' ' + ${person.getThird_Name()}">
+                            <td th:utext="${person.getSurname()} +' '+ ${person.getName()}+' ' + ${person.getThirdName()}">
                                 ..
                             </td>
                         </a>
@@ -96,7 +96,7 @@
                 <tr th:each="org : ${project.getOrganizations()}">
                     <li>
                         <a class="small pl-md-1" th:href="@{/organization/{id}(id=${org.id_organization})}">
-                            <td th:utext="${org.name_organization}  ">..</td>
+                            <td th:utext="${org.nameOrganization}  ">..</td>
                         </a>
                     </li>
                 </tr>
@@ -106,7 +106,7 @@
                 <li>
                     <tr th:each="ev : ${project.getEvents()}">
                         <a class="small pl-md-1" th:href="@{/event/{id}(id=${ev.id_event})}">
-                            <td th:utext="${ev.name_event}  ">..</td>
+                            <td th:utext="${ev.nameEvent}  ">..</td>
                         </a>
                     </tr>
                 </li>

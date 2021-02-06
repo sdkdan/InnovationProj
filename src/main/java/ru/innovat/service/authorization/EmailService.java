@@ -1,17 +1,16 @@
 package ru.innovat.service.authorization;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import ru.innovat.models.authorization.VerificationToken;
 
-@Service("emailService")
+@Service
+@RequiredArgsConstructor
 public class EmailService {
     private final JavaMailSender javaMailSender;
-
-    public EmailService(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
 
     public void sendEmail(String email, VerificationToken verificationToken) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();

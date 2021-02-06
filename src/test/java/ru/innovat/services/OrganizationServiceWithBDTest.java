@@ -40,39 +40,39 @@ public class OrganizationServiceWithBDTest {
     public void testFindByIdWithBD() {
         Organization organization = organizationService.findOrganization(1);
         assertThat(organization.getId_organization()).isEqualTo(1);
-        assertThat(organization.getName_organization()).isEqualTo("test1");
-        assertThat(organization.getCity_organization()).isEqualTo("Nursultan");
-        assertThat(organization.getSite_organization()).isEqualTo("spbbu@kek.ru");
-        assertThat(organization.getNotes_organization()).isEqualTo("DFDFD");
+        assertThat(organization.getNameOrganization()).isEqualTo("test1");
+        assertThat(organization.getCityOrganization()).isEqualTo("Nursultan");
+        assertThat(organization.getSiteOrganization()).isEqualTo("spbbu@kek.ru");
+        assertThat(organization.getNotesOrganization()).isEqualTo("DFDFD");
     }
 
     @Test
     public void organizationListTest() {
         List<Organization> organizationList = organizationService.organizationList();
         assertThat(organizationList.get(0).getId_organization()).isEqualTo(1);
-        assertThat(organizationList.get(0).getName_organization()).isEqualTo("test1");
-        assertThat(organizationList.get(0).getCity_organization()).isEqualTo("Nursultan");
-        assertThat(organizationList.get(0).getSite_organization()).isEqualTo("spbbu@kek.ru");
-        assertThat(organizationList.get(0).getNotes_organization()).isEqualTo("DFDFD");
+        assertThat(organizationList.get(0).getNameOrganization()).isEqualTo("test1");
+        assertThat(organizationList.get(0).getCityOrganization()).isEqualTo("Nursultan");
+        assertThat(organizationList.get(0).getSiteOrganization()).isEqualTo("spbbu@kek.ru");
+        assertThat(organizationList.get(0).getNotesOrganization()).isEqualTo("DFDFD");
         assertThat(organizationList.get(1).getId_organization()).isEqualTo(2);
-        assertThat(organizationList.get(1).getName_organization()).isEqualTo("test2");
-        assertThat(organizationList.get(1).getCity_organization()).isEqualTo("Nursultan");
-        assertThat(organizationList.get(1).getSite_organization()).isEqualTo("spbbu1@kek.ru");
-        assertThat(organizationList.get(1).getNotes_organization()).isEqualTo("DFDFD");
+        assertThat(organizationList.get(1).getNameOrganization()).isEqualTo("test2");
+        assertThat(organizationList.get(1).getCityOrganization()).isEqualTo("Nursultan");
+        assertThat(organizationList.get(1).getSiteOrganization()).isEqualTo("spbbu1@kek.ru");
+        assertThat(organizationList.get(1).getNotesOrganization()).isEqualTo("DFDFD");
     }
 
     @Test
     public void updateOrganizationTest() {
         Organization organization = organizationService.findOrganization(1);
-        organization.setCity_organization("testCity");
-        organization.setName_organization("testName");
+        organization.setCityOrganization("testCity");
+        organization.setNameOrganization("testName");
         organizationService.updateOrganization(organization);
         Organization updatedOrganization = organizationService.findOrganization(1);
         assertThat(organization.getId_organization()).isEqualTo(updatedOrganization.getId_organization());
-        assertThat(organization.getName_organization()).isEqualTo(updatedOrganization.getName_organization());
-        assertThat(organization.getCity_organization()).isEqualTo(updatedOrganization.getCity_organization());
-        assertThat(organization.getSite_organization()).isEqualTo(updatedOrganization.getSite_organization());
-        assertThat(organization.getNotes_organization()).isEqualTo(updatedOrganization.getNotes_organization());
+        assertThat(organization.getNameOrganization()).isEqualTo(updatedOrganization.getNameOrganization());
+        assertThat(organization.getCityOrganization()).isEqualTo(updatedOrganization.getCityOrganization());
+        assertThat(organization.getSiteOrganization()).isEqualTo(updatedOrganization.getSiteOrganization());
+        assertThat(organization.getNotesOrganization()).isEqualTo(updatedOrganization.getNotesOrganization());
     }
 
 }

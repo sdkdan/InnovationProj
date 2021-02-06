@@ -11,7 +11,7 @@
 <div class="container">
 
     <h2>
-        <td th:utext="${organization.getName_organization()}">..</td>
+        <td th:utext="${organization.getNameOrganization()}">..</td>
     </h2>
 
 
@@ -42,7 +42,7 @@
                 <select th:field="*{project_Id}">
                     <option th:each="project : ${projects}"
                             th:value="${project.id_project}"
-                            th:text="${project.id_project}+' : '+${project.name_project}"></option>
+                            th:text="${project.id_project}+' : '+${project.nameProject}"></option>
                 </select>
             </div>
             <div class="w-100"></div>
@@ -60,7 +60,7 @@
                 <select th:field="*{event_Id}">
                     <option th:each="event : ${events}"
                             th:value="${event.id_event}"
-                            th:text="${event.id_event}+' : '+${event.name_event}"></option>
+                            th:text="${event.id_event}+' : '+${event.nameEvent}"></option>
                 </select>
             </div>
             <div class="w-100"></div>
@@ -93,7 +93,7 @@
                 <h3>Проекты</h3>
                 <tr th:each="project : ${organization.getProjects()}">
                     <a class="small" th:href="@{/project/{id}(id=${project.id_project})}">
-                        <td th:utext="${project.name_project}  ">..</td>
+                        <td th:utext="${project.nameProject}  ">..</td>
                     </a>
                 </tr>
             </div>
@@ -103,7 +103,7 @@
                 <h3>Мероприятия</h3>
                 <tr th:each="event : ${organization.getEvents()}">
                     <a class="small" th:href="@{/event/{id}(id=${event.id_event})}">
-                        <td th:utext="${event.name_event}  ">..</td>
+                        <td th:utext="${event.nameEvent}  ">..</td>
                     </a>
             </div>
 

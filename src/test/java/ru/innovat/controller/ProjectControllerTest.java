@@ -49,26 +49,26 @@ public class ProjectControllerTest {
                     .andExpect(model().attribute("projectList", hasSize(projectList.size())))
                     .andExpect(model().attribute("projectList", hasItem(
                             allOf(
-                                    hasProperty("name_project", is(projectList.get(projectList.size()-1).getName_project())),
-                                    hasProperty("site_project", is(projectList.get(projectList.size()-1).getSite_project())),
-                                    hasProperty("project_description", is(projectList.get(projectList.size()-1).getProject_description()))
+                                    hasProperty("nameProject", is(projectList.get(projectList.size()-1).getNameProject())),
+                                    hasProperty("siteProject", is(projectList.get(projectList.size()-1).getSiteProject())),
+                                    hasProperty("projectDescription", is(projectList.get(projectList.size()-1).getProjectDescription()))
                             ))));
         }
     }
 
     @Test
-    public void findByIdProjectTest() throws Exception {
+    public void findById_projectTest() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
-            int lastIdProject = projectList.get(projectList.size()-1).getId_project();
-            mockMvc.perform(get("/project/{id}", lastIdProject))
+            int lastId_project = projectList.get(projectList.size()-1).getId_project();
+            mockMvc.perform(get("/project/{id}", lastId_project))
                     .andExpect(status().isOk())
                     .andExpect(view().name("project/oneProject"))
                     .andExpect(model().attribute("project",
                             allOf(
-                                    hasProperty("name_project", is(projectList.get(projectList.size()-1).getName_project())),
-                                    hasProperty("site_project", is(projectList.get(projectList.size()-1).getSite_project())),
-                                    hasProperty("project_description", is(projectList.get(projectList.size()-1).getProject_description()))
+                                    hasProperty("nameProject", is(projectList.get(projectList.size()-1).getNameProject())),
+                                    hasProperty("siteProject", is(projectList.get(projectList.size()-1).getSiteProject())),
+                                    hasProperty("projectDescription", is(projectList.get(projectList.size()-1).getProjectDescription()))
                             )));
         }
     }
@@ -82,9 +82,9 @@ public class ProjectControllerTest {
                 .andExpect(model().attribute("projectList", hasSize(1)))
                 .andExpect(model().attribute("projectList", hasItem(
                         allOf(
-                                hasProperty("name_project", is("База данных инновационных проектов")),
-                                hasProperty("site_project", is("dl.spbstu.ru")),
-                                hasProperty("project_description", is("Описание проекта:..."))
+                                hasProperty("nameProject", is("База данных инновационных проектов")),
+                                hasProperty("siteProject", is("dl.spbstu.ru")),
+                                hasProperty("projectDescription", is("Описание проекта:..."))
                         )
                 )));
     }
@@ -96,17 +96,17 @@ public class ProjectControllerTest {
         int newAddedProject = 1;
         mockMvc.perform(post("/project/add")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("name_project", "test")
+                .param("nameProject", "test")
                 .param("essence_innovations", "test")
-                .param("solution_problems", "test")
-                .param("level_solution", "test")
+                .param("solutionProblems", "test")
+                .param("levelSolution", "test")
                 .param("competitive_advantages", "test")
-                .param("start_date", "2020-10-20")
-                .param("current_stage", "test")
-                .param("expertise_project", "test")
-                .param("project_description", "test")
-                .param("site_project", "test")
-                .param("number_Phone_project", "test")
+                .param("startDate", "2020-10-20")
+                .param("currentStage", "test")
+                .param("expertiseProject", "test")
+                .param("projectDescription", "test")
+                .param("siteProject", "test")
+                .param("numberPhoneProject", "test")
                 .sessionAttr("project", new Project())
         )
                 .andExpect(status().is3xxRedirection());
@@ -118,9 +118,9 @@ public class ProjectControllerTest {
                 .andExpect(model().attribute("projectList", hasSize(projectListSize + newAddedProject)))
                 .andExpect(model().attribute("projectList", hasItem(
                         allOf(
-                                hasProperty("name_project", is("test")),
-                                hasProperty("site_project", is("test")),
-                                hasProperty("project_description", is("test"))
+                                hasProperty("nameProject", is("test")),
+                                hasProperty("siteProject", is("test")),
+                                hasProperty("projectDescription", is("test"))
                         )
                 )));
     }
@@ -129,31 +129,31 @@ public class ProjectControllerTest {
     public void projectEditTest() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
-            int lastIdProject = projectList.get(projectList.size() - 1).getId_project();
-            mockMvc.perform(post("/project/{id}/update",lastIdProject)
+            int lastId_project = projectList.get(projectList.size() - 1).getId_project();
+            mockMvc.perform(post("/project/{id}/update",lastId_project)
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("name_project", "test1")
+                    .param("nameProject", "test1")
                     .param("essence_innovations", "test1")
-                    .param("solution_problems", "test1")
-                    .param("level_solution", "test1")
+                    .param("solutionProblems", "test1")
+                    .param("levelSolution", "test1")
                     .param("competitive_advantages", "test1")
-                    .param("start_date", "2020-10-20")
-                    .param("current_stage", "test1")
-                    .param("expertise_project", "test1")
-                    .param("project_description", "test1")
-                    .param("site_project", "test1")
-                    .param("number_Phone_project", "test1")
+                    .param("startDate", "2020-10-20")
+                    .param("currentStage", "test1")
+                    .param("expertiseProject", "test1")
+                    .param("projectDescription", "test1")
+                    .param("siteProject", "test1")
+                    .param("numberPhoneProject", "test1")
                     .sessionAttr("project", new Project())
             )
                     .andExpect(status().is3xxRedirection());
 
-            mockMvc.perform(get("/project/{id}", lastIdProject))
+            mockMvc.perform(get("/project/{id}", lastId_project))
                     .andExpect(status().isOk())
                     .andExpect(view().name("project/oneProject"))
                     .andExpect(model().attribute("project",
-                            hasProperty("name_project", is("test1"))))
+                            hasProperty("nameProject", is("test1"))))
                     .andExpect(model().attribute("project",
-                            hasProperty("site_project", is("test1"))));
+                            hasProperty("siteProject", is("test1"))));
         }
     }
 

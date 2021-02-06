@@ -1,6 +1,7 @@
 package ru.innovat.dao.major;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +11,7 @@ import ru.innovat.models.major.Project;
 import java.util.ArrayList;
 
 @Repository
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProjectDao {
     private final SessionFactory sessionFactory;
 

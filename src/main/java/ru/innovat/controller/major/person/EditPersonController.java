@@ -1,6 +1,7 @@
 package ru.innovat.controller.major.person;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,7 @@ import ru.innovat.service.major.PersonService;
 import javax.validation.Valid;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EditPersonController {
     private final PersonService personService;
 

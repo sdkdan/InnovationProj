@@ -26,32 +26,32 @@ public class ProjectServiceWithoutBDTest {
     public void testFindById(){
         Project mockProject = new Project();
         mockProject.setId_project(14);
-        mockProject.setName_project("test");
-        mockProject.setExpertise_project("test");
-        mockProject.setSite_project("test");
-        mockProject.setProject_description("test");
-        mockProject.setNumber_Phone_project("99999999999");
-        mockProject.setCurrent_stage("test");
-        mockProject.setStart_date("2221-04-23");
-        mockProject.setLevel_solution("test");
-        mockProject.setSolution_problems("test");
-        mockProject.setEssence_innovations("test");
-        mockProject.setCompetitive_advantages("test");
+        mockProject.setNameProject("test");
+        mockProject.setExpertiseProject("test");
+        mockProject.setSiteProject("test");
+        mockProject.setProjectDescription("test");
+        mockProject.setNumberPhoneProject("99999999999");
+        mockProject.setCurrentStage("test");
+        mockProject.setStartDate("2221-04-23");
+        mockProject.setLevelSolution("test");
+        mockProject.setSolutionProblems("test");
+        mockProject.setEssenceInnovations("test");
+        mockProject.setCompetitiveAdvantages("test");
         given(this.projectDao.findById(anyInt()))
                 .willReturn(mockProject);
         Project project = projectService.findProject(14);
         assertThat(project.getId_project()).isEqualTo(14);
-        assertThat(project.getName_project()).isEqualTo("test");
-        assertThat(project.getExpertise_project()).isEqualTo("test");
-        assertThat(project.getSite_project()).isEqualTo("test");
-        assertThat(project.getProject_description()).isEqualTo("test");
-        assertThat(project.getNumber_Phone_project()).isEqualTo("99999999999");
-        assertThat(project.getCurrent_stage()).isEqualTo("test");
-        assertThat(project.getStart_date()).isEqualTo("2221-04-23");
-        assertThat(project.getLevel_solution()).isEqualTo("test");
-        assertThat(project.getSolution_problems()).isEqualTo("test");
-        assertThat(project.getEssence_innovations()).isEqualTo("test");
-        assertThat(project.getCompetitive_advantages()).isEqualTo("test");
+        assertThat(project.getNameProject()).isEqualTo("test");
+        assertThat(project.getExpertiseProject()).isEqualTo("test");
+        assertThat(project.getSiteProject()).isEqualTo("test");
+        assertThat(project.getProjectDescription()).isEqualTo("test");
+        assertThat(project.getNumberPhoneProject()).isEqualTo("99999999999");
+        assertThat(project.getCurrentStage()).isEqualTo("test");
+        assertThat(project.getStartDate()).isEqualTo("2221-04-23");
+        assertThat(project.getLevelSolution()).isEqualTo("test");
+        assertThat(project.getSolutionProblems()).isEqualTo("test");
+        assertThat(project.getEssenceInnovations()).isEqualTo("test");
+        assertThat(project.getCompetitiveAdvantages()).isEqualTo("test");
     }
 
 }

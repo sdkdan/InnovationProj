@@ -1,6 +1,7 @@
 package ru.innovat.search;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
@@ -19,7 +20,7 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProjectSearch {
     @PersistenceContext
     private final EntityManager entityManager;
@@ -31,7 +32,7 @@ public class ProjectSearch {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Project.class).get();
         Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(distanceUpToSearch).withPrefixLength(prefixLength)
-                .onFields("name_project")
+                .onFields("nameProject")
                 .matching(searchTerm).createQuery();
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Project.class);
         return Optional.ofNullable(jpaQuery.getResultList()).orElseThrow(NoResultException::new);

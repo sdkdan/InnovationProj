@@ -1,6 +1,7 @@
 package ru.innovat.search;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
@@ -18,7 +19,7 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PersonSearch {
     @PersistenceContext
     private final EntityManager entityManager;

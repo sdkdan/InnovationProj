@@ -13,7 +13,7 @@ import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.authorization.Role;
 import ru.innovat.models.utils.RolesEnum;
 import ru.innovat.models.authorization.VerificationToken;
-import ru.innovat.service.authorization.NewUserService;
+import ru.innovat.service.authorization.RegistrationService;
 import ru.innovat.service.authorization.UserService;
 
 import javax.persistence.EntityManager;
@@ -30,7 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class NewUserServiceTest {
 
     @Autowired
-    NewUserService newUserService;
+    RegistrationService newUserService;
     @Autowired
     EntityManager entityManager;
     @Autowired

@@ -45,13 +45,14 @@ public class PersonServiceWithBDTest {
         assertThat(person.getId_person()).isEqualTo(1);
         assertThat(person.getName()).isEqualTo("test");
         assertThat(person.getSurname()).isEqualTo("test");
-        assertThat(person.getThird_Name()).isEqualTo("test");
+        assertThat(person.getThirdName()).isEqualTo("test");
         assertThat(person.getComment()).isEqualTo("комментарий");
-        assertThat(person.getDate_of_birth()).isEqualTo("1997-28-02");
-        assertThat(person.getE_mail()).isEqualTo("S@geroyam.slava");
+        assertThat(person.getDateOfBirth()).isEqualTo("1997-28-02");
+        assertThat(person.getEMail()).isEqualTo("S@geroyam.slava");
         assertThat(person.getRating()).isEqualTo("1");
         assertThat(person.getVk()).isEqualTo("ВК");
-        assertThat(person.getPhone_number()).isEqualTo("88005553535");
+        assertThat(person.getPhoneNumber()).isEqualTo("88005553535");
+        assertThat(person.getPhoneNumber()).isEqualTo("88005553535");
         assertThat(person.getTwitter()).isEqualTo("Твитер");
     }
 
@@ -61,24 +62,24 @@ public class PersonServiceWithBDTest {
         assertThat(personList.get(0).getId_person()).isEqualTo(1);
         assertThat(personList.get(0).getName()).isEqualTo("test");
         assertThat(personList.get(0).getSurname()).isEqualTo("test");
-        assertThat(personList.get(0).getThird_Name()).isEqualTo("test");
+        assertThat(personList.get(0).getThirdName()).isEqualTo("test");
         assertThat(personList.get(0).getComment()).isEqualTo("комментарий");
-        assertThat(personList.get(0).getDate_of_birth()).isEqualTo("1997-28-02");
-        assertThat(personList.get(0).getE_mail()).isEqualTo("S@geroyam.slava");
+        assertThat(personList.get(0).getDateOfBirth()).isEqualTo("1997-28-02");
+        assertThat(personList.get(0).getEMail()).isEqualTo("S@geroyam.slava");
         assertThat(personList.get(0).getRating()).isEqualTo("1");
         assertThat(personList.get(0).getVk()).isEqualTo("ВК");
-        assertThat(personList.get(0).getPhone_number()).isEqualTo("88005553535");
+        assertThat(personList.get(0).getPhoneNumber()).isEqualTo("88005553535");
         assertThat(personList.get(1).getTwitter()).isEqualTo("Твитер");
         assertThat(personList.get(1).getId_person()).isEqualTo(2);
         assertThat(personList.get(1).getName()).isEqualTo("test");
         assertThat(personList.get(1).getSurname()).isEqualTo("test");
-        assertThat(personList.get(1).getThird_Name()).isEqualTo("test");
+        assertThat(personList.get(1).getThirdName()).isEqualTo("test");
         assertThat(personList.get(1).getComment()).isEqualTo("комментарий");
-        assertThat(personList.get(1).getDate_of_birth()).isEqualTo("1997-28-02");
-        assertThat(personList.get(1).getE_mail()).isEqualTo("S@geroyam.slava");
+        assertThat(personList.get(1).getDateOfBirth()).isEqualTo("1997-28-02");
+        assertThat(personList.get(1).getEMail()).isEqualTo("S@geroyam.slava");
         assertThat(personList.get(1).getRating()).isEqualTo("1");
         assertThat(personList.get(1).getVk()).isEqualTo("ВК");
-        assertThat(personList.get(1).getPhone_number()).isEqualTo("88005553535");
+        assertThat(personList.get(1).getPhoneNumber()).isEqualTo("88005553535");
         assertThat(personList.get(1).getTwitter()).isEqualTo("Твитер");
     }
 
@@ -92,13 +93,13 @@ public class PersonServiceWithBDTest {
         assertThat(person.getId_person()).isEqualTo(updatedPerson.getId_person());
         assertThat(person.getName()).isEqualTo(updatedPerson.getName());
         assertThat(person.getSurname()).isEqualTo(updatedPerson.getSurname());
-        assertThat(person.getThird_Name()).isEqualTo(updatedPerson.getThird_Name());
+        assertThat(person.getThirdName()).isEqualTo(updatedPerson.getThirdName());
         assertThat(person.getComment()).isEqualTo(updatedPerson.getComment());
-        assertThat(person.getDate_of_birth()).isEqualTo(updatedPerson.getDate_of_birth());
-        assertThat(person.getE_mail()).isEqualTo(updatedPerson.getE_mail());
+        assertThat(person.getDateOfBirth()).isEqualTo(updatedPerson.getDateOfBirth());
+        assertThat(person.getEMail()).isEqualTo(updatedPerson.getEMail());
         assertThat(person.getRating()).isEqualTo(updatedPerson.getRating());
         assertThat(person.getVk()).isEqualTo(updatedPerson.getVk());
-        assertThat(person.getPhone_number()).isEqualTo(updatedPerson.getPhone_number());
+        assertThat(person.getPhoneNumber()).isEqualTo(updatedPerson.getPhoneNumber());
         assertThat(person.getTwitter()).isEqualTo(updatedPerson.getTwitter());
     }
 
@@ -107,13 +108,13 @@ public class PersonServiceWithBDTest {
         Person person = new Person();
         person.setName("test");
         person.setSurname("test");
-        person.setThird_Name("test");
+        person.setThirdName("test");
         person.setComment("комментарий");
-        person.setDate_of_birth("1997-28-02");
-        person.setE_mail("S@geroyam.slava");
+        person.setDateOfBirth("1997-28-02");
+        person.setEMail("S@geroyam.slava");
         person.setRating("1");
         person.setVk("ВК");
-        person.setPhone_number("88005553535");
+        person.setPhoneNumber("88005553535");
         person.setTwitter("Твитер");
         personService.addPerson(person);
         verify(personService,times(1)).addPerson(person);
@@ -121,13 +122,13 @@ public class PersonServiceWithBDTest {
         assertThat(person.getId_person()).isEqualTo(addedPerson.getId_person());
         assertThat(person.getName()).isEqualTo(addedPerson.getName());
         assertThat(person.getSurname()).isEqualTo(addedPerson.getSurname());
-        assertThat(person.getThird_Name()).isEqualTo(addedPerson.getThird_Name());
+        assertThat(person.getThirdName()).isEqualTo(addedPerson.getThirdName());
         assertThat(person.getComment()).isEqualTo(addedPerson.getComment());
-        assertThat(person.getDate_of_birth()).isEqualTo(addedPerson.getDate_of_birth());
-        assertThat(person.getE_mail()).isEqualTo(addedPerson.getE_mail());
+        assertThat(person.getDateOfBirth()).isEqualTo(addedPerson.getDateOfBirth());
+        assertThat(person.getEMail()).isEqualTo(addedPerson.getEMail());
         assertThat(person.getRating()).isEqualTo(addedPerson.getRating());
         assertThat(person.getVk()).isEqualTo(addedPerson.getVk());
-        assertThat(person.getPhone_number()).isEqualTo(addedPerson.getPhone_number());
+        assertThat(person.getPhoneNumber()).isEqualTo(addedPerson.getPhoneNumber());
         assertThat(person.getTwitter()).isEqualTo(addedPerson.getTwitter());
     }
 

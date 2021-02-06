@@ -2,6 +2,7 @@ package ru.innovat.service.major;
 
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.major.ProjectDao;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProjectService {
     private final ProjectDao projectDao;
 
