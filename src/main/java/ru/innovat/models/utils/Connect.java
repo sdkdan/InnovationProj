@@ -1,10 +1,12 @@
 package ru.innovat.models.utils;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Data
+
+@Builder(toBuilder = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 public class Connect {
     private int event_Id;
     private int project_Id;

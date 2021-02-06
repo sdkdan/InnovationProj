@@ -13,7 +13,10 @@ import ru.innovat.models.authorization.VerificationToken;
 import ru.innovat.service.utils.DateExpired;
 
 
+import java.lang.annotation.Target;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -97,5 +100,10 @@ public class RegistrationService {
             return "Пароли не совпадают";
         }
         return null;
+    }
+
+    @Transactional
+    public List<VerificationToken> tokenList () {
+        return tokenDao.verificationTokenList();
     }
 }

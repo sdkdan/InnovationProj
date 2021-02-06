@@ -28,27 +28,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
-@TestPropertySource("/application-test.properties")
-@Sql(value = {"/sql/create-organization-before.sql","/sql/create-user.sql"},
-        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-public class LoginTest {
 
-    @Autowired
-    private WebApplicationContext webApplicationContext;
-    @Autowired
-    private UserService userService;
-
-    @PersistenceContext
-    private EntityManager entityManager;
-    @Autowired
-    private MockMvc mockMvc;
+public class LoginTest extends ConfigAuthorizationTest{
     private String token = "testtoken";
 
     @Test
-    public void testRegistrationConfirm() throws Exception {
+    public void registrationConfirm() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         ResultActions resultActions = this.mockMvc.perform(get("/confirm-account?token=" + token));
         resultActions.andExpect(status().is2xxSuccessful());
@@ -92,7 +77,7 @@ public class LoginTest {
     }
 
     @Test
-    public void registerNewUserTest() throws Exception {
+    public void registerNewUser() throws Exception {
         mockMvc.perform(post("/register")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("name", "test")
@@ -108,13 +93,8 @@ public class LoginTest {
     }
 
     @Test
-    public void mailToConfirmTest() throws Exception {
-
-    }
-
-    @Test
     @WithUserDetails(value = "test1")
-    public void checkMyProfileData() throws Exception {
+    public void checkDataOnMyProfile() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(get("/myprofile"))
                 .andExpect(status().isOk())

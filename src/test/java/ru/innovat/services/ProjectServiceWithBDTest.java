@@ -20,23 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Sql(value = {"/sql/create-project-before.sql"},
-        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("/application-test.properties")
-@Transactional
-public class ProjectServiceWithBDTest {
 
-    @Autowired
-    ProjectService projectService;
-    @Autowired
-    EventService eventService;
-    @Autowired
-    PersonService personService;
-    @Autowired
-    OrganizationService organizationService;
-
+public class ProjectServiceWithBDTest extends ConfigServiceTest{
 
     @Test
     public void testFindByIdWithBD() {
@@ -57,7 +42,7 @@ public class ProjectServiceWithBDTest {
 
 
     @Test
-    public void projectListTest(){
+    public void projectListTest() {
         List<Project> projectList = projectService.projectList();
         assertThat(projectList.get(0).getId_project()).isEqualTo(1);
         assertThat(projectList.get(0).getNameProject()).isEqualTo("База данных инновационных проектов");
@@ -87,7 +72,7 @@ public class ProjectServiceWithBDTest {
 
 
     @Test
-    public void updateProjectTest(){
+    public void updateProjectTest() {
         Project project = projectService.findProject(1);
         project.setCompetitiveAdvantages("test");
         project.setNameProject("test");

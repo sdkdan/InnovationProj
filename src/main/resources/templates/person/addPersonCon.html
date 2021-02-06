@@ -37,7 +37,7 @@
     </div>
 
 
-    <form name='f' th:object="${personcon}" method='POST'>
+    <form name='f' th:action="@{/person/{id}/connect (id=${person.id_person})}" th:object="${personcon}" method='POST'>
         <div class="row  pb-3">
             <div class="col border"><p>Выберите проект</p></div>
             <div class="col border">
@@ -58,7 +58,7 @@
         </div>
     </form>
 
-    <form name='a' th:object="${personcon}" method='POST'>
+    <form name='a' th:action="@{/person/{id}/connect (id=${person.id_person})}" th:object="${personcon}" method='POST'>
         <div class="row  pb-3">
             <div class="col border"><p>Выберите мероприятие</p></div>
             <div class="col border">
@@ -76,7 +76,7 @@
     </form>
 
 
-    <form name='a' th:object="${personcon}" method='POST'>
+    <form name='a' th:action="@{/person/{id}/connect (id=${person.id_person})}" th:object="${personcon}" method='POST'>
         <div class="row  pb-3">
             <div class="col border"><p>Выберите организацию</p></div>
             <div class="col border">

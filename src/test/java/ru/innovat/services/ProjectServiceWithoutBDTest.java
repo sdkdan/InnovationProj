@@ -14,16 +14,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class ProjectServiceWithoutBDTest {
+
+public class ProjectServiceWithoutBDTest extends ConfigServiceTest {
     @MockBean
     ProjectDao projectDao;
-    @Autowired
-    ProjectService projectService;
 
     @Test
-    public void testFindById(){
+    public void testFindById() {
         Project mockProject = new Project();
         mockProject.setId_project(14);
         mockProject.setNameProject("test");

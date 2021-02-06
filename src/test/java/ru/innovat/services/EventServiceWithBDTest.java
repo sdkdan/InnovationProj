@@ -22,25 +22,11 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Sql(value = {"/sql/create-event-before.sql"},
-        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@TestPropertySource("/application-test.properties")
-@Transactional
-public class EventServiceWithBDTest {
-    @Autowired
-    ProjectService projectService;
-    @Autowired
-    EventService eventService;
-    @Autowired
-    PersonService personService;
-    @Autowired
-    OrganizationService organizationService;
 
+public class EventServiceWithBDTest extends ConfigServiceTest {
 
     @Test
-    public void testFindByIdWithBD() {
+    public void findByIdWithBD() {
         Event event = eventService.findEvent(1);
         assertThat(event.getId_event()).isEqualTo(1);
         assertThat(event.getSiteEvent()).isEqualTo("testsite");
@@ -55,7 +41,7 @@ public class EventServiceWithBDTest {
     }
 
     @Test
-    public void eventListTest(){
+    public void eventListTest() {
         List<Event> eventList = eventService.eventList();
         assertThat(eventList.get(0).getId_event()).isEqualTo(1);
         assertThat(eventList.get(0).getSiteEvent()).isEqualTo("testsite");
@@ -81,7 +67,7 @@ public class EventServiceWithBDTest {
     }
 
     @Test
-    public void updateEventTest(){
+    public void updateEventTest() {
         Event event = eventService.findEvent(1);
         event.setNameEvent("test1");
         event.setComment("testComment");

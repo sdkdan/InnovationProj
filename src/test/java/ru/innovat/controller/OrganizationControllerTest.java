@@ -1,21 +1,12 @@
 package ru.innovat.controller;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import ru.innovat.models.major.Event;
 import ru.innovat.models.major.Organization;
+import ru.innovat.search.OrganizationSearch;
 import ru.innovat.service.major.OrganizationService;
-import ru.innovat.service.major.SearchService;
 
 import java.util.List;
 
@@ -26,20 +17,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
 @WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
-public class OrganizationControllerTest {
-    @Autowired
-    MockMvc mockMvc;
+public class OrganizationControllerTest extends ConfigControllerTest {
     @Autowired
     OrganizationService organizationService;
     @Autowired
-    SearchService searchService;
+    OrganizationSearch organizationSearch;
 
     @Test
-    public void organizations() throws Exception {
+    public void getOrganizationsList() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
             this.mockMvc.perform(get("/organization"))
@@ -49,56 +35,71 @@ public class OrganizationControllerTest {
                     .andExpect(model().attribute("organizationList", hasSize(organizationList.size())))
                     .andExpect(model().attribute("organizationList", hasItem(
                             allOf(
-                                    hasProperty("nameOrganization", is(organizationList.get(organizationList.size()-1).getNameOrganization())),
-                                    hasProperty("siteOrganization", is(organizationList.get(organizationList.size()-1).getSiteOrganization())),
-                                    hasProperty("notesOrganization", is(organizationList.get(organizationList.size()-1).getNotesOrganization())
-                            )
-                    ))));
+                                    hasProperty("name_organization", is(organizationList
+                                            .get(organizationList.size() - 1).getName_organization())),
+                                    hasProperty("site_organization", is(organizationList
+                                            .get(organizationList.size() - 1).getSite_organization())),
+                                    hasProperty("notes_organization", is(organizationList
+                                            .get(organizationList.size() - 1).getNotes_organization())
+                                    )
+                            ))));
         }
     }
 
     @Test
-    public void findById_organizationTest() throws Exception {
+    public void findByIdOrganization() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
-            int lastId_organization = organizationList.get(organizationList.size()-1).getId_organization();
-            mockMvc.perform(get("/organization/{id}", lastId_organization))
+            int lastIdOrganization = organizationList.get(organizationList.size() - 1).getId_organization();
+            mockMvc.perform(get("/organization/{id}", lastIdOrganization))
                     .andExpect(status().isOk())
                     .andExpect(view().name("organization/oneOrg"))
                     .andExpect(model().attribute("organization",
                             allOf(
-                                    hasProperty("nameOrganization", is(organizationList.get(organizationList.size()-1).getNameOrganization())),
-                                    hasProperty("siteOrganization", is(organizationList.get(organizationList.size()-1).getSiteOrganization())),
-                                    hasProperty("notesOrganization", is(organizationList.get(organizationList.size()-1).getNotesOrganization())
+                                    hasProperty("name_organization", is(organizationList
+                                            .get(organizationList.size() - 1).getName_organization())),
+                                    hasProperty("site_organization", is(organizationList
+                                            .get(organizationList.size() - 1).getSite_organization())),
+                                    hasProperty("notes_organization", is(organizationList
+                                            .get(organizationList.size() - 1).getNotes_organization())
                                     ))));
         }
     }
 
     @Test
-    public void organizationSearchTest() throws Exception {
-            mockMvc.perform(get("/organization?search=Политех"))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("organization/organization"))
-                    .andExpect(model().attribute("organizationList", hasSize(1)))
-                    .andExpect(model().attribute("organizationList", hasItem(
-                            allOf(
-                                    hasProperty("nameOrganization", is("Политех")),
-                                    hasProperty("siteOrganization", is("spbbu@kek.ru")),
-                                    hasProperty("notesOrganization", is("DFDFD"))
-                            ))));
-        }
+    public void organizationSearch() throws Exception {
+        Organization lastOrganization = organizationService.organizationList().get(organizationService
+                .organizationList().size() - 1);
+        String lastOrganizationName = lastOrganization.getName_organization();
+        int foundedOrganizationsListSize = organizationSearch.fuzzySearch(lastOrganizationName).size();
+        Organization lastFoundedOrganization = organizationSearch.fuzzySearch(lastOrganizationName).get(organizationSearch
+                .fuzzySearch(lastOrganizationName).size() - 1);
+        mockMvc.perform(get("/organization?search=" + lastOrganizationName))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("organization/organization"))
+                .andExpect(model().attribute("organizationList", hasSize(foundedOrganizationsListSize)))
+                .andExpect(model().attribute("organizationList", hasItem(
+                        allOf(
+                                hasProperty("name_organization", is(lastFoundedOrganization
+                                        .getName_organization())),
+                                hasProperty("site_organization", is(lastFoundedOrganization
+                                        .getSite_organization())),
+                                hasProperty("notes_organization", is(lastFoundedOrganization
+                                        .getNotes_organization()))
+                        ))));
+    }
 
     @Test
-    public void addNewOrganizationTest() throws Exception {
+    public void addNewOrganization() throws Exception {
         int organizationListSize = organizationService.organizationList().size();
         int newAddedOrganization = 1;
         mockMvc.perform(post("/organization/add")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("nameOrganization", "Политех")
-                .param("siteOrganization", "https://www.spbstu.ru/")
-                .param("notesOrganization", "university in spb")
-                .param("cityOrganization", "Saint-Petersburg")
+                .param("name_organization", "Политех")
+                .param("site_organization", "https://www.spbstu.ru/")
+                .param("notes_organization", "university in spb")
+                .param("city_organization", "Saint-Petersburg")
                 .sessionAttr("organization", new Organization())
         )
                 .andExpect(status().is3xxRedirection());
@@ -110,44 +111,44 @@ public class OrganizationControllerTest {
                 .andExpect(model().attribute("organizationList", hasSize(organizationListSize + newAddedOrganization)))
                 .andExpect(model().attribute("organizationList", hasItem(
                         allOf(
-                                hasProperty("nameOrganization", is("Политех")),
-                                hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
-                                hasProperty("notesOrganization", is("university in spb"))
+                                hasProperty("name_organization", is("Политех")),
+                                hasProperty("site_organization", is("https://www.spbstu.ru/")),
+                                hasProperty("notes_organization", is("university in spb"))
                         ))));
     }
 
     @Test
-    public void organizationEditTest() throws Exception {
+    public void organizationEdit() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
-            int lastId_organization = organizationList.size();
-            mockMvc.perform(post("/organization/{id}/update",lastId_organization)
+            int lastIdOrganization = organizationList.size();
+            mockMvc.perform(post("/organization/{id}/update", lastIdOrganization)
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("nameOrganization", "Политех Петра")
-                    .param("siteOrganization", "https://www.spbstu.ru/")
-                    .param("notesOrganization", "university in spb")
-                    .param("cityOrganization", "Saint-Petersburg")
+                    .param("name_organization", "Политех Петра")
+                    .param("site_organization", "https://www.spbstu.ru/")
+                    .param("notes_organization", "university in spb")
+                    .param("city_organization", "Saint-Petersburg")
                     .sessionAttr("organization", new Organization())
             )
                     .andExpect(status().is3xxRedirection());
 
-            mockMvc.perform(get("/organization/{id}", lastId_organization))
+            mockMvc.perform(get("/organization/{id}", lastIdOrganization))
                     .andExpect(status().isOk())
                     .andExpect(view().name("organization/oneOrg"))
                     .andExpect(model().attribute("organization",
                             allOf(
-                                    hasProperty("nameOrganization", is("Политех Петра")),
-                                    hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
-                                    hasProperty("notesOrganization", is("university in spb"))
+                                    hasProperty("name_organization", is("Политех Петра")),
+                                    hasProperty("site_organization", is("https://www.spbstu.ru/")),
+                                    hasProperty("notes_organization", is("university in spb"))
                             )));
         }
     }
 
     @Test
-    public void deleteOrganizationTest() throws Exception{
+    public void deleteOrganization() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
-            int organizationLastId = organizationList.get(organizationList.size()-1).getId_organization();
+            int organizationLastId = organizationList.get(organizationList.size() - 1).getId_organization();
             mockMvc.perform(get("/organization/{id}/delete", organizationLastId))
                     .andDo(print())
                     .andExpect(status().is3xxRedirection());
