@@ -1,10 +1,15 @@
 package ru.innovat.controller;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 import ru.innovat.models.major.Event;
 import ru.innovat.models.major.Project;
 import ru.innovat.search.EventSearch;
@@ -13,7 +18,6 @@ import ru.innovat.service.major.EventService;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -28,22 +32,21 @@ public class EventControllerTest extends ConfigControllerTest {
     EventSearch eventSearch;
 
     @Test
-    public void addNewEvent() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
+    public void addNewEventTest() throws Exception {
         int eventListSize = eventService.eventList().size();
         int newAddedEvent = 1;
         mockMvc.perform(post("/event/add")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("site_event", "https://www.spbstu.ru/")
-                .param("name_event", "inovatproject")
-                .param("importance_event", "Not important")
-                .param("scope_event", "local")
+                .param("siteEvent", "https://www.spbstu.ru/")
+                .param("nameEvent", "inovatproject")
+                .param("importanceEvent", "Not important")
+                .param("scopeEvent", "local")
                 .param("description", "Test event")
-                .param("phone_number", "88005553535")
-                .param("date_event", "28.12.2020")
+                .param("phoneNumber", "88005553535")
+                .param("dateEvent", "28.12.2020")
                 .param("comment", "Test event")
                 .param("prizes", "none")
-                .param("location_event", "online")
+                .param("locationEvent", "online")
                 .param("idTypeEvent", "1")
                 .sessionAttr("event", new Event())
         )
@@ -56,15 +59,15 @@ public class EventControllerTest extends ConfigControllerTest {
                 .andExpect(model().attribute("eventList", hasSize(eventListSize + newAddedEvent)))
                 .andExpect(model().attribute("eventList", hasItem(
                         allOf(
-                                hasProperty("name_event", is("inovatproject")),
-                                hasProperty("site_event", is("https://www.spbstu.ru/")),
+                                hasProperty("nameEvent", is("inovatproject")),
+                                hasProperty("siteEvent", is("https://www.spbstu.ru/")),
                                 hasProperty("description", is("Test event"))
                         )
                 )));
     }
 
     @Test
-    public void getEventsList() throws Exception {
+    public void events() throws Exception {
         List<Event> eventList = eventService.eventList();
         if (eventList.size() > 0) {
             this.mockMvc.perform(get("/event"))
@@ -75,18 +78,18 @@ public class EventControllerTest extends ConfigControllerTest {
                     .andExpect(model().attribute("eventList", hasItem(
                             allOf(
                                     hasProperty("name_event", is(eventList.get(eventList.size() - 1)
-                                            .getName_event())),
+                                            .getNameEvent())),
                                     hasProperty("description", is(eventList.get(eventList.size() - 1)
                                             .getDescription())),
                                     hasProperty("scope_event", is(eventList.get(eventList.size() - 1)
-                                            .getScope_event()))
+                                            .getScopeEvent()))
                             )
                     )));
         }
     }
 
     @Test
-    public void findByIdEvent() throws Exception {
+    public void findByIdEventTest() throws Exception {
         List<Event> eventList = eventService.eventList();
         if (eventList.size() > 0) {
             int eventLastId = eventList.get(eventList.size() - 1).getId_event();
@@ -95,11 +98,11 @@ public class EventControllerTest extends ConfigControllerTest {
                     .andExpect(model().attribute("event",
                             allOf(
                                     hasProperty("name_event", is(eventList.get(eventList.size() - 1)
-                                            .getName_event())),
+                                            .getNameEvent())),
                                     hasProperty("description", is(eventList.get(eventList.size() - 1)
                                             .getDescription())),
                                     hasProperty("scope_event", is(eventList.get(eventList.size() - 1)
-                                            .getScope_event()))
+                                            .getScopeEvent()))
                             )
                     ));
         }
@@ -109,7 +112,7 @@ public class EventControllerTest extends ConfigControllerTest {
     public void eventSearch() throws Exception {
         if (eventService.eventList().size() > 0) {
             Event lastEvent = eventService.eventList().get(eventService.eventList().size() - 1);
-            String lastEventName = lastEvent.getName_event();
+            String lastEventName = lastEvent.getNameEvent();
             int foundedEventsListSize = eventSearch.fuzzySearch(lastEventName).size();
             Event lastFoundedEvent = eventSearch.fuzzySearch(lastEventName).get(eventSearch.fuzzySearch(lastEventName)
                     .size() - 1);
@@ -120,15 +123,15 @@ public class EventControllerTest extends ConfigControllerTest {
                     .andExpect(model().attribute("eventList", hasSize(foundedEventsListSize)))
                     .andExpect(model().attribute("eventList", hasItem(
                             allOf(
-                                    hasProperty("name_event", is(lastFoundedEvent.getName_event())),
-                                    hasProperty("scope_event", is(lastFoundedEvent.getScope_event())),
+                                    hasProperty("nameEvent", is(lastFoundedEvent.getNameEvent())),
+                                    hasProperty("scopeEvent", is(lastFoundedEvent.getScopeEvent())),
                                     hasProperty("description", is(lastFoundedEvent.getDescription()))
                             ))));
         }
     }
 
     @Test
-    public void eventEdit() throws Exception {
+    public void eventEditTest() throws Exception {
         List<Event> eventList = eventService.eventList();
         if (eventList.size() > 0) {
             int eventLastId = eventList.get(eventList.size() - 1).getId_event();
@@ -162,7 +165,7 @@ public class EventControllerTest extends ConfigControllerTest {
     }
 
     @Test
-    public void deleteEvent() throws Exception {
+    public void deleteEventTest() throws Exception {
         List<Event> eventList = eventService.eventList();
         if (eventList.size() > 0) {
             int eventLastId = eventList.get(eventList.size() - 1).getId_event();

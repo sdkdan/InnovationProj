@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
 import ru.innovat.models.major.Organization;
 import ru.innovat.search.OrganizationSearch;
 import ru.innovat.service.major.OrganizationService;
@@ -20,12 +21,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
 public class OrganizationControllerTest extends ConfigControllerTest {
     @Autowired
+    MockMvc mockMvc;
+    @Autowired
     OrganizationService organizationService;
     @Autowired
     OrganizationSearch organizationSearch;
 
     @Test
-    public void getOrganizationsList() throws Exception {
+    public void organizations() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
             this.mockMvc.perform(get("/organization"))
@@ -35,33 +38,27 @@ public class OrganizationControllerTest extends ConfigControllerTest {
                     .andExpect(model().attribute("organizationList", hasSize(organizationList.size())))
                     .andExpect(model().attribute("organizationList", hasItem(
                             allOf(
-                                    hasProperty("name_organization", is(organizationList
-                                            .get(organizationList.size() - 1).getName_organization())),
-                                    hasProperty("site_organization", is(organizationList
-                                            .get(organizationList.size() - 1).getSite_organization())),
-                                    hasProperty("notes_organization", is(organizationList
-                                            .get(organizationList.size() - 1).getNotes_organization())
+                                    hasProperty("nameOrganization", is(organizationList.get(organizationList.size() - 1).getNameOrganization())),
+                                    hasProperty("siteOrganization", is(organizationList.get(organizationList.size() - 1).getSiteOrganization())),
+                                    hasProperty("notesOrganization", is(organizationList.get(organizationList.size() - 1).getNotesOrganization())
                                     )
                             ))));
         }
     }
 
     @Test
-    public void findByIdOrganization() throws Exception {
+    public void findById_organizationTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
-            int lastIdOrganization = organizationList.get(organizationList.size() - 1).getId_organization();
-            mockMvc.perform(get("/organization/{id}", lastIdOrganization))
+            int lastId_organization = organizationList.get(organizationList.size() - 1).getId_organization();
+            mockMvc.perform(get("/organization/{id}", lastId_organization))
                     .andExpect(status().isOk())
                     .andExpect(view().name("organization/oneOrg"))
                     .andExpect(model().attribute("organization",
                             allOf(
-                                    hasProperty("name_organization", is(organizationList
-                                            .get(organizationList.size() - 1).getName_organization())),
-                                    hasProperty("site_organization", is(organizationList
-                                            .get(organizationList.size() - 1).getSite_organization())),
-                                    hasProperty("notes_organization", is(organizationList
-                                            .get(organizationList.size() - 1).getNotes_organization())
+                                    hasProperty("nameOrganization", is(organizationList.get(organizationList.size() - 1).getNameOrganization())),
+                                    hasProperty("siteOrganization", is(organizationList.get(organizationList.size() - 1).getSiteOrganization())),
+                                    hasProperty("notesOrganization", is(organizationList.get(organizationList.size() - 1).getNotesOrganization())
                                     ))));
         }
     }
@@ -70,7 +67,7 @@ public class OrganizationControllerTest extends ConfigControllerTest {
     public void organizationSearch() throws Exception {
         Organization lastOrganization = organizationService.organizationList().get(organizationService
                 .organizationList().size() - 1);
-        String lastOrganizationName = lastOrganization.getName_organization();
+        String lastOrganizationName = lastOrganization.getNameOrganization();
         int foundedOrganizationsListSize = organizationSearch.fuzzySearch(lastOrganizationName).size();
         Organization lastFoundedOrganization = organizationSearch.fuzzySearch(lastOrganizationName).get(organizationSearch
                 .fuzzySearch(lastOrganizationName).size() - 1);
@@ -81,25 +78,25 @@ public class OrganizationControllerTest extends ConfigControllerTest {
                 .andExpect(model().attribute("organizationList", hasSize(foundedOrganizationsListSize)))
                 .andExpect(model().attribute("organizationList", hasItem(
                         allOf(
-                                hasProperty("name_organization", is(lastFoundedOrganization
-                                        .getName_organization())),
-                                hasProperty("site_organization", is(lastFoundedOrganization
-                                        .getSite_organization())),
-                                hasProperty("notes_organization", is(lastFoundedOrganization
-                                        .getNotes_organization()))
+                                hasProperty("nameOrganization", is(lastFoundedOrganization
+                                        .getNameOrganization())),
+                                hasProperty("siteOrganization", is(lastFoundedOrganization
+                                        .getSiteOrganization())),
+                                hasProperty("notesOrganization", is(lastFoundedOrganization
+                                        .getNotesOrganization()))
                         ))));
     }
 
     @Test
-    public void addNewOrganization() throws Exception {
+    public void addNewOrganizationTest() throws Exception {
         int organizationListSize = organizationService.organizationList().size();
         int newAddedOrganization = 1;
         mockMvc.perform(post("/organization/add")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("name_organization", "Политех")
-                .param("site_organization", "https://www.spbstu.ru/")
-                .param("notes_organization", "university in spb")
-                .param("city_organization", "Saint-Petersburg")
+                .param("nameOrganization", "Политех")
+                .param("siteOrganization", "https://www.spbstu.ru/")
+                .param("notesOrganization", "university in spb")
+                .param("cityOrganization", "Saint-Petersburg")
                 .sessionAttr("organization", new Organization())
         )
                 .andExpect(status().is3xxRedirection());
@@ -111,41 +108,41 @@ public class OrganizationControllerTest extends ConfigControllerTest {
                 .andExpect(model().attribute("organizationList", hasSize(organizationListSize + newAddedOrganization)))
                 .andExpect(model().attribute("organizationList", hasItem(
                         allOf(
-                                hasProperty("name_organization", is("Политех")),
-                                hasProperty("site_organization", is("https://www.spbstu.ru/")),
-                                hasProperty("notes_organization", is("university in spb"))
+                                hasProperty("nameOrganization", is("Политех")),
+                                hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
+                                hasProperty("notesOrganization", is("university in spb"))
                         ))));
     }
 
     @Test
-    public void organizationEdit() throws Exception {
+    public void organizationEditTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
-            int lastIdOrganization = organizationList.size();
-            mockMvc.perform(post("/organization/{id}/update", lastIdOrganization)
+            int lastId_organization = organizationList.size();
+            mockMvc.perform(post("/organization/{id}/update", lastId_organization)
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("name_organization", "Политех Петра")
-                    .param("site_organization", "https://www.spbstu.ru/")
-                    .param("notes_organization", "university in spb")
-                    .param("city_organization", "Saint-Petersburg")
+                    .param("nameOrganization", "Политех Петра")
+                    .param("siteOrganization", "https://www.spbstu.ru/")
+                    .param("notesOrganization", "university in spb")
+                    .param("cityOrganization", "Saint-Petersburg")
                     .sessionAttr("organization", new Organization())
             )
                     .andExpect(status().is3xxRedirection());
 
-            mockMvc.perform(get("/organization/{id}", lastIdOrganization))
+            mockMvc.perform(get("/organization/{id}", lastId_organization))
                     .andExpect(status().isOk())
                     .andExpect(view().name("organization/oneOrg"))
                     .andExpect(model().attribute("organization",
                             allOf(
-                                    hasProperty("name_organization", is("Политех Петра")),
-                                    hasProperty("site_organization", is("https://www.spbstu.ru/")),
-                                    hasProperty("notes_organization", is("university in spb"))
+                                    hasProperty("nameOrganization", is("Политех Петра")),
+                                    hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
+                                    hasProperty("notesOrganization", is("university in spb"))
                             )));
         }
     }
 
     @Test
-    public void deleteOrganization() throws Exception {
+    public void deleteOrganizationTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
         if (organizationList.size() > 0) {
             int organizationLastId = organizationList.get(organizationList.size() - 1).getId_organization();

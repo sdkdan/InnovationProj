@@ -1,38 +1,25 @@
 package ru.innovat.controller;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import ru.innovat.controller.major.organization.OrganizationController;
-import ru.innovat.models.major.Organization;
 import ru.innovat.models.major.Person;
 import ru.innovat.search.PersonSearch;
 import ru.innovat.service.major.PersonService;
 
-
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-
 @WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
-public class PersonControllerTest extends ConfigControllerTest{
+public class PersonControllerTest extends ConfigControllerTest {
     @Autowired
     OrganizationController organizationController;
     @Autowired
@@ -41,8 +28,7 @@ public class PersonControllerTest extends ConfigControllerTest{
     PersonSearch personSearch;
 
     @Test
-    public void getPersonsList() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
+    public void persons() throws Exception {
         List<Person> personList = personService.personList();
         if (personList.size() > 0) {
             this.mockMvc.perform(get("/person"))
@@ -52,29 +38,35 @@ public class PersonControllerTest extends ConfigControllerTest{
                     .andExpect(model().attribute("personList", hasSize(personList.size())))
                     .andExpect(model().attribute("personList", hasItem(
                             allOf(
-                                    hasProperty("name", is(personList.get(personList.size()-1).getName())),
-                                    hasProperty("surname", is(personList.get(personList.size()-1).getSurname())),
-                                    hasProperty("date_of_birth", is(personList.get(personList.size()-1).getDate_of_birth()))
+                                    hasProperty("name", is(personList.get(personList.size() - 1)
+                                            .getName())),
+                                    hasProperty("surname", is(personList.get(personList.size() - 1)
+                                            .getSurname())),
+                                    hasProperty("dateOfBirth", is(personList.get(personList.size() - 1)
+                                            .getDateOfBirth()))
                             )
                     )));
         }
     }
 
     @Test
-    public void findByIdPerson() throws Exception {
+    public void findByIdPersonTest() throws Exception {
         List<Person> personList = personService.personList();
         if (personList.size() > 0) {
-            int personLastId = personList.get(personList.size()-1).getId_person();
+            int personLastId = personList.get(personList.size() - 1).getId_person();
             mockMvc.perform(get("/person/{id}", personLastId))
                     .andExpect(status().isOk())
                     .andExpect(view().name("person/onePerson"))
                     .andExpect(model().attribute("person",
                             allOf(
-                                    hasProperty("name", is(personList.get(personList.size()-1).getName())),
-                                    hasProperty("surname", is(personList.get(personList.size()-1).getSurname())),
-                                    hasProperty("date_of_birth", is(personList.get(personList.size()-1).getDate_of_birth()))
+                                    hasProperty("name", is(personList.get(personList.size() - 1)
+                                            .getName())),
+                                    hasProperty("surname", is(personList.get(personList.size() - 1)
+                                            .getSurname())),
+                                    hasProperty("dateOfBirth", is(personList.get(personList.size() - 1)
+                                            .getDateOfBirth()))
                             )
-                            ));
+                    ));
         }
     }
 
@@ -95,48 +87,48 @@ public class PersonControllerTest extends ConfigControllerTest{
                         allOf(
                                 hasProperty("name", is(lastFoundedPerson.getName())),
                                 hasProperty("surname", is(lastFoundedPerson.getSurname())),
-                                hasProperty("date_of_birth", is(lastFoundedPerson.getDate_of_birth()))
+                                hasProperty("dateOfBirth", is(lastFoundedPerson.getDateOfBirth()))
                         )
                 )));
     }
 
     @Test
-    public void addNewPerson() throws Exception {
+    public void addNewPersonTest() throws Exception {
         int personListSize = personService.personList().size();
         int newAddedPerson = 1;
-            mockMvc.perform(post("/person/add")
-                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("surname", "Максим")
-                    .param("name", "Марцинкевич")
-                    .param("third_Name", "Абрамович")
-                    .param("phone_number", "88005553535")
-                    .param("date_of_birth", "1997-28-02")
-                    .param("e_mail", "SlavaUkraine@geroyam.slava")
-                    .param("facebook", "Фейсбук")
-                    .param("vk", "ВК")
-                    .param("rating", "10")
-                    .param("twitter", "Твитер")
-                    .param("comment", "комментарий")
-                    .sessionAttr("person", new Person())
-            )
-                    .andExpect(status().is3xxRedirection());
+        mockMvc.perform(post("/person/add")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("surname", "Максим")
+                .param("name", "Марцинкевич")
+                .param("thirdName", "Абрамович")
+                .param("phoneNumber", "88005553535")
+                .param("dateOfBirth", "1997-28-02")
+                .param("eMail", "SlavaUkraine@geroyam.slava")
+                .param("facebook", "Фейсбук")
+                .param("vk", "ВК")
+                .param("rating", "10")
+                .param("twitter", "Твитер")
+                .param("comment", "комментарий")
+                .sessionAttr("person", new Person())
+        )
+                .andExpect(status().is3xxRedirection());
 
-            mockMvc.perform(get("/person"))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("person/person"))
-                    .andExpect(model().attribute("personList", hasSize(personListSize + newAddedPerson)))
-                    .andExpect(model().attribute("personList", hasItem(
-                            allOf(
-                                    hasProperty("name", is("Марцинкевич")),
-                                    hasProperty("surname", is("Максим")),
-                                    hasProperty("e_mail", is("SlavaUkraine@geroyam.slava"))
-                            )
-                    )));
-        }
+        mockMvc.perform(get("/person"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("person/person"))
+                .andExpect(model().attribute("personList", hasSize(personListSize + newAddedPerson)))
+                .andExpect(model().attribute("personList", hasItem(
+                        allOf(
+                                hasProperty("name", is("Марцинкевич")),
+                                hasProperty("surname", is("Максим")),
+                                hasProperty("eMail", is("SlavaUkraine@geroyam.slava"))
+                        )
+                )));
+    }
 
     @Test
-    public void personEdit() throws Exception {
+    public void personEditTest() throws Exception {
         List<Person> personList = personService.personList();
         if (personList.size() > 0) {
             int lastIdPerson = personList.get(personList.size() - 1).getId_person();
@@ -144,10 +136,10 @@ public class PersonControllerTest extends ConfigControllerTest{
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                     .param("surname", "Максим")
                     .param("name", "Марцинкевич")
-                    .param("third_Name", "Абрамович")
-                    .param("phone_number", "88005553535")
-                    .param("date_of_birth", "1997-28-02")
-                    .param("e_mail", "SlavaUkraine@geroyam.slava")
+                    .param("thirdName", "Абрамович")
+                    .param("phoneNumber", "88005553535")
+                    .param("dateOfBirth", "1997-28-02")
+                    .param("eMail", "SlavaUkraine@geroyam.slava")
                     .param("facebook", "Фейсбук")
                     .param("vk", "ВК")
                     .param("rating", "10")
@@ -162,18 +154,18 @@ public class PersonControllerTest extends ConfigControllerTest{
                     .andExpect(view().name("person/onePerson"))
                     .andExpect(model().attribute("person",
                             allOf(
-                            hasProperty("name", is("Марцинкевич")),
-                            hasProperty("surname", is("Максим")),
-                            hasProperty("e_mail", is("SlavaUkraine@geroyam.slava"))
-                    )));
+                                    hasProperty("name", is("Марцинкевич")),
+                                    hasProperty("surname", is("Максим")),
+                                    hasProperty("eMail", is("SlavaUkraine@geroyam.slava"))
+                            )));
         }
     }
 
     @Test
-    public void deletePerson() throws Exception{
+    public void deletePersonTest() throws Exception {
         List<Person> personList = personService.personList();
         if (personList.size() > 0) {
-            int personLastId = personList.get(personList.size()-1).getId_person();
+            int personLastId = personList.get(personList.size() - 1).getId_person();
             mockMvc.perform(get("/person/{id}/delete", personLastId))
                     .andDo(print())
                     .andExpect(status().is3xxRedirection());

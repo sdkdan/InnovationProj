@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import ru.innovat.models.major.Person;
+import org.springframework.test.web.servlet.MockMvc;
 import ru.innovat.models.major.Project;
 import ru.innovat.search.ProjectSearch;
 import ru.innovat.service.major.ProjectService;
@@ -19,14 +19,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
-public class ProjectControllerTest extends ConfigControllerTest{
+public class ProjectControllerTest extends ConfigControllerTest {
+    @Autowired
+    MockMvc mockMvc;
     @Autowired
     ProjectService projectService;
     @Autowired
     ProjectSearch projectSearch;
 
     @Test
-    public void getProjectsList() throws Exception {
+    public void projects() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
             this.mockMvc.perform(get("/project"))
@@ -36,32 +38,32 @@ public class ProjectControllerTest extends ConfigControllerTest{
                     .andExpect(model().attribute("projectList", hasSize(projectList.size())))
                     .andExpect(model().attribute("projectList", hasItem(
                             allOf(
-                                    hasProperty("name_project", is(projectList.get(projectList.size()-1)
-                                            .getName_project())),
-                                    hasProperty("site_project", is(projectList.get(projectList.size()-1)
-                                            .getSite_project())),
-                                    hasProperty("project_description", is(projectList.get(projectList
-                                            .size()-1).getProject_description()))
+                                    hasProperty("nameProject", is(projectList.get(projectList
+                                            .size() - 1).getNameProject())),
+                                    hasProperty("siteProject", is(projectList.get(projectList
+                                            .size() - 1).getSiteProject())),
+                                    hasProperty("projectDescription", is(projectList.get(projectList
+                                            .size() - 1).getProjectDescription()))
                             ))));
         }
     }
 
     @Test
-    public void findByIdProject() throws Exception {
+    public void findById_projectTest() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
-            int lastIdProject = projectList.get(projectList.size()-1).getId_project();
-            mockMvc.perform(get("/project/{id}", lastIdProject))
+            int lastId_project = projectList.get(projectList.size() - 1).getId_project();
+            mockMvc.perform(get("/project/{id}", lastId_project))
                     .andExpect(status().isOk())
                     .andExpect(view().name("project/oneProject"))
                     .andExpect(model().attribute("project",
                             allOf(
-                                    hasProperty("name_project", is(projectList.get(projectList.size()-1)
-                                            .getName_project())),
-                                    hasProperty("site_project", is(projectList.get(projectList.size()-1)
-                                            .getSite_project())),
-                                    hasProperty("project_description", is(projectList.get(projectList
-                                            .size()-1).getProject_description()))
+                                    hasProperty("nameProject", is(projectList.get(projectList.size() - 1)
+                                            .getNameProject())),
+                                    hasProperty("siteProject", is(projectList.get(projectList.size() - 1)
+                                            .getSiteProject())),
+                                    hasProperty("projectDescription", is(projectList.get(projectList
+                                            .size() - 1).getProjectDescription()))
                             )));
         }
     }
@@ -70,7 +72,7 @@ public class ProjectControllerTest extends ConfigControllerTest{
     public void projectSearch() throws Exception {
         Project lastProject = projectService.projectList().get(projectService
                 .projectList().size() - 1);
-        String lastProjectName = lastProject.getName_project();
+        String lastProjectName = lastProject.getNameProject();
         int foundedProjectsListSize = projectSearch.fuzzySearch(lastProjectName).size();
         Project lastFoundedProject = projectSearch.fuzzySearch(lastProjectName).get(projectSearch
                 .fuzzySearch(lastProjectName).size() - 1);
@@ -81,32 +83,32 @@ public class ProjectControllerTest extends ConfigControllerTest{
                 .andExpect(model().attribute("projectList", hasSize(foundedProjectsListSize)))
                 .andExpect(model().attribute("projectList", hasItem(
                         allOf(
-                                hasProperty("name_project", is(lastFoundedProject.getName_project())),
-                                hasProperty("site_project", is(lastFoundedProject.getSite_project())),
-                                hasProperty("project_description", is(lastFoundedProject
-                                        .getProject_description()))
+                                hasProperty("nameProject", is(lastFoundedProject.getNameProject())),
+                                hasProperty("siteProject", is(lastFoundedProject.getSiteProject())),
+                                hasProperty("projectDescription", is(lastFoundedProject
+                                        .getProjectDescription()))
                         )
                 )));
     }
 
     @Test
-    public void addNewProject() throws Exception {
+    public void addNewProjectTest() throws Exception {
         List<Project> projectList = projectService.projectList();
         int projectListSize = projectList.size();
         int newAddedProject = 1;
         mockMvc.perform(post("/project/add")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("name_project", "test")
+                .param("nameProject", "test")
                 .param("essence_innovations", "test")
-                .param("solution_problems", "test")
-                .param("level_solution", "test")
+                .param("solutionProblems", "test")
+                .param("levelSolution", "test")
                 .param("competitive_advantages", "test")
-                .param("start_date", "2020-10-20")
-                .param("current_stage", "test")
-                .param("expertise_project", "test")
-                .param("project_description", "test")
-                .param("site_project", "test")
-                .param("number_Phone_project", "test")
+                .param("startDate", "2020-10-20")
+                .param("currentStage", "test")
+                .param("expertiseProject", "test")
+                .param("projectDescription", "test")
+                .param("siteProject", "test")
+                .param("numberPhoneProject", "test")
                 .sessionAttr("project", new Project())
         )
                 .andExpect(status().is3xxRedirection());
@@ -118,50 +120,50 @@ public class ProjectControllerTest extends ConfigControllerTest{
                 .andExpect(model().attribute("projectList", hasSize(projectListSize + newAddedProject)))
                 .andExpect(model().attribute("projectList", hasItem(
                         allOf(
-                                hasProperty("name_project", is("test")),
-                                hasProperty("site_project", is("test")),
-                                hasProperty("project_description", is("test"))
+                                hasProperty("nameProject", is("test")),
+                                hasProperty("siteProject", is("test")),
+                                hasProperty("projectDescription", is("test"))
                         )
                 )));
     }
 
     @Test
-    public void projectEdit() throws Exception {
+    public void projectEditTest() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
-            int lastIdProject = projectList.get(projectList.size() - 1).getId_project();
-            mockMvc.perform(post("/project/{id}/update",lastIdProject)
+            int lastId_project = projectList.get(projectList.size() - 1).getId_project();
+            mockMvc.perform(post("/project/{id}/update", lastId_project)
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("name_project", "test1")
+                    .param("nameProject", "test1")
                     .param("essence_innovations", "test1")
-                    .param("solution_problems", "test1")
-                    .param("level_solution", "test1")
+                    .param("solutionProblems", "test1")
+                    .param("levelSolution", "test1")
                     .param("competitive_advantages", "test1")
-                    .param("start_date", "2020-10-20")
-                    .param("current_stage", "test1")
-                    .param("expertise_project", "test1")
-                    .param("project_description", "test1")
-                    .param("site_project", "test1")
-                    .param("number_Phone_project", "test1")
+                    .param("startDate", "2020-10-20")
+                    .param("currentStage", "test1")
+                    .param("expertiseProject", "test1")
+                    .param("projectDescription", "test1")
+                    .param("siteProject", "test1")
+                    .param("numberPhoneProject", "test1")
                     .sessionAttr("project", new Project())
             )
                     .andExpect(status().is3xxRedirection());
 
-            mockMvc.perform(get("/project/{id}", lastIdProject))
+            mockMvc.perform(get("/project/{id}", lastId_project))
                     .andExpect(status().isOk())
                     .andExpect(view().name("project/oneProject"))
                     .andExpect(model().attribute("project",
-                            hasProperty("name_project", is("test1"))))
+                            hasProperty("nameProject", is("test1"))))
                     .andExpect(model().attribute("project",
-                            hasProperty("site_project", is("test1"))));
+                            hasProperty("siteProject", is("test1"))));
         }
     }
 
     @Test
-    public void deleteProject() throws Exception{
+    public void deleteProjectTest() throws Exception {
         List<Project> projectList = projectService.projectList();
         if (projectList.size() > 0) {
-            int projectLastId = projectList.get(projectList.size()-1).getId_project();
+            int projectLastId = projectList.get(projectList.size() - 1).getId_project();
             mockMvc.perform(get("/project/{id}/delete", projectLastId))
                     .andDo(print())
                     .andExpect(status().is3xxRedirection());
