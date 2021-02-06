@@ -1,7 +1,6 @@
 package ru.innovat.service.authorization;
 
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,7 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 
 @Service
@@ -77,7 +75,6 @@ public class UserService implements UserDetailsService {
         return new User(appUser.getUsername(), appUser.getPassword(), grantList);
     }
 
-    @Transactional
     public AppUser findUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = userDao.findByUsername(username);
         if (appUser == null) {
@@ -87,54 +84,44 @@ public class UserService implements UserDetailsService {
         return appUser;
     }
 
-    @Transactional
     public void updateUser(AppUser user) {
         userDao.update(user);
     }
 
-    @Transactional
     public List<AppUser> userList() {
         return userDao.userList();
     }
 
-    @Transactional
     public AppUser findUser(int id) {
         return userDao.findById(id);
     }
 
-    @Transactional
     public List<Role> roleList() {
         return roleDao.roleList();
     }
 
-    @Transactional
     public Role getRoleById(int id) {
         return roleDao.getRoleById(id);
     }
 
-    @Transactional
     public AppUser setRole(Role role, int id) {
         AppUser user = userDao.findById(id);
         user.setRole(role);
         return user;
     }
 
-    @Transactional
     public void update(AppUser appUser) {
         userDao.update(appUser);
     }
 
-    @Transactional
     public void addBlocked(Blocked blocked) {
         blockedDao.add(blocked);
     }
 
-    @Transactional
     public Blocked getBlocked(int id) {
         return blockedDao.findById(id);
     }
 
-    @Transactional
     public List<AppUser> roleUserList() {
         return userDao.roleUserList();
     }

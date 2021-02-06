@@ -16,7 +16,7 @@ import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.major.Organization;
 import ru.innovat.models.major.Person;
 import ru.innovat.models.support.Messages;
-import ru.innovat.service.authorization.NewUserService;
+import ru.innovat.service.authorization.RegistrationService;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.*;
@@ -34,7 +34,7 @@ public class IntegrationTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
     @Autowired
-    private NewUserService newUserService;
+    private RegistrationService registrationService;
     @Autowired
     private MockMvc mockMvc;
 
@@ -59,7 +59,7 @@ public class IntegrationTest {
                 .andExpect(status().isOk());
 
         //confirm email
-        mockMvc.perform(get("/confirm-account?token=" + (newUserService.tokenList().get(newUserService
+        mockMvc.perform(get("/confirm-account?token=" + (registrationService.tokenList().get(registrationService
                 .tokenList().size() - 1).toString())));
 
         //login

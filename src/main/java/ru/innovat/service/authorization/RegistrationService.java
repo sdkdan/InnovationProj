@@ -1,6 +1,5 @@
 package ru.innovat.service.authorization;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,10 +11,6 @@ import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.authorization.VerificationToken;
 import ru.innovat.service.utils.DateExpired;
 
-
-import java.lang.annotation.Target;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,25 +29,22 @@ public class RegistrationService {
         saveToken(appUser);
     }
 
-    @Transactional
     public void deleteToken(int id) {
         tokenDao.delete(id);
     }
 
-    @Transactional
     public void saveToken(AppUser appUser) {
         VerificationToken verificationToken = new VerificationToken(UUID.randomUUID().toString(), appUser);
         tokenDao.add(verificationToken);
-        emailService.sendEmail(appUser.getEMail(),verificationToken);
+        emailService.sendEmail(appUser.getEMail(), verificationToken);
     }
 
-    @Transactional
     public VerificationToken findByToken(String Token) {
         return tokenDao.findByToken(Token);
     }
 
-    @Transactional
-    public @Nullable AppUser getUser(String token) {
+    @Nullable
+    public AppUser getUser(String token) {
         VerificationToken verificationToken = tokenDao.findByToken(token);
         if (token != null) {
             return verificationToken.getUser();
@@ -76,7 +68,7 @@ public class RegistrationService {
                 return "Время действия ссылки истекло, мы отправили на вашу почту новое поддтвержение";
             }
         } else {
-            return  "Данная ссылка не действительна либо сломана";
+            return "Данная ссылка не действительна либо сломана";
         }
     }
 
@@ -89,21 +81,22 @@ public class RegistrationService {
     }
 
     @Transactional
-    public @Nullable String registeredAccountStatus(AppUser appUser) {
+    @Nullable
+    public String registeredAccountStatus(AppUser appUser) {
         if (checkEmail(appUser.getEMail())) {
             return "Такая почта уже существует";
         }
-        if (checkUsername(appUser.getUsername())){
+        if (checkUsername(appUser.getUsername())) {
             return "Имя пользователя уже занято";
         }
-        if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))){
+        if (!(appUser.getPassword().equals(appUser.getPasswordConfirm()))) {
             return "Пароли не совпадают";
         }
         return null;
     }
 
     @Transactional
-    public List<VerificationToken> tokenList () {
+    public List<VerificationToken> tokenList() {
         return tokenDao.verificationTokenList();
     }
 }
