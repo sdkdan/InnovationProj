@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.major.Organization;
 
@@ -16,6 +17,7 @@ import java.util.List;
 public class OrganizationDao {
     private final SessionFactory sessionFactory;
 
+    @Nullable
     public Organization findById(int id) {
         return sessionFactory.getCurrentSession().get(Organization.class, id);
     }
@@ -37,12 +39,14 @@ public class OrganizationDao {
     }
 
     @SuppressWarnings("unchecked")
+    @Nullable
     public List<Organization> organizationList() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (List<Organization>) session.createQuery("From Organization").list();
 
     }
 
+    @Nullable
     public Organization organizationAllConnection(int id) {
         Organization organization = findById(id);
         Hibernate.initialize(organization.getPersons());

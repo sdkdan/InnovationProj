@@ -19,16 +19,16 @@ public class ConnectionServiceTest extends ConfigServiceTest {
     ConnectionService connectService;
 
     @Test
-    public void newConnection_AddToProject() {//addToProject_Connection_addedConnection Second name of test
+    public void newConnection_AddToProject() {//addToProject_Connection_addedConnection Second name of the test
         int organizationId = 1;
         int eventId = 1;
         int personId = 1;
         int projectId = 1;
         Connect connect = Connect.builder()
-                                 .organization_Id(organizationId)
-                                 .event_Id(eventId)
-                                 .person_id(personId)
-                                 .build();
+                .organization_Id(organizationId)
+                .event_Id(eventId)
+                .person_id(personId)
+                .build();
 
         connectService.addConnections(connect, projectService.findProject(projectId));
 

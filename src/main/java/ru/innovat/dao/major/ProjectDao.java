@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.major.Project;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 public class ProjectDao {
     private final SessionFactory sessionFactory;
 
+    @Nullable
     public Project findById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Project.class, id);
@@ -36,6 +38,7 @@ public class ProjectDao {
         if (project != null) session.delete(project);
     }
 
+    @Nullable
     public Project projectAllConnections(int id) {
         Project project = findById(id);
         Hibernate.initialize(project.getPersons());
@@ -45,8 +48,9 @@ public class ProjectDao {
     }
 
     @SuppressWarnings("unchecked")
+    @Nullable
     public ArrayList<Project> projectList() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (ArrayList<Project>) session.createQuery("From Project").list();
     }
 

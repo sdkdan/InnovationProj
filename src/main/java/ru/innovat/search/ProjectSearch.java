@@ -7,7 +7,6 @@ import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.stereotype.Repository;
-import ru.innovat.models.major.Event;
 import ru.innovat.models.major.Project;
 import ru.innovat.service.major.ProjectService;
 
@@ -15,7 +14,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,11 +25,11 @@ public class ProjectSearch {
     private final ProjectService projectService;
     @PersistenceContext
     private final EntityManager entityManager;
+    private final static int DISTANCE_UP_TO_SEARCH = 1;
+    private final static int PREFIX_LENGTH = 1;
 
     @SuppressWarnings("unchecked")
     public List<Project> fuzzySearch(String searchTerm) {
-        int distanceUpToSearch = 1;
-        int prefixLength = 1;
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         try {
             fullTextEntityManager.createIndexer().startAndWait();
@@ -40,7 +38,7 @@ public class ProjectSearch {
         }
         if (searchTerm != null && searchTerm.length() > 0) {
             QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Project.class).get();
-            Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(distanceUpToSearch).withPrefixLength(prefixLength)
+            Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(DISTANCE_UP_TO_SEARCH).withPrefixLength(PREFIX_LENGTH)
                     .onFields("name_project")
                     .matching(searchTerm).createQuery();
             javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Project.class);

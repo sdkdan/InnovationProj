@@ -1,4 +1,5 @@
 package ru.innovat.models.utils;
+
 import lombok.Getter;
 import lombok.Setter;
 

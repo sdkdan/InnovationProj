@@ -8,7 +8,6 @@ import org.hibernate.search.annotations.Indexed;
 import ru.innovat.models.utils.TypeEvent;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 

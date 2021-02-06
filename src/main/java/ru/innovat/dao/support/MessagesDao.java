@@ -1,9 +1,9 @@
 package ru.innovat.dao.support;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.support.Messages;
 
@@ -20,6 +20,7 @@ public class MessagesDao {
     }
 
     @SuppressWarnings("unchecked")
+    @Nullable
     public List<Messages> userMessages(int id) {
         Session session = sessionFactory.getCurrentSession();
         return (List<Messages>) session.createQuery("SELECT M FROM Messages M where appUser.id_user =:id")

@@ -14,7 +14,7 @@ import java.util.Collection;
 @Table(name = "users")
 @Getter
 @Setter
-@EqualsAndHashCode(exclude = {"role", "blocked", "password", "passwordConfirm", "enabled"} )
+@EqualsAndHashCode(exclude = {"role", "blocked", "password", "passwordConfirm", "enabled"})
 public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,6 +75,6 @@ public class AppUser implements UserDetails {
     }
 
     public String getStatusToString() {
-        return  (isAccountNonLocked()) ? "Активен" : "Заблокирован";
+        return (isAccountNonLocked()) ? "Активен" : "Заблокирован";
     }
 }

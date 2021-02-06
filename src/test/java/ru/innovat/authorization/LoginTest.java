@@ -1,25 +1,12 @@
 package ru.innovat.authorization;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 import ru.innovat.models.authorization.AppUser;
-import ru.innovat.service.authorization.UserService;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
@@ -29,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-public class LoginTest extends ConfigAuthorizationTest{
+public class LoginTest extends ConfigAuthorizationTest {
     private String token = "testtoken";
 
     @Test
@@ -52,7 +39,8 @@ public class LoginTest extends ConfigAuthorizationTest{
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(get("/admin"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("http://localhost/login"));;
+                .andExpect(redirectedUrl("http://localhost/login"));
+        ;
     }
 
     @Test
@@ -102,9 +90,6 @@ public class LoginTest extends ConfigAuthorizationTest{
                 .andExpect(model().attribute("user",
                         hasProperty("username", is("test1"))));
     }
-
-
-
 
 
 }

@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.organization;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,6 @@ import ru.innovat.models.utils.Connect;
 import ru.innovat.service.major.*;
 
 import java.util.List;
-
 
 
 @Controller
@@ -47,8 +45,9 @@ public class ConnectionOrganizationController {
     }
 
     @PostMapping(value = "/organization/{id}/connect")
-    public String organizationAddConnection(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect connect){
-        connectionService.addConnections(connect,organizationService.organizationAllConnection(id));
+    public String organizationAddConnection(@PathVariable("id") int id, @ModelAttribute Organization organization,
+                                            Connect connect) {
+        connectionService.addConnections(connect, organizationService.organizationAllConnection(id));
         return "redirect:";
     }
 }

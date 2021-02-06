@@ -38,9 +38,12 @@ public class OrganizationControllerTest extends ConfigControllerTest {
                     .andExpect(model().attribute("organizationList", hasSize(organizationList.size())))
                     .andExpect(model().attribute("organizationList", hasItem(
                             allOf(
-                                    hasProperty("nameOrganization", is(organizationList.get(organizationList.size() - 1).getNameOrganization())),
-                                    hasProperty("siteOrganization", is(organizationList.get(organizationList.size() - 1).getSiteOrganization())),
-                                    hasProperty("notesOrganization", is(organizationList.get(organizationList.size() - 1).getNotesOrganization())
+                                    hasProperty("nameOrganization", is(organizationList
+                                            .get(organizationList.size() - 1).getNameOrganization())),
+                                    hasProperty("siteOrganization", is(organizationList
+                                            .get(organizationList.size() - 1).getSiteOrganization())),
+                                    hasProperty("notesOrganization", is(organizationList
+                                            .get(organizationList.size() - 1).getNotesOrganization())
                                     )
                             ))));
         }
@@ -56,9 +59,12 @@ public class OrganizationControllerTest extends ConfigControllerTest {
                     .andExpect(view().name("organization/oneOrg"))
                     .andExpect(model().attribute("organization",
                             allOf(
-                                    hasProperty("nameOrganization", is(organizationList.get(organizationList.size() - 1).getNameOrganization())),
-                                    hasProperty("siteOrganization", is(organizationList.get(organizationList.size() - 1).getSiteOrganization())),
-                                    hasProperty("notesOrganization", is(organizationList.get(organizationList.size() - 1).getNotesOrganization())
+                                    hasProperty("nameOrganization", is(organizationList
+                                            .get(organizationList.size() - 1).getNameOrganization())),
+                                    hasProperty("siteOrganization", is(organizationList
+                                            .get(organizationList.size() - 1).getSiteOrganization())),
+                                    hasProperty("notesOrganization", is(organizationList
+                                            .get(organizationList.size() - 1).getNotesOrganization())
                                     ))));
         }
     }
