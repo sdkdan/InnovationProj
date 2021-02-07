@@ -43,15 +43,6 @@ public class RegistrationService {
         return tokenDao.findByToken(Token);
     }
 
-    @Nullable
-    public AppUser getUser(String token) {
-        VerificationToken verificationToken = tokenDao.findByToken(token);
-        if (token != null) {
-            return verificationToken.getUser();
-        }
-        return null;
-    }
-
     @Transactional
     public String emailVerification(String token) {
         VerificationToken verificationToken = findByToken(token);

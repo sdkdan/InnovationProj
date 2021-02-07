@@ -38,7 +38,6 @@ public class ProjectDao {
         if (project != null) session.delete(project);
     }
 
-    @Nullable
     public Project projectAllConnections(int id) {
         Project project = findById(id);
         Hibernate.initialize(project.getPersons());

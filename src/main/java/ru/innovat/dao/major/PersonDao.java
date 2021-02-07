@@ -44,7 +44,6 @@ public class PersonDao {
         return (List<Person>) session.createQuery("From Person").list();
     }
 
-    @Nullable
     public Person personAllConnections(int id){
         Person person = findById(id);
         Hibernate.initialize(person.getEvents());

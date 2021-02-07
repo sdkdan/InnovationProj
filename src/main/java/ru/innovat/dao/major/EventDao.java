@@ -1,6 +1,5 @@
 package ru.innovat.dao.major;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -57,7 +56,6 @@ public class EventDao {
         return (List<TypeEvent>) sessionFactory.getCurrentSession().createQuery("From TypeEvent").list();
     }
 
-    @Nullable
     public Event eventAllConnection(int id) {
         Event event = findById(id);
         Hibernate.initialize(event.getPersons());

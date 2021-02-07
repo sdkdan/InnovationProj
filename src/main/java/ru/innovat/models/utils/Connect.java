@@ -3,7 +3,7 @@ package ru.innovat.models.utils;
 import lombok.*;
 
 
-@Builder(toBuilder = true)
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

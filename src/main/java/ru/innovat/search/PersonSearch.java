@@ -30,8 +30,6 @@ public class PersonSearch {
 
     @SuppressWarnings("unchecked")
     public List<Person> fuzzySearch(String searchTerm) {
-        int distanceUpToSearch = 1;
-        int prefixLength = 1;
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         try {
             fullTextEntityManager.createIndexer().startAndWait();

@@ -1,7 +1,6 @@
 package ru.innovat.dao.major;
 
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -46,7 +45,6 @@ public class OrganizationDao {
 
     }
 
-    @Nullable
     public Organization organizationAllConnection(int id) {
         Organization organization = findById(id);
         Hibernate.initialize(organization.getPersons());
