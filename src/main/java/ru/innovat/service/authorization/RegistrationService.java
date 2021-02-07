@@ -22,7 +22,6 @@ public class RegistrationService {
     private final UserDao userDao;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Transactional
     public void saveUser(AppUser appUser) {
         appUser.setPassword(bCryptPasswordEncoder.encode(appUser.getPassword()));
         userDao.add(appUser);
@@ -84,10 +83,5 @@ public class RegistrationService {
             return "Пароли не совпадают";
         }
         return null;
-    }
-
-    @Transactional
-    public List<VerificationToken> tokenList() {
-        return tokenDao.verificationTokenList();
     }
 }
