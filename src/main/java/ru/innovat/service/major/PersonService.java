@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class PersonService {
+
     private final PersonDao personDao;
 
     public Person findPerson(int id) {

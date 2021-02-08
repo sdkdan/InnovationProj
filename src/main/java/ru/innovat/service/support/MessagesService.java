@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MessagesService {
+
     private final MessagesDao messagesDao;
 
     public void addMessage(Messages messages) {

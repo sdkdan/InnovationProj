@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class UserDao {
+
     private final SessionFactory sessionFactory;
 
     @Nullable

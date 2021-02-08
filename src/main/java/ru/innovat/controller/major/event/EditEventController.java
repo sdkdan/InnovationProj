@@ -17,6 +17,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class EditEventController {
+
     private final EventService eventService;
 
     @GetMapping("/event/{id}/edit")

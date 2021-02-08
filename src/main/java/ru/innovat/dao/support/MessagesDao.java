@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class MessagesDao {
+
     private final SessionFactory sessionFactory;
 
     public void add(Messages messages) {

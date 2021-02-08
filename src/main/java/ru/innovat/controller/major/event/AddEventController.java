@@ -15,6 +15,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class AddEventController {
+
     private final EventService eventService;
 
     @GetMapping(value = "/event/add")

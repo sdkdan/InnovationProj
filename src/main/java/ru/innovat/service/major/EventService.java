@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class EventService {
+
     private final EventDao eventDao;
 
     public Event findEvent(int id) {

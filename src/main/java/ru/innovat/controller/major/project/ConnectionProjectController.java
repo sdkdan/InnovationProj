@@ -15,6 +15,7 @@ import ru.innovat.service.major.ProjectService;
 @Controller
 @RequiredArgsConstructor
 public class ConnectionProjectController {
+
     private final ProjectService projectService;
     private final ConnectionService connectionService;
 

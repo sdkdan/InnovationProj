@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OrganizationService {
+
     private final OrganizationDao organizationDao;
 
     public Organization findOrganization(int id) {

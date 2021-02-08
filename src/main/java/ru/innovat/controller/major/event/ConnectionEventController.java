@@ -15,6 +15,7 @@ import ru.innovat.service.major.EventService;
 @Controller
 @RequiredArgsConstructor
 public class ConnectionEventController {
+
     private final EventService eventService;
     private final ConnectionService connectionService;
 

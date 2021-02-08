@@ -25,10 +25,10 @@ public class ConnectionServiceTest extends ConfigServiceTest {
         int personId = 1;
         int projectId = 1;
         Connect connect = Connect.builder()
-                .organization_Id(organizationId)
-                .event_Id(eventId)
-                .person_id(personId)
-                .build();
+                                 .organization_Id(organizationId)
+                                 .event_Id(eventId)
+                                 .person_id(personId)
+                                 .build();
 
         connectService.addConnections(connect, projectService.findProject(projectId));
 

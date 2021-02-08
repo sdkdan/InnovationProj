@@ -20,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
 public class PersonControllerTest extends ConfigControllerTest {
+
     @Autowired
     OrganizationController organizationController;
     @Autowired

@@ -11,12 +11,12 @@ import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.authorization.VerificationToken;
 import ru.innovat.service.utils.DateExpired;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class RegistrationService {
+
     private final TokenDao tokenDao;
     private final EmailService emailService;
     private final UserDao userDao;
@@ -48,6 +48,9 @@ public class RegistrationService {
         if (verificationToken != null) {
             if (DateExpired.isExpired(verificationToken.getExpiryDate())) {
                 AppUser appUser = userDao.findByUsername(verificationToken.getUser().getUsername());
+                if(appUser == null){
+                    return null;
+                }
                 appUser.setEnabled(true);
                 userDao.update(appUser);
                 deleteToken(verificationToken.getId_token());

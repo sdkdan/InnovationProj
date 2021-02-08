@@ -32,10 +32,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
 public class IntegrationTest {
+
     @Autowired
     private WebApplicationContext webApplicationContext;
-    @Autowired
-    private RegistrationService registrationService;
     @Autowired
     private MockMvc mockMvc;
 
@@ -48,7 +47,7 @@ public class IntegrationTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("http://localhost/login"));
 
-        mockMvc.perform(post("/register") //register new user
+        mockMvc.perform(post("/register")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("name", "Ivan")
                 .param("username", "vanya6222")

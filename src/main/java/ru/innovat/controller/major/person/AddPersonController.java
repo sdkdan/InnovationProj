@@ -13,6 +13,7 @@ import ru.innovat.service.major.PersonService;
 @Controller
 @RequiredArgsConstructor
 public class AddPersonController {
+
     private final PersonService personService;
 
     @GetMapping(value = "/person/add")

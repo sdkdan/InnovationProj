@@ -31,6 +31,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class UserService implements UserDetailsService {
+
     private final UserDao userDao;
     private final RoleDao roleDao;
     private final BlockedDao blockedDao;
@@ -39,7 +40,6 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         AppUser appUser = userDao.findByUsername(userName);
-
         if (appUser == null) {
             throw new UsernameNotFoundException("Пользователь " + userName + " не найдет в базе данных");
         } else {
@@ -106,6 +106,9 @@ public class UserService implements UserDetailsService {
 
     public AppUser setRole(Role role, int id) {
         AppUser user = userDao.findById(id);
+        if (user == null) {
+            return null;
+        }
         user.setRole(role);
         return user;
     }

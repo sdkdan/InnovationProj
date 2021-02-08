@@ -14,6 +14,7 @@ import ru.innovat.models.major.Person;
 @Repository
 @RequiredArgsConstructor
 public class PersonDao {
+
     private final SessionFactory sessionFactory;
 
     @Nullable
@@ -44,8 +45,11 @@ public class PersonDao {
         return (List<Person>) session.createQuery("From Person").list();
     }
 
-    public Person personAllConnections(int id){
+    public Person personAllConnections(int id) {
         Person person = findById(id);
+        if (person == null) {
+            return null;
+        }
         Hibernate.initialize(person.getEvents());
         Hibernate.initialize(person.getOrganizations());
         Hibernate.initialize(person.getProjects());

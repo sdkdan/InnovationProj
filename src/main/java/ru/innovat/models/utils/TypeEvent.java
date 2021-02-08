@@ -10,9 +10,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class TypeEvent {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_type_event;
+
     @Column(name = "Name_type_event")
     private String nameTypeEvent;
 }

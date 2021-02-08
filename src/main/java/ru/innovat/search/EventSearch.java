@@ -22,6 +22,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class EventSearch {
+
     private final EventService eventService;
     @PersistenceContext
     private final EntityManager entityManager;

@@ -18,6 +18,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Controller
 public class ChatController {
+
     private final MessagesService messagesService;
     private final UserService userService;
 

@@ -1,6 +1,5 @@
 package ru.innovat.dao.major;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -14,6 +13,7 @@ import java.util.ArrayList;
 @Repository
 @RequiredArgsConstructor
 public class ProjectDao {
+
     private final SessionFactory sessionFactory;
 
     @Nullable
@@ -40,6 +40,9 @@ public class ProjectDao {
 
     public Project projectAllConnections(int id) {
         Project project = findById(id);
+        if (project == null) {
+            return null;
+        }
         Hibernate.initialize(project.getPersons());
         Hibernate.initialize(project.getOrganizations());
         Hibernate.initialize(project.getEvents());

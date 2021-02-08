@@ -13,6 +13,7 @@ import ru.innovat.service.major.ProjectService;
 @Controller
 @RequiredArgsConstructor
 public class AddProjectController {
+
     private final ProjectService projectService;
 
     @GetMapping(value = "/project/add")

@@ -16,6 +16,7 @@ import ru.innovat.service.major.OrganizationService;
 @Controller
 @RequiredArgsConstructor
 public class ConnectionOrganizationController {
+
     private final OrganizationService organizationService;
     private final ConnectionService connectionService;
 

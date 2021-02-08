@@ -13,6 +13,7 @@ import ru.innovat.service.major.OrganizationService;
 @Controller
 @RequiredArgsConstructor
 public class AddOrganizationController {
+
     private final  OrganizationService organizationService;
 
     @GetMapping(value = "/organization/add")

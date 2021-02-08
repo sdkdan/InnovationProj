@@ -12,6 +12,7 @@ import ru.innovat.service.major.OrganizationService;
 @Controller
 @RequiredArgsConstructor
 public class OrganizationController {
+
     private final OrganizationService organizationService;
     private final EventSearch searchService;
 

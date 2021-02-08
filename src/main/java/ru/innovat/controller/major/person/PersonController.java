@@ -11,6 +11,7 @@ import ru.innovat.service.major.PersonService;
 @Controller
 @RequiredArgsConstructor
 public class PersonController {
+
     private final PersonService personService;
     private final PersonSearch searchService;
 

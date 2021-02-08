@@ -11,6 +11,7 @@ import ru.innovat.service.major.ProjectService;
 @Controller
 @RequiredArgsConstructor
 public class ProjectController {
+
     private final ProjectService projectService;
     private final ProjectSearch searchService;
 

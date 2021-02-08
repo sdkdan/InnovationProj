@@ -15,6 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 public class ChatControllerTest extends ConfigControllerTest {
+
     @Test
     @WithMockUser(username = "test", password = "pwd", roles = "SUPPORT")
     public void checkAccess_WithSupportRole() throws Exception {
@@ -74,6 +75,7 @@ public class ChatControllerTest extends ConfigControllerTest {
         )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/help"));
+
         mockMvc.perform(get("/help"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(model().attribute("messages", hasItem(
@@ -96,6 +98,7 @@ public class ChatControllerTest extends ConfigControllerTest {
         )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:"));
+
         mockMvc.perform(get("/support/2"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(model().attribute("messages", hasItem(

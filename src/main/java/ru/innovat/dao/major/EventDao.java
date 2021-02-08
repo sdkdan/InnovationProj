@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class EventDao {
+
     private final SessionFactory sessionFactory;
 
     @Nullable
@@ -35,7 +36,7 @@ public class EventDao {
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
         Event event = session.load(Event.class, id);
-        if (event != null)session.delete(event);
+        if (event != null) session.delete(event);
     }
 
     @SuppressWarnings("unchecked")
@@ -43,11 +44,6 @@ public class EventDao {
     public List<Event> eventList() {
         Session session = sessionFactory.getCurrentSession();
         return (List<Event>) session.createQuery("From Event").list();
-    }
-
-    @Nullable
-    public TypeEvent findTypeEventById(int id) {
-        return sessionFactory.getCurrentSession().get(TypeEvent.class, id);
     }
 
     @SuppressWarnings("unchecked")
@@ -58,6 +54,9 @@ public class EventDao {
 
     public Event eventAllConnection(int id) {
         Event event = findById(id);
+        if (event == null) {
+            return null;
+        }
         Hibernate.initialize(event.getPersons());
         Hibernate.initialize(event.getOrganizations());
         Hibernate.initialize(event.getProjects());
