@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.innovat.models.major.Organization;
 import ru.innovat.search.EventSearch;
+import ru.innovat.search.OrganizationSearch;
 import ru.innovat.service.major.OrganizationService;
 
 
@@ -13,7 +14,7 @@ import ru.innovat.service.major.OrganizationService;
 @RequiredArgsConstructor
 public class OrganizationController {
     private final OrganizationService organizationService;
-    private final EventSearch searchService;
+    private final OrganizationSearch searchService;
 
     @GetMapping(value = "/organization")
     public String listOrganization(String search, Model model) {

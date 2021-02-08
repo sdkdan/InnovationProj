@@ -75,6 +75,7 @@ public class UserService implements UserDetailsService {
         return new User(appUser.getUsername(), appUser.getPassword(), grantList);
     }
 
+    @Transactional
     public AppUser findUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = userDao.findByUsername(username);
         if (appUser == null) {
@@ -84,6 +85,7 @@ public class UserService implements UserDetailsService {
         return appUser;
     }
 
+    @Transactional
     public void updateUser(AppUser user) {
         userDao.update(user);
     }
@@ -92,6 +94,7 @@ public class UserService implements UserDetailsService {
         return userDao.userList();
     }
 
+    @Transactional
     public AppUser findUser(int id) {
         return userDao.findById(id);
     }
@@ -100,6 +103,7 @@ public class UserService implements UserDetailsService {
         return roleDao.roleList();
     }
 
+    @Transactional
     public Role getRoleById(int id) {
         return roleDao.getRoleById(id);
     }
@@ -110,14 +114,17 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    @Transactional
     public void update(AppUser appUser) {
         userDao.update(appUser);
     }
 
+    @Transactional
     public void addBlocked(Blocked blocked) {
         blockedDao.add(blocked);
     }
 
+    @Transactional
     public Blocked getBlocked(int id) {
         return blockedDao.findById(id);
     }

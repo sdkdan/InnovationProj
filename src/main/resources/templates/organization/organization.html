@@ -25,9 +25,9 @@
     <tbody>
 
     <tr th:each="organization : ${organizationList}">
-        <td th:utext="${organization.getNameOrganization()}" class="w-50">..</td>
-        <td th:utext="${organization.getCityOrganization()}">..</td>
-        <td th:utext="${organization.getSiteOrganization()}">..</td>
+        <td th:utext="${organization.nameOrganization}" class="w-50">..</td>
+        <td th:utext="${organization.cityOrganization}">..</td>
+        <td th:utext="${organization.siteOrganization}">..</td>
         <td>
             <div class="text-center">
                 <a th:href="@{organization/{id}/delete(id=${organization.id_organization})}"> <img

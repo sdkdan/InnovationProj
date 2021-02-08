@@ -1,5 +1,7 @@
 package ru.innovat.controller;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
 public class OrganizationControllerTest extends ConfigControllerTest {
+
     @Autowired
     MockMvc mockMvc;
     @Autowired
@@ -121,9 +124,9 @@ public class OrganizationControllerTest extends ConfigControllerTest {
     }
 
     @Test
+    @Before
     public void organizationEditTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
-        if (organizationList.size() > 0) {
             int lastId_organization = organizationList.size();
             mockMvc.perform(post("/organization/{id}/update", lastId_organization)
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -144,7 +147,6 @@ public class OrganizationControllerTest extends ConfigControllerTest {
                                     hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
                                     hasProperty("notesOrganization", is("university in spb"))
                             )));
-        }
     }
 
     @Test

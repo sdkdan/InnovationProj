@@ -14,10 +14,9 @@ import org.springframework.web.context.WebApplicationContext;
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
 public class ConfigControllerTest {
+
     @Autowired
     WebApplicationContext webApplicationContext;
     @Autowired
     MockMvc mockMvc;
-
-
 }

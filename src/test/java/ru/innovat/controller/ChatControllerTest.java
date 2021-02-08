@@ -15,6 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 public class ChatControllerTest extends ConfigControllerTest {
+
     @Test
     @WithMockUser(username = "test", password = "pwd", roles = "SUPPORT")
     public void checkAccess_WithSupportRole() throws Exception {

@@ -38,7 +38,6 @@ public class OrganizationDao {
     }
 
     @SuppressWarnings("unchecked")
-    @Nullable
     public List<Organization> organizationList() {
         Session session = sessionFactory.getCurrentSession();
         return (List<Organization>) session.createQuery("From Organization").list();
