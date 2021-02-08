@@ -13,6 +13,7 @@ import java.security.Principal;
 @Controller
 @RequiredArgsConstructor
 public class RegistrationController {
+
     private final RegistrationService registrationService;
 
     @GetMapping(value = "/login")

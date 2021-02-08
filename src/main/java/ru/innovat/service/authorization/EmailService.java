@@ -9,6 +9,7 @@ import ru.innovat.models.authorization.VerificationToken;
 @Service
 @RequiredArgsConstructor
 public class EmailService {
+
     private final JavaMailSender javaMailSender;
 
     public void sendEmail(String email, VerificationToken verificationToken) {

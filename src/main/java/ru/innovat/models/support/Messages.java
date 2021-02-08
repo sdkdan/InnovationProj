@@ -15,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Messages {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_message;

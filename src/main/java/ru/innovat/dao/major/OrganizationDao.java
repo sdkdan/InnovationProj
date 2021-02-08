@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class OrganizationDao {
+
     private final SessionFactory sessionFactory;
 
     @Nullable
@@ -46,6 +47,9 @@ public class OrganizationDao {
 
     public Organization organizationAllConnection(int id) {
         Organization organization = findById(id);
+        if (organization == null) {
+            return null;
+        }
         Hibernate.initialize(organization.getPersons());
         Hibernate.initialize(organization.getProjects());
         Hibernate.initialize(organization.getEvents());

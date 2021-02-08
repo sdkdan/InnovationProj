@@ -75,6 +75,7 @@ public class ChatControllerTest extends ConfigControllerTest {
         )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/help"));
+
         mockMvc.perform(get("/help"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(model().attribute("messages", hasItem(
@@ -97,6 +98,7 @@ public class ChatControllerTest extends ConfigControllerTest {
         )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:"));
+
         mockMvc.perform(get("/support/2"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(model().attribute("messages", hasItem(

@@ -17,11 +17,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 public class LoginTest extends ConfigAuthorizationTest {
-    private String token = "testtoken";
 
     @Test
     public void registrationConfirm() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
+        String token = "testtoken";
         ResultActions resultActions = this.mockMvc.perform(get("/confirm-account?token=" + token));
         resultActions.andExpect(status().is2xxSuccessful());
         resultActions.andExpect(model().attribute("message", "Почта подтвержденна"));
@@ -40,7 +40,6 @@ public class LoginTest extends ConfigAuthorizationTest {
         mockMvc.perform(get("/admin"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("http://localhost/login"));
-        ;
     }
 
     @Test

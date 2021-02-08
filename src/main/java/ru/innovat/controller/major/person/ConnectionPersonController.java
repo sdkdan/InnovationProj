@@ -15,6 +15,7 @@ import ru.innovat.service.major.PersonService;
 @Controller
 @RequiredArgsConstructor
 public class ConnectionPersonController {
+
     private final PersonService personService;
     private final ConnectionService connectionService;
 

@@ -13,6 +13,7 @@ import ru.innovat.service.major.EventService;
 @Controller
 @RequiredArgsConstructor
 public class EventController {
+
     private final EventService eventService;
     private final EventSearch searchService;
 

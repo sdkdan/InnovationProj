@@ -15,6 +15,7 @@ import javax.validation.Valid;
 @Controller
 @RequiredArgsConstructor
 public class EditProjectController {
+
     private final ProjectService projectService;
 
     @GetMapping("/project/{id}/edit")

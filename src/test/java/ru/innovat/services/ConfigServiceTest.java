@@ -13,6 +13,7 @@ import ru.innovat.service.major.*;
 @TestPropertySource("/application-test.properties")
 @Transactional
 public class ConfigServiceTest {
+
     @Autowired
     ProjectService projectService;
     @Autowired

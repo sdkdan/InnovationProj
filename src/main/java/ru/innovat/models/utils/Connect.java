@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 public class Connect {
+
     private int event_Id;
     private int project_Id;
     private int organization_Id;

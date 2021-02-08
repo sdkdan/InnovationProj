@@ -19,7 +19,9 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Person {
+
     static final Logger logger = LoggerFactory.getLogger(Person.class);
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include

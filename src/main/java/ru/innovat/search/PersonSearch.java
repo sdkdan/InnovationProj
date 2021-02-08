@@ -22,6 +22,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class PersonSearch {
+
     private final PersonService personService;
     @PersistenceContext
     private final EntityManager entityManager;

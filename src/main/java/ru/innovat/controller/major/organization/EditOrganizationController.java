@@ -14,6 +14,7 @@ import ru.innovat.service.major.OrganizationService;
 @Controller
 @RequiredArgsConstructor
 public class EditOrganizationController {
+
     private final OrganizationService organizationService;
 
     @GetMapping("/organization/{id}/edit")

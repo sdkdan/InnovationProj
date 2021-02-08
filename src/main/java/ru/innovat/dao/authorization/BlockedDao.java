@@ -10,6 +10,7 @@ import ru.innovat.models.authorization.Blocked;
 @Repository
 @RequiredArgsConstructor
 public class BlockedDao {
+
     private final SessionFactory sessionFactory;
 
     @Nullable

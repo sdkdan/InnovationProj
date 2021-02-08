@@ -7,11 +7,10 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 import ru.innovat.models.authorization.VerificationToken;
 
-import java.util.List;
-
 @Repository
 @RequiredArgsConstructor
 public class TokenDao {
+
     private final SessionFactory sessionFactory;
 
     @Nullable
@@ -40,12 +39,5 @@ public class TokenDao {
         Session session = sessionFactory.getCurrentSession();
         VerificationToken verificationToken = session.load(VerificationToken.class, id);
         if (verificationToken != null)session.delete(verificationToken);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Nullable
-    public List<VerificationToken> verificationTokenList() {
-        Session session = this.sessionFactory.getCurrentSession();
-        return (List<VerificationToken>) session.createQuery("From VerificationToken").list();
     }
 }

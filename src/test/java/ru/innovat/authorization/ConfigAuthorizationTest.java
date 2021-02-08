@@ -12,6 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class ConfigAuthorizationTest {
+
     @Autowired
     WebApplicationContext webApplicationContext;
     @Autowired

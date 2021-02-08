@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class CalculateExpiryDate {
+
     private static final int EXPIRATION = 60 * 24;
 
     public static Date calculateDate() {

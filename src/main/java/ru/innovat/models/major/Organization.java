@@ -18,6 +18,7 @@ import java.util.Set;
 @Indexed
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Organization {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
