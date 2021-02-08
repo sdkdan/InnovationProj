@@ -31,48 +31,6 @@ public class OrganizationControllerTest extends ConfigControllerTest {
     OrganizationSearch organizationSearch;
 
     @Test
-    public void organizations() throws Exception {
-        List<Organization> organizationList = organizationService.organizationList();
-        if (organizationList.size() > 0) {
-            this.mockMvc.perform(get("/organization"))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("organization/organization"))
-                    .andExpect(model().attribute("organizationList", hasSize(organizationList.size())))
-                    .andExpect(model().attribute("organizationList", hasItem(
-                            allOf(
-                                    hasProperty("nameOrganization", is(organizationList
-                                            .get(organizationList.size() - 1).getNameOrganization())),
-                                    hasProperty("siteOrganization", is(organizationList
-                                            .get(organizationList.size() - 1).getSiteOrganization())),
-                                    hasProperty("notesOrganization", is(organizationList
-                                            .get(organizationList.size() - 1).getNotesOrganization())
-                                    )
-                            ))));
-        }
-    }
-
-    @Test
-    public void findById_organizationTest() throws Exception {
-        List<Organization> organizationList = organizationService.organizationList();
-        if (organizationList.size() > 0) {
-            int lastId_organization = organizationList.get(organizationList.size() - 1).getId_organization();
-            mockMvc.perform(get("/organization/{id}", lastId_organization))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("organization/oneOrg"))
-                    .andExpect(model().attribute("organization",
-                            allOf(
-                                    hasProperty("nameOrganization", is(organizationList
-                                            .get(organizationList.size() - 1).getNameOrganization())),
-                                    hasProperty("siteOrganization", is(organizationList
-                                            .get(organizationList.size() - 1).getSiteOrganization())),
-                                    hasProperty("notesOrganization", is(organizationList
-                                            .get(organizationList.size() - 1).getNotesOrganization())
-                                    ))));
-        }
-    }
-
-    @Test
     public void organizationSearch() throws Exception {
         Organization lastOrganization = organizationService.organizationList().get(organizationService
                 .organizationList().size() - 1);
@@ -127,36 +85,34 @@ public class OrganizationControllerTest extends ConfigControllerTest {
     @Before
     public void organizationEditTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
-            int lastId_organization = organizationList.size();
-            mockMvc.perform(post("/organization/{id}/update", lastId_organization)
-                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("nameOrganization", "Политех Петра")
-                    .param("siteOrganization", "https://www.spbstu.ru/")
-                    .param("notesOrganization", "university in spb")
-                    .param("cityOrganization", "Saint-Petersburg")
-                    .sessionAttr("organization", new Organization())
-            )
-                    .andExpect(status().is3xxRedirection());
+        int lastId_organization = organizationList.size();
+        mockMvc.perform(post("/organization/{id}/update", lastId_organization)
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("nameOrganization", "Политех Петра")
+                .param("siteOrganization", "https://www.spbstu.ru/")
+                .param("notesOrganization", "university in spb")
+                .param("cityOrganization", "Saint-Petersburg")
+                .sessionAttr("organization", new Organization())
+        )
+                .andExpect(status().is3xxRedirection());
 
-            mockMvc.perform(get("/organization/{id}", lastId_organization))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("organization/oneOrg"))
-                    .andExpect(model().attribute("organization",
-                            allOf(
-                                    hasProperty("nameOrganization", is("Политех Петра")),
-                                    hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
-                                    hasProperty("notesOrganization", is("university in spb"))
-                            )));
+        mockMvc.perform(get("/organization/{id}", lastId_organization))
+                .andExpect(status().isOk())
+                .andExpect(view().name("organization/oneOrg"))
+                .andExpect(model().attribute("organization",
+                        allOf(
+                                hasProperty("nameOrganization", is("Политех Петра")),
+                                hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
+                                hasProperty("notesOrganization", is("university in spb"))
+                        )));
     }
 
     @Test
     public void deleteOrganizationTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
-        if (organizationList.size() > 0) {
-            int organizationLastId = organizationList.get(organizationList.size() - 1).getId_organization();
-            mockMvc.perform(get("/organization/{id}/delete", organizationLastId))
-                    .andDo(print())
-                    .andExpect(status().is3xxRedirection());
-        }
+        int organizationLastId = organizationList.get(organizationList.size() - 1).getId_organization();
+        mockMvc.perform(get("/organization/{id}/delete", organizationLastId))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
     }
 }
