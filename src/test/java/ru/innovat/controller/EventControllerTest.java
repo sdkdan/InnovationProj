@@ -1,5 +1,6 @@
 package ru.innovat.controller;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,6 +28,7 @@ public class EventControllerTest extends ConfigControllerTest {
     EventSearch eventSearch;
 
     @Test
+    @Before
     public void addNewEventTest() throws Exception {
         int eventListSize = eventService.eventList().size();
         int newAddedEvent = 1;
@@ -62,111 +64,63 @@ public class EventControllerTest extends ConfigControllerTest {
     }
 
     @Test
-    public void events() throws Exception {
-        List<Event> eventList = eventService.eventList();
-        if (eventList.size() > 0) {
-            this.mockMvc.perform(get("/event"))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("event/event"))
-                    .andExpect(model().attribute("eventList", hasSize(eventList.size())))
-                    .andExpect(model().attribute("eventList", hasItem(
-                            allOf(
-                                    hasProperty("name_event", is(eventList.get(eventList.size() - 1)
-                                            .getNameEvent())),
-                                    hasProperty("description", is(eventList.get(eventList.size() - 1)
-                                            .getDescription())),
-                                    hasProperty("scope_event", is(eventList.get(eventList.size() - 1)
-                                            .getScopeEvent()))
-                            )
-                    )));
-        }
-    }
-
-    @Test
-    public void findByIdEventTest() throws Exception {
-        List<Event> eventList = eventService.eventList();
-        if (eventList.size() > 0) {
-            int eventLastId = eventList.get(eventList.size() - 1).getId_event();
-            mockMvc.perform(get("/event/{id}", eventLastId)).andExpect(status().isOk())
-                    .andExpect(view().name("event/oneEvent"))
-                    .andExpect(model().attribute("event",
-                            allOf(
-                                    hasProperty("name_event", is(eventList.get(eventList.size() - 1)
-                                            .getNameEvent())),
-                                    hasProperty("description", is(eventList.get(eventList.size() - 1)
-                                            .getDescription())),
-                                    hasProperty("scope_event", is(eventList.get(eventList.size() - 1)
-                                            .getScopeEvent()))
-                            )
-                    ));
-        }
-    }
-
-    @Test
     public void eventSearch() throws Exception {
-        if (eventService.eventList().size() > 0) {
-            Event lastEvent = eventService.eventList().get(eventService.eventList().size() - 1);
-            String lastEventName = lastEvent.getNameEvent();
-            int foundedEventsListSize = eventSearch.fuzzySearch(lastEventName).size();
-            Event lastFoundedEvent = eventSearch.fuzzySearch(lastEventName).get(eventSearch.fuzzySearch(lastEventName)
-                    .size() - 1);
-            mockMvc.perform(get("/event?search=" + lastEventName))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("event/event"))
-                    .andExpect(model().attribute("eventList", hasSize(foundedEventsListSize)))
-                    .andExpect(model().attribute("eventList", hasItem(
-                            allOf(
-                                    hasProperty("nameEvent", is(lastFoundedEvent.getNameEvent())),
-                                    hasProperty("scopeEvent", is(lastFoundedEvent.getScopeEvent())),
-                                    hasProperty("description", is(lastFoundedEvent.getDescription()))
-                            ))));
-        }
+        Event lastEvent = eventService.eventList().get(eventService.eventList().size() - 1);
+        String lastEventName = lastEvent.getNameEvent();
+        int foundedEventsListSize = eventSearch.fuzzySearch(lastEventName).size();
+        Event lastFoundedEvent = eventSearch.fuzzySearch(lastEventName).get(eventSearch.fuzzySearch(lastEventName)
+                .size() - 1);
+        mockMvc.perform(get("/event?search=" + lastEventName))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("event/event"))
+                .andExpect(model().attribute("eventList", hasSize(foundedEventsListSize)))
+                .andExpect(model().attribute("eventList", hasItem(
+                        allOf(
+                                hasProperty("nameEvent", is(lastFoundedEvent.getNameEvent())),
+                                hasProperty("scopeEvent", is(lastFoundedEvent.getScopeEvent())),
+                                hasProperty("description", is(lastFoundedEvent.getDescription()))
+                        ))));
     }
 
     @Test
     public void eventEditTest() throws Exception {
         List<Event> eventList = eventService.eventList();
-        if (eventList.size() > 0) {
-            int eventLastId = eventList.get(eventList.size() - 1).getId_event();
-            mockMvc.perform(post("/event/{id}/update", eventLastId)
-                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("site_event", "https://www.spbstu.ru/")
-                    .param("name_event", "inovations projects")
-                    .param("importance_event", "Not important")
-                    .param("scope_event", "local")
-                    .param("description", "Test event")
-                    .param("phone_number", "88005553535")
-                    .param("date_event", "28.12.2020")
-                    .param("comment", "Test event")
-                    .param("prizes", "none")
-                    .param("location_event", "online")
-                    .param("idTypeEvent", "1")
-                    .sessionAttr("project", new Project())
-            )
-                    .andExpect(status().is3xxRedirection());
+        int eventLastId = eventList.get(eventList.size() - 1).getId_event();
+        mockMvc.perform(post("/event/{id}/update", eventLastId)
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("site_event", "https://www.spbstu.ru/")
+                .param("name_event", "inovations projects")
+                .param("importance_event", "Not important")
+                .param("scope_event", "local")
+                .param("description", "Test event")
+                .param("phone_number", "88005553535")
+                .param("date_event", "28.12.2020")
+                .param("comment", "Test event")
+                .param("prizes", "none")
+                .param("location_event", "online")
+                .param("idTypeEvent", "1")
+                .sessionAttr("project", new Project())
+        )
+                .andExpect(status().is3xxRedirection());
 
-            mockMvc.perform(get("/event/{id}", eventLastId))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("event/oneEvent"))
-                    .andExpect(model().attribute("event",
-                            allOf(
-                                    hasProperty("name_event", is("inovations projects")),
-                                    hasProperty("description", is("Test event")),
-                                    hasProperty("scope_event", is("local"))
-                            )));
-        }
+        mockMvc.perform(get("/event/{id}", eventLastId))
+                .andExpect(status().isOk())
+                .andExpect(view().name("event/oneEvent"))
+                .andExpect(model().attribute("event",
+                        allOf(
+                                hasProperty("name_event", is("inovations projects")),
+                                hasProperty("description", is("Test event")),
+                                hasProperty("scope_event", is("local"))
+                        )));
     }
 
     @Test
     public void deleteEventTest() throws Exception {
         List<Event> eventList = eventService.eventList();
-        if (eventList.size() > 0) {
-            int eventLastId = eventList.get(eventList.size() - 1).getId_event();
-            mockMvc.perform(get("/event/{id}/delete", eventLastId))
-                    .andDo(print())
-                    .andExpect(status().is3xxRedirection());
-        }
+        int eventLastId = eventList.get(eventList.size() - 1).getId_event();
+        mockMvc.perform(get("/event/{id}/delete", eventLastId))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
     }
 }
