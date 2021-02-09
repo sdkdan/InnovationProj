@@ -99,6 +99,7 @@ public class UserService implements UserDetailsService {
         return userDao.findById(id);
     }
 
+    @Transactional
     public List<Role> roleList() {
         return roleDao.roleList();
     }
@@ -132,6 +133,7 @@ public class UserService implements UserDetailsService {
         return blockedDao.findById(id);
     }
 
+    @Transactional
     public List<AppUser> roleUserList() {
         return userDao.roleUserList();
     }

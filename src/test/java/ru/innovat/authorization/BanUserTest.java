@@ -1,9 +1,16 @@
 package ru.innovat.authorization;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import ru.innovat.models.authorization.AppUser;
+import ru.innovat.service.authorization.RegistrationService;
+import ru.innovat.service.authorization.UserService;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
@@ -13,12 +20,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class BanUserTest extends ConfigAuthorizationTest {
+    @Autowired
+    RegistrationService registrationService;
+    @Autowired
+    UserService userService;
 
     @Test
-    @WithUserDetails(value = "test1")
+    @WithMockUser(value = "Ivan22", password = "pwd", roles = "ADMIN")
     public void banUser() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        mockMvc.perform(post("/admin/user/3/saveban")
+        mockMvc.perform(post("/admin/user/2/saveban")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("comment", "banned test")
                 .param("endDate", "2018-11-11"))
@@ -32,10 +43,10 @@ public class BanUserTest extends ConfigAuthorizationTest {
     }
 
     @Test
-    @WithUserDetails(value = "test1")
+    @WithMockUser(value = "test1", password = "pwd", roles = "ADMIN")
     public void unbanUserOnButton() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        mockMvc.perform(get("/admin/user/1/unban"))
+        mockMvc.perform(get("/admin/user/2/unban"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:"));
         mockMvc.perform(get("/admin/user/1"))

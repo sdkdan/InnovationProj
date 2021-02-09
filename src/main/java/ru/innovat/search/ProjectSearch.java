@@ -41,7 +41,7 @@ public class ProjectSearch {
         if (searchTerm != null && searchTerm.length() > 0) {
             QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Project.class).get();
             Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(DISTANCE_UP_TO_SEARCH).withPrefixLength(PREFIX_LENGTH)
-                    .onFields("name_project")
+                    .onFields("nameProject")
                     .matching(searchTerm).createQuery();
             javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Project.class);
             return Optional.ofNullable(jpaQuery.getResultList()).orElseThrow(NoResultException::new);

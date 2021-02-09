@@ -11,26 +11,23 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrganizationService {
 
     private final OrganizationDao organizationDao;
 
-    @Transactional
     public Organization findOrganization(int id) {
         return organizationDao.findById(id);
     }
 
-    @Transactional
     public void addOrganization(Organization organization) {
         organizationDao.add(organization);
     }
 
-    @Transactional
     public void deleteOrganization(int id) {
         organizationDao.delete(id);
     }
 
-    @Transactional
     public void updateOrganization(Organization organization) {
         organizationDao.update(organization);
     }
@@ -39,7 +36,6 @@ public class OrganizationService {
         return organizationDao.organizationList();
     }
 
-    @Transactional
     public Organization organizationAllConnection(int id) {
         return organizationDao.organizationAllConnection(id);
     }

@@ -41,7 +41,7 @@ public class EventSearch {
         if (searchTerm != null && searchTerm.length() > 0) {
             QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Event.class).get();
             Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(DISTANCE_UP_TO_SEARCH).withPrefixLength(PREFIX_LENGTH)
-                    .onFields("name_event", "importance_event", "scope_event")
+                    .onFields("nameEvent", "importanceEvent", "scopeEvent")
                     .matching(searchTerm).createQuery();
             javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Event.class);
             return Optional.ofNullable(jpaQuery.getResultList()).orElseThrow(NoResultException::new);
