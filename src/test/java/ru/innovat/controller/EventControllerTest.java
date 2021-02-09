@@ -1,5 +1,6 @@
 package ru.innovat.controller;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,41 @@ public class EventControllerTest extends ConfigControllerTest {
     @Autowired
     EventSearch eventSearch;
 
-    @Test
     @Before
+    public void createTestEvent() {
+        Event event1 = Event.builder()
+                            .nameEvent("Хакатон")
+                            .importanceEvent("важно")
+                            .description("Только для новых разработчиков")
+                            .dateEvent("2021:02:28")
+                            .prizes("бонус на собеседовании")
+                            .siteEvent("hackaton.ru")
+                            .idTypeEvent(1)
+                            .build();
+        Event event2 = Event.builder()
+                            .nameEvent("Доклады по новым технологиям")
+                            .importanceEvent("важно")
+                            .description("Вход своодный")
+                            .dateEvent("2021:02:28")
+                            .prizes("мелкие призы от компаний")
+                            .siteEvent("event.ru")
+                .idTypeEvent(1)
+                .build();
+
+        eventService.addEvent(event1);
+        eventService.addEvent(event2);
+    }
+
+    @After
+    public void deleteEvents() {
+        List<Event> eventList = eventService.eventList();
+        for (Event event: eventList
+             ) {
+            eventService.deleteEvent(event.getId_event());
+        }
+    }
+
+    @Test
     public void addNewEventTest() throws Exception {
         int eventListSize = eventService.eventList().size();
         int newAddedEvent = 1;
@@ -89,16 +123,16 @@ public class EventControllerTest extends ConfigControllerTest {
         int eventLastId = eventList.get(eventList.size() - 1).getId_event();
         mockMvc.perform(post("/event/{id}/update", eventLastId)
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("site_event", "https://www.spbstu.ru/")
-                .param("name_event", "inovations projects")
-                .param("importance_event", "Not important")
-                .param("scope_event", "local")
+                .param("siteEvent", "https://www.spbstu.ru/")
+                .param("nameEvent", "inovations projects")
+                .param("importanceEvent", "Not important")
+                .param("scopeEvent", "local")
                 .param("description", "Test event")
-                .param("phone_number", "88005553535")
-                .param("date_event", "28.12.2020")
+                .param("phoneNumber", "88005553535")
+                .param("dateEvent", "28.12.2020")
                 .param("comment", "Test event")
                 .param("prizes", "none")
-                .param("location_event", "online")
+                .param("locationEvent", "online")
                 .param("idTypeEvent", "1")
                 .sessionAttr("project", new Project())
         )
@@ -109,9 +143,9 @@ public class EventControllerTest extends ConfigControllerTest {
                 .andExpect(view().name("event/oneEvent"))
                 .andExpect(model().attribute("event",
                         allOf(
-                                hasProperty("name_event", is("inovations projects")),
+                                hasProperty("nameEvent", is("inovations projects")),
                                 hasProperty("description", is("Test event")),
-                                hasProperty("scope_event", is("local"))
+                                hasProperty("scopeEvent", is("local"))
                         )));
     }
 

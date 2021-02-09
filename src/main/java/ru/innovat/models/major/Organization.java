@@ -1,8 +1,6 @@
 package ru.innovat.models.major;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
@@ -17,6 +15,9 @@ import java.util.Set;
 @Setter
 @Indexed
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Organization {
 
     @Id

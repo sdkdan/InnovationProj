@@ -41,7 +41,7 @@ public class OrganizationSearch {
         if (searchTerm != null && searchTerm.length() > 0) {
             QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Organization.class).get();
             Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(DISTANCE_UP_TO_SEARCH).withPrefixLength(PREFIX_LENGTH)
-                    .onFields("name_organization", "city_organization")
+                    .onFields("nameOrganization", "cityOrganization")
                     .matching(searchTerm).createQuery();
             javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Organization.class);
             return Optional.ofNullable(jpaQuery.getResultList()).orElseThrow(NoResultException::new);

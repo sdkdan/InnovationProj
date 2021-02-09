@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.innovat.models.major.Event;
 import ru.innovat.models.major.Organization;
 import ru.innovat.search.OrganizationSearch;
 import ru.innovat.service.major.OrganizationService;
@@ -30,28 +31,26 @@ public class OrganizationControllerTest extends ConfigControllerTest {
     @Autowired
     OrganizationSearch organizationSearch;
 
-    @Test
-    public void organizationSearch() throws Exception {
-        Organization lastOrganization = organizationService.organizationList().get(organizationService
-                .organizationList().size() - 1);
-        String lastOrganizationName = lastOrganization.getNameOrganization();
-        int foundedOrganizationsListSize = organizationSearch.fuzzySearch(lastOrganizationName).size();
-        Organization lastFoundedOrganization = organizationSearch.fuzzySearch(lastOrganizationName).get(organizationSearch
-                .fuzzySearch(lastOrganizationName).size() - 1);
-        mockMvc.perform(get("/organization?search=" + lastOrganizationName))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("organization/organization"))
-                .andExpect(model().attribute("organizationList", hasSize(foundedOrganizationsListSize)))
-                .andExpect(model().attribute("organizationList", hasItem(
-                        allOf(
-                                hasProperty("nameOrganization", is(lastFoundedOrganization
-                                        .getNameOrganization())),
-                                hasProperty("siteOrganization", is(lastFoundedOrganization
-                                        .getSiteOrganization())),
-                                hasProperty("notesOrganization", is(lastFoundedOrganization
-                                        .getNotesOrganization()))
-                        ))));
+    @Before
+    public void createOrganizationEvent() {
+        Organization organization1 = Organization.builder()
+                .nameOrganization("СПБПУ")
+                .build();
+        Organization organization2 = Organization.builder()
+                .nameOrganization("Nasa")
+                .build();
+
+        organizationService.addOrganization(organization1);
+        organizationService.addOrganization(organization2);
+    }
+
+    @After
+    public void deleteEvents() {
+        List<Organization> organizationList = organizationService.organizationList();
+        for (Organization organization: organizationList
+        ) {
+            organizationService.deleteOrganization(organization.getId_organization());
+        }
     }
 
     @Test
@@ -82,10 +81,33 @@ public class OrganizationControllerTest extends ConfigControllerTest {
     }
 
     @Test
-    @Before
+    public void organizationSearch() throws Exception {
+        Organization lastOrganization = organizationService.organizationList().get(organizationService
+                .organizationList().size() - 1);
+        String lastOrganizationName = lastOrganization.getNameOrganization();
+        int foundedOrganizationsListSize = organizationSearch.fuzzySearch(lastOrganizationName).size();
+        Organization lastFoundedOrganization = organizationSearch.fuzzySearch(lastOrganizationName).get(organizationSearch
+                .fuzzySearch(lastOrganizationName).size() - 1);
+        mockMvc.perform(get("/organization?search=" + lastOrganizationName))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("organization/organization"))
+                .andExpect(model().attribute("organizationList", hasSize(foundedOrganizationsListSize)))
+                .andExpect(model().attribute("organizationList", hasItem(
+                        allOf(
+                                hasProperty("nameOrganization", is(lastFoundedOrganization
+                                        .getNameOrganization())),
+                                hasProperty("siteOrganization", is(lastFoundedOrganization
+                                        .getSiteOrganization())),
+                                hasProperty("notesOrganization", is(lastFoundedOrganization
+                                        .getNotesOrganization()))
+                        ))));
+    }
+
+    @Test
     public void organizationEditTest() throws Exception {
         List<Organization> organizationList = organizationService.organizationList();
-        int lastId_organization = organizationList.size();
+        int lastId_organization = organizationList.get(organizationList.size() - 1).getId_organization();
         mockMvc.perform(post("/organization/{id}/update", lastId_organization)
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("nameOrganization", "Политех Петра")

@@ -1,8 +1,6 @@
 package ru.innovat.models.authorization;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.innovat.models.utils.RolesEnum;
@@ -15,6 +13,8 @@ import java.util.Collection;
 @Getter
 @Setter
 @EqualsAndHashCode(exclude = {"role", "blocked", "password", "passwordConfirm", "enabled"})
+@Builder
+@AllArgsConstructor
 public class AppUser implements UserDetails {
 
     @Id

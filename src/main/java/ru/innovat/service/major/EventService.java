@@ -12,26 +12,23 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class EventService {
 
     private final EventDao eventDao;
 
-    @Transactional
     public Event findEvent(int id) {
         return eventDao.findById(id);
     }
 
-    @Transactional
     public void addEvent(Event event) {
         eventDao.add(event);
     }
 
-    @Transactional
     public void deleteEvent(int id) {
         eventDao.delete(id);
     }
 
-    @Transactional
     public void updateEvent(Event event) {
         eventDao.update(event);
     }
@@ -40,7 +37,6 @@ public class EventService {
         return eventDao.eventList();
     }
 
-    @Transactional
     public Event eventAllConnections(int id) {
         return eventDao.eventAllConnection(id);
     }
