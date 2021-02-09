@@ -23,9 +23,10 @@ import java.util.Optional;
 @Slf4j
 public class ProjectSearch {
 
-    private final ProjectService projectService;
     @PersistenceContext
     private final EntityManager entityManager;
+
+    private final ProjectService projectService;
     private final static int DISTANCE_UP_TO_SEARCH = 1;
     private final static int PREFIX_LENGTH = 1;
 

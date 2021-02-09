@@ -32,7 +32,8 @@ public class ConnectionOrganizationController {
     }
 
     @PostMapping(value = "/organization/{id}/connect")
-    public String organizationAddConnection(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect connect) {
+    public String organizationAddConnection(@PathVariable("id") int id, @ModelAttribute Organization organization,
+                                            Connect connect) {
         connectionService.addConnections(connect, organizationService.organizationAllConnection(id));
         return "redirect:";
     }

@@ -17,7 +17,7 @@ public class EmailService {
         mailMessage.setTo(email);
         mailMessage.setSubject("Завершите регистрацию");
         mailMessage.setText("Что бы подтвердить почту перейдите по ссылке : "
-                + "http://localhost:8080/confirm-account?token=" + verificationToken.getToken());
+                            + "http://localhost:8080/confirm-account?token=" + verificationToken.getToken());
         javaMailSender.send(mailMessage);
     }
 }

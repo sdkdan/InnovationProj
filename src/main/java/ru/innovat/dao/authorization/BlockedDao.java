@@ -19,7 +19,6 @@ public class BlockedDao {
         return session.get(Blocked.class, id);
     }
 
-    @Nullable
     public void add(Blocked blocked) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(blocked);

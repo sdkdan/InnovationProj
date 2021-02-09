@@ -23,9 +23,10 @@ import java.util.Optional;
 @Slf4j
 public class PersonSearch {
 
-    private final PersonService personService;
     @PersistenceContext
     private final EntityManager entityManager;
+
+    private final PersonService personService;
     private final static int DISTANCE_UP_TO_SEARCH = 1;
     private final static int PREFIX_LENGTH = 1;
 

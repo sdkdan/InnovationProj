@@ -18,7 +18,6 @@ public class AddProjectController {
 
     @GetMapping(value = "/project/add")
     public String getAddProject(Model model) {
-
         model.addAttribute("project", new Project());
         return "project/addproject";
     }

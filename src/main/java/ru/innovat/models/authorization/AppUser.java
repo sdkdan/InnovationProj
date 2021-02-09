@@ -16,26 +16,36 @@ import java.util.Collection;
 @Setter
 @EqualsAndHashCode(exclude = {"role", "blocked", "password", "passwordConfirm", "enabled"})
 public class AppUser implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_user;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "username")
     private String username;
+
     @Column(name = "email")
     private String eMail;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "last_name")
     private String lastName;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role")
     private Role role;
+
     @Transient
     private String passwordConfirm;
+
     @Column(name = "enabled")
     private boolean enabled;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_blocked")
     private Blocked blocked;

@@ -19,6 +19,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class AdminController {
+
     private final UserService userService;
 
     @GetMapping(value = "/admin")

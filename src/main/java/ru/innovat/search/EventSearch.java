@@ -23,9 +23,10 @@ import java.util.Optional;
 @Slf4j
 public class EventSearch {
 
-    private final EventService eventService;
     @PersistenceContext
     private final EntityManager entityManager;
+
+    private final EventService eventService;
     private final static int DISTANCE_UP_TO_SEARCH = 1;
     private final static int PREFIX_LENGTH = 1;
 

@@ -24,8 +24,8 @@ public class ChatController {
 
     @GetMapping("/help")
     public String helpForm(Model model, Principal principal) {
-        model.addAttribute("messages", messagesService.userMessages(
-                userService.findUserByUsername(principal.getName()).getId_user()));
+        model.addAttribute("messages", messagesService.userMessages(userService.findUserByUsername(principal.getName())
+                                                                                  .getId_user()));
         model.addAttribute("newMessage", new Messages());
         return "help";
     }
