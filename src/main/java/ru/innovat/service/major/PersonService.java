@@ -11,26 +11,23 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class PersonService {
 
     private final PersonDao personDao;
 
-    @Transactional
     public Person findPerson(int id) {
         return personDao.findById(id);
     }
 
-    @Transactional
     public void addPerson(Person person) {
         personDao.add(person);
     }
 
-    @Transactional
     public void deletePerson(int id) {
         personDao.delete(id);
     }
 
-    @Transactional
     public void updatePerson(Person person) {
         personDao.update(person);
     }
@@ -39,7 +36,6 @@ public class PersonService {
         return personDao.personList();
     }
 
-    @Transactional
     public Person personAllConnections(int id) {
         return personDao.personAllConnections(id);
     }

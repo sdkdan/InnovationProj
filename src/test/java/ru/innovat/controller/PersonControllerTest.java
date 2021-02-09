@@ -1,5 +1,8 @@
 package ru.innovat.controller;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -23,11 +26,36 @@ public class PersonControllerTest extends ConfigControllerTest {
 
     @Autowired
     OrganizationController organizationController;
+
     @Autowired
     PersonService personService;
+
     @Autowired
     PersonSearch personSearch;
 
+    @Before
+    public void createPetsonForTests() {
+        Person newPerson1 = Person.builder()
+                .surname("Мурсаев")
+                .name("Иван")
+                .thirdName("Владимирович")
+                .build();
+        Person newPerson2 = Person.builder()
+                                  .surname("Иванов")
+                                  .name("Олег")
+                                  .thirdName("Игоревич")
+                                  .build();
+
+        personService.addPerson(newPerson1);
+        personService.addPerson(newPerson2);
+    }
+
+    @After
+    public void deletePerson(){
+        for(Person person: personService.personList()){
+            personService.deletePerson(person.getId_person());
+        }
+    }
     @Test
     public void personSearch() throws Exception {
         Person lastPerson = personService.personList().get(personService
@@ -50,6 +78,7 @@ public class PersonControllerTest extends ConfigControllerTest {
                 )));
     }
 
+
     @Test
     public void addNewPersonTest() throws Exception {
         int personListSize = personService.personList().size();
@@ -61,7 +90,7 @@ public class PersonControllerTest extends ConfigControllerTest {
                 .param("thirdName", "Абрамович")
                 .param("phoneNumber", "88005553535")
                 .param("dateOfBirth", "1997-28-02")
-                .param("eMail", "SlavaUkraine@geroyam.slava")
+                .param("eMail", "maksim99@gmail.com")
                 .param("facebook", "Фейсбук")
                 .param("vk", "ВК")
                 .param("rating", "10")
@@ -79,8 +108,7 @@ public class PersonControllerTest extends ConfigControllerTest {
                 .andExpect(model().attribute("personList", hasItem(
                         allOf(
                                 hasProperty("name", is("Марцинкевич")),
-                                hasProperty("surname", is("Максим")),
-                                hasProperty("eMail", is("SlavaUkraine@geroyam.slava"))
+                                hasProperty("surname", is("Максим"))
                         )
                 )));
     }
@@ -91,12 +119,12 @@ public class PersonControllerTest extends ConfigControllerTest {
         int lastIdPerson = personList.get(personList.size() - 1).getId_person();
         mockMvc.perform(post("/person/{id}/update", lastIdPerson)
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("surname", "Максим")
-                .param("name", "Марцинкевич")
+                .param("surname", "Бугров")
+                .param("name", "Алекс")
                 .param("thirdName", "Абрамович")
                 .param("phoneNumber", "88005553535")
                 .param("dateOfBirth", "1997-28-02")
-                .param("eMail", "SlavaUkraine@geroyam.slava")
+                .param("eMail", "maksim99@gmail.com")
                 .param("facebook", "Фейсбук")
                 .param("vk", "ВК")
                 .param("rating", "10")
@@ -111,9 +139,8 @@ public class PersonControllerTest extends ConfigControllerTest {
                 .andExpect(view().name("person/onePerson"))
                 .andExpect(model().attribute("person",
                         allOf(
-                                hasProperty("name", is("Марцинкевич")),
-                                hasProperty("surname", is("Максим")),
-                                hasProperty("eMail", is("SlavaUkraine@geroyam.slava"))
+                                hasProperty("name", is("Алекс")),
+                                hasProperty("surname", is("Бугров"))
                         )));
     }
 

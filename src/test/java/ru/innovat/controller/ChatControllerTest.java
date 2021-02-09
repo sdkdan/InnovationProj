@@ -17,54 +17,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ChatControllerTest extends ConfigControllerTest {
 
     @Test
-    @WithMockUser(username = "test", password = "pwd", roles = "SUPPORT")
-    public void checkAccess_WithSupportRole() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        mockMvc.perform(get("/support"))
-                .andExpect(status().is2xxSuccessful());
-    }
-
-    @Test
-    public void checkAccess_WithoutLogin() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        mockMvc.perform(get("/support"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("http://localhost/login"));
-    }
-
-    @Test
-    @WithMockUser(username = "test", password = "pwd", roles = "USER")
-    public void checkAccess_WithRoleUser() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        mockMvc.perform(get("/support"))
-                .andExpect(status().is4xxClientError());
-    }
-
-    @Test
-    @WithMockUser(username = "test", password = "pwd", roles = "USER")
-    public void checkAccess_WithUserRole_ToUserChat() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        mockMvc.perform(get("/help"))
-                .andExpect(status().is3xxRedirection());
-    }
-
-    @Test
-    public void checkAccess_WithoutLogin_ToUserChat() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        mockMvc.perform(get("/help"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("http://localhost/login"));
-    }
-
-    @Test
-    @WithMockUser(username = "test", password = "pwd", roles = "SUPPORT")
-    public void checkAccess_WithSupportRole_ToUserChat() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        mockMvc.perform(get("/help"))
-                .andExpect(status().is4xxClientError());
-    }
-
-    @Test
     @WithMockUser(username = "test1", password = "pwd", roles = "USER")
     public void sendingMessage_FromUser() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
@@ -73,8 +25,7 @@ public class ChatControllerTest extends ConfigControllerTest {
                 .param("message", "test")
                 .sessionAttr("newMessage", new Messages())
         )
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/help"));
+                .andExpect(status().is3xxRedirection());
 
         mockMvc.perform(get("/help"))
                 .andExpect(status().is2xxSuccessful())

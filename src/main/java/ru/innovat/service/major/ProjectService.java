@@ -12,24 +12,21 @@ import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProjectService {
 
     private final ProjectDao projectDao;
 
-    @Transactional
     public Project findProject(int id) {
         return projectDao.findById(id);
     }
 
-    @Transactional
     public void addProject(Project project) { projectDao.add(project); }
 
-    @Transactional
     public void deleteProject(int id) {
         projectDao.delete(id);
     }
 
-    @Transactional
     public void updateProject(Project project) {
         projectDao.update(project);
     }
@@ -38,7 +35,6 @@ public class ProjectService {
         return projectDao.projectList();
     }
 
-    @Transactional
     public Project projectAllConnections(int id) {
         return projectDao.projectAllConnections(id);
     }
