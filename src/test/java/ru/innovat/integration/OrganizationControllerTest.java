@@ -34,11 +34,11 @@ public class OrganizationControllerTest extends ConfigControllerTest {
     @Before
     public void createOrganizationEvent() {
         Organization organization1 = Organization.builder()
-                .nameOrganization("СПБПУ")
-                .build();
+                                                 .nameOrganization("СПБПУ")
+                                                 .build();
         Organization organization2 = Organization.builder()
-                .nameOrganization("Nasa")
-                .build();
+                                                 .nameOrganization("Nasa")
+                                                 .build();
 
         organizationService.addOrganization(organization1);
         organizationService.addOrganization(organization2);
@@ -46,8 +46,7 @@ public class OrganizationControllerTest extends ConfigControllerTest {
 
     @After
     public void deleteEvents() {
-        List<Organization> organizationList = organizationService.organizationList();
-        for (Organization organization: organizationList
+        for (Organization organization: organizationService.organizationList()
         ) {
             organizationService.deleteOrganization(organization.getId_organization());
         }
@@ -58,21 +57,21 @@ public class OrganizationControllerTest extends ConfigControllerTest {
         int organizationListSize = organizationService.organizationList().size();
         int newAddedOrganization = 1;
         mockMvc.perform(post("/organization/add")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("nameOrganization", "Политех")
-                .param("siteOrganization", "https://www.spbstu.ru/")
-                .param("notesOrganization", "university in spb")
-                .param("cityOrganization", "Saint-Petersburg")
-                .sessionAttr("organization", new Organization())
+               .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+               .param("nameOrganization", "Политех")
+               .param("siteOrganization", "https://www.spbstu.ru/")
+               .param("notesOrganization", "university in spb")
+               .param("cityOrganization", "Saint-Petersburg")
+               .sessionAttr("organization", new Organization())
         )
-                .andExpect(status().is3xxRedirection());
+               .andExpect(status().is3xxRedirection());
 
         mockMvc.perform(get("/organization"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("organization/organization"))
-                .andExpect(model().attribute("organizationList", hasSize(organizationListSize + newAddedOrganization)))
-                .andExpect(model().attribute("organizationList", hasItem(
+               .andDo(print())
+               .andExpect(status().isOk())
+               .andExpect(view().name("organization/organization"))
+               .andExpect(model().attribute("organizationList", hasSize(organizationListSize + newAddedOrganization)))
+               .andExpect(model().attribute("organizationList", hasItem(
                         allOf(
                                 hasProperty("nameOrganization", is("Политех")),
                                 hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
@@ -89,18 +88,18 @@ public class OrganizationControllerTest extends ConfigControllerTest {
         Organization lastFoundedOrganization = organizationSearch.fuzzySearch(lastOrganizationName).get(organizationSearch
                 .fuzzySearch(lastOrganizationName).size() - 1);
         mockMvc.perform(get("/organization?search=" + lastOrganizationName))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("organization/organization"))
-                .andExpect(model().attribute("organizationList", hasSize(foundedOrganizationsListSize)))
-                .andExpect(model().attribute("organizationList", hasItem(
+               .andDo(print())
+               .andExpect(status().isOk())
+               .andExpect(view().name("organization/organization"))
+               .andExpect(model().attribute("organizationList", hasSize(foundedOrganizationsListSize)))
+               .andExpect(model().attribute("organizationList", hasItem(
                         allOf(
                                 hasProperty("nameOrganization", is(lastFoundedOrganization
-                                        .getNameOrganization())),
+                                                                               .getNameOrganization())),
                                 hasProperty("siteOrganization", is(lastFoundedOrganization
-                                        .getSiteOrganization())),
+                                                                               .getSiteOrganization())),
                                 hasProperty("notesOrganization", is(lastFoundedOrganization
-                                        .getNotesOrganization()))
+                                                                                .getNotesOrganization()))
                         ))));
     }
 
@@ -109,19 +108,19 @@ public class OrganizationControllerTest extends ConfigControllerTest {
         List<Organization> organizationList = organizationService.organizationList();
         int lastId_organization = organizationList.get(organizationList.size() - 1).getId_organization();
         mockMvc.perform(post("/organization/{id}/update", lastId_organization)
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("nameOrganization", "Политех Петра")
-                .param("siteOrganization", "https://www.spbstu.ru/")
-                .param("notesOrganization", "university in spb")
-                .param("cityOrganization", "Saint-Petersburg")
-                .sessionAttr("organization", new Organization())
+               .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+               .param("nameOrganization", "Политех Петра")
+               .param("siteOrganization", "https://www.spbstu.ru/")
+               .param("notesOrganization", "university in spb")
+               .param("cityOrganization", "Saint-Petersburg")
+               .sessionAttr("organization", new Organization())
         )
-                .andExpect(status().is3xxRedirection());
+               .andExpect(status().is3xxRedirection());
 
         mockMvc.perform(get("/organization/{id}", lastId_organization))
-                .andExpect(status().isOk())
-                .andExpect(view().name("organization/oneOrg"))
-                .andExpect(model().attribute("organization",
+               .andExpect(status().isOk())
+               .andExpect(view().name("organization/oneOrg"))
+               .andExpect(model().attribute("organization",
                         allOf(
                                 hasProperty("nameOrganization", is("Политех Петра")),
                                 hasProperty("siteOrganization", is("https://www.spbstu.ru/")),
@@ -134,7 +133,7 @@ public class OrganizationControllerTest extends ConfigControllerTest {
         List<Organization> organizationList = organizationService.organizationList();
         int organizationLastId = organizationList.get(organizationList.size() - 1).getId_organization();
         mockMvc.perform(get("/organization/{id}/delete", organizationLastId))
-                .andDo(print())
-                .andExpect(status().is3xxRedirection());
+               .andDo(print())
+               .andExpect(status().is3xxRedirection());
     }
 }

@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-@WithMockUser(username = "test", password = "pwd", roles = "ADMIN")
+@WithMockUser(username = "Ivan22", password = "pwd", roles = "ADMIN")
 public class EventControllerTest extends ConfigControllerTest {
 
     @Autowired
@@ -47,8 +47,8 @@ public class EventControllerTest extends ConfigControllerTest {
                             .dateEvent("2021:02:28")
                             .prizes("мелкие призы от компаний")
                             .siteEvent("event.ru")
-                .idTypeEvent(1)
-                .build();
+                            .idTypeEvent(1)
+                            .build();
 
         eventService.addEvent(event1);
         eventService.addEvent(event2);
@@ -56,8 +56,7 @@ public class EventControllerTest extends ConfigControllerTest {
 
     @After
     public void deleteEvents() {
-        List<Event> eventList = eventService.eventList();
-        for (Event event: eventList
+        for (Event event: eventService.eventList()
              ) {
             eventService.deleteEvent(event.getId_event());
         }
@@ -68,32 +67,32 @@ public class EventControllerTest extends ConfigControllerTest {
         int eventListSize = eventService.eventList().size();
         int newAddedEvent = 1;
         mockMvc.perform(post("/event/add")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("siteEvent", "https://www.spbstu.ru/")
-                .param("nameEvent", "inovatproject")
-                .param("importanceEvent", "Not important")
-                .param("scopeEvent", "local")
-                .param("description", "Test event")
-                .param("phoneNumber", "88005553535")
-                .param("dateEvent", "28.12.2020")
-                .param("comment", "Test event")
-                .param("prizes", "none")
-                .param("locationEvent", "online")
-                .param("idTypeEvent", "1")
-                .sessionAttr("event", new Event())
+               .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+               .param("siteEvent", "https://www.spbstu.ru/")
+               .param("nameEvent", "inovatproject")
+               .param("importanceEvent", "Not important")
+               .param("scopeEvent", "local")
+               .param("description", "Data Base innovation project")
+               .param("phoneNumber", "88005553535")
+               .param("dateEvent", "28.12.2020")
+               .param("comment", "Data Base innovation project")
+               .param("prizes", "none")
+               .param("locationEvent", "online")
+               .param("idTypeEvent", "1")
+               .sessionAttr("event", new Event())
         )
                 .andExpect(status().is3xxRedirection());
 
         mockMvc.perform(get("/event"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("event/event"))
-                .andExpect(model().attribute("eventList", hasSize(eventListSize + newAddedEvent)))
-                .andExpect(model().attribute("eventList", hasItem(
+               .andDo(print())
+               .andExpect(status().isOk())
+               .andExpect(view().name("event/event"))
+               .andExpect(model().attribute("eventList", hasSize(eventListSize + newAddedEvent)))
+               .andExpect(model().attribute("eventList", hasItem(
                         allOf(
                                 hasProperty("nameEvent", is("inovatproject")),
                                 hasProperty("siteEvent", is("https://www.spbstu.ru/")),
-                                hasProperty("description", is("Test event"))
+                                hasProperty("description", is("Data Base innovation project"))
                         )
                 )));
     }
@@ -104,13 +103,13 @@ public class EventControllerTest extends ConfigControllerTest {
         String lastEventName = lastEvent.getNameEvent();
         int foundedEventsListSize = eventSearch.fuzzySearch(lastEventName).size();
         Event lastFoundedEvent = eventSearch.fuzzySearch(lastEventName).get(eventSearch.fuzzySearch(lastEventName)
-                .size() - 1);
+                                                                            .size() - 1);
         mockMvc.perform(get("/event?search=" + lastEventName))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("event/event"))
-                .andExpect(model().attribute("eventList", hasSize(foundedEventsListSize)))
-                .andExpect(model().attribute("eventList", hasItem(
+               .andDo(print())
+               .andExpect(status().isOk())
+               .andExpect(view().name("event/event"))
+               .andExpect(model().attribute("eventList", hasSize(foundedEventsListSize)))
+               .andExpect(model().attribute("eventList", hasItem(
                         allOf(
                                 hasProperty("nameEvent", is(lastFoundedEvent.getNameEvent())),
                                 hasProperty("scopeEvent", is(lastFoundedEvent.getScopeEvent())),
@@ -123,29 +122,29 @@ public class EventControllerTest extends ConfigControllerTest {
         List<Event> eventList = eventService.eventList();
         int eventLastId = eventList.get(eventList.size() - 1).getId_event();
         mockMvc.perform(post("/event/{id}/update", eventLastId)
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("siteEvent", "https://www.spbstu.ru/")
-                .param("nameEvent", "inovations projects")
-                .param("importanceEvent", "Not important")
-                .param("scopeEvent", "local")
-                .param("description", "Test event")
-                .param("phoneNumber", "88005553535")
-                .param("dateEvent", "28.12.2020")
-                .param("comment", "Test event")
-                .param("prizes", "none")
-                .param("locationEvent", "online")
-                .param("idTypeEvent", "1")
-                .sessionAttr("project", new Project())
+               .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+               .param("siteEvent", "https://www.spbstu.ru/")
+               .param("nameEvent", "inovations projects")
+               .param("importanceEvent", "Not important")
+               .param("scopeEvent", "local")
+               .param("description", "Data Base innovation project")
+               .param("phoneNumber", "88005553535")
+               .param("dateEvent", "28.12.2020")
+               .param("comment", "Data Base innovation project")
+               .param("prizes", "none")
+               .param("locationEvent", "online")
+               .param("idTypeEvent", "1")
+               .sessionAttr("project", new Project())
         )
-                .andExpect(status().is3xxRedirection());
+               .andExpect(status().is3xxRedirection());
 
         mockMvc.perform(get("/event/{id}", eventLastId))
-                .andExpect(status().isOk())
-                .andExpect(view().name("event/oneEvent"))
-                .andExpect(model().attribute("event",
+               .andExpect(status().isOk())
+               .andExpect(view().name("event/oneEvent"))
+               .andExpect(model().attribute("event",
                         allOf(
                                 hasProperty("nameEvent", is("inovations projects")),
-                                hasProperty("description", is("Test event")),
+                                hasProperty("description", is("Data Base innovation project")),
                                 hasProperty("scopeEvent", is("local"))
                         )));
     }
@@ -155,7 +154,7 @@ public class EventControllerTest extends ConfigControllerTest {
         List<Event> eventList = eventService.eventList();
         int eventLastId = eventList.get(eventList.size() - 1).getId_event();
         mockMvc.perform(get("/event/{id}/delete", eventLastId))
-                .andDo(print())
-                .andExpect(status().is3xxRedirection());
+               .andDo(print())
+               .andExpect(status().is3xxRedirection());
     }
 }
