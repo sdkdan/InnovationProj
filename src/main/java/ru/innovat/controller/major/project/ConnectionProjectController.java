@@ -23,7 +23,7 @@ public class ConnectionProjectController {
     public String oneProjectAddCon(@PathVariable("id") int id, Model model) {
         Project project = projectService.projectAllConnections(id);
         model.addAttribute("organizations", connectionService.removeConnectionsFormOrganizationList(project
-                .getOrganizations()));
+                           .getOrganizations()));
         model.addAttribute("events", connectionService.removeConnectionsFormEventList(project.getEvents()));
         model.addAttribute("persons", connectionService.removeConnectionsFormPersonList(project.getPersons()));
         model.addAttribute("project", project);

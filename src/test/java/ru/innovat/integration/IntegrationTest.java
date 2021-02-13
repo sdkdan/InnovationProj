@@ -1,4 +1,4 @@
-package ru.innovat;
+package ru.innovat.integration;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import ru.innovat.config.ConfigControllerTest;
 import ru.innovat.models.authorization.AppUser;
 import ru.innovat.models.major.Organization;
 import ru.innovat.models.major.Person;
@@ -27,16 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
-@TestPropertySource("/application-test.properties")
-public class IntegrationTest {
-
-    @Autowired
-    private WebApplicationContext webApplicationContext;
-    @Autowired
-    private MockMvc mockMvc;
+public class IntegrationTest extends ConfigControllerTest {
 
     @Test
     @WithMockUser(username = "test", password = "pwd", roles = "USER")

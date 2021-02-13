@@ -22,8 +22,7 @@ public class EditPersonController {
 
     @GetMapping("/person/{id}/edit")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        Person person = personService.findPerson(id);
-        model.addAttribute("person", person);
+        model.addAttribute("person", personService.findPerson(id));
         return "person/updatePerson";
     }
 

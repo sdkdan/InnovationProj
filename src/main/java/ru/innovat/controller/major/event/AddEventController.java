@@ -21,8 +21,7 @@ public class AddEventController {
     @GetMapping(value = "/event/add")
     public String addEventPage(Model model) {
         model.addAttribute("event", new Event());
-        List<TypeEvent> typeEventList = eventService.findAllTypeEvents();
-        model.addAttribute("list", typeEventList);
+        model.addAttribute("list", eventService.findAllTypeEvents());
         return "event/addevent";
     }
 

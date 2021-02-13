@@ -1,12 +1,12 @@
-package ru.innovat.controller;
+package ru.innovat.integration;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import ru.innovat.config.ConfigControllerTest;
 import ru.innovat.controller.major.organization.OrganizationController;
 import ru.innovat.models.major.Person;
 import ru.innovat.search.PersonSearch;

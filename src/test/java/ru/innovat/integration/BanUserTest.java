@@ -1,14 +1,11 @@
-package ru.innovat.authorization;
+package ru.innovat.integration;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import ru.innovat.models.authorization.AppUser;
+import ru.innovat.config.ConfigControllerTest;
 import ru.innovat.service.authorization.RegistrationService;
 import ru.innovat.service.authorization.UserService;
 
@@ -19,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-public class BanUserTest extends ConfigAuthorizationTest {
+public class BanUserTest extends ConfigControllerTest {
     @Autowired
     RegistrationService registrationService;
     @Autowired

@@ -1,25 +1,47 @@
-package ru.innovat.services;
+package ru.innovat.unit;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.major.Event;
 import ru.innovat.models.major.Organization;
 import ru.innovat.models.major.Person;
 import ru.innovat.models.utils.Connect;
-import ru.innovat.service.major.ConnectionService;
+import ru.innovat.service.major.*;
+
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@TestPropertySource("/application-test.properties")
+@Transactional
+public class ConnectionServiceTest {
 
-public class ConnectionServiceTest extends ConfigServiceTest {
     @Autowired
     ConnectionService connectService;
 
+    @Autowired
+    ProjectService projectService;
+
+    @Autowired
+    EventService eventService;
+
+    @Autowired
+    PersonService personService;
+
+    @Autowired
+    OrganizationService organizationService;
+
     @Test
-    public void newConnection_AddToProject() {//addToProject_Connection_addedConnection Second name of the test
+    public void newConnection_AddToProject() {
         int organizationId = 1;
         int eventId = 1;
         int personId = 1;

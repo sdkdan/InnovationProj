@@ -67,7 +67,7 @@ public class Event {
             joinColumns = @JoinColumn(name = "id_event"),
             inverseJoinColumns = @JoinColumn(name = "id_person")
     )
-    private Set<Person> persons = new HashSet<Person>();
+    private Set<Person> persons = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "organization_event",

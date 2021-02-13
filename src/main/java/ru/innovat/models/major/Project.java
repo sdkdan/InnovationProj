@@ -65,7 +65,7 @@ public class Project {
             joinColumns = @JoinColumn(name = "id_project"),
             inverseJoinColumns = @JoinColumn(name = "id_person")
     )
-    private Set<Person> persons = new HashSet<Person>();
+    private Set<Person> persons = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "organization_project",

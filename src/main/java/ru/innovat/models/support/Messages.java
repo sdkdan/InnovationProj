@@ -32,5 +32,4 @@ public class Messages {
 
     @Column(name = "user_message")
     private Boolean userMessage;
-
 }

@@ -19,22 +19,19 @@ public class ProfileController {
 
     @GetMapping("/myprofile")
     public String profile(Model model, Principal principal) {
-        AppUser user = userService.findUserByUsername(principal.getName());
-        model.addAttribute("user", user);
+        model.addAttribute("user",userService.findUserByUsername(principal.getName()));
         return "user/myprofile";
     }
 
     @GetMapping("/myprofile/edit")
     public String editProfile(Model model, Principal principal) {
-        AppUser user = userService.findUserByUsername(principal.getName());
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.findUserByUsername(principal.getName()));
         return "user/editUser";
     }
 
     @GetMapping("/myprofile/editpassword")
     public String editPassword(Model model, Principal principal) {
-        AppUser user = userService.findUserByUsername(principal.getName());
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.findUserByUsername(principal.getName()));
         return "user/editPassword";
     }
 

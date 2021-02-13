@@ -75,14 +75,14 @@ public class Person {
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_organization")
     )
-    private Set<Organization> organizations = new HashSet<Organization>();
+    private Set<Organization> organizations = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "project_person",
             joinColumns = @JoinColumn(name = "id_person"),
             inverseJoinColumns = @JoinColumn(name = "id_project")
     )
-    private Set<Project> projects = new HashSet<Project>();
+    private Set<Project> projects = new HashSet<>();
 
     public void addProject(Project project) {
         projects.add(project);

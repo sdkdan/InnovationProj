@@ -126,6 +126,9 @@ public class UserService implements UserDetailsService {
     @Transactional
     public void addBlocked(Blocked blocked) {
         blockedDao.add(blocked);
+        AppUser user = blocked.getAppUser();
+        user.setBlocked(getBlocked(blocked.getId_blocked()));
+        update(user);
     }
 
     @Transactional

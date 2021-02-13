@@ -25,8 +25,7 @@ public class EventController {
 
     @GetMapping("event/{id}")
     public String oneEvent(@PathVariable("id") int id, Model model) {
-        Event event = eventService.eventAllConnections(id);
-        model.addAttribute("event", event);
+        model.addAttribute("event", eventService.eventAllConnections(id));
         return "event/oneEvent";
     }
 

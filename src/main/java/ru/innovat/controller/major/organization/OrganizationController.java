@@ -31,8 +31,7 @@ public class OrganizationController {
 
     @GetMapping("organization/{id}")
     public String oneOrganization(@PathVariable("id") int id, Model model) {
-        Organization organization = organizationService.organizationAllConnection(id);
-        model.addAttribute("organization", organization);
+        model.addAttribute("organization", organizationService.organizationAllConnection(id));
         return "organization/oneOrg";
     }
 }

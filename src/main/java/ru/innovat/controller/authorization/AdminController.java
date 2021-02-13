@@ -24,20 +24,16 @@ public class AdminController {
 
     @GetMapping(value = "/admin")
     public String adminPage(Model model, Principal principal) {
-        String userInfo = principal.getName();
-        List<AppUser> users = userService.userList();
-        users.remove(userService.findUserByUsername(userInfo));
-        model.addAttribute("userInfo", userInfo);
-        model.addAttribute("users", users);
+        model.addAttribute("userInfo", principal.getName());
+        model.addAttribute("users", userService.userList());
         return "user/adminPage";
     }
 
     @GetMapping("/admin/user/{id}")
     public String oneUser(@PathVariable("id") int id, Model model) {
-        Connect connect = new Connect();
         model.addAttribute("user", userService.findUser(id));
         model.addAttribute("roles", userService.roleList());
-        model.addAttribute("connect", connect);
+        model.addAttribute("connect", new Connect());
         return "user/oneUser";
     }
 
@@ -62,8 +58,6 @@ public class AdminController {
         blocked.setAppUser(user);
         blocked.setStartDate(new Date());
         userService.addBlocked(blocked);
-        user.setBlocked(userService.getBlocked(blocked.getId_blocked()));
-        userService.update(user);
         return "redirect:";
     }
 

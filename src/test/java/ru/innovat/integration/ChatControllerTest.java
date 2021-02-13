@@ -1,9 +1,10 @@
-package ru.innovat.controller;
+package ru.innovat.integration;
 
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import ru.innovat.config.ConfigControllerTest;
 import ru.innovat.models.support.Messages;
 
 import static org.hamcrest.CoreMatchers.hasItem;

@@ -22,10 +22,8 @@ public class EditEventController {
 
     @GetMapping("/event/{id}/edit")
     public String showEventForm(@PathVariable("id") int id, Model model) {
-        Event event = eventService.findEvent(id);
-        List<TypeEvent> typeEventList = eventService.findAllTypeEvents();
-        model.addAttribute("list", typeEventList);
-        model.addAttribute("event", event);
+        model.addAttribute("list", eventService.findAllTypeEvents());
+        model.addAttribute("event", eventService.findEvent(id));
         return "event/updateEvent";
     }
 

@@ -1,4 +1,4 @@
-package ru.innovat.controller;
+package ru.innovat.integration;
 
 import org.junit.After;
 import org.junit.Before;
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.innovat.config.ConfigControllerTest;
 import ru.innovat.models.major.Project;
 import ru.innovat.search.ProjectSearch;
 import ru.innovat.service.major.ProjectService;
