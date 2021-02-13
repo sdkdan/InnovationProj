@@ -27,16 +27,16 @@ public class BanUserTest extends ConfigControllerTest {
     public void banUser() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(post("/admin/user/2/saveban")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("comment", "banned test")
-                .param("endDate", "2018-11-11"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:"));
+               .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+               .param("comment", "Spam")
+               .param("endDate", "2018-11-11"))
+               .andExpect(status().is3xxRedirection())
+               .andExpect(view().name("redirect:"));
         mockMvc.perform(get("/admin/user/3"))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful())
-                .andExpect(view().name("user/oneUser"))
-                .andExpect(model().attribute("user", hasProperty("blocked", notNullValue())));
+               .andDo(print())
+               .andExpect(status().is2xxSuccessful())
+               .andExpect(view().name("user/oneUser"))
+               .andExpect(model().attribute("user", hasProperty("blocked", notNullValue())));
     }
 
     @Test
@@ -44,13 +44,13 @@ public class BanUserTest extends ConfigControllerTest {
     public void unbanUserOnButton() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         mockMvc.perform(get("/admin/user/2/unban"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:"));
+               .andExpect(status().is3xxRedirection())
+               .andExpect(view().name("redirect:"));
         mockMvc.perform(get("/admin/user/1"))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful())
-                .andExpect(view().name("user/oneUser"))
-                .andExpect(model().attribute("user", hasProperty("blocked", nullValue())));
+               .andDo(print())
+               .andExpect(status().is2xxSuccessful())
+               .andExpect(view().name("user/oneUser"))
+               .andExpect(model().attribute("user", hasProperty("blocked", nullValue())));
     }
 
 }
