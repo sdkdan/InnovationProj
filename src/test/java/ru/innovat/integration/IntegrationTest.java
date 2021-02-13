@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class IntegrationTest extends ConfigControllerTest {
 
     @Test
-    @WithMockUser(username = "test", password = "pwd", roles = "USER")
+    @WithMockUser(username = "usrPavel", password = "pwd", roles = "USER")
     public void integration() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         //checking access without login
