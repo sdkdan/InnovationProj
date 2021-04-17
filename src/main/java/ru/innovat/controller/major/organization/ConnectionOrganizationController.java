@@ -16,6 +16,7 @@ import ru.innovat.service.major.OrganizationService;
 @Controller
 @RequiredArgsConstructor
 public class ConnectionOrganizationController {
+
     private final OrganizationService organizationService;
     private final ConnectionService connectionService;
 
@@ -31,7 +32,8 @@ public class ConnectionOrganizationController {
     }
 
     @PostMapping(value = "/organization/{id}/connect")
-    public String organizationAddConnection(@PathVariable("id") int id, @ModelAttribute Organization organization, Connect connect) {
+    public String organizationAddConnection(@PathVariable("id") int id, @ModelAttribute Organization organization,
+                                            Connect connect) {
         connectionService.addConnections(connect, organizationService.organizationAllConnection(id));
         return "redirect:";
     }

@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.person;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +17,12 @@ import javax.validation.Valid;
 @Controller
 @RequiredArgsConstructor
 public class EditPersonController {
+
     private final PersonService personService;
 
     @GetMapping("/person/{id}/edit")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        Person person = personService.findPerson(id);
-        model.addAttribute("person", person);
+        model.addAttribute("person", personService.findPerson(id));
         return "person/updatePerson";
     }
 

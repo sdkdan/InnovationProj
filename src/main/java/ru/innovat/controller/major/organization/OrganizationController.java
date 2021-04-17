@@ -1,20 +1,21 @@
 package ru.innovat.controller.major.organization;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.innovat.models.major.Organization;
 import ru.innovat.search.EventSearch;
+import ru.innovat.search.OrganizationSearch;
 import ru.innovat.service.major.OrganizationService;
 
 
 @Controller
 @RequiredArgsConstructor
 public class OrganizationController {
+
     private final OrganizationService organizationService;
-    private final EventSearch searchService;
+    private final OrganizationSearch searchService;
 
     @GetMapping(value = "/organization")
     public String listOrganization(String search, Model model) {
@@ -30,8 +31,7 @@ public class OrganizationController {
 
     @GetMapping("organization/{id}")
     public String oneOrganization(@PathVariable("id") int id, Model model) {
-        Organization organization = organizationService.organizationAllConnection(id);
-        model.addAttribute("organization", organization);
+        model.addAttribute("organization", organizationService.organizationAllConnection(id));
         return "organization/oneOrg";
     }
 }

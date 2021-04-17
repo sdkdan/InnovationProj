@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.event;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +13,7 @@ import ru.innovat.service.major.EventService;
 @Controller
 @RequiredArgsConstructor
 public class EventController {
+
     private final EventService eventService;
     private final EventSearch searchService;
 
@@ -25,8 +25,7 @@ public class EventController {
 
     @GetMapping("event/{id}")
     public String oneEvent(@PathVariable("id") int id, Model model) {
-        Event event = eventService.eventAllConnections(id);
-        model.addAttribute("event", event);
+        model.addAttribute("event", eventService.eventAllConnections(id));
         return "event/oneEvent";
     }
 

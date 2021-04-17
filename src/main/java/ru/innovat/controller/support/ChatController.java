@@ -18,13 +18,14 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Controller
 public class ChatController {
+
     private final MessagesService messagesService;
     private final UserService userService;
 
     @GetMapping("/help")
     public String helpForm(Model model, Principal principal) {
-        model.addAttribute("messages", messagesService.userMessages(
-                userService.findUserByUsername(principal.getName()).getId_user()));
+        model.addAttribute("messages", messagesService.userMessages(userService.findUserByUsername(principal.getName())
+                                                                                  .getId_user()));
         model.addAttribute("newMessage", new Messages());
         return "help";
     }

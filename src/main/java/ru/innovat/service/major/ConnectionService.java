@@ -16,6 +16,7 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class ConnectionService {
+
     private final OrganizationService organizationService;
     private final EventService eventService;
     private final PersonService personService;

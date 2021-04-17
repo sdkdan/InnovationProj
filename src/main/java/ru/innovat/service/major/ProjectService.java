@@ -3,6 +3,7 @@ package ru.innovat.service.major;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.major.ProjectDao;
 import ru.innovat.models.major.Project;
 
@@ -11,7 +12,9 @@ import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProjectService {
+
     private final ProjectDao projectDao;
 
     public Project findProject(int id) {

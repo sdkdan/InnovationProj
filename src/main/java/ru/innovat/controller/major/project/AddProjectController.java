@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.project;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +13,11 @@ import ru.innovat.service.major.ProjectService;
 @Controller
 @RequiredArgsConstructor
 public class AddProjectController {
+
     private final ProjectService projectService;
 
     @GetMapping(value = "/project/add")
     public String getAddProject(Model model) {
-
         model.addAttribute("project", new Project());
         return "project/addproject";
     }

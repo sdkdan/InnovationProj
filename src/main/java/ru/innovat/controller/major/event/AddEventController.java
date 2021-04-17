@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.event;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +15,13 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class AddEventController {
+
     private final EventService eventService;
 
     @GetMapping(value = "/event/add")
     public String addEventPage(Model model) {
         model.addAttribute("event", new Event());
-        List<TypeEvent> typeEventList = eventService.findAllTypeEvents();
-        model.addAttribute("list", typeEventList);
+        model.addAttribute("list", eventService.findAllTypeEvents());
         return "event/addevent";
     }
 

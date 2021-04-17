@@ -22,14 +22,16 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class EventSearch {
-    private final EventService eventService;
+
     @PersistenceContext
     private final EntityManager entityManager;
 
+    private final EventService eventService;
+    private final static int DISTANCE_UP_TO_SEARCH = 1;
+    private final static int PREFIX_LENGTH = 1;
+
     @SuppressWarnings("unchecked")
     public List<Event> fuzzySearch(String searchTerm) {
-        int distanceUpToSearch = 1;
-        int prefixLength = 1;
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         try {
             fullTextEntityManager.createIndexer().startAndWait();
@@ -38,8 +40,8 @@ public class EventSearch {
         }
         if (searchTerm != null && searchTerm.length() > 0) {
             QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Event.class).get();
-            Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(distanceUpToSearch).withPrefixLength(prefixLength)
-                    .onFields("name_event", "importance_event", "scope_event")
+            Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(DISTANCE_UP_TO_SEARCH).withPrefixLength(PREFIX_LENGTH)
+                    .onFields("nameEvent", "importanceEvent", "scopeEvent")
                     .matching(searchTerm).createQuery();
             javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Event.class);
             return Optional.ofNullable(jpaQuery.getResultList()).orElseThrow(NoResultException::new);

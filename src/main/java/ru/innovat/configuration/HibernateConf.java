@@ -11,14 +11,14 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 public class HibernateConf {
+
     @Bean
     public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setPackagesToScan ("ru.innovat.models");
         Properties props = new Properties();
-        props.setProperty("dialect",
-                "org.hibernate.dialect.MySQLDialect");
+        props.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
         sessionFactory.setHibernateProperties(props);
         return sessionFactory;
     }

@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.organization;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +13,7 @@ import ru.innovat.service.major.OrganizationService;
 @Controller
 @RequiredArgsConstructor
 public class AddOrganizationController {
+
     private final  OrganizationService organizationService;
 
     @GetMapping(value = "/organization/add")

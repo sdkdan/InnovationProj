@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.organization;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ru.innovat.models.major.Organization;
 import ru.innovat.service.major.OrganizationService;
 
-
-import javax.validation.Valid;
-
 @Controller
 @RequiredArgsConstructor
 public class EditOrganizationController {
+
     private final OrganizationService organizationService;
 
     @GetMapping("/organization/{id}/edit")
@@ -28,7 +25,8 @@ public class EditOrganizationController {
     }
 
     @PostMapping("organization/{id}/update")
-    public String updateOrganization(@PathVariable("id") int id, @ModelAttribute Organization organization, BindingResult bindingResult) {
+    public String updateOrganization(@PathVariable("id") int id, @ModelAttribute Organization organization,
+                                     BindingResult bindingResult) {
         organization.setId_organization(id);
         organizationService.updateOrganization(organization);
         return "redirect:";

@@ -13,6 +13,7 @@ import java.security.Principal;
 @Controller
 @RequiredArgsConstructor
 public class RegistrationController {
+
     private final RegistrationService registrationService;
 
     @GetMapping(value = "/login")
@@ -29,7 +30,8 @@ public class RegistrationController {
     @GetMapping(value = "/403")
     public String accessDenied(Model model, Principal principal) {
         model.addAttribute("userInfo", principal.getName());
-        model.addAttribute("message", "Hi " + principal.getName() + "<br> You do not have permission to access this page!");
+        model.addAttribute("message", "Hi " + principal.getName()
+                           + "<br> You do not have permission to access this page!");
         return "registration/403Page";
     }
 

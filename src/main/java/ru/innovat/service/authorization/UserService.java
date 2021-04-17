@@ -31,6 +31,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class UserService implements UserDetailsService {
+
     private final UserDao userDao;
     private final RoleDao roleDao;
     private final BlockedDao blockedDao;
@@ -39,7 +40,6 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         AppUser appUser = userDao.findByUsername(userName);
-
         if (appUser == null) {
             throw new UsernameNotFoundException("Пользователь " + userName + " не найдет в базе данных");
         } else {
@@ -75,6 +75,7 @@ public class UserService implements UserDetailsService {
         return new User(appUser.getUsername(), appUser.getPassword(), grantList);
     }
 
+    @Transactional
     public AppUser findUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = userDao.findByUsername(username);
         if (appUser == null) {
@@ -84,6 +85,7 @@ public class UserService implements UserDetailsService {
         return appUser;
     }
 
+    @Transactional
     public void updateUser(AppUser user) {
         userDao.update(user);
     }
@@ -92,36 +94,49 @@ public class UserService implements UserDetailsService {
         return userDao.userList();
     }
 
+    @Transactional
     public AppUser findUser(int id) {
         return userDao.findById(id);
     }
 
+    @Transactional
     public List<Role> roleList() {
         return roleDao.roleList();
     }
 
+    @Transactional
     public Role getRoleById(int id) {
         return roleDao.getRoleById(id);
     }
 
     public AppUser setRole(Role role, int id) {
         AppUser user = userDao.findById(id);
+        if (user == null) {
+            return null;
+        }
         user.setRole(role);
         return user;
     }
 
+    @Transactional
     public void update(AppUser appUser) {
         userDao.update(appUser);
     }
 
+    @Transactional
     public void addBlocked(Blocked blocked) {
         blockedDao.add(blocked);
+        AppUser user = blocked.getAppUser();
+        user.setBlocked(getBlocked(blocked.getId_blocked()));
+        update(user);
     }
 
+    @Transactional
     public Blocked getBlocked(int id) {
         return blockedDao.findById(id);
     }
 
+    @Transactional
     public List<AppUser> roleUserList() {
         return userDao.roleUserList();
     }

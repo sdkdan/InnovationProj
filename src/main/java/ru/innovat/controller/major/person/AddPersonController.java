@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.person;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +13,7 @@ import ru.innovat.service.major.PersonService;
 @Controller
 @RequiredArgsConstructor
 public class AddPersonController {
+
     private final PersonService personService;
 
     @GetMapping(value = "/person/add")

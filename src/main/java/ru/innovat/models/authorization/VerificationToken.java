@@ -16,15 +16,18 @@ import static ru.innovat.models.utils.CalculateExpiryDate.calculateDate;
 @Setter
 @NoArgsConstructor
 public class VerificationToken {
-    private static final int EXPIRATION = 60 * 24;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_token;
+
     @Column(name = "token")
     private String token;
+
     @OneToOne(targetEntity = AppUser.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "id_user")
     private AppUser user;
+
     @Column(name = "expirydate")
     private Date expiryDate;
 
@@ -35,10 +38,6 @@ public class VerificationToken {
     }
 
     private void calculateExpiryDate() {
-        final Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(new Date().getTime());
-        cal.add(Calendar.MINUTE, VerificationToken.EXPIRATION);
-        cal.getTime();
         expiryDate = calculateDate();
     }
 }

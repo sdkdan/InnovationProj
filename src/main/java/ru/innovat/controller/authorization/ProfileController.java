@@ -1,9 +1,6 @@
 package ru.innovat.controller.authorization;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,32 +9,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ru.innovat.models.authorization.AppUser;
 import ru.innovat.service.authorization.UserService;
 
-import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
 public class ProfileController {
+
     private final UserService userService;
 
     @GetMapping("/myprofile")
     public String profile(Model model, Principal principal) {
-        AppUser user = userService.findUserByUsername(principal.getName());
-        model.addAttribute("user", user);
+        model.addAttribute("user",userService.findUserByUsername(principal.getName()));
         return "user/myprofile";
     }
 
     @GetMapping("/myprofile/edit")
     public String editProfile(Model model, Principal principal) {
-        AppUser user = userService.findUserByUsername(principal.getName());
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.findUserByUsername(principal.getName()));
         return "user/editUser";
     }
 
     @GetMapping("/myprofile/editpassword")
     public String editPassword(Model model, Principal principal) {
-        AppUser user = userService.findUserByUsername(principal.getName());
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.findUserByUsername(principal.getName()));
         return "user/editPassword";
     }
 

@@ -1,27 +1,26 @@
 package ru.innovat.dao.authorization;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.models.authorization.VerificationToken;
-import ru.innovat.models.major.Event;
-
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
 public class TokenDao {
+
     private final SessionFactory sessionFactory;
 
-    public VerificationToken findByToken(String token) {
+    @Nullable
+    public  VerificationToken findByToken(String token) {
         Session session = sessionFactory.getCurrentSession();
         return (VerificationToken) session.createQuery("SELECT V FROM VerificationToken V WHERE V.token = :token")
-                .setParameter("token", token).uniqueResult();
+                                          .setParameter("token", token).uniqueResult();
     }
 
+    @Nullable
     public VerificationToken findById(int id) {
         return sessionFactory.getCurrentSession().get(VerificationToken.class, id);
     }
@@ -40,11 +39,5 @@ public class TokenDao {
         Session session = sessionFactory.getCurrentSession();
         VerificationToken verificationToken = session.load(VerificationToken.class, id);
         if (verificationToken != null)session.delete(verificationToken);
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<VerificationToken> verificationTokenList() {
-        Session session = this.sessionFactory.getCurrentSession();
-        return (List<VerificationToken>) session.createQuery("From VerificationToken").list();
     }
 }

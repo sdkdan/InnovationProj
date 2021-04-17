@@ -1,10 +1,11 @@
 package ru.innovat.dao.major;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.*;
 
 import java.util.List;
+
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 
 
@@ -13,8 +14,10 @@ import ru.innovat.models.major.Person;
 @Repository
 @RequiredArgsConstructor
 public class PersonDao {
+
     private final SessionFactory sessionFactory;
 
+    @Nullable
     public Person findById(int id) {
         return sessionFactory.getCurrentSession().get(Person.class, id);
     }
@@ -36,13 +39,17 @@ public class PersonDao {
     }
 
     @SuppressWarnings("unchecked")
+    @Nullable
     public List<Person> personList() {
         Session session = sessionFactory.getCurrentSession();
         return (List<Person>) session.createQuery("From Person").list();
     }
 
-    public Person personAllConnections(int id){
+    public Person personAllConnections(int id) {
         Person person = findById(id);
+        if (person == null) {
+            return null;
+        }
         Hibernate.initialize(person.getEvents());
         Hibernate.initialize(person.getOrganizations());
         Hibernate.initialize(person.getProjects());

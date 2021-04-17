@@ -1,6 +1,5 @@
 package ru.innovat.controller.major.project;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +15,12 @@ import javax.validation.Valid;
 @Controller
 @RequiredArgsConstructor
 public class EditProjectController {
+
     private final ProjectService projectService;
 
     @GetMapping("/project/{id}/edit")
     public String showProjectForm(@PathVariable("id") int id, Model model) {
-        Project project = projectService.findProject(id);
-        model.addAttribute("project", project);
+        model.addAttribute("project", projectService.findProject(id));
         return "project/updateProject";
     }
 

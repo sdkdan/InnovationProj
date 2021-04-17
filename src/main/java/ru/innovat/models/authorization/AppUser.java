@@ -1,8 +1,6 @@
 package ru.innovat.models.authorization;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.innovat.models.utils.RolesEnum;
@@ -14,28 +12,40 @@ import java.util.Collection;
 @Table(name = "users")
 @Getter
 @Setter
-@EqualsAndHashCode(exclude = {"role", "blocked", "password", "passwordConfirm", "enabled"} )
+@EqualsAndHashCode(exclude = {"role", "blocked", "password", "passwordConfirm", "enabled"})
+@Builder
+@AllArgsConstructor
 public class AppUser implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_user;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "username")
     private String username;
+
     @Column(name = "email")
     private String eMail;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "last_name")
     private String lastName;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role")
     private Role role;
+
     @Transient
     private String passwordConfirm;
+
     @Column(name = "enabled")
     private boolean enabled;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_blocked")
     private Blocked blocked;
@@ -75,6 +85,6 @@ public class AppUser implements UserDetails {
     }
 
     public String getStatusToString() {
-        return  (isAccountNonLocked()) ? "Активен" : "Заблокирован";
+        return (isAccountNonLocked()) ? "Активен" : "Заблокирован";
     }
 }

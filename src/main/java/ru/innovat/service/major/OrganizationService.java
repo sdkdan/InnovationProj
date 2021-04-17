@@ -3,6 +3,7 @@ package ru.innovat.service.major;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.innovat.dao.major.OrganizationDao;
 import ru.innovat.models.major.Organization;
 
@@ -10,7 +11,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrganizationService {
+
     private final OrganizationDao organizationDao;
 
     public Organization findOrganization(int id) {

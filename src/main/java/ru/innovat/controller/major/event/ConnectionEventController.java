@@ -15,6 +15,7 @@ import ru.innovat.service.major.EventService;
 @Controller
 @RequiredArgsConstructor
 public class ConnectionEventController {
+
     private final EventService eventService;
     private final ConnectionService connectionService;
 
@@ -22,7 +23,7 @@ public class ConnectionEventController {
     public String eventAddConnectionPage(@PathVariable("id") int id, Model model) {
         Event event = eventService.eventAllConnections(id);
         model.addAttribute("organizations", connectionService.removeConnectionsFormOrganizationList(event
-                .getOrganizations()));
+                                                                .getOrganizations()));
         model.addAttribute("projects", connectionService.removeConnectionsFromProjectList(event.getProjects()));
         model.addAttribute("persons", connectionService.removeConnectionsFormPersonList(event.getPersons()));
         model.addAttribute("event", event);

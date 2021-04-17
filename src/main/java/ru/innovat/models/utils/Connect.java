@@ -3,11 +3,12 @@ package ru.innovat.models.utils;
 import lombok.*;
 
 
-@Builder(toBuilder = true)
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class Connect {
+
     private int event_Id;
     private int project_Id;
     private int organization_Id;
